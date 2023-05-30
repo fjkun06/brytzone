@@ -1,0 +1,43 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/variables" as *;
+
+nav {
+  border: 1px solid red;
+
+  @include size(100vw, 9rem);
+  @include flex;
+
+  padding: 2.475rem 2.625rem;
+  background: transparent;
+  backdrop-filter: blur(8.5px);
+  -webkit-backdrop-filter: blur(1rem);
+  font-family: "Poppins", sans-serif;
+  color: black;
+  justify-self: flex-start;
+
+  img{
+    transform: scale(0.25);
+  }
+
+  @media only screen and (width > 960px) {
+    padding: 3.4rem 8.5rem;
+    img{
+      transform: scale(0.3);
+    }
+  }
+  @media only screen and (width > 1024px) {
+    img{
+      transform: scale(0.35);
+    }
+  }
+  @media only screen and (width > 1200px) {
+    img{
+      transform: scale(0.4);
+    }
+  }
+  @media only screen and (width > 1500px) {
+    img{
+      transform: scale(0.45);
+    }
+  }
+}

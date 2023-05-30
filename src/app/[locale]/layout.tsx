@@ -1,8 +1,9 @@
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import "../../styles/main.scss";
-import Image from "next/image";
-import logo from "../icon.png";
+
+import '../../utils/fonts';
+import Navbar from "@/stories/Navbar";
 type LayoutProps = {
   children: React.ReactNode;
   params: {
@@ -31,10 +32,7 @@ export default async function LocaleLayout({ children, params: { locale } }: Lay
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <main id="layout">
-            <nav>
-              hello
-              <Image src={logo} alt="" />
-            </nav>
+          <Navbar/>
             <section id="layoutwwww">{children}</section>
             <footer>hell-o</footer>
           </main>
