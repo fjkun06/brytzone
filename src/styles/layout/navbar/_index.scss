@@ -5,7 +5,7 @@ nav {
   border: 1px solid red;
 
   @include size(100vw, 9rem);
-  @include flex;
+  @include flex(column);
 
   padding: 2.475rem 2.625rem;
   background: transparent;
@@ -15,28 +15,55 @@ nav {
   color: black;
   justify-self: flex-start;
 
-  img{
+  /**************************************Navbar logo**************************************/
+  img {
     transform: scale(0.25);
   }
 
+  /**************************************Navbar subblocks**************************************/
+  div {
+    border: 1px solid red;
+    @include size(100%, 5rem);
+    @include flex;
+    justify-content: flex-start;
+
+    /**************************************logo container**************************************/
+    &:nth-child(1) {
+    }
+    /**************************************links container**************************************/
+    &:nth-child(2) {
+      // justify-content: center;
+    }
+    /**************************************actions container**************************************/
+    &:nth-child(3) {
+    }
+  }
+
+  /**************************************SVGs**************************************/
+svg{
+
+}
+
   @media only screen and (width > 960px) {
+  @include flex;
+
     padding: 3.4rem 8.5rem;
-    img{
+    img {
       transform: scale(0.3);
     }
   }
   @media only screen and (width > 1024px) {
-    img{
+    img {
       transform: scale(0.35);
     }
   }
   @media only screen and (width > 1200px) {
-    img{
+    img {
       transform: scale(0.4);
     }
   }
   @media only screen and (width > 1500px) {
-    img{
+    img {
       transform: scale(0.45);
     }
   }

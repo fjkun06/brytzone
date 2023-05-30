@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import "../../styles/main.scss";
 
 import '../../utils/fonts';
-import Navbar from "@/stories/Navbar";
+import Navbar from "@/stories/layout/navbar/Navbar";
 type LayoutProps = {
   children: React.ReactNode;
   params: {
