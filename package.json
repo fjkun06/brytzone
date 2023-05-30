@@ -19,6 +19,7 @@
     "@types/sass": "^1.45.0",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
+    "framer-motion": "^10.12.16",
     "nano": "^10.1.2",
     "next": "13.4.4",
     "next-intl": "^2.14.6",
