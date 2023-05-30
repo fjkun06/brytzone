@@ -2,7 +2,7 @@ import React from "react";
 
 const OpenIcon = () => {
   return (
-    <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="15" height="15" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M19.9216 5.59605H3.58147C3.20928 5.59605 2.90063 5.28741 2.90063 4.91521C2.90063 4.54302 3.20928 4.23438 3.58147 4.23438H19.9216C20.2938 4.23438 20.6025 4.54302 20.6025 4.91521C20.6025 5.28741 20.2938 5.59605 19.9216 5.59605Z"
         fill="#292D32"

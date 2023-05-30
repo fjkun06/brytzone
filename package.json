@@ -22,6 +22,7 @@
     "eslint-config-next": "13.4.4",
     "framer-motion": "^10.12.16",
     "nano": "^10.1.2",
+    "nanoid": "^4.0.2",
     "next": "13.4.4",
     "next-intl": "^2.14.6",
     "react": "18.2.0",

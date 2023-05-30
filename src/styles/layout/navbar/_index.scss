@@ -6,14 +6,17 @@ nav {
 
   @include size(100vw, 9rem);
   @include flex(column);
+  @include grid;
 
   padding: 2.475rem 2.625rem;
+  padding: 0.25rem 2.625rem;
   background: transparent;
   backdrop-filter: blur(8.5px);
   -webkit-backdrop-filter: blur(1rem);
   font-family: "Poppins", sans-serif;
   color: black;
   justify-self: flex-start;
+  background-color: $primary;
 
   /**************************************Navbar logo**************************************/
   img {
@@ -23,16 +26,44 @@ nav {
   /**************************************Navbar subblocks**************************************/
   div {
     border: 1px solid red;
-    @include size(100%, 5rem);
+    @include size(calc(100vw - calc(3rem * 2)), 6rem);
     @include flex;
     justify-content: flex-start;
+    background-color: $background;
 
     /**************************************logo container**************************************/
     &:nth-child(1) {
+      align-self: flex-start;
+      justify-content: space-between;
+      img,
+      span {
+        // @include size(7rem,5.5rem);
+      }
+      img {
+        justify-self: flex-start;
+      }
+      span {
+        @include size(5rem);
+        @include flex;
+
+        cursor: pointer;
+        svg {
+          //   @include size(inherit);
+          @include size(4rem);
+
+          path {
+            stroke: $primary;
+            stroke-width: 1px;
+          }
+        }
+      }
     }
     /**************************************links container**************************************/
     &:nth-child(2) {
-      // justify-content: center;
+      @include flex(column);
+      height: auto;
+      gap: 1rem;
+      align-items: flex-start;
     }
     /**************************************actions container**************************************/
     &:nth-child(3) {
@@ -40,12 +71,11 @@ nav {
   }
 
   /**************************************SVGs**************************************/
-svg{
-
-}
+  svg {
+  }
 
   @media only screen and (width > 960px) {
-  @include flex;
+    @include flex;
 
     padding: 3.4rem 8.5rem;
     img {
@@ -67,4 +97,19 @@ svg{
       transform: scale(0.45);
     }
   }
+}
+
+.nav_link {
+  font-family: "Poppins", sans-serif;
+  @include formatText(500, 2rem, 3rem);
+  text-transform: capitalize;
+  color: $black;
+  transition: color 0.5s ease-in-out;
+  &:hover {
+    color: $primary;
+  }
+}
+.nav_link-active {
+  color: $primary;
+  color: red;
 }
