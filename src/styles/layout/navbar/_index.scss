@@ -19,7 +19,7 @@ nav {
   justify-self: flex-start;
   gap: 4rem;
   background-color: $primary;
-  background-color: $background;
+  // background-color: $background;
   z-index: 2;
 
   /**************************************Navbar logo**************************************/
@@ -94,7 +94,16 @@ nav {
     img {
       transform: scale(0.3);
     }
-
+    div {
+      &:nth-child(1) {
+        .menu {
+          display: none;
+        }
+      }
+    }
+    .navbar_mobile{
+      display: none;
+    }
   }
   @media only screen and (width > 1024px) {
     img {

@@ -7,6 +7,7 @@ import Menu from "./Menu";
 import CloseIcon from "./CloseIcon";
 import { NavLink } from "@/stories/NavLink";
 import { nanoid } from "nanoid";
+import useWindowSize from "@/hooks/useWindowSize";
 
 interface NavbarProps {
   /**
@@ -37,24 +38,24 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop }) => {
       ...globalTransition,
     },
   };
-  const slideIn = desktop
-    ? { open: {}, closed: {} }
-    : {
-        open: start,
-        closed: end,
-      };
-  const slideInn = desktop
-    ? { open: {}, closed: {} }
-    : {
-        open: {
-          ...start,
-          transition: {
-            ...globalTransition,
-            delay: 2.25,
-          },
-        },
-        closed: end,
-      };
+
+  const slideIn = {
+    open: start,
+    closed: end,
+  };
+  const slideInn = {
+    open: {
+      ...start,
+      transition: {
+        ...globalTransition,
+        delay: 2.25,
+      },
+    },
+    closed: end,
+  };
+
+  console.log(useWindowSize().width);
+  
   // if (slideInn.open.transition) slideInn.open.transition.delay = 2.25;
   // slideInn.open &&  slideInn.open.transition.delay = 2.25;
   //verifying if element is in viewport
@@ -66,15 +67,33 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop }) => {
         </span>
         {!desktop && <Menu isOpen={isOpen} toggleNavbarState={handleClick} />}
       </motion.div>
-      <AnimatePresence>
-        {isOpen && (
+      <>
+        <AnimatePresence>
+          {isOpen && !desktop && (
+            <>
+              <motion.div className="navbar_mobile" layout variants={slideIn} initial="closed" animate="open" exit="closed">
+                {routes.map((route, index) => (
+                  <NavLink i={index} href={`/${route === "home" ? "/" : route}`} text={route} type={desktop ? "desktop" : "mobile"} key={nanoid()} />
+                ))}
+              </motion.div>
+              <motion.div className="navbar_mobile" transition={{ delay: 2.25 }} layout key={nanoid()} variants={slideInn} initial="closed" animate="open" exit="closed">
+                <span>hell-o</span>
+                <span>hell-o</span>
+                <span>hell-o</span>
+                <span>hell-o</span>
+                <span>theme</span>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
+        {isOpen && desktop && (
           <>
-            <motion.div layout variants={slideIn} initial="closed" animate="open" exit="closed">
+            <motion.div className="navbar_desktop" initial={false}>
               {routes.map((route, index) => (
-                <NavLink i={index} href={`/${route === "home" ? "/" : route}`} text={route} type={desktop ? "desktop" : "mobile"} key={nanoid()} />
+                <NavLink i={index} href={`/${route === "home" ? "/" : route}`} text={route} type={"desktop"} key={nanoid()} />
               ))}
             </motion.div>
-            <motion.div transition={{ delay: 2.25 }} layout key={nanoid()} variants={slideInn} initial="closed" animate="open" exit="closed">
+            <motion.div className="navbar_desktop" initial={false} data-name="name" key={nanoid()}>
               <span>hell-o</span>
               <span>hell-o</span>
               <span>hell-o</span>
@@ -83,7 +102,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop }) => {
             </motion.div>
           </>
         )}
-      </AnimatePresence>
+      </>
     </motion.nav>
   );
 };

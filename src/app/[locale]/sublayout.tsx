@@ -4,12 +4,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { nanoid } from "nanoid";
 import React from "react";
+import useWindowSize from "@/hooks/useWindowSize";
 interface SubLayoutProps {
   children?: React.ReactNode;
 }
 const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
   const [isOpen, setIsOpen] = React.useState(true);
-  const min980 = useMediaQuery("(width > 960px)");
+  const min980 = useWindowSize().width > 960;
+  console.log(min980,useWindowSize().width);
+  
 
   const handleIsOpen = () => setIsOpen(!isOpen);
   return (
