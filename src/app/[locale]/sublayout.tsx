@@ -7,6 +7,7 @@ import React from "react";
 import useWindowSize from "@/hooks/useWindowSize";
 import { CircleLoader } from "react-spinners";
 import Cookies from "universal-cookie";
+import { switchTheme } from "@/utils/themeSwitcher";
 interface SubLayoutProps {
   children?: React.ReactNode;
 }
@@ -51,6 +52,7 @@ const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
     }
 
     setCookie(cookies.get("theme"));
+    switchTheme(cookies.get("theme"));
     console.log(cookie);
 
     //setting default color scheme
@@ -60,7 +62,7 @@ const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
   //cookie handler
   const setThemeCookie = (val: string) => {
     cookies.set("theme", val, { path: "/" });
-    if (cookies.get("theme") !== val) setCookie(val);
+     setCookie(val);
   };
 
   //removing loadscreen
@@ -90,7 +92,7 @@ const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
   const handleIsOpen = () => setIsOpen(!isOpen);
   return (
     <main id="layout">
-      <Navbar handleClick={handleIsOpen} isOpen={isOpen} desktop={min980} />
+      <Navbar handleClick={handleIsOpen} isOpen={isOpen} desktop={min980} storeCookie={setThemeCookie} cookieVal={cookie} />
       <AnimatePresence>
         {isOpen && (
           <motion.div
