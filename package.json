@@ -29,7 +29,8 @@
     "react-dom": "18.2.0",
     "react-spinners": "^0.13.8",
     "sass": "^1.62.1",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "universal-cookie": "^4.0.4"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.0.18",

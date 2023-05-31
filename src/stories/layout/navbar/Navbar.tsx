@@ -8,6 +8,8 @@ import CloseIcon from "./CloseIcon";
 import { NavLink } from "@/stories/NavLink";
 import { nanoid } from "nanoid";
 import useWindowSize from "@/hooks/useWindowSize";
+import MoonIcon from "./MoonIcon";
+import SunIcon from "./SunIcon";
 
 interface NavbarProps {
   /**
@@ -55,12 +57,12 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop }) => {
   };
 
   // console.log(useWindowSize().width);
-  
+
   // if (slideInn.open.transition) slideInn.open.transition.delay = 2.25;
   // slideInn.open &&  slideInn.open.transition.delay = 2.25;
   //verifying if element is in viewport
   return (
-    <motion.nav layout animate={{ height: isOpen ? (desktop ? "9.6rem" : "70rem") : "9.6rem", paddingTop: isOpen ? "3rem" : "2.25rem" }} transition={globalTransition}>
+    <motion.nav layout animate={{ height: isOpen ? (desktop ? "9.6rem" : "70rem") : "9.6rem", paddingTop: isOpen ? (desktop ? "0rem" : "3rem") : "2.25rem" }} transition={globalTransition}>
       <motion.div>
         <span className="logo">
           <Image src={logo} alt="" />
@@ -94,8 +96,12 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop }) => {
               ))}
             </motion.div>
             <motion.div className="navbar_desktop" initial={false} data-name="name" key={nanoid()}>
-              <span>hell-o</span>
-              <span>hell-o</span>
+              <span className='navbar_theme' onClick={() => ""}>
+                <MoonIcon />
+              </span>
+              <span className='navbar_theme' onClick={() => ""}>
+                <SunIcon />
+              </span>
               <span>hell-o</span>
               <span>hell-o</span>
               <span>theme</span>
