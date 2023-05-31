@@ -33,12 +33,14 @@ export const NavLink: React.FC<NavlinkProps> = ({ href, text, toggle, type, i })
   //getting current route
   const pathname = usePathname();
   const isActive = pathname.startsWith(href);
+
   const lg = useMediaQuery("(width > 840px)");
   const itemVariants = {
     open: (i: number) => ({
       x: 0,
       transition: {
-        delay: i * 0.3,ease:"easeInOut"
+        delay: i * 0.3,
+        ease: "easeInOut",
       },
     }),
     closed: { x: "-170%" },
@@ -55,16 +57,6 @@ export const NavLink: React.FC<NavlinkProps> = ({ href, text, toggle, type, i })
       {text}
     </Link>
   );
-
-  // return lg ? (
-  //   <Link className={isActive ? "nav_link nav_link-active" : "nav_link"} href={href}>
-  //     {text}
-  //   </Link>
-  // ) : (
-  //   <Link className={isActive ? "nav_link nav_link-active" : "nav_link"} href={href} onClick={toggle}>
-  //     {text}
-  //   </Link>
-  // );
 };
 
 export const LanguageLink: React.FC<LangaugeLinkProps> = ({ to, text }) => {

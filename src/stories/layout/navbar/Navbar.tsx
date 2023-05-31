@@ -81,7 +81,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
             <>
               <motion.div className="navbar_mobile" layout variants={slideIn} initial="closed" animate="open" exit="closed">
                 {routes.map((route, index) => (
-                  <NavLink i={index} href={`/${route === "home" ? "/" : route}`} text={route} type={desktop ? "desktop" : "mobile"} key={nanoid()} />
+                  <NavLink i={index} href={`/${route === "home" ? "" : route}`} text={route} type={desktop ? "desktop" : "mobile"} key={nanoid()} />
                 ))}
               </motion.div>
               <motion.div className="navbar_mobile" transition={{ delay: 2.25 }} layout key={nanoid()} variants={slideInn} initial="closed" animate="open" exit="closed">
