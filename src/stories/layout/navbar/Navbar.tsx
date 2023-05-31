@@ -68,7 +68,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
   };
 
   return (
-    <motion.nav layout animate={{ height: isOpen ? (desktop ? "9.6rem" : "70rem") : "9.6rem", paddingTop: isOpen ? (desktop ? "0rem" : "3rem") : "2.25rem" }} transition={globalTransition}>
+    <motion.nav layout animate={{ height: isOpen ? (desktop ? "9.6rem" : "70rem") : "9.6rem", paddingTop: isOpen ? (desktop ? "0rem" : "3rem") : "2.25rem" }} transition={globalTransition} >
       <motion.div>
         <span className="logo">
           <Image src={logo} alt="" />
@@ -85,8 +85,38 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
                 ))}
               </motion.div>
               <motion.div className="navbar_mobile" transition={{ delay: 2.25 }} layout key={nanoid()} variants={slideInn} initial="closed" animate="open" exit="closed">
-                <span>hell-o</span>
-                <span>hell-o</span>
+                <AnimatePresence>
+                  {cookieVal === "dark" ? (
+                    <motion.span
+                      variants={themeTransition}
+                      animate="open"
+                      exit="close"
+                      initial={false}
+                      className="navbar_theme"
+                      onClick={() => {
+                        switchTheme("light");
+                        storeCookie("light");
+                      }}
+                    >
+                      <SunIcon />
+                    </motion.span>
+                  ) : (
+                    <motion.span
+                      variants={themeTransition}
+                      animate="open"
+                      exit="close"
+                      initial={false}
+                      className="navbar_theme"
+                      onClick={() => {
+                        switchTheme("dark");
+                        storeCookie("dark");
+                      }}
+                    >
+                      <MoonIcon />
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+
                 <span>hell-o</span>
                 <span>hell-o</span>
                 <span>theme</span>

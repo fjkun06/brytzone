@@ -41,7 +41,7 @@ export const NavLink: React.FC<NavlinkProps> = ({ href, text, toggle, type, i })
         delay: i * 0.3,ease:"easeInOut"
       },
     }),
-    closed: { x: "-100%" },
+    closed: { x: "-170%" },
   };
 
   return type === "mobile" ? (
