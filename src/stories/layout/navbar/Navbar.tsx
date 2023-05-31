@@ -54,7 +54,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop }) => {
     closed: end,
   };
 
-  console.log(useWindowSize().width);
+  // console.log(useWindowSize().width);
   
   // if (slideInn.open.transition) slideInn.open.transition.delay = 2.25;
   // slideInn.open &&  slideInn.open.transition.delay = 2.25;

@@ -3,6 +3,7 @@
 @use "../utils/variables" as *;
 /**************************************Layout Components**************************************/
 @use 'navbar';
+@use 'loader';
 #layout {
   background-color: red;
   min-height: 100vh;
