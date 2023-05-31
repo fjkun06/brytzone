@@ -44,7 +44,7 @@ const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
         if (start === undefined) start = timestamp;
         const elapsed = timestamp - start;
   
-        if (elapsed < 3000) {
+        if (elapsed < 3200) {
           // If less than 3 seconds have elapsed, request the next animation frame
           requestAnimationFrame(step);
         } else {
