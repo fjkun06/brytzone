@@ -32,7 +32,9 @@ export default async function LocaleLayout({ children, params: { locale } }: Lay
     <html lang={locale}>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <SubLayout />
+          <SubLayout>
+            <section id="brytzone_children_layout">{children}</section>
+          </SubLayout>
 
           {/* </SubLayout> */}
           {/* <main id="layout">

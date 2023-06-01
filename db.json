@@ -1,0 +1,23 @@
+{
+  "products": [
+    { "id": 1, "name": "Peanut", "present": true,  "status": 9 }],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "students": [
+    {
+      "status": 0.1,
+      "matriculation": "dddd",
+      "name": "dddd",
+      "present": true,
+      "id": 1
+    }
+  ]
+}

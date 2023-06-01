@@ -80,7 +80,7 @@ nav {
       padding-bottom: 6.5rem;
       span {
         @include size(12.3rem, 4.2rem);
-        border: 1px solid red;
+        // border: 1px solid red;
         @include flex;
       }
       .navbar_theme {

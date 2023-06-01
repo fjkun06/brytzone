@@ -5,12 +5,15 @@ import logo from "../../../../public/assets/images/icon.png";
 import { motion, AnimatePresence } from "framer-motion";
 import Menu from "./Menu";
 import CloseIcon from "./CloseIcon";
-import { NavLink } from "@/stories/NavLink";
+import { NavLink } from "@/stories/layout/navbar/NavLink";
 import { nanoid } from "nanoid";
 import useWindowSize from "@/hooks/useWindowSize";
 import MoonIcon from "./MoonIcon";
 import SunIcon from "./SunIcon";
 import { switchTheme } from "@/utils/themeSwitcher";
+import { Button } from "@/stories/components/Button";
+import UserAddIcon from "./UserAddIcon";
+import IconForward from "@/stories/components/IconForward";
 
 interface NavbarProps {
   /**
@@ -68,7 +71,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
   };
 
   return (
-    <motion.nav layout animate={{ height: isOpen ? (desktop ? "9.6rem" : "70rem") : "9.6rem", paddingTop: isOpen ? (desktop ? "0rem" : "3rem") : "2.25rem" }} transition={globalTransition} >
+    <motion.nav layout animate={{ height: isOpen ? (desktop ? "9.6rem" : "70rem") : "9.6rem", paddingTop: isOpen ? (desktop ? "0rem" : "3rem") : "2.25rem" }} transition={globalTransition}>
       <motion.div>
         <span className="logo">
           <Image src={logo} alt="" />
@@ -117,8 +120,11 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
                   )}
                 </AnimatePresence>
 
-                <span>hell-o</span>
-                <span>hell-o</span>
+                <Button category="action" icon={<UserAddIcon/>}>Log In</Button>
+                <Button category="content" icon={<IconForward/>} >Get Started</Button>
+                <Button category="search"  >Search</Button>
+                <Button category="contact" >Subscribe</Button>
+                <Button >Donate</Button>
                 <span>theme</span>
               </motion.div>
             </>
@@ -164,8 +170,9 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
                 )}
               </AnimatePresence>
 
-              <span>hell-o</span>
-              <span>hell-o</span>
+              {/* <Button category="action" icon={<UserAddIcon/>}>Log In</Button> */}
+                <Button category="content" icon={<IconForward/>} >Get Started</Button>
+                {/* <Button >Donate</Button> */}
               <span>theme</span>
             </motion.div>
           </>

@@ -2,8 +2,8 @@
 @use "../utils/mixins" as *;
 @use "../utils/variables" as *;
 /**************************************Layout Components**************************************/
-@use 'navbar';
-@use 'loader';
+@use "navbar";
+@use "loader";
 #layout {
   background-color: red;
   min-height: 100vh;
@@ -30,10 +30,127 @@
   // -webkit-background-clip: border-box;
   // background-clip: border-box;height="100%" width="100%"
   // background-size: 100vw 100vh;
-    background: $background;
-    color: white;
+  background: $background;
+  color: white;
 }
 
+#brytzone_children_layout {
+  color: black;
 
+  .container {
+    padding: 4rem;
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
 
+    form {
+      display: flex;
+      gap: 1rem;
+      border-radius: 5px;
+      border: 1px solid rgba(#000, 0.1);
+      // height: 50px;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+      font-family: "Poppins";
 
+      .item {
+        display: flex;
+        gap: 0.5rem;
+        // height: 50px;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        input {
+          transform: translateX(5px);
+          padding: 1rem 0.5rem;
+          width: 30vw;
+        }
+
+        &:nth-child(3) {
+          flex-direction: row;
+          justify-content: space-between;
+          input {
+            transform: translate(5px, 8px);
+          }
+        }
+      }
+
+      input[type="submit"] {
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        background-color: #000;
+        transition: all 0.25s ease-in-out;
+        text-transform: capitalize;
+        color: #fff;
+        font-size: 15px;
+        cursor: pointer;
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    border: 1px solid #000;
+    .list {
+      display: flex;
+      gap: 0rem;
+      // height: 50px;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+      margin: 2rem 0.5rem;
+      border-left: 3px solid green;
+      padding-left: 0.25rem;
+      background-color: rgba(grey, 0.1);
+
+      .top {
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+        width: 40vw;
+        border-radius: 0px;
+        font-family: "Poppins";
+
+      }
+      h3 {
+        color: black;
+        font-family: "Poppins";
+      }
+      span {
+        border-radius: 5px;
+        // background-color: rgb(191, 191, 221);
+        cursor: pointer;
+      }
+      p {
+        font-family: "Poppins";
+        align-self: flex-start;
+      }
+    }
+
+    header {
+      display: flex;
+      gap: 1rem;
+      h1 {
+        font-family: "Poppins";
+        color: #000;
+
+      }
+      button {
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        background-color: #000;
+        transition: all 0.25s ease-in-out;
+        text-transform: capitalize;
+        color: #fff;
+        font-size: 15px;
+        cursor: pointer;
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}

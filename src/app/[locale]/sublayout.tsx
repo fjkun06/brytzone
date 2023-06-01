@@ -121,7 +121,7 @@ const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
         </section>
       )}
 
-      <section id="layoutwwww">{children}</section>
+    {children}
       <footer>hell-o</footer>
     </main>
   );
