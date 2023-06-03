@@ -13,45 +13,44 @@
   background: #0a518b;
   color: white;
   border-radius: 2px;
-  transition: border-radius 0.25s ease-in-out,transform 0.25s ease-in-out;
+  transition: border-radius 0.25s ease-in-out;
+  width: max-content;
   cursor: pointer;
   @include flex;
   &:hover {
-    border-radius: 7px;
-    transform: scale(1.05);
+    border-radius: 5px;
+    // transform: scale(1.05);
   }
-  svg{
+  svg {
     display: none;
   }
   @media only screen and (width >= 1201px) {
-  font-size: 19px;
-  svg{
-    display: none;
-    transform: scale(1.25);
-
-  }
+    font-size: 19px;
+    svg {
+      display: none;
+      transform: scale(1.25);
+    }
   }
   /**************************************Button types**************************************/
-  &--action{
+  &--action {
     gap: 1rem;
-    svg{
+    svg {
       display: inherit;
     }
   }
-  &--search{
+  &--search {
     padding-inline: 1.3rem;
-    
   }
-  &--contact{
+  &--contact {
     border-radius: 20px;
-    background: #FBB606;
+    background: #fbb606;
     color: $black;
   }
-  &--content{
+  &--content {
     padding-inline: 2.5rem;
     gap: 1rem;
     flex-direction: row-reverse;
-    svg{
+    svg {
       display: inherit;
     }
   }

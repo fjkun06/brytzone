@@ -170,9 +170,9 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
                 )}
               </AnimatePresence>
 
-              {/* <Button category="action" icon={<UserAddIcon/>}>Log In</Button> */}
-                <Button category="content" icon={<IconForward/>} >Get Started</Button>
-                {/* <Button >Donate</Button> */}
+              <Button category="action" icon={<UserAddIcon/>}>Log In</Button>
+                {/* <Button category="content" icon={<IconForward/>} >Get Started</Button> */}
+                <Button >Donate</Button>
               <span>theme</span>
             </motion.div>
           </>

@@ -10,8 +10,8 @@ interface ListProps {
 export interface StudentA {
   name: string;
   id: number;
-  availabilty: boolean;
-  matriculation: string;
+  availability: boolean;
+  matriculation?: string;
   quantity: number;
 }
 // export interface StudentA {

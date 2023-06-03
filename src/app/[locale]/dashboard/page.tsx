@@ -14,9 +14,8 @@ export const metadata = {
 const Dashbaord = () => {
   const title = "Products List";
   const [products, setProducts] = React.useState([
-    { id: 1, name: "Clodia Delegue", present: true, matriculation: "CT22A184", status: 9 / 10 },
-    { id: 2, name: "Romaric Delegue", present: true, matriculation: "CT22A023", status: 4 / 10 },
-    { id: 3, name: "Ida Nen", present: false, matriculation: "CT22A257", status: 6 / 10 },
+    { id: 1, name: "", availability: true, quantity: 0 },
+   
   ]);
 
   React.useEffect(() => {
@@ -65,19 +64,9 @@ const Dashbaord = () => {
     console.log(data);
     setProducts([...products, data]);
 
-    // const id = Math.floor(Math.random() * 10000) + 1
-    // const newTask = { id, ...task }
-    // setTasks([...tasks, newTask])
   };
-  const togglePresence = (ID: number) => {
-    console.log("Check fired: ", ID);
-    const newProductList = [...products];
-    console.log(newProductList);
+  const togglePresence = (ID: number) => {}
 
-    const productId = newProductList.find(({ id }) => id === ID) as StudentA;
-    productId.present = !productId.present;
-    setProducts(newProductList);
-  };
   return (
     <div className="container">
       <Header title={title}/>

@@ -1,6 +1,24 @@
 {
   "products": [
-    { "id": 1, "name": "Peanut", "present": true,  "status": 9 }],
+    {
+      "id": 2,
+      "name": "bREAD",
+      "availability": true,
+      "quantity": 19
+    },
+    {
+      "id": 3,
+      "name": "Eggs",
+      "availability": false,
+      "quantity": 92
+    },
+    {
+      "id": 4,
+      "name": "Meat",
+      "availability": false,
+      "quantity": 922
+    }
+  ],
   "comments": [
     {
       "id": 1,
@@ -8,16 +26,71 @@
       "postId": 1
     }
   ],
-  "profile": {
-    "name": "typicode"
-  },
+  "tasks": [
+    {
+      "text": "CA Assignment",
+      "day": "Today",
+      "reminder": true,
+      "id": 1
+    }
+  ],
   "students": [
     {
-      "status": 0.1,
-      "matriculation": "dddd",
-      "name": "dddd",
+      "id": 1,
+      "name": "Clodia Delegue",
       "present": true,
-      "id": 1
+      "matriculation": "CT22A184",
+      "status": 0.9
+    },
+    {
+      "id": 2,
+      "name": "Romaric Delegue",
+      "present": true,
+      "matriculation": "CT22A023",
+      "status": 0.4
+    },
+    {
+      "id": 3,
+      "name": "Ida Nen",
+      "present": false,
+      "matriculation": "CT22A257",
+      "status": 0.6
+    },
+    {
+      "status": 0.1,
+      "matricule": "jjj",
+      "name": "jjj",
+      "presence": true,
+      "id": 4
+    },
+    {
+      "status": 0.1,
+      "matricule": "ddd",
+      "name": "dddd",
+      "presence": true,
+      "id": 5
+    },
+    {
+      "status": 0.1,
+      "matricule": "ddd",
+      "name": "ddd",
+      "presence": true,
+      "id": 6
+    },
+    {
+      "status": 0.1,
+      "matricule": "CT19A089",
+      "name": "Zone Frank",
+      "presence": true,
+      "id": 7,
+      "present": true
+    },
+    {
+      "status": 0.1,
+      "matricule": "Ct19A047",
+      "name": "Mathias",
+      "presence": true,
+      "id": 8
     }
   ]
 }
