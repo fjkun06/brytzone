@@ -14,6 +14,7 @@ import { switchTheme } from "@/utils/themeSwitcher";
 import { Button } from "@/stories/components/Button";
 import UserAddIcon from "./UserAddIcon";
 import IconForward from "@/stories/components/IconForward";
+import LanguageComponent from "@/stories/components/LanguageComponent";
 
 interface NavbarProps {
   /**
@@ -120,11 +121,15 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
                   )}
                 </AnimatePresence>
 
-                <Button category="action" icon={<UserAddIcon/>}>Log In</Button>
-                <Button category="content" icon={<IconForward/>} >Get Started</Button>
-                <Button category="search"  >Search</Button>
-                <Button category="contact" >Subscribe</Button>
-                <Button >Donate</Button>
+                <Button category="action" icon={<UserAddIcon />}>
+                  Log In
+                </Button>
+                <Button category="content" icon={<IconForward />}>
+                  Get Started
+                </Button>
+                <Button category="search">Search</Button>
+                <Button category="contact">Subscribe</Button>
+                <Button>Donate</Button>
                 <span>theme</span>
               </motion.div>
             </>
@@ -169,11 +174,12 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
                   </motion.span>
                 )}
               </AnimatePresence>
-
-              <Button category="action" icon={<UserAddIcon/>}>Log In</Button>
-                {/* <Button category="content" icon={<IconForward/>} >Get Started</Button> */}
-                <Button >Donate</Button>
-              <span>theme</span>
+              <Button category="action" icon={<UserAddIcon />}>
+                Log In
+              </Button>
+              {/* <Button category="content" icon={<IconForward/>} >Get Started</Button> */}
+              <Button>Donate</Button>
+              <LanguageComponent />
             </motion.div>
           </>
         )}

@@ -3,11 +3,11 @@ import React from "react";
 const EnglandIcon = () => {
   return (
     <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5542 1.91064H17.3852V12.5042H2.5542V1.91064Z" fill="url(#paint0_linear_698_2505)" />
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M2.55273 1.91064H17.3837V12.5042H2.55273V1.91064Z" fill="url(#paint1_linear_698_2505)" />
+      <path fillRule="evenodd" clipRule="evenodd" d="M2.5542 1.91064H17.3852V12.5042H2.5542V1.91064Z" fill="url(#paint0_linear_698_2505)" />
+      <path fillRule="evenodd" clipRule="evenodd" d="M2.55273 1.91064H17.3837V12.5042H2.55273V1.91064Z" fill="url(#paint1_linear_698_2505)" />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M6.08806 8.97323H2.55313V5.44204H6.08806L1.08398 2.06675L1.87383 0.895752L8.20303 5.16485V1.20461H11.7342V5.16485L18.0634 0.895752L18.8533 2.06675L13.8492 5.44204H17.3841V8.97323H13.8492L18.8533 12.3485L18.0634 13.5195L11.7342 9.25042V13.2107H8.20303V9.25042L1.87383 13.5195L1.08398 12.3485L6.08806 8.97323Z"
         fill="url(#paint2_linear_698_2505)"
       />
@@ -28,27 +28,27 @@ const EnglandIcon = () => {
         fill="#DB1F35"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M2.55273 8.26678H8.90887V12.5042H11.0276V8.26678H17.3837V6.14807H11.0276V1.91064H8.90887V6.14807H2.55273V8.26678Z"
         fill="url(#paint3_linear_698_2505)"
       />
       <defs>
         <linearGradient id="paint0_linear_698_2505" x1="158.28" y1="1.91064" x2="158.28" y2="160.814" gradientUnits="userSpaceOnUse">
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="#F0F0F0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="#F0F0F0" />
         </linearGradient>
         <linearGradient id="paint1_linear_698_2505" x1="158.278" y1="1.91064" x2="158.278" y2="160.814" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#0A17A7" />
-          <stop offset="1" stop-color="#030E88" />
+          <stop stopColor="#0A17A7" />
+          <stop offset="1" stopColor="#030E88" />
         </linearGradient>
         <linearGradient id="paint2_linear_698_2505" x1="187.661" y1="0.895752" x2="187.661" y2="190.252" gradientUnits="userSpaceOnUse">
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="#F0F0F0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="#F0F0F0" />
         </linearGradient>
         <linearGradient id="paint3_linear_698_2505" x1="158.278" y1="1.91064" x2="158.278" y2="160.814" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#E6273E" />
-          <stop offset="1" stop-color="#CF152B" />
+          <stop stopColor="#E6273E" />
+          <stop offset="1" stopColor="#CF152B" />
         </linearGradient>
       </defs>
     </svg>

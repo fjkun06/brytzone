@@ -31,7 +31,7 @@ nav {
 
   /**************************************Navbar subblocks**************************************/
   div {
-    border: 1px solid red;
+    // border: 1px solid red;
     @include size(calc(100vw - calc(3rem * 2)), 6rem);
     @include flex;
     justify-content: flex-start;

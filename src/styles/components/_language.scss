@@ -1,0 +1,49 @@
+@use "../utils/mixins" as *;
+@use "../utils/variables" as *;
+.brytzone_language {
+  border: 1.1975px solid $primary;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 19px;
+  font-size: 15px;
+  line-height: 28px;
+  padding: 0.6rem 0.3rem;
+  background: $background;
+  color: $primary;
+  // border-radius: 2px;
+  transition: height 0.25s ease-in-out, transform 0.25s ease-in-out, align-items 0.25s ease-in-out;
+  width: max-content;
+  cursor: pointer;
+  @include flex;
+
+
+  span {
+    @include flex;
+  }
+  &:hover {
+    // border-radius: 5px;
+    // transform: scale(1.05);
+    height: 100px;
+    transform: translateY(30px);
+    align-items: flex-start;
+    span {
+      @include flex;
+      align-items: flex-start;
+    }
+
+    .ic {
+      &_one {
+        padding-top: 0.6rem;
+      }
+      &_two {
+        padding-top: 1rem;
+      }
+    }
+  }
+  .icon {
+    svg {
+      transform: scale(1.35);
+    }
+  }
+}
