@@ -1,6 +1,8 @@
 @use "../utils/mixins" as *;
 @use "../utils/variables" as *;
 .brytzone_language {
+  align-self: center;
+  overflow: hidden;
   border: 1.1975px solid $primary;
   font-family: "Poppins";
   font-style: normal;
@@ -8,7 +10,7 @@
   font-size: 19px;
   font-size: 15px;
   line-height: 28px;
-  padding: 0.6rem 0.3rem;
+  padding: 0rem 0.3rem;
   background: $background;
   color: $primary;
   // border-radius: 2px;
@@ -16,34 +18,57 @@
   width: max-content;
   cursor: pointer;
   @include flex;
+  /**************************************Language container**************************************/
+  &_container {
+    @include flex(column);
+    flex-direction: column !important;
+    height: inherit !important;
+    justify-content: flex-start !important;
 
-
-  span {
-    @include flex;
+    .row {
+      &:nth-child(2),
+      &:nth-child(3) {
+        opacity: 1;
+        padding-inline: 0.8rem;
+        gap: 0.8rem;
+        justify-content: flex-start;
+        span {
+          justify-content: flex-start;
+          width: auto;
+        }
+      }
+      span {
+        @include flex;
+        // height: auto !important;
+        height: 100%;
+      }
+      .icon {
+        svg {
+          transform: scale(1.35);
+        }
+      }
+    }
   }
+
   &:hover {
-    // border-radius: 5px;
-    // transform: scale(1.05);
-    height: 100px;
-    transform: translateY(30px);
-    align-items: flex-start;
-    span {
-      @include flex;
-      align-items: flex-start;
-    }
+    // height: 100px;
+    // transform: translateY(30px);
+    &_container {
+      .row {
+        span {
+          @include flex;
+          align-items: flex-start;
+        }
 
-    .ic {
-      &_one {
-        padding-top: 0.6rem;
+        .ic {
+          &_one {
+            padding-top: 0.6rem;
+          }
+          &_two {
+            padding-top: 1rem;
+          }
+        }
       }
-      &_two {
-        padding-top: 1rem;
-      }
-    }
-  }
-  .icon {
-    svg {
-      transform: scale(1.35);
     }
   }
 }
