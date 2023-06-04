@@ -10,11 +10,7 @@ import { LanguageLink } from "../layout/navbar/NavLink";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 
-interface LanguageProps {
-  lang: string;
-}
-
-const LanguageComponent: React.FC<LanguageProps> = ({ lang }) => {
+const LanguageComponent = () => {
   const [hover, setHover] = React.useState(false);
   const languages = [
     {
@@ -36,24 +32,27 @@ const LanguageComponent: React.FC<LanguageProps> = ({ lang }) => {
   return (
     <motion.span layout className="brytzone_language" animate={{ height: hover ? "100px" : "", y: hover ? "30px" : "0px" }} onHoverEnd={() => setHover(false)} onClick={() => setHover(!hover)}>
       <motion.span layout className="brytzone_language_container" style={{ justifyContent: hover ? "flex-start !important" : "center" }}>
-        <motion.span layout className="row">
-          <>
-            {languages.map(({ icon, abbrev }) => {
-              if (path === abbrev) {
-                return (
-                  <>
-                    <span className="icon ic_one">{icon}</span>
-                    <span className="">
-                      <LanguageLink to={abbrev === "/" ? "/en" : abbrev} text={t(abbrev === "/" ? "en" : abbrev.slice(-2))} />
-                    </span>
-                  </>
-                );
-              }
-            })}
-          </>
+        <>
+          {languages.map(({ icon, abbrev }) => {
+            if (path === abbrev) {
+              const temp = abbrev === "/" ? "en" : abbrev.slice(-2);
 
-          <span className="icon ic_two">{hover ? <CollapseIcon /> : <ExpandIcon />}</span>
-        </motion.span>
+              return (
+                <motion.span layout className="row" key={nanoid()}>
+                  <span className="icon ic_one">{icon}</span>
+                  <span className="">
+                    <LanguageLink to={temp} text={t(temp)} />
+                  </span>
+                  <span className="icon ic_two">{hover ? <CollapseIcon /> : <ExpandIcon />}</span>
+                </motion.span>
+              );
+            }
+          })}
+        </>
+        {/*
+        
+
+       */}
 
         <AnimatePresence>
           {hover && (

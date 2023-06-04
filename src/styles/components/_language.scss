@@ -16,6 +16,7 @@
   // border-radius: 2px;
   transition: height 0.25s ease-in-out, transform 0.25s ease-in-out, align-items 0.25s ease-in-out;
   width: max-content;
+  width: 14.3rem !important;
   cursor: pointer;
   @include flex;
   /**************************************Language container**************************************/
@@ -24,7 +25,7 @@
     flex-direction: column !important;
     height: inherit !important;
     justify-content: flex-start !important;
-
+width: 100%;
     .row {
       &:nth-child(2),
       &:nth-child(3) {

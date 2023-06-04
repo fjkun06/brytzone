@@ -27,11 +27,10 @@ interface NavbarProps {
   isOpen: boolean;
   desktop: boolean;
   cookieVal: string;
-  language: string;
   handleClick: () => void;
   storeCookie: (x: string) => void;
 }
-const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCookie, cookieVal, language }) => {
+const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCookie, cookieVal }) => {
   const globalTransition = { stiffness: 100, duration: 0.5, ease: "easeInOut" };
   const routes: string[] = ["home", "internships", "projects", "polls", "about", "contact", "blog"];
   const start = {
@@ -179,7 +178,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
               </Button>
               {/* <Button category="content" icon={<IconForward/>} >Get Started</Button> */}
               <Button>Donate</Button>
-              <LanguageComponent lang={language}  />
+              <LanguageComponent  />
             </motion.div>
           </>
         )}
