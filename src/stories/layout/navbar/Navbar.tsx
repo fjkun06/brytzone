@@ -13,6 +13,7 @@ import { Button } from "@/stories/components/Button";
 import UserAddIcon from "./UserAddIcon";
 import IconForward from "@/stories/components/IconForward";
 import LanguageComponent from "@/stories/components/LanguageComponent";
+import { useSelectedLayoutSegment } from "next/navigation";
 
 interface NavbarProps {
   /**
@@ -21,16 +22,17 @@ interface NavbarProps {
    * @param {void} handleClick - Toggle menu state.
    * @param {void} storeCookie - Update theme cookie value.
    * @param {string} cookieVal - Toggle menu state.
-   * @param {string} language - Toggle menu state.
+   * @param {boolean} hover - language menu state.
    *
    * */
   isOpen: boolean;
+  hover: boolean;
   desktop: boolean;
   cookieVal: string;
   handleClick: () => void;
   storeCookie: (x: string) => void;
 }
-const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCookie, cookieVal }) => {
+const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCookie, cookieVal,hover }) => {
   const globalTransition = { stiffness: 100, duration: 0.5, ease: "easeInOut" };
   const routes: string[] = ["home", "internships", "projects", "polls", "about", "contact", "blog"];
   const start = {
@@ -69,6 +71,9 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
     },
     close: { opacity: 0, transition: globalTransition },
   };
+
+  const path = useSelectedLayoutSegment();
+  console.log(path);
 
   return (
     <motion.nav layout animate={{ height: isOpen ? (desktop ? "9.6rem" : "70rem") : "9.6rem", paddingTop: isOpen ? (desktop ? "0rem" : "3rem") : "2.25rem" }} transition={globalTransition}>
@@ -123,13 +128,8 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
                 <Button category="action" icon={<UserAddIcon />}>
                   Log In
                 </Button>
-                <Button category="content" icon={<IconForward />}>
-                  Get Started
-                </Button>
-                <Button category="search">Search</Button>
-                <Button category="contact">Subscribe</Button>
-                <Button>Donate</Button>
-                <span>theme</span>
+                <LanguageComponent  hovered={hover} route={path}/>
+              
               </motion.div>
             </>
           )}
@@ -178,7 +178,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
               </Button>
               {/* <Button category="content" icon={<IconForward/>} >Get Started</Button> */}
               <Button>Donate</Button>
-              <LanguageComponent  />
+              <LanguageComponent  hovered={hover} route={path}/>
             </motion.div>
           </>
         )}

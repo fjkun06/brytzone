@@ -62,7 +62,7 @@ export const NavLink: React.FC<NavlinkProps> = ({ href, text, toggle, type, i })
 export const LanguageLink: React.FC<LangaugeLinkProps> = ({ to, text }) => {
   // You can override the `locale` to switch to another language
   return (
-    <Link href="/" locale={to} className="nav_link">
+    <Link href="" locale={to} className="nav_link">
       {text}
     </Link>
   );

@@ -10,8 +10,9 @@ import { LanguageLink } from "../layout/navbar/NavLink";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 
-const LanguageComponent = () => {
+const LanguageComponent = ({hovered,route}:{hovered:boolean,route:string|null}) => {
   const [hover, setHover] = React.useState(false);
+  const [current, setCurrent] = React.useState('/')
   const languages = [
     {
       icon: <EnglandIcon />,
@@ -28,9 +29,22 @@ const LanguageComponent = () => {
   ];
   const t = useTranslations("navbar");
   const path = usePathname();
+  console.log(path);
+  console.log("laaaaaaaaaaaaaaaaaaaaaaaang",path.slice(3 - path.length));
+  console.log("ssssssssssssssssssssssssss",path.slice(0,3));
+  // console.log(path1.slice(3 - path1.length));
+
+  
 
   return (
-    <motion.span layout className="brytzone_language" animate={{ height: hover ? "100px" : "", y: hover ? "30px" : "0px" }} onHoverEnd={() => setHover(false)} onClick={() => setHover(!hover)}>
+    <motion.span
+      layout
+      className="brytzone_language"
+      animate={{ height: hover ? "100px" : "", y: hover ? "30px" : "0px" }}
+      onHoverEnd={() => setHover(false)}
+      onClick={() => setHover(!hover)}
+      onMouseLeave={() => setHover(false)}
+    >
       <motion.span layout className="brytzone_language_container" style={{ justifyContent: hover ? "flex-start !important" : "center" }}>
         <>
           {languages.map(({ icon, abbrev }) => {

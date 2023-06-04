@@ -52,7 +52,6 @@ const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
 
     setCookie(cookies.get("theme"));
     switchTheme(cookies.get("theme"));
-    console.log(cookie);
 
     //setting default color scheme
     document.documentElement.className = cookie;
@@ -64,17 +63,6 @@ const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
     setCookie(val);
   };
 
-  // handling LanguageComponent
-  const [language, setLanguage] = React.useState("");
-  React.useEffect(() => {
-    setLanguage(cookies.get("NEXT_LOCALE"));
-  }, [language, cookies]);
-
-  //cookie handler
-  const handleLanguage = (val: string) => {
-    cookies.set("theme", val, { path: "/" });
-    setCookie(val);
-  };
 
   //removing loadscreen
   const [loading, setLoading] = React.useState(true);
@@ -103,7 +91,7 @@ const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
   const handleIsOpen = () => setIsOpen(!isOpen);
   return (
     <main id="layout">
-      <Navbar handleClick={handleIsOpen} isOpen={isOpen} desktop={min980} storeCookie={setThemeCookie} cookieVal={cookie} />
+      <Navbar hover={isOpen} handleClick={handleIsOpen} isOpen={isOpen} desktop={min980} storeCookie={setThemeCookie} cookieVal={cookie} />
       <AnimatePresence>
         {isOpen && (
           <motion.div

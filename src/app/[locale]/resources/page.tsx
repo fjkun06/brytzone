@@ -14,7 +14,7 @@ import React from "react";
 // };
 
 const Resources = () => {
-  const t = useTranslations("dash");
+  // const t = useTranslations("dash");
   const path1 = usePathname();
   const title = "Class List";
   const [students, setStudents] = React.useState([
