@@ -3,5 +3,10 @@
  
   "Index": {
     "title": "Hallo  Welt!"
+  },
+  "navbar":{
+    "en":"Englisch",
+    "fr":"Französisch",
+    "de":"Deutsch"
   }
 }

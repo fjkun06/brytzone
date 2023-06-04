@@ -1,5 +1,10 @@
 {
   "Index": {
     "title": "Bonjour Monde!"
+  },
+  "navbar":{
+    "en":"Anglais",
+    "fr":"Français",
+    "de":"Allemand"
   }
 }

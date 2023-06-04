@@ -4,10 +4,8 @@ import Image from "next/image";
 import logo from "../../../../public/assets/images/icon.png";
 import { motion, AnimatePresence } from "framer-motion";
 import Menu from "./Menu";
-import CloseIcon from "./CloseIcon";
 import { NavLink } from "@/stories/layout/navbar/NavLink";
 import { nanoid } from "nanoid";
-import useWindowSize from "@/hooks/useWindowSize";
 import MoonIcon from "./MoonIcon";
 import SunIcon from "./SunIcon";
 import { switchTheme } from "@/utils/themeSwitcher";
@@ -22,16 +20,18 @@ interface NavbarProps {
    * @param {boolean} [desktop=false] - Used to check if the min width is 960pxt.
    * @param {void} handleClick - Toggle menu state.
    * @param {void} storeCookie - Update theme cookie value.
-   * @param {void} cookieVal - Toggle menu state.
+   * @param {string} cookieVal - Toggle menu state.
+   * @param {string} language - Toggle menu state.
    *
    * */
   isOpen: boolean;
   desktop: boolean;
   cookieVal: string;
+  language: string;
   handleClick: () => void;
   storeCookie: (x: string) => void;
 }
-const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCookie, cookieVal }) => {
+const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCookie, cookieVal, language }) => {
   const globalTransition = { stiffness: 100, duration: 0.5, ease: "easeInOut" };
   const routes: string[] = ["home", "internships", "projects", "polls", "about", "contact", "blog"];
   const start = {
@@ -179,7 +179,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
               </Button>
               {/* <Button category="content" icon={<IconForward/>} >Get Started</Button> */}
               <Button>Donate</Button>
-              <LanguageComponent />
+              <LanguageComponent lang={language}  />
             </motion.div>
           </>
         )}

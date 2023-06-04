@@ -55,6 +55,7 @@
     // transform: translateY(30px);
     &_container {
       .row {
+        background-color: red;
         span {
           @include flex;
           align-items: flex-start;

@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import "../../styles/main.scss";
 
 import "../../utils/fonts";
-import Navbar from "@/stories/layout/navbar/Navbar";
 import SubLayout from "./sublayout";
 type LayoutProps = {
   children: React.ReactNode;

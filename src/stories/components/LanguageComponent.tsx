@@ -2,51 +2,73 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import EnglandIcon from "../layout/navbar/EnglandIcon";
 import ExpandIcon from "../layout/navbar/ExpandIcon";
+import CollapseIcon from "../layout/navbar/CollapseIcon";
 import { nanoid } from "nanoid";
+import FranceIcon from "../layout/navbar/FranceIcon";
+import GermanyIcon from "../layout/navbar/GermanyIcon";
+import { LanguageLink } from "../layout/navbar/NavLink";
+import { useTranslations } from "next-intl";
 
-const LanguageComponent = () => {
-  const [hover, setHover] = React.useState(true);
-  console.log(hover);
+interface LanguageProps {
+  lang: string;
+}
 
+const LanguageComponent: React.FC<LanguageProps> = ({ lang }) => {
+  const [hover, setHover] = React.useState(false);
+
+  const t = useTranslations("navbar");
+
+  const languages = [
+    {
+      icon: <EnglandIcon />,
+      abbrev: "en",
+    },
+    {
+      icon: <FranceIcon />,
+      abbrev: "fr",
+    },
+    {
+      icon: <GermanyIcon />,
+      abbrev: "de",
+    },
+  ];
   return (
     <motion.span layout className="brytzone_language" animate={{ height: hover ? "100px" : "", y: hover ? "30px" : "0px" }} onHoverEnd={() => setHover(false)} onClick={() => setHover(!hover)}>
-      <motion.span layout className="brytzone_language_container" style={{justifyContent: hover? "flex-start !important" : "center"}}>
+      <motion.span layout className="brytzone_language_container" style={{ justifyContent: hover ? "flex-start !important" : "center" }}>
         <motion.span layout className="row">
-          <span className="icon ic_one">
-            <EnglandIcon />
-          </span>
-          <span className="">English</span>
-          <span className="icon ic_two">
-            <ExpandIcon />
-          </span>
+          <>
+            {languages.map(({ icon, abbrev }) => {
+              if (abbrev === lang) {
+                return (
+                  <>
+                    <span className="icon ic_one">{icon}</span>
+                    <span className="">
+                      <LanguageLink to={abbrev} text={t(abbrev)} />
+                    </span>
+                  </>
+                );
+              }
+            })}
+          </>
+
+          <span className="icon ic_two">{hover ? <CollapseIcon /> : <ExpandIcon />}</span>
         </motion.span>
-        {/* <span className="row" key={nanoid()}>
-                <span className="icon ic_one">
-                  <EnglandIcon />
-                </span>
-                <span className="">English</span>
-              </span>
-              <span className="row" key={nanoid()}>
-                <span className="icon ic_one">
-                  <EnglandIcon />
-                </span>
-                <span className="">English</span>
-              </span> */}
+
         <AnimatePresence>
           {hover && (
             <>
-              <motion.span transition={{ delay: 0, duration: 0.15, ease: "easeInOut" }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} animate={{ opacity: 1 }} className="row" key={nanoid()}>
-                <span className="icon ic_one">
-                  <EnglandIcon />
-                </span>
-                <span className="">English</span>
-              </motion.span>
-              <motion.span initial={{ opacity: 0 }} exit={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0, duration: 0.15, ease: "easeInOut" }} className="row" key={nanoid()}>
-                <span className="icon ic_one">
-                  <EnglandIcon />
-                </span>
-                <span className="">English</span>
-              </motion.span>
+              {languages.map(({ icon, abbrev }) => {
+                if (abbrev !== lang) {
+                  return (
+                    <motion.span transition={{ delay: 0, duration: 0.15, ease: "easeInOut" }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} animate={{ opacity: 1 }} className="row" key={nanoid()}>
+                      <span className="icon ic_one">{icon}</span>
+                      <span className="">
+                        <LanguageLink to={abbrev} text={t(abbrev)} />
+                      </span>
+                    </motion.span>
+                  );
+                }
+              })}
             </>
           )}
         </AnimatePresence>

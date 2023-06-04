@@ -36,7 +36,6 @@ const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
   //handling theme
   const cookies = React.useMemo(() => new Cookies(), []);
   const [cookie, setCookie] = React.useState("");
-  const [userTheme, setTheme] = React.useState(useMediaQuery("(prefers-color-scheme: dark)"));
   React.useEffect(() => {
     //watching usertheme
     if (typeof window !== "undefined") {
@@ -57,12 +56,24 @@ const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
 
     //setting default color scheme
     document.documentElement.className = cookie;
-  }, [cookie, cookies, userTheme]);
+  }, [cookie, cookies]);
 
   //cookie handler
   const setThemeCookie = (val: string) => {
     cookies.set("theme", val, { path: "/" });
-     setCookie(val);
+    setCookie(val);
+  };
+
+  // handling LanguageComponent
+  const [language, setLanguage] = React.useState("");
+  React.useEffect(() => {
+    setLanguage(cookies.get("NEXT_LOCALE"));
+  }, [language, cookies]);
+
+  //cookie handler
+  const handleLanguage = (val: string) => {
+    cookies.set("theme", val, { path: "/" });
+    setCookie(val);
   };
 
   //removing loadscreen
@@ -92,7 +103,7 @@ const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
   const handleIsOpen = () => setIsOpen(!isOpen);
   return (
     <main id="layout">
-      <Navbar handleClick={handleIsOpen} isOpen={isOpen} desktop={min980} storeCookie={setThemeCookie} cookieVal={cookie} />
+      <Navbar handleClick={handleIsOpen} language={language} isOpen={isOpen} desktop={min980} storeCookie={setThemeCookie} cookieVal={cookie} />
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -121,7 +132,7 @@ const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
         </section>
       )}
 
-    {children}
+      {children}
       <footer>hell-o</footer>
     </main>
   );
