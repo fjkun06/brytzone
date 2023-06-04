@@ -8,6 +8,7 @@ import FranceIcon from "../layout/navbar/FranceIcon";
 import GermanyIcon from "../layout/navbar/GermanyIcon";
 import { LanguageLink } from "../layout/navbar/NavLink";
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 
 interface LanguageProps {
   lang: string;
@@ -15,35 +16,35 @@ interface LanguageProps {
 
 const LanguageComponent: React.FC<LanguageProps> = ({ lang }) => {
   const [hover, setHover] = React.useState(false);
-
-  const t = useTranslations("navbar");
-
   const languages = [
     {
       icon: <EnglandIcon />,
-      abbrev: "en",
+      abbrev: "/",
     },
     {
       icon: <FranceIcon />,
-      abbrev: "fr",
+      abbrev: "/fr",
     },
     {
       icon: <GermanyIcon />,
-      abbrev: "de",
+      abbrev: "/de",
     },
   ];
+  const t = useTranslations("navbar");
+  const path = usePathname();
+
   return (
     <motion.span layout className="brytzone_language" animate={{ height: hover ? "100px" : "", y: hover ? "30px" : "0px" }} onHoverEnd={() => setHover(false)} onClick={() => setHover(!hover)}>
       <motion.span layout className="brytzone_language_container" style={{ justifyContent: hover ? "flex-start !important" : "center" }}>
         <motion.span layout className="row">
           <>
             {languages.map(({ icon, abbrev }) => {
-              if (abbrev === lang) {
+              if (path === abbrev) {
                 return (
                   <>
                     <span className="icon ic_one">{icon}</span>
                     <span className="">
-                      <LanguageLink to={abbrev} text={t(abbrev)} />
+                      <LanguageLink to={abbrev === "/" ? "/en" : abbrev} text={t(abbrev === "/" ? "en" : abbrev.slice(-2))} />
                     </span>
                   </>
                 );
@@ -58,12 +59,13 @@ const LanguageComponent: React.FC<LanguageProps> = ({ lang }) => {
           {hover && (
             <>
               {languages.map(({ icon, abbrev }) => {
-                if (abbrev !== lang) {
+                if (path !== abbrev) {
+                  const temp = abbrev === "/" ? "en" : abbrev.slice(-2);
                   return (
                     <motion.span transition={{ delay: 0, duration: 0.15, ease: "easeInOut" }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} animate={{ opacity: 1 }} className="row" key={nanoid()}>
                       <span className="icon ic_one">{icon}</span>
                       <span className="">
-                        <LanguageLink to={abbrev} text={t(abbrev)} />
+                        <LanguageLink to={temp} text={t(temp)} />
                       </span>
                     </motion.span>
                   );
