@@ -13,7 +13,7 @@ import { Button } from "@/stories/components/Button";
 import UserAddIcon from "./UserAddIcon";
 import IconForward from "@/stories/components/IconForward";
 import LanguageComponent from "@/stories/components/LanguageComponent";
-import { useSelectedLayoutSegment } from "next/navigation";
+import { useRouter, useSelectedLayoutSegment } from "next/navigation";
 
 interface NavbarProps {
   /**
@@ -74,11 +74,12 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
 
   const path = useSelectedLayoutSegment();
   console.log(path);
+  const router = useRouter();
 
   return (
     <motion.nav layout animate={{ height: isOpen ? (desktop ? "9.6rem" : "70rem") : "9.6rem", paddingTop: isOpen ? (desktop ? "0rem" : "3rem") : "2.25rem" }} transition={globalTransition}>
       <motion.div>
-        <span className="logo">
+        <span className="logo" onClick={() => router.push("/")}>
           <Image src={logo} alt="" />
         </span>
         {!desktop && <Menu isOpen={isOpen} toggleNavbarState={handleClick} />}

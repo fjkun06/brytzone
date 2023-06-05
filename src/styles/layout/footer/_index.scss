@@ -1,25 +1,52 @@
 @use "../../utils/mixins" as *;
 @use "../../utils/variables" as *;
 .brtyzone_footer {
-  color: $black;
+  // color: $black;
   justify-self: flex-end;
   @include size(100vw, 67.2rem);
   border: 1px solid red;
   padding: 6.825rem 3.7rem 2.5rem 3.7rem;
+  background-color: $primary;
 
   /**************************************Footer Item**************************************/
   &_links {
-    height: 555px;
-
+    height: 500px;
+    @include flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
     &-item {
       width: 160.88px;
-      height: 151.89px;
-      border: 1px solid red;
+      height: 160.81px;
+      // border: 1px solid red;
       @include flex(column);
-
+      align-items: flex-start;
       gap: 1.5rem;
+
+      &:nth-child(4) {
+        height: 220px;
+        justify-content: flex-start;
+        div span {
+          &:nth-child(2) {
+            @include flex;
+            justify-content: flex-start;
+            gap: 1rem;
+            svg {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      .logo {
+        @include size(100%, 5.22rem);
+        cursor: pointer;
+        img {
+          @include size(45%, auto);
+        }
+      }
       h4 {
-        border: 1px solid red;
+        // border: 1px solid red;
         font-family: "Poppins";
         font-style: normal;
         font-weight: 500;
@@ -28,16 +55,152 @@
       }
       div {
         @include flex(column);
-        border: 1px solid red;
+        // border: 1px solid red;
         gap: 1rem;
+        align-items: flex-start;
+
         span {
-          font-family: "Poppins";
+          font-family: "Poppins", sans-serif;
           font-style: normal;
-          font-weight: 300;
+          font-weight: 200;
           font-size: 15.6461px;
           line-height: 23px;
+          cursor: pointer;
         }
       }
+      @media only screen and (width < 400px) {
+        div span {
+          font-size: 13.6461px;
+          h4 {
+            font-size: 14.6461px;
+          }
+        }
+        &:nth-child(1) {
+          width: auto;
+        }
+        &:nth-child(2) {
+          justify-content: flex-start;
+        }
+        &:nth-child(3) {
+          width: auto;
+        }
+        &:nth-child(4) {
+        }
+      }
+    }
+  }
+  hr {
+    transform: translate(-4rem, -4rem);
+    width: 100vw;
+    border: 1px solid #fff;
+  }
+  &_rights {
+    @include flex(column);
+    gap: 2rem;
+    span {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 100;
+      font-size: 15.6px;
+      line-height: 23px;
+    }
+    div {
+      &:nth-child(1) {
+        @include flex;
+        gap: 0.5rem;
+      }
+      &:nth-child(2) {
+        @include flex;
+        gap: 4rem;
+      }
+    }
+    // @include size(inherit, 11.8rem);
+  }
+
+  @media only screen and (width > 720px) {
+    height: 45.2rem;
+    &_links {
+      height: 30rem;
+      justify-content: space-evenly;
+      // gap: space-evenly;
+      flex-direction: row-reverse;
+      &-item {
+        justify-content: flex-start;
+      }
+    }
+    &_rights {
+      @include flex;
+      justify-content: space-between;
+    }
+  }
+
+  @media only screen and (width > 1080px) {
+    height: 45.2rem;
+    &_links {
+      height: 30rem;
+      justify-content: center;
+      gap: 8rem;
+      &-item {
+        width: 190.88px;
+        // width: auto;
+
+        h4,
+        div span {
+          font-size: 1.7rem;
+        }
+
+        &:nth-child(4) {
+          height: 250px;
+          gap: 4rem;
+          div {
+            gap: 2rem;
+            width: inherit;
+          }
+        }
+      }
+    }
+    &_rights {
+      @include flex;
+      justify-content: space-between;
+    }
+  }
+  @media only screen and (width > 1200px) {
+    &_links {
+      height: 30rem;
+      justify-content: center;
+      gap: 12rem;
+      &-item {
+        width: 190.88px;
+        width: auto;
+        justify-content: flex-start;
+        h4,
+        div span {
+          font-size: 1.7rem;
+        }
+
+        &:nth-child(4) {
+          height: 250px;
+          gap: 6rem;
+          width: 250px;
+
+          div {
+            gap: 3rem;
+            width: inherit;
+            span {
+              &:nth-child(2) {
+                gap: 1.5rem;
+                svg {
+                  transform: scale(1.25);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    &_rights {
+      justify-content: space-evenly;
+      gap: 18rem;
     }
   }
 }
