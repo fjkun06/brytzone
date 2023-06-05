@@ -15,7 +15,7 @@ export function generateStaticParams() {
 }
 
 export const metadata = {
-  title: "Brtyzone",
+  title: "Brytzone",
   description: "our proposed solutions to common digital problems",
 };
 
