@@ -18,7 +18,7 @@
     &-item {
       width: 160.88px;
       height: 160.81px;
-      border: 1px solid red;
+      // border: 1px solid red;
       @include flex(column);
       align-items: flex-start;
       gap: 1.5rem;
@@ -67,7 +67,7 @@
         }
       }
       @media only screen and (width < 400px) {
-      div  span {
+        div span {
           font-size: 13.6461px;
           h4 {
             font-size: 14.6461px;
@@ -112,5 +112,87 @@
       }
     }
     // @include size(inherit, 11.8rem);
+  }
+
+  @media only screen and (width > 720px) {
+    height: 45.2rem;
+    &_links {
+      height: 30rem;
+      justify-content: space-evenly;
+      // gap: space-evenly;
+      flex-direction: row-reverse;
+    }
+    &_rights {
+      @include flex;
+      justify-content: space-between;
+    }
+  }
+
+  @media only screen and (width > 1080px) {
+    height: 45.2rem;
+    &_links {
+      height: 30rem;
+      justify-content: center;
+      gap: 8rem;
+      &-item {
+        width: 190.88px;
+        h4,
+        div span {
+          font-size: 1.7rem;
+        }
+
+        &:nth-child(4) {
+          height: 250px;
+          gap: 4rem;
+          div {
+            gap: 2rem;
+            width: inherit;
+          }
+        }
+      }
+    }
+    &_rights {
+      @include flex;
+      justify-content: space-between;
+    }
+  }
+  @media only screen and (width > 1200px) {
+    &_links {
+      height: 30rem;
+      justify-content: center;
+      gap: 12rem;
+      &-item {
+        width: 190.88px;
+        width: auto;
+        justify-content: flex-start;
+        h4,
+        div span {
+          font-size: 1.7rem;
+        }
+
+        &:nth-child(4) {
+          height: 250px;
+          gap: 6rem;
+          width: 250px;
+
+          div {
+            gap: 2rem;
+            width: inherit;
+            span {
+              &:nth-child(2) {
+                gap: 1.5rem;
+                svg {
+                  transform: scale(1.25);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    &_rights {
+      justify-content: space-evenly;
+      gap: 18rem;
+    }
   }
 }
