@@ -32,15 +32,27 @@ const Footer = () => {
     <footer className="brtyzone_footer">
       <section className="brtyzone_footer_links">
         <div className="brtyzone_footer_links-item">
-          <h4>Useful Links</h4>
+          <h4>{footerT("res")}</h4>
           <div>
-            <span className="">Github</span>
-            <span className="">Blog</span>
-            <span className="">Polls</span>
+            <span onClick={() => router.push("https://github.com/fjkun06/brytzone")}>Github</span>
+            {[
+              {
+                text: "six",
+                route: "Contact",
+              },
+              {
+                text: "seven",
+                route: "Blog",
+              },
+            ].map(({ text, route }) => (
+              <span key={nanoid()} onClick={() => router.push(`/${route.toLowerCase()}`)}>
+                {routesT(text)}
+              </span>
+            ))}
           </div>
         </div>
         <div className="brtyzone_footer_links-item">
-          <h4>Useful Links</h4>
+          <h4>{footerT("con")}</h4>
           <div>
             <span className="" onClick={() => router.push("mailto:cotsite@ubuea.com")}>
               {/* <Link href={"mailto:cotsite@ubuea.com"} passHref={true}>
@@ -58,12 +70,30 @@ const Footer = () => {
           </div>
         </div>
         <div className="brtyzone_footer_links-item">
-          <h4>Useful Links</h4>
+          <h4>{footerT("use")}</h4>
           <div>
-            <span className="">{routesT('three')}</span>
-            <span className="">Internships</span>
-            <span className="">Contact</span>
-            <span className="">About</span>
+            {[
+              {
+                text: "two",
+                route: "Internships",
+              },
+              {
+                text: "three",
+                route: "Projects",
+              },
+              {
+                text: "four",
+                route: "Polls",
+              },
+              {
+                text: "five",
+                route: "About",
+              },
+            ].map(({ text, route }) => (
+              <span key={nanoid()} onClick={() => router.push(`/${route.toLowerCase()}`)}>
+                {routesT(text)}
+              </span>
+            ))}
           </div>
         </div>
         <div className="brtyzone_footer_links-item">
@@ -71,7 +101,7 @@ const Footer = () => {
             <Image src={logo} alt="" />
           </span>
           <div>
-            <span className="">{footerT('cto')}</span>
+            <span className="">{footerT("cto")}</span>
             <span className="">
               {externalUrls.map(({ url, icon }) => (
                 <Link href={url} passHref={true} key={nanoid()}>
