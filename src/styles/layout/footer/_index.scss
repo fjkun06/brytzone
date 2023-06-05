@@ -10,7 +10,7 @@
 
   /**************************************Footer Item**************************************/
   &_links {
-    height: 555px;
+    height: 500px;
     @include flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -22,6 +22,7 @@
       @include flex(column);
       align-items: flex-start;
       gap: 1.5rem;
+
       &:nth-child(4) {
         height: 220px;
         justify-content: flex-start;
@@ -30,6 +31,9 @@
             @include flex;
             justify-content: flex-start;
             gap: 1rem;
+            svg {
+              cursor: pointer;
+            }
           }
         }
       }
@@ -41,7 +45,7 @@
         }
       }
       h4 {
-        border: 1px solid red;
+        // border: 1px solid red;
         font-family: "Poppins";
         font-style: normal;
         font-weight: 500;
@@ -50,7 +54,7 @@
       }
       div {
         @include flex(column);
-        border: 1px solid red;
+        // border: 1px solid red;
         gap: 1rem;
         align-items: flex-start;
 
@@ -62,6 +66,51 @@
           line-height: 23px;
         }
       }
+      @media only screen and (width < 400px) {
+      div  span {
+          font-size: 13.6461px;
+          h4 {
+            font-size: 14.6461px;
+          }
+        }
+        &:nth-child(1) {
+          width: auto;
+        }
+        &:nth-child(2) {
+          justify-content: flex-start;
+        }
+        &:nth-child(3) {
+          width: auto;
+        }
+        &:nth-child(4) {
+        }
+      }
     }
+  }
+  hr {
+    transform: translate(-4rem, -4rem);
+    width: 100vw;
+  }
+  &_rights {
+    @include flex(column);
+    gap: 2rem;
+    span {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 100;
+      font-size: 15.6px;
+      line-height: 23px;
+    }
+    div {
+      &:nth-child(1) {
+        @include flex;
+        gap: 0.5rem;
+      }
+      &:nth-child(2) {
+        @include flex;
+        gap: 4rem;
+      }
+    }
+    // @include size(inherit, 11.8rem);
   }
 }
