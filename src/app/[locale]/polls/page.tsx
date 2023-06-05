@@ -8,8 +8,8 @@ export const metadata = {
   description: "section displaying all the services we offer",
 };
 
-const Dashbaord = () => {
-  const t = useTranslations("dash");
+const Polls = () => {
+  // const t = useTranslations("dash");
   const path1 = usePathname();
   console.log("path: ", path1);
   console.log(path1.slice(3 - path1.length));
@@ -17,9 +17,9 @@ const Dashbaord = () => {
 
   return (
     <div>
-      <h1>{t("title")}</h1>
+      {/* <h1>{t("title")}</h1> */}
     </div>
   );
 };
 
-export default Dashbaord;
+export default Polls;

@@ -18,7 +18,7 @@ type LayoutProps = {
 export default async function LocaleLayout({ children, params: { locale } }: LayoutProps) {
   let messages;
   try {
-    messages = (await import(`../../../messages/home/${locale}.json`)).default;
+    messages = (await import(`../../../messages/polls/${locale}.json`)).default;
     // messages = (await import(`../../../messages/home/${locale}.json`)).default;
     // messages = (await import(`public/messages/services/${locale}.json`)).default;
   } catch (error) {

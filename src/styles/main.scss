@@ -1,7 +1,7 @@
 /***********************************************Importing other stylesheets***********************************************/
-@use "components";
 @use "pages";
 @use "layout";
+@use "components";
 
 //styling links
 a {
@@ -27,4 +27,16 @@ html {
 body {
   font-size: 1.6em;
   min-width: 32rem;
+}
+
+:root,
+:root.light {
+  --test: #0a518b;
+  --bg: white;
+}
+
+:root.dark {
+  // :root,:root.dark {
+  --test: gold;
+  --bg: #0a518b;
 }

@@ -1,0 +1,173 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/variables" as *;
+
+nav {
+  border: 1px solid red;
+
+  // @include size(100vw, 9rem);
+  width: 100vw;
+  @include flex(column);
+  @include grid;
+
+  padding: 2.475rem 2.625rem;
+  padding: 0.25rem 2.625rem;
+  background: transparent;
+  backdrop-filter: blur(8.5px);
+  -webkit-backdrop-filter: blur(1rem);
+  font-family: "Poppins", sans-serif;
+  color: black;
+  justify-self: flex-start;
+  gap: 4rem;
+  background-color: $primary;
+  background-color: $background;
+  background-color: var(--bg);
+  transition: background-color 0.25s ease-in-out;
+  z-index: 2;
+
+  /**************************************Navbar logo**************************************/
+  img {
+    transform: scale(0.25);
+  }
+
+  /**************************************Navbar subblocks**************************************/
+  div {
+    // border: 1px solid red;
+    @include size(calc(100vw - calc(3rem * 2)), 6rem);
+    @include flex;
+    justify-content: flex-start;
+    background-color: transparent;
+    align-self: flex-start;
+
+    /**************************************logo container**************************************/
+    &:nth-child(1) {
+      justify-content: space-between;
+      // padding-top: 2rem;
+      img,
+      span {
+        // @include size(7rem,5.5rem);
+      }
+      img {
+        justify-self: flex-start;
+      }
+      span {
+        @include size(5rem);
+        @include flex;
+
+        cursor: pointer;
+        svg {
+          //   @include size(inherit);
+          @include size(4rem);
+
+          path {
+            stroke: $primary;
+            stroke-width: 1px;
+          }
+        }
+      }
+    }
+    /**************************************links container**************************************/
+    &:nth-child(2) {
+      @include flex(column);
+      height: auto;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    /**************************************actions container**************************************/
+    &:nth-child(3) {
+      flex-wrap: wrap;
+      height: fit-content;
+      gap: 4vw;
+      padding-bottom: 6.5rem;
+      span {
+        @include size(12.3rem, 4.2rem);
+        // border: 1px solid red;
+        @include flex;
+      }
+      .navbar_theme {
+        @include size(4.2rem);
+        cursor: pointer;
+        svg {
+          -webkit-user-select: none;
+          user-select: none;
+        }
+      }
+    }
+  }
+
+  /**************************************SVGs**************************************/
+  svg {
+  }
+
+  @media only screen and (width >= 1201px) {
+    @include flex;
+    height: 9.6rem;
+    padding: 3.4rem 8.5rem;
+    padding: 0rem 8.5rem;
+    gap: 4rem;
+    img {
+      transform: scale(0.3);
+    }
+    div {
+      height: 100%;
+      height: inherit;
+      align-self: center;
+      &:nth-child(1) {
+        justify-self: flex-start;
+
+        .menu {
+          display: none;
+        }
+      }
+      &:nth-child(2) {
+        @include flex;
+        gap: 2rem;
+      }
+      &:nth-child(3) {
+        @include flex;
+        flex-wrap: nowrap;
+        height: auto;
+        padding: 0;
+        justify-self: flex-end;
+      }
+    }
+    .navbar_mobile {
+      display: none;
+    }
+  }
+
+  @media only screen and (width > 1500px) {
+    gap: 15rem;
+  }
+}
+
+/**************************************Navbar Links**************************************/
+.nav_link {
+  font-family: "Poppins", sans-serif;
+  @include formatText(500, 2rem, 3rem);
+  text-transform: capitalize;
+  color: $black;
+  transition: color 0.5s ease-in-out;
+  &:hover {
+    color: $primary;
+  }
+  @media only screen and (width > 1200px) {
+    @include formatText(500, 1.6rem, 3rem);
+  }
+  @media only screen and (width > 1500px) {
+    @include formatText(500, 2rem, 3rem);
+  }
+}
+.nav_link-active {
+  color: $primary;
+  // color: red;
+}
+
+/**************************************Navbar Modal**************************************/
+#modal {
+  // @include size(100vw,100vh);
+  width: 100vw;
+  background-color: rgba(#000, 0.1);
+  position: absolute;
+  z-index: 0;
+  // background: linear-gradient(to bottom, white 70%, rgba(0, 0, 0, 0.418));
+}
