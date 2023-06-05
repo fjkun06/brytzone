@@ -1,0 +1,91 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/variables" as *;
+.brytzone_home {
+  /**************************************Header**************************************/
+  @include size(100vw, 70vh);
+  @include flex(column);
+  // border: 1px solid red;
+
+  &-header {
+    color: black;
+    @include flex(column);
+    border: 1px solid red;
+    @include size(100vw, 100vh);
+    padding-block: 5.4rem;
+    padding-inline: 3.3rem;
+    // background-color: greenyellow;
+
+    div {
+      // border: 1px solid red;
+      @include size(100%, auto);
+      @include flex(column);
+    }
+
+    /**************************************Header Left Section**************************************/
+    .left {
+      border: 1px solid red;
+      align-items: flex-start;
+      gap: 3rem;
+      //Search Component
+      .header_action {
+        @include flex(column);
+        align-items: flex-start;
+        gap: 1.5rem;
+        .header_search {
+          @include flex;
+          justify-content: flex-start;
+
+          gap: 0.25rem;
+          button {
+            @include size(5.857rem, 2.88rem);
+            font-size: 1.05373rem;
+          }
+          span {
+            @include size(21.07rem, 2.898rem);
+            border: 1.31716px solid $primary;
+            @include flex;
+            justify-content: inherit;
+            padding-inline: 0.5rem;
+            gap: 0.5rem;
+            svg {
+              @include size(1.3rem);
+              path {
+                fill: $primary;
+              }
+            }
+            input {
+              @include size(14.3rem, 1.6rem);
+              font-family: "Poppins";
+              @include formatText(400, 1.0537rem, 0.6rem);
+              border: none;
+              background: transparent;
+              outline: none;
+              color: $primary;
+              &::placeholder {
+                color: inherit;
+              }
+            }
+          }
+        }
+      }
+      div {
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+      h1 {
+        @include size(33.285rem, 12.7rem);
+        font-family: "Poppins";
+        @include formatText(400, 3.15rem, 4.2rem);
+        .header_bold {
+          font-weight: 500;
+          color: $primary;
+        }
+      }
+      p {
+        font-family: "Poppins";
+        @include size(29.35rem, 6.9rem);
+        @include formatText(400, 1.5rem, 2.2rem);
+      }
+    }
+  }
+}
