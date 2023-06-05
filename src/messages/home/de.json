@@ -8,5 +8,20 @@
     "en":"Englisch",
     "fr":"Französisch",
     "de":"Deutsch"
+  },
+  "footer": {
+    "use": "Useful Links",
+    "res": "Resources",
+    "con": "Contact Infos",
+    "cto": "Follow us on all our social media platforms top get more updates"
+  },
+  "routes": {
+    "one": "Home",
+    "two": "Internships",
+    "three": "Projects",
+    "four": "Polls",
+    "five": "About",
+    "six": "Contact",
+    "seven": "Blog"
   }
 }

@@ -6,8 +6,14 @@ import TwitterIcon from "@/stories/components/TwitterIcon";
 import LinkedInIcon from "@/stories/components/LinkedInIcon";
 import Link from "next/link";
 import { nanoid } from "nanoid";
+import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const Footer = () => {
+  const router = useRouter();
+  const footerT = useTranslations("footer");
+  const routesT = useTranslations("routes");
+
   const externalUrls = [
     {
       icon: <FacebookIcon />,
@@ -28,35 +34,44 @@ const Footer = () => {
         <div className="brtyzone_footer_links-item">
           <h4>Useful Links</h4>
           <div>
-            <span className="">Projects</span>
-            <span className="">Internships</span>
-            <span className="">Chat</span>
-            <span className="">About</span>
+            <span className="">Github</span>
+            <span className="">Blog</span>
+            <span className="">Polls</span>
           </div>
         </div>
         <div className="brtyzone_footer_links-item">
           <h4>Useful Links</h4>
           <div>
-            <span className="">cotsite@ubuea.com</span>
-            <span className="">+237 90067890</span>
+            <span className="" onClick={() => router.push("mailto:cotsite@ubuea.com")}>
+              {/* <Link href={"mailto:cotsite@ubuea.com"} passHref={true}>
+                cotsite@ubuea.com
+              </Link> */}
+              cotsite@ubuea.com
+            </span>
+            <span className="" onClick={() => router.push("tel:+237650906666")}>
+              +237 650906666
+              {/* <Link href={"tel:+237650906666"} passHref={true}>
+                tel:+237650906666
+              </Link> */}
+            </span>
             <span className="">Cameroon, Buea Molyko</span>
           </div>
         </div>
         <div className="brtyzone_footer_links-item">
           <h4>Useful Links</h4>
           <div>
-            <span className="">Projects</span>
+            <span className="">{routesT('three')}</span>
             <span className="">Internships</span>
-            <span className="">Chat</span>
+            <span className="">Contact</span>
             <span className="">About</span>
           </div>
         </div>
         <div className="brtyzone_footer_links-item">
-          <span className="logo">
+          <span className="logo" onClick={() => router.push("/")}>
             <Image src={logo} alt="" />
           </span>
           <div>
-            <span className="">Follow us on all our social media platforms top get more updates</span>
+            <span className="">{footerT('cto')}</span>
             <span className="">
               {externalUrls.map(({ url, icon }) => (
                 <Link href={url} passHref={true} key={nanoid()}>
