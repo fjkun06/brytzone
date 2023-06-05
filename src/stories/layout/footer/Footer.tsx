@@ -4,8 +4,24 @@ import logo from "../../../../public/assets/images/icon.png";
 import FacebookIcon from "@/stories/components/FacebookIcon";
 import TwitterIcon from "@/stories/components/TwitterIcon";
 import LinkedInIcon from "@/stories/components/LinkedInIcon";
+import Link from "next/link";
+import { nanoid } from "nanoid";
 
 const Footer = () => {
+  const externalUrls = [
+    {
+      icon: <FacebookIcon />,
+      url: "https://facebook.com",
+    },
+    {
+      icon: <TwitterIcon />,
+      url: "https://twitter.com",
+    },
+    {
+      icon: <LinkedInIcon />,
+      url: "https://lnkedin.com",
+    },
+  ];
   return (
     <footer className="brtyzone_footer">
       <section className="brtyzone_footer_links">
@@ -42,9 +58,11 @@ const Footer = () => {
           <div>
             <span className="">Follow us on all our social media platforms top get more updates</span>
             <span className="">
-              <FacebookIcon />
-              <TwitterIcon />
-              <LinkedInIcon />
+              {externalUrls.map(({ url, icon }) => (
+                <Link href={url} passHref={true} key={nanoid()}>
+                  {icon}
+                </Link>
+              ))}
             </span>
           </div>
         </div>
