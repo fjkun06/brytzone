@@ -30,7 +30,17 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="center">center</div>
+      <div className="center">
+        {/* <svg id="b5647e2d-1b7d-4220-adbb-0abefa477ceb" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.38 30.5">
+          <path d="M3,5l17,7L37,5" transform="translate(-2.81 -4.54)" fill="none" stroke="#000" stroke-miterlimit="10" />
+          <path d="M3,12.5l17,7,17-7" transform="translate(-2.81 -4.54)" fill="none" stroke="#000" stroke-miterlimit="10" />
+          <path d="M3,20l17,7,17-7" transform="translate(-2.81 -4.54)" fill="none" stroke="#000" stroke-miterlimit="10" />
+          <path d="M3,27.5l17,7,17-7" transform="translate(-2.81 -4.54)" fill="none" stroke="#000" stroke-miterlimit="10" />
+        </svg> */}
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <div className="right"> right</div>
     </header>
   );

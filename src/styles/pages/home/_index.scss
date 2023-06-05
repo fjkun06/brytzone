@@ -1,5 +1,10 @@
 @use "../../utils/mixins" as *;
 @use "../../utils/variables" as *;
+@keyframes fade {
+  100% {
+    stroke-opacity: 1;
+  }
+}
 .brytzone_home {
   /**************************************Header**************************************/
   @include size(100vw, 70vh);
@@ -13,6 +18,7 @@
     @include size(100vw, 100vh);
     padding-block: 5.4rem;
     padding-inline: 3.3rem;
+    gap: 6rem;
     // background-color: greenyellow;
 
     div {
@@ -86,6 +92,66 @@
         @include size(29.35rem, 6.9rem);
         @include formatText(400, 1.5rem, 2.2rem);
       }
+    }
+    /**************************************Header Center Section**************************************/
+    .center {
+      border: 1px solid red;
+      cursor: pointer;
+      @include size(100%,12rem);
+
+      span {
+        -webkit-user-select: none;
+        user-select: none;
+        display: block;
+        // width: 10.5vw;
+        // height: 10.5vw;
+        @include size(3rem);
+        border-bottom: 5px solid $primary;
+        border-right: 5px solid $primary;
+        transform: rotate(45deg);
+        margin: -10px;
+        animation: animate 2s infinite;
+        &:nth-child(2) {
+          animation-delay: -0.2s;
+        }
+
+        &:nth-child(3) {
+          animation-delay: -0.4s;
+        }
+      }
+
+      @keyframes animate {
+        0% {
+          opacity: 0;
+          transform: rotate(45deg) translate(-20px, -20px);
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          transform: rotate(45deg) translate(20px, 20px);
+        }
+      }
+      // svg {
+      //   path {
+      //     stroke: $primary;
+      //     // stroke-opacity: 0;
+      //     transition: stroke-opacity 0.25s ease-in-out;
+
+      //     &:nth-child(1) {
+      //       // stroke-opacity: 1;
+      //     }
+      //     &:nth-child(2) {
+      //     }
+      //     &:nth-child(3) {
+      //     }
+      //     &:nth-child(4) {
+      //       // animation: fade 2s ease-in-out 0s infinite;
+      //       transform: translateY(0px);
+      //     }
+      //   }
+      // }
     }
   }
 }
