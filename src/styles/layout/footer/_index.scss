@@ -1,0 +1,43 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/variables" as *;
+.brtyzone_footer {
+  color: $black;
+  justify-self: flex-end;
+  @include size(100vw, 67.2rem);
+  border: 1px solid red;
+  padding: 6.825rem 3.7rem 2.5rem 3.7rem;
+
+  /**************************************Footer Item**************************************/
+  &_links {
+    height: 555px;
+
+    &-item {
+      width: 160.88px;
+      height: 151.89px;
+      border: 1px solid red;
+      @include flex(column);
+
+      gap: 1.5rem;
+      h4 {
+        border: 1px solid red;
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15.6461px;
+        line-height: 23px;
+      }
+      div {
+        @include flex(column);
+        border: 1px solid red;
+        gap: 1rem;
+        span {
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 300;
+          font-size: 15.6461px;
+          line-height: 23px;
+        }
+      }
+    }
+  }
+}

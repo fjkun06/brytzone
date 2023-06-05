@@ -8,6 +8,7 @@ import useWindowSize from "@/hooks/useWindowSize";
 import { CircleLoader } from "react-spinners";
 import Cookies from "universal-cookie";
 import { switchTheme } from "@/utils/themeSwitcher";
+import Footer from "@/stories/layout/footer/Footer";
 interface SubLayoutProps {
   children?: React.ReactNode;
 }
@@ -62,7 +63,6 @@ const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
     cookies.set("theme", val, { path: "/" });
     setCookie(val);
   };
-
 
   //removing loadscreen
   const [loading, setLoading] = React.useState(true);
@@ -119,9 +119,8 @@ const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
           {/* <CircleLoader cssOverride={{color:"var(--test)"}} color="red" loading aria-label="Loading Spinner" data-testid="loader" /> */}
         </section>
       )}
-
       {children}
-      <footer>hell-o</footer>
+      <Footer />
     </main>
   );
 };

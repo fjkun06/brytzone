@@ -55,6 +55,7 @@ const LanguageComponent = ({hovered,route}:{hovered:boolean,route:string|null}) 
                 <motion.span layout className="row" key={nanoid()}>
                   <span className="icon ic_one">{icon}</span>
                   <span className="">
+                  {/* <span className="" onClick={() => setCurrent(temp)}> */}
                     <LanguageLink to={temp} text={t(temp)} />
                   </span>
                   <span className="icon ic_two">{hover ? <CollapseIcon /> : <ExpandIcon />}</span>
@@ -75,7 +76,7 @@ const LanguageComponent = ({hovered,route}:{hovered:boolean,route:string|null}) 
                 if (path !== abbrev) {
                   const temp = abbrev === "/" ? "en" : abbrev.slice(-2);
                   return (
-                    <motion.span transition={{ delay: 0, duration: 0.15, ease: "easeInOut" }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} animate={{ opacity: 1 }} className="row" key={nanoid()}>
+                    <motion.span  transition={{ delay: 0, duration: 0.15, ease: "easeInOut" }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} animate={{ opacity: 1 }} className="row" key={nanoid()}>
                       <span className="icon ic_one">{icon}</span>
                       <span className="">
                         <LanguageLink to={temp} text={t(temp)} />

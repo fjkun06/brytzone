@@ -4,6 +4,7 @@
 /**************************************Layout Components**************************************/
 @use "navbar";
 @use "loader";
+@use "footer";
 #layout {
   background-color: red;
   min-height: 100vh;
