@@ -1,19 +1,19 @@
 @use "../utils/mixins" as *;
 @use "../utils/variables" as *;
-.brytzone_heading {
+.brytzone_heading,
+.brytzone_heading--bordered {
+  width: 100vw;
   width: 100%;
   height: 8.1rem;
   font-family: "Poppins";
   text-align: center;
-  border: 1px solid red;
   @include formatText(500, 2.2rem, 3.3rem);
   @include flex;
   span {
-    width: 31rem;
+    width: 41rem;
     text-transform: capitalize;
     position: relative;
     color: $primary;
-
     &::after {
       content: "";
       display: flex;
@@ -23,9 +23,8 @@
       background-color: $tertiary;
       top: 110%;
     }
-
     @media only screen and (width > 800px) {
-      width: 70%;
+      width: 100%;
       font-size: 2.5rem;
       &::after {
         @include size(6.3rem, 0.5rem);
@@ -38,6 +37,15 @@
       &::after {
         @include size(8.3rem, 0.5rem);
         left: calc(calc(100% - 8.3rem) / 2);
+      }
+    }
+  }
+}
+.brytzone_heading {
+  @media only screen and (width > 900px) {
+    span {
+      &::after {
+        display: none;
       }
     }
   }

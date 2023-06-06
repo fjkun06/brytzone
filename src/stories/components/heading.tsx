@@ -5,6 +5,7 @@ interface Headingprops {
   bordered?: boolean;
 }
 const Heading = ({ children, bordered }: Headingprops) => {
+  const cName= bordered ? `${brytzone}_heading--bordered`: `${brytzone}_heading`
   return (
     <h3 className={`${brytzone}_heading`}>
       <span>{children}</span>

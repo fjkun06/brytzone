@@ -17,6 +17,8 @@
 }
 
 @mixin formatText($fw, $fs, $lh) {
+  font-family: "Poppins";
+
   font-weight: $fw;
   font-size: $fs;
   line-height: $lh;
@@ -56,11 +58,3 @@
   top: $top;
   #{$direction}: $dir_value;
 }
-
-
-
-
-
-
-
-
