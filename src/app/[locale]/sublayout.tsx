@@ -65,7 +65,7 @@ const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
   };
 
   //removing loadscreen
-  const [loading, setLoading] = React.useState(true);
+  const [loading, setLoading] = React.useState(false);
   React.useEffect(() => {
     let start: number;
 
@@ -85,7 +85,7 @@ const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
     requestAnimationFrame(step);
 
     // Clean up the effect if necessary
-    return () => cancelAnimationFrame(start);
+    return () => cancelAnimationFrame(requestAnimationFrame(step));
   }, []);
 
   const handleIsOpen = () => setIsOpen(!isOpen);
