@@ -5,7 +5,7 @@
     border: 1px solid red;
     color: $black;
     @include flex(column);
-    @include size(100vw, calc(54rem - 0rem));
+    @include size(100vw, auto);
     gap: 3rem;
     justify-content: flex-start;
     padding: 3.3rem;
@@ -31,10 +31,53 @@
         border-radius: 1rem;
         cursor: pointer;
         overflow: hidden;
+        &:hover {
+          article {
+            span {
+              color: $background;
+              &:nth-child(4) {
+                svg {
+                  path {
+                    fill: $background;
+                  }
+                }
+              }
+            }
+          }
+          /**************************************Animating SVG Background**************************************/
+          svg {
+            defs {
+              linearGradient {
+                stop {
+                  &:nth-child(1) {
+                    stop-color: #0a518b;
+                  }
+                  &:nth-child(2) {
+                    stop-color: #3277af;
+                  }
+                }
+              }
+            }
+          }
+        }
         svg {
           @include size(inherit);
           @include position("1/2");
-          rect {
+          /**************************************Animating SVG Background**************************************/
+          defs {
+            linearGradient {
+              stop {
+                transition: stop-color 0.5s ease-in-out;
+                &:nth-child(1) {
+                  stop-color: #fff;
+                }
+                &:nth-child(2) {
+                  stop-color: #fff;
+                }
+              }
+            }
+          }
+          rect.paint {
             @include size(100%);
             // fill: url(#paint0);
             border-radius: 1rem;
@@ -46,14 +89,29 @@
           @include flex(column);
           background-color: transparent;
           gap: 1.5rem;
-          display: none;
+          // display: none;
           span {
-            border: 1px solid red;
             @include flex(column);
-
+            color: $primary;
+            transition: color 0.25s ease-in-out;
             &:nth-child(1) {
               width: 73.25px;
               height: 73.25px;
+             
+
+              .cls-1 {
+                fill: none;
+                stroke: #000;
+                stroke-linecap: round;
+                stroke-miterlimit: 10;
+                stroke-width: 0.1px;
+              }
+              svg{
+                path,rect,polyline,ellipse,circle,line{
+                  stroke: $primary;
+                  stroke-width: 2px;
+                }
+              }
             }
             &:nth-child(2) {
               width: 73px;
@@ -80,6 +138,12 @@
             }
             &:nth-child(4) {
               @include size(2.75rem, 2.208rem);
+              svg {
+                path {
+                  fill: $primary;
+                  transition: fill 0.25s ease-in-out;
+                }
+              }
             }
           }
         }
