@@ -17,11 +17,15 @@ export default function Index() {
   const Explore = dynamic(() => import("./home/explore"), {
     loading: () => <p>Loading Explore...</p>,
   });
+  const Start = dynamic(() => import("./home/start"), {
+    loading: () => <p>Loading Start...</p>,
+  });
   return (
     <section className={`${brytzone}_home`}>
       <Header />
       <Community />
       <Explore />
+      <Start />
     </section>
   );
 }

@@ -1,0 +1,89 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/variables" as *;
+@mixin start {
+  &-start {
+    border: 1px solid red;
+    color: $black;
+    @include flex(column);
+    @include size(100vw, calc(54rem - 0rem));
+    gap: 3rem;
+    justify-content: flex-start;
+    padding: 3.3rem;
+    p {
+      @include formatText(400, 1.5rem, 2.2rem);
+      text-align: center;
+      width: 344.38px;
+    }
+    //cards
+    div.card_parent {
+      @include flex(column);
+      // width: 261px;
+      // height: 262px;
+      @include size(100%, auto);
+
+      border: 1px solid red;
+
+      // card-item
+      div.card_item {
+        @include size(26.1rem);
+        @include customgrid(1, 1, 1fr);
+        border: 1px solid $primary;
+        border-radius: 1rem;
+        cursor: pointer;
+        overflow: hidden;
+        svg {
+          @include size(inherit);
+          @include position("1/2");
+          rect {
+            @include size(100%);
+            // fill: url(#paint0);
+            border-radius: 1rem;
+          }
+        }
+        article {
+          @include size(inherit);
+          @include position("1/2");
+          @include flex(column);
+          background-color: transparent;
+          gap: 1.5rem;
+          display: none;
+          span {
+            border: 1px solid red;
+            @include flex(column);
+
+            &:nth-child(1) {
+              width: 73.25px;
+              height: 73.25px;
+            }
+            &:nth-child(2) {
+              width: 73px;
+              height: 27px;
+              font-family: "Poppins";
+              font-style: normal;
+              font-weight: 500;
+              font-size: 18px;
+              line-height: 27px;
+              text-transform: capitalize;
+            }
+            &:nth-child(3) {
+              width: 171px;
+              height: 54px;
+              left: 44px;
+              top: 139px;
+
+              font-family: "Poppins";
+              font-style: normal;
+              font-weight: 400;
+              font-size: 12px;
+              line-height: 18px;
+              text-align: center;
+            }
+            &:nth-child(4) {
+              @include size(2.75rem, 2.208rem);
+            }
+          }
+        }
+      }
+    }
+  }
+}
