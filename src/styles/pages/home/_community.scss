@@ -6,8 +6,12 @@
     @include flex;
     @include size(100vw, auto);
     padding-inline: 3.3rem;
+    padding-bottom: 2rem;
     @media only screen and (width > 800px) {
       justify-content: space-evenly;
+    }
+    @media only screen and (width > 900px) {
+      padding-bottom: 6rem;
     }
     @media only screen and (width > 1500px) {
       justify-content: center;

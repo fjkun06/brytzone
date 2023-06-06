@@ -2,16 +2,140 @@
 @use "../../utils/variables" as *;
 @mixin explore {
   &-explore {
+    border: 1px solid red;
     color: $black;
-    @include flex;
-    @include size(100vw, auto);
-    padding-inline: 3.3rem;
+    @include flex(column);
+    @include size(100vw, calc(54rem - 0rem));
+    gap: 3rem;
+    justify-content: flex-start;
+    padding: 3.3rem;
+    background-color: $helperBlue1;
     @media only screen and (width > 800px) {
-      justify-content: space-evenly;
+      @include flex;
+      height: calc(52rem - 6.6rem);
+      h3 {
+        display: none;
+      }
+      justify-content: space-between;
+    }
+
+    @media only screen and (width > 1200px) {
+      height: 58.4rem;
     }
     @media only screen and (width > 1500px) {
       justify-content: center;
-      gap: 10rem;
+      gap: 20rem;
+    }
+
+    .explore_images {
+      @include size(100%, auto);
+      @include flex;
+      gap: 2rem;
+      @media only screen and (width > 900px) {
+        max-width: 36rem;
+      }
+      @media only screen and (width > 1200px) {
+        max-width: 56rem;
+      }
+      // justify-content: space-around;
+      img {
+        @include size(auto);
+        aspect-ratio: auto;
+        &:nth-child(1) {
+          // transform: scale(0.35);
+          width: 268.84px;
+          height: 229.15px;
+        }
+        &:nth-child(2) {
+          width: 99px;
+          height: 192px;
+        }
+        @media only screen and (width > 800px) {
+          &:nth-child(1) {
+            width: 308.84px;
+            height: 269.15px;
+          }
+          &:nth-child(2) {
+            display: none;
+          }
+        }
+
+        @media only screen and (width > 1200px) {
+          &:nth-child(1) {
+            width: 485px;
+            height: 446.15px;
+            // transform: scale(1.25);
+          }
+        }
+      }
+    }
+    @media only screen and (width > 1500px) {
+      h3 span {
+        text-align: left;
+      }
+    }
+    .explore_text {
+      @include flex(column);
+      gap: 3rem;
+
+      h3 {
+        display: none;
+      }
+      @media only screen and (width > 800px) {
+        h3 {
+          display: flex;
+        }
+      }
+      @media only screen and (width > 900px) {
+        width: 50rem;
+        h3 {
+          text-align: left;
+        }
+        // align-items: flex-start;
+
+      }
+      p {
+        @include formatText(400, 1.5rem, 2.2rem);
+        width: 343.26px;
+        text-align: center;
+
+        @media only screen and (width > 500px) {
+          width: 85%;
+        }
+        @media only screen and (width > 800px) {
+          width: 90%;
+          @include formatText(400, 1.8rem, 3rem);
+        }
+        @media only screen and (width > 900px) {
+          text-align: left;
+          font-size: 1.6rem !important;
+          line-height: 2.6rem !important;
+        }
+        @media only screen and (width > 1200px) {
+          font-size: 25px;
+          line-height: 38px;
+        }
+        @media only screen and (width > 1500px) {
+          width: 100%;
+          text-align: left;
+        }
+      }
+      button {
+        @include size(20rem, 4.5rem);
+        @include formatText(300, 2rem, 3rem);
+        @media only screen and (width > 800px) {
+          @include size(24rem, 5rem);
+          @include formatText(300, 2.5rem, 4rem);
+        }
+        @media only screen and (width > 1200px) {
+          @include size(20.2rem, 5rem);
+          @include formatText(300, 2rem, 4.5rem);
+          margin-top: 3rem;
+        }
+        @media only screen and (width > 1500px) {
+          align-self: flex-start;
+        }
+      }
     }
   }
 }
