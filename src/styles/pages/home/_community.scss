@@ -1,0 +1,18 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/variables" as *;
+@mixin community {
+  &-community {
+    color: $black;
+    @include flex;
+    border: 1px solid red;
+    @include size(100vw, auto);
+    div {
+      &:nth-child(1) {
+        display: none;
+      }
+      &:nth-child(2) {
+        @include flex(column);
+      }
+    }
+  }
+}

@@ -1,6 +1,7 @@
 @use "../../utils/mixins" as *;
 @use "../../utils/variables" as *;
 @use "header" as *;
+@use "community" as *;
 
 
 .brytzone_home {
@@ -10,4 +11,5 @@
   
   /**************************************Header**************************************/
  @include header;
+ @include community;
 }

@@ -2,12 +2,15 @@ import { Button } from "@/stories/components/Button";
 import IconForward from "@/stories/components/IconForward";
 import SearchIcon from "@/stories/components/SearchIcon";
 import { nanoid } from "nanoid";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import React from "react";
 export const brytzone = "brytzone";
 const Header = () => {
   const [value, setValue] = React.useState(undefined);
-
+  const Counter = dynamic(() => import("@/utils/Counter"), {
+    loading: () => <p>Loading Counter...</p>,
+  });
   return (
     <header className={`${brytzone}_home-header`}>
       <div className="left">
@@ -60,26 +63,27 @@ const Header = () => {
         {...new Array(4).fill(4).map((_, i) => (
           <span className="" key={nanoid()}>
             {/* <Image style={{objectFit: "cover"}} src={`/hd/img${++i}.png`} alt='gallery_image' width={98} height={103} quality={100}/> */}
-            <Image style={{ objectFit: "cover" }} src={`/sharp/${++i}.webp`} alt="gallery_image" width={400} height={400} quality={100} />
+            <Image style={{ objectFit: "cover" }} src={`/home/sharp/${++i}.webp`} alt="gallery_image" width={400} height={400} quality={100} />
           </span>
         ))}
         {...new Array(11).fill(11).map((_, i) => (
           <span className="" key={nanoid()}>
             {i === 1 && (
               <>
-                <span>60+</span>
+                {/* <span>60+</span> */}
+                <Counter countEnd={60} text="+" duration={2}/>
                 <span>Projects</span>
               </>
             )}
             {i === 2 && (
               <>
-                <span>40+</span>
+                <Counter countEnd={40} text="+" duration={2}/>
                 <span>Tutors</span>
               </>
             )}
             {i === 0 && (
               <>
-                <span>200+</span>
+                <Counter countEnd={200} text="+"/>
                 <span>Users</span>
               </>
             )}

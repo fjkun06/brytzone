@@ -21,7 +21,7 @@
 }
 @mixin header {
   &-header {
-    color: black;
+    color: $black;
     @include flex(column);
     border: 1px solid red;
     @include size(100vw, auto);
@@ -455,7 +455,7 @@
           }
           &:nth-child(11) {
             @include position("1/2", "3/4");
-            background-color: #fbb606;
+            background-color: $tertiary;
             border-bottom-right-radius: 50%;
             border-top-right-radius: 50%;
           }

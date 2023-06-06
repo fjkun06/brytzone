@@ -11,9 +11,13 @@ export default function Index() {
   const Header = dynamic(() => import("./home/header"), {
     loading: () => <p>Loading Header...</p>,
   });
+  const Community = dynamic(() => import("./home/community"), {
+    loading: () => <p>Loading Community...</p>,
+  });
   return (
     <section className={`${brytzone}_home`}>
       <Header />
+      <Community />
     </section>
   );
 }
