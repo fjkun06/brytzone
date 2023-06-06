@@ -6,7 +6,7 @@
   }
 }
 
-@mixin rounded ($bgcolor:$primary){
+@mixin rounded($bgcolor: $primary) {
   background-color: $bgcolor;
   border-top-right-radius: 50%;
   border-top-left-radius: 50%;
@@ -166,18 +166,93 @@
       width: 100%;
       // height: 214.83px;
       @include customgrid(2, 3, 133.36px, 1fr);
-      @include customgrid(2, 3, 103.36px);
+      @include customgrid(2, 3, 103.36px, 103.36px);
       // @include customgrid(2, 3, 20rem);
       span {
-        border: 1px solid red;
+        // border: 1px solid red;
         height: 100%;
+        display: none;
         img {
           @include size(auto);
           @include size(100%);
         }
+        //texts in shapes
+        span {
+          color: $background;
+          &:nth-child(1) {
+            width: 41px;
+            height: 31px;
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 20.5926px;
+            line-height: 31px;
+          }
+          &:nth-child(2) {
+            width: 49px;
+            height: 19px;
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12.3556px;
+            line-height: 19px;
+          }
+        }
+        // /subgrids
+        &:nth-child(1) {
+          @include flex;
+          @include position("2/3", "2/4");
+          img {
+            border-bottom-right-radius: 25%;
+            border-top-right-radius: 25%;
+          }
+        }
+        &:nth-child(2) {
+          @include flex;
+          @include position("1/2");
+        }
+        &:nth-child(3) {
+        }
+        &:nth-child(4) {
+        }
+        &:nth-child(5) {
+          @include flex(column);
+          @include position("2/3", "1/2");
+          @include rounded(#f04589);
+          border-radius: 50%;
+        }
+        &:nth-child(6) {
+          @include flex(column);
+          @include position("1/2", "2/3");
+          @include rounded;
+        }
+        &:nth-child(7) {
+          @include flex(column);
+          @include position("1/2", "3/4");
+          background-color: #4b5d73;
+          border-top-left-radius: 50%;
+          border-bottom-left-radius: 50%;
+        }
+        &:nth-child(8) {
+        }
+        &:nth-child(9) {
+        }
+        &:nth-child(10) {
+        }
+        &:nth-child(11) {
+        }
+        &:nth-child(12) {
+        }
+        &:nth-child(13) {
+        }
+        &:nth-child(14) {
+        }
+
+        &:nth-child(15) {
+        }
       }
       .play {
-       @include rounded;
+        @include rounded;
         @include size(100%);
 
         svg {
