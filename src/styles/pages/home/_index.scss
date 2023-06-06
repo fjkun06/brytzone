@@ -38,6 +38,10 @@
       border: 1px solid red;
       align-items: flex-start;
       gap: 3rem;
+      //Blob Component
+      .header_blob {
+        display: none;
+      }
       //Search Component
       .header_action {
         @include flex(column);
@@ -53,7 +57,7 @@
             font-size: 1.05373rem;
           }
           span {
-            @include size(21.07rem, 2.898rem);
+            @include size(21.07rem, 2.88rem);
             border: 1.31716px solid $primary;
             @include flex;
             justify-content: inherit;
@@ -66,6 +70,7 @@
               }
             }
             input {
+              caret-color: $primary;
               @include size(14.3rem, 1.6rem);
               font-family: "Poppins";
               @include formatText(400, 1.0537rem, 0.6rem);
@@ -170,7 +175,7 @@
       @include customgrid(2, 3, 103.36px, calc(100% / 3));
       // @include customgrid(2, 3, 20rem);
       span {
-        // border: 1px solid red;
+        border: 1px solid red;
         height: 100%;
         display: none;
         img {
@@ -264,6 +269,90 @@
             }
           }
         }
+      }
+    }
+    @media only screen and (500px < width) {
+      .right {
+        @include customgrid(2, 3, 153.36px, calc(100% / 3));
+        span {
+          &:nth-child(5) {
+            @include size(14.9rem);
+          }
+        }
+      }
+    }
+
+    @media only screen and (601px <= width <= 700px),(width > 850px) {
+      .left {
+        position: relative;
+        .header_blob {
+          display: block;
+          position: absolute;
+          @include size(30rem);
+          @include size(40vw);
+          align-self: flex-end;
+          svg{
+            linearGradient{
+              stop{
+                &:nth-child(1){
+                  stop-color: $primary;
+                  // stop-color: #0575E6;
+                }
+                &:nth-child(2){
+                  stop-color: darken(#021B79,20%);
+                  stop-color: #021B79;
+                }
+              }
+            }
+          }
+          // transform: translateY(-35rem);
+        }
+      }
+    }
+    @media only screen and (701px <= width <= 1201px) {
+      .left {
+        align-items: flex-start;
+        gap: 5rem;
+        //Search Component
+        .header_action {
+          @include flex(column);
+          align-items: flex-start;
+          gap: 2.5rem;
+          .header_search {
+            gap: 0.25rem;
+            button {
+              @include size(7.857rem, 3.88rem);
+              font-size: 1.55373rem;
+            }
+            span {
+              @include size(27.07rem, 3.88rem);
+              padding-inline: 0.5rem;
+              gap: 0.5rem;
+              svg {
+                @include size(1.75rem);
+              }
+              input {
+                @include size(inherit, 3.88rem);
+                @include formatText(400, 1.0537rem, 0.6rem);
+                font-size: 1.55373rem;
+              }
+            }
+          }
+        }
+        div {
+          gap: 3rem;
+        }
+        h1 {
+          @include size(53.285rem, 12.7rem);
+          @include formatText(400, 4.15rem, 4.8rem);
+        }
+        p {
+          @include size(49.35rem, 6.9rem);
+          @include formatText(400, 1.85rem, 2.8rem);
+        }
+      }
+      .right {
+        @include customgrid(2, 4, 153.36px, calc(100% / 4));
       }
     }
   }

@@ -5,7 +5,7 @@
   border: none;
   font-family: "Poppins";
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 19px;
   font-size: 15px;
   line-height: 28px;
@@ -24,13 +24,7 @@
   svg {
     // display: none;
   }
-  @media only screen and (width >= 1201px) {
-    font-size: 19px;
-    svg {
-      display: none;
-      transform: scale(1.25);
-    }
-  }
+
   /**************************************Button types**************************************/
   &--action {
     gap: 1rem;
@@ -52,6 +46,18 @@
     flex-direction: row-reverse;
     svg {
       display: inherit;
+    }
+  }
+
+  @media only screen and (width >= 800px) {
+    font-size: 19px;
+    padding: 1rem 3rem;
+    &--content {
+      gap: 1.5rem;
+    }
+    svg {
+      // display: none;
+      transform: scale(1.25);
     }
   }
 }
