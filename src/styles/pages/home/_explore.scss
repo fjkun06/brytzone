@@ -1,0 +1,17 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/variables" as *;
+@mixin explore {
+  &-explore {
+    color: $black;
+    @include flex;
+    @include size(100vw, auto);
+    padding-inline: 3.3rem;
+    @media only screen and (width > 800px) {
+      justify-content: space-evenly;
+    }
+    @media only screen and (width > 1500px) {
+      justify-content: center;
+      gap: 10rem;
+    }
+  }
+}

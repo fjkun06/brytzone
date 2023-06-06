@@ -4,7 +4,6 @@
   &-community {
     color: $black;
     @include flex;
-    // border: 1px solid red;
     @include size(100vw, auto);
     padding-inline: 3.3rem;
     @media only screen and (width > 800px) {
@@ -17,26 +16,20 @@
     div {
       &:nth-child(1) {
         display: none;
-        // border: 1px solid red;
 
         img {
           @include size(inherit);
-        filter: drop-shadow(0 0 .5rem rgba(0, 0, 0, 0.5));
-
+          filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.5));
         }
         @media only screen and (width > 900px) {
           @include size(36.6rem);
           @include flex;
-        filter: drop-shadow(0 0 .5rem rgba(166, 30, 30, 0.1));
-
         }
         @media only screen and (width > 1200px) {
           @include size(56.6rem);
         }
       }
       &:nth-child(2) {
-        // border: 1px solid red;
-
         @include flex(column);
         gap: 2.5rem;
         padding-bottom: 4rem;
@@ -54,9 +47,7 @@
 
         p {
           @include formatText(400, 1.5rem, 2.2rem);
-          // border: 1px solid red;
           width: 343.26px;
-          // @include flex;
           text-align: center;
 
           @media only screen and (width > 500px) {

@@ -14,10 +14,14 @@ export default function Index() {
   const Community = dynamic(() => import("./home/community"), {
     loading: () => <p>Loading Community...</p>,
   });
+  const Explore = dynamic(() => import("./home/explore"), {
+    loading: () => <p>Loading Explore...</p>,
+  });
   return (
     <section className={`${brytzone}_home`}>
       <Header />
       <Community />
+      <Explore />
     </section>
   );
 }

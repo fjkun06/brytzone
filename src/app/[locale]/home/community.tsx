@@ -11,7 +11,6 @@ const Community = () => {
         <Image src='/home/community/mockup.webp' width={800} height={800} alt="mockup"/>
       </div>
       <div className="">
-        {/* <h3 className={`${brytzone}_heading}`}></h3> */}
         <Heading>Be a part  of  our community</Heading>
         <p>Sign up today and get the most out of our site ranging from Internships, Polls, getting access to projects and so much more.....</p>
         <Button category="content">Join Us</Button>
