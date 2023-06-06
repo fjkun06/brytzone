@@ -253,7 +253,6 @@
         }
       }
       .play {
-        @include rounded;
         @include size(100%);
 
         svg {
@@ -265,7 +264,7 @@
 
           &:hover {
             circle {
-              fill: goldenrod;
+              fill: #FBB606;
             }
           }
         }
@@ -281,8 +280,8 @@
         }
       }
     }
-
-    @media only screen and (601px <= width <= 700px),(width > 850px) {
+    //blob update
+    @media only screen and (601px <= width <= 700px), (width > 850px) {
       .left {
         position: relative;
         .header_blob {
@@ -291,16 +290,16 @@
           @include size(30rem);
           @include size(40vw);
           align-self: flex-end;
-          svg{
-            linearGradient{
-              stop{
-                &:nth-child(1){
+          svg {
+            linearGradient {
+              stop {
+                &:nth-child(1) {
                   stop-color: $primary;
                   // stop-color: #0575E6;
                 }
-                &:nth-child(2){
-                  stop-color: darken(#021B79,20%);
-                  stop-color: #021B79;
+                &:nth-child(2) {
+                  stop-color: darken(#021b79, 20%);
+                  stop-color: #021b79;
                 }
               }
             }
@@ -309,7 +308,7 @@
         }
       }
     }
-    @media only screen and (701px <= width <= 1201px) {
+    @media only screen and (701px <= width) {
       .left {
         align-items: flex-start;
         gap: 5rem;
@@ -352,7 +351,171 @@
         }
       }
       .right {
-        @include customgrid(2, 4, 153.36px, calc(100% / 4));
+        @include customgrid(2, 4, 18rem, calc(100% / 4));
+        span {
+          //texts in shapes
+          span {
+            &:nth-child(1) {
+              @include formatText(500, 2.3rem, 3.5rem);
+              @include size(4.1rem, 3.1rem);
+            }
+            &:nth-child(2) {
+              @include formatText(300, 1.5rem, 1.9rem);
+              @include size(4.9rem, 1.9rem);
+            }
+          }
+          // /subgrids
+          &:nth-child(1) {
+            @include flex;
+            @include position("2/3", "3/5");
+          }
+          &:nth-child(2) {
+            @include position("1/2");
+          }
+
+          &:nth-child(5) {
+            @include position("2/3", "1/2");
+            @include size(17.5rem);
+          }
+          &:nth-child(6) {
+            @include position("1/2", "2/3");
+          }
+          &:nth-child(8) {
+            @include position("2/3", "2/3");
+            display: flex;
+            background-color: $primary;
+          }
+          &:nth-child(7) {
+            @include flex(column);
+            @include position("1/2", "3/4");
+            background-color: #4b5d73;
+          }
+          &:nth-child(9) {
+            @include flex(column);
+            @include position("1/2", "4/5");
+            background-color: #4b5d73;
+          }
+        }
+      }
+    }
+    @media only screen and (900px <= width < 1201px) {
+      .right {
+        @include customgrid(2, 4, 24rem, calc(100% / 4));
+      }
+    }
+    @media only screen and (1000px <= width < 1201px) {
+      .right {
+        @include customgrid(2, 4, 26rem, calc(100% / 4));
+      }
+    }
+    @media only screen and (width > 1200px) {
+      // flex-direction: row;
+      padding-inline: 8rem;
+      @include customgrid(2, 2, auto, 1fr);
+      .left {
+        @include position("1/2");
+        height: 100%;
+
+        .header_blob {
+          display: none;
+        }
+      }
+      .right {
+        @include position("1/2", "2/3");
+        align-self: flex-start;
+        height: 100%;
+        @include customgrid(2, 4, 13.4rem, calc(100% / 4));
+        @include customgrid(4, 4, 13.4rem);
+        justify-content: flex-end;
+        span {
+          @include flex;
+
+          // /subgrids
+          &:nth-child(1) {
+            @include flex;
+            @include position("4/5", "3/5");
+            img {
+              transform: scaleX(-1);
+              border-bottom-left-radius: 25%;
+              // border-top-left-radius: 25%;
+            }
+          }
+          &:nth-child(2) {
+            @include position("3/4", "1/2");
+          }
+          &:nth-child(3) {
+            @include position("1/2", "2/3");
+            img {
+              border-radius: 50%;
+            }
+          }
+          &:nth-child(4) {
+            @include position("2/3", "3/4");
+            img {
+              border-radius: 50%;
+            }
+          }
+          &:nth-child(5) {
+            @include size(100%);
+            @include position("4/5", "2/3");
+          }
+          &:nth-child(6) {
+            @include flex(column);
+            @include position("2/3");
+            border-radius: 0;
+            background-color: #47C079;
+          }
+          &:nth-child(7) {
+            @include flex(column);
+            @include position("3/4", "4/5");
+            border-radius: 0;
+            border-bottom-left-radius: 50%;
+            border-top-left-radius: 50%;
+          }
+          &:nth-child(8) {
+            @include position("3/4", "2/3");
+            @include rounded;
+            background-color: #A754EE;
+          }
+          &:nth-child(9) {
+            @include position("1/2", "4/5");
+            @include rounded(#1DBCF4);
+          }
+          &:nth-child(10) {
+            @include position("2/3", "4/5");
+            background-color: #1DBCF4;
+          }
+          &:nth-child(11) {
+            @include position("1/2", "3/4");
+            background-color: #FBB606;
+            border-bottom-right-radius: 50%;
+            border-top-right-radius: 50%;
+          }
+          &:nth-child(12) {
+            @include position("3/4", "3/4");
+            background-color: $primary;
+          }
+          &:nth-child(13) {
+            @include position("1/2");
+          }
+          &:nth-child(14) {
+            @include position("4/5", "1/2");
+            background-color: #ACD7FA;
+            border-radius: 50%;
+            border-bottom-right-radius: 0px;
+          }
+
+          &:nth-child(15) {
+            @include position("1/2");
+          }
+          &:nth-child(16) {
+            @include position("2/3", "1/2");
+          }
+        }
+      }
+      .center {
+        width: 100%;
+        @include position("2/3", "1/3");
       }
     }
   }
