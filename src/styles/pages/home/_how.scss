@@ -5,12 +5,15 @@
     border: 1px solid transparent;
     color: $black;
     @include flex(column);
+
     @include size(100vw, auto);
     gap: 0rem;
     justify-content: flex-start;
-    padding: 3.3rem;
+    padding: 0 3.3rem;
     border: 1px solid red;
-    h3 {
+    background-color: $helperBlue1;
+
+    h2 {
       text-align: center;
       @include formatText(500, 1.8rem, 2.7rem);
     }
@@ -45,6 +48,10 @@
           g {
             circle + path {
               fill: $primary;
+              transition: fill 0.25s ease-in-out;
+            }
+            circle {
+              transition: fill 0.25s ease-in-out;
             }
             &:hover {
               cursor: pointer;
@@ -66,7 +73,7 @@
       @include grid;
       // background-color: red;
       @include size(100%, auto);
-      h3 {
+      h2 {
         display: none;
       }
 
@@ -109,6 +116,93 @@
             height: 1.7rem;
             path {
               stroke: $primary;
+            }
+          }
+        }
+      }
+    }
+
+    @media only screen and (width > 500px) {
+      .hright {
+        ul {
+          width: 38rem;
+          li {
+            gap: 1rem;
+            span {
+              line-height: auto;
+              height: auto;
+              font-size: 1.5rem;
+              align-items: flex-start;
+              padding-top: 0;
+            }
+            svg {
+              height: auto;
+            }
+            height: auto;
+          }
+        }
+      }
+    }
+
+    @media only screen and (width > 900px) {
+      @include flex;
+      flex-wrap: wrap;
+      height: 52rem;
+      align-items: flex-start;
+
+      //heading
+      .brytzone_heading--bordered {
+        width: 100vw;
+      }
+      h2 {
+        display: none;
+      }
+      .hright,
+      .hleft {
+        width: 50%;
+        height: auto;
+      }
+      .hright {
+        gap: 3rem;
+        ul {
+          gap: 4rem;
+        }
+        h2 {
+          display: flex;
+          font-size: 2rem;
+        }
+      }
+    }
+    @media only screen and (width > 1200px) {
+      .hright {
+        justify-content: flex-start;
+        padding-left: 10rem;
+      }
+    }
+    @media only screen and (width > 1300px) {
+      height: 66rem;
+      .hleft {
+        // justify-content: flex-end;
+        // padding-right: 10rem;
+        div {
+          transform: scale(2) translateY(2.5rem);
+        }
+      }
+      .hright {
+        height: 40rem;
+        h2 {
+          font-size: 3.5rem;
+        }
+        ul {
+          width: 100%;
+          li {
+            height: 3rem;
+            gap: 1;
+            span {
+              font-size: 2rem;
+            }
+            svg {
+              height: auto;
             }
           }
         }
