@@ -21,5 +21,20 @@
     "five": "About",
     "six": "Contact",
     "seven": "Blog"
+  },
+  "header": {
+    "join": "Rejoignez-nous",
+    "today": "Aujourd'hui et construisez un",
+    "solid": "Solide",
+    "future": "Avenir avec",
+    "did": "Saviez-vous que vous pouvez acquérir une véritable expérience scolaire avec Brytzone ? Pas seulement cela, mais construire un meilleur vous...",
+    "get": "Commencer",
+    "counter": "Chargement du compteur...",
+    "search": "Recherche",
+    "projects": "Projets",
+    "tutors": "Tuteurs",
+    "users": "Utilisateurs"
   }
+
 }
+  

@@ -1,13 +1,12 @@
 
 {
- 
   "Index": {
     "title": "Hallo  Welt!"
   },
-  "navbar":{
-    "en":"Englisch",
-    "fr":"Französisch",
-    "de":"Deutsch"
+  "navbar": {
+    "en": "Englisch",
+    "fr": "Französisch",
+    "de": "Deutsch"
   },
   "footer": {
     "use": "Useful Links",
@@ -23,5 +22,19 @@
     "five": "About",
     "six": "Contact",
     "seven": "Blog"
+  },
+  "header": {
+    "join": "Beitreten",
+    "today": "Heute Mitglied und bauen Sie eine",
+    "solid": "Solide",
+    "future": "Zukunft mit",
+    "did": "Wissen Sie, dass Sie ein wahres Schulerlebnis mit Brytzone erwerben können? Aber das ist noch nicht alles, aber ich habe mir das Beste für Sie ausgedacht...",
+    "get": "Loslegen",
+    "counter": "Zähler wird geladen...",
+    "search": "Suchen",
+    "projects": "Projekte",
+    "tutors": "Nachhilfelehrerin",
+    "users": "Benutzer"
   }
+    
 }

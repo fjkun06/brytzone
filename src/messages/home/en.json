@@ -21,5 +21,19 @@
     "five": "About",
     "six": "Contact",
     "seven": "Blog"
+  },
+  "header": {
+    "join": "Join",
+    "today": "Today and Build a",
+    "solid": "Solid",
+    "future": "Future with",
+    "get": "Get started",
+    "did": "Did you know you can get real school experience with Brytzone? Not just that, but building a better you....",
+    "counter": "Loading Counter...",
+    "search": "Search",
+    "projects": "Projects",
+    "tutors": "Tutors",
+    "users": "Users"
   }
+ 
 }
