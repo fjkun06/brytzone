@@ -12,12 +12,15 @@
 
     /**************************************Card**************************************/
     section {
-      min-height: 46rem;
+      min-height: 100vh;
       @include flex;
       flex-wrap: wrap;
       gap: 3rem;
       border: inherit;
       width: 100%;
+      @media only screen and (width > 800px) {
+        min-height: 51.5rem;
+      }
       @media only screen and (width > 1024px) {
         width: 97rem;
         gap: 0;
