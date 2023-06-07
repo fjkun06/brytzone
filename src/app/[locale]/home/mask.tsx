@@ -33,7 +33,8 @@ const Mask = () => {
       <g mask="url(#mask0_698_3081)">
         <rect x="98.1702" y="143.885" width="383.721" height="255.814" fill="url(#pattern0)" />
       </g>
-      <g className="rotate0">
+      <g className="rotate0" fill-opacity={0}>
+      <animate attributeName="fill-opacity" values="0;0;0;1" repeatCount="1" dur="0.2s" begin="0s" fill="freeze" />
         <circle cx="132.684" cy="349.063" r="42.8593" fill="#FBB606">
           <animateMotion
             dur="20s"
