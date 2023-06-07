@@ -9,17 +9,28 @@
     gap: 3rem;
     justify-content: flex-start;
     padding: 3.3rem;
+
     p {
       @include formatText(400, 1.5rem, 2.2rem);
       text-align: center;
       width: 344.38px;
+      @media only screen and (width > 900px) {
+        width: 47.5rem;
+      }
     }
     //cards
     div.card_parent {
       @include flex(column);
-      @include size(100%, auto);
+      @include size(auto,calc(30rem * 3));
+      min-width: 30rem;
+      overflow: hidden;
       gap: 4rem;
       border: 1px solid red;
+      @media only screen and (width > 900px) {
+        @include flex;
+        gap: 6rem;
+        @include size(100%,30rem);
+      }
 
       // card-item
       div.card_item {

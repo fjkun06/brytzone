@@ -1,22 +1,61 @@
 import React, { ReactNode } from "react";
 import { brytzone } from "./header";
 import Heading from "@/stories/components/heading";
-import { motion } from "framer-motion";
+import { AnimatePresence, Variants, motion, useInView } from "framer-motion";
 import DoubleArrowIcon from "@/stories/components/DoubleArrowIcon";
 import Image from "next/image";
 import PollsIcon from "@/stories/components/PollsIcon";
 import InternshipIcon from "@/stories/components/InternshipIcon";
 import ProjectIcon from "@/stories/components/ProjectIcon";
 import { nanoid } from "nanoid";
+import { useRouter } from "next/navigation";
+import useMediaQuery from "@/hooks/useMediaQuery";
 interface StartCardProps {
   id: number | string;
   children?: string;
   icon: ReactNode;
-  title?: string;
+  title: string;
 }
+
+const parentVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.5, // Adjust the stagger delay for desired effect
+    },
+  },
+  close: {
+    transition: {
+      staggerChildren: 0.5,
+      staggerDirection: -1,
+      // Adjust the stagger delay for desired effect
+    },
+  },
+};
+
+const childVariants: Variants = {
+  hidden: { y: 400 },
+  visible: { y: 0 },
+  close: { y: 400, opacity: 0.5 },
+};
+
+interface ParentProps {
+  children?: React.ReactNode[];
+}
+
 const StartCardItem = ({ id, icon, children, title }: StartCardProps) => {
+  const router = useRouter();
   return (
-    <motion.div className="card_item">
+    <motion.div
+      layout
+      className="card_item"
+      onClick={() => router.push(`/${title.toLowerCase()}`)}
+      variants={childVariants}
+      transition={{
+        duration: 0.5,
+        ease: "easeInOut",
+      }}
+    >
       <svg>
         <defs>
           <linearGradient id={`paint_${id}`} x1="205" y1="46.9018" x2="236" y2="449.902" gradientUnits="userSpaceOnUse">
@@ -37,7 +76,6 @@ const StartCardItem = ({ id, icon, children, title }: StartCardProps) => {
     </motion.div>
   );
 };
-
 const Start = () => {
   const data = [
     {
@@ -56,17 +94,43 @@ const Start = () => {
       text: "Giving you access to all available internship programs in your area",
     },
   ];
+
+  const [visible, setVisible] = React.useState(false);
+  const tablet = useMediaQuery("(width > 900px)");
+  const ref = React.useRef(null);
+  const container = React.useRef(null);
+
+  const Parent: React.FC<ParentProps> = ({ children }) => {
+    return (
+      <motion.div
+        layout
+        initial="hidden"
+        animate="visible"
+        exit="close"
+        variants={parentVariants}
+        className="card_parent"
+        ref={ref}
+        viewport={{ amount: tablet ? "all" : 0.35 }}
+        onViewportLeave={() => setVisible(false)}
+        onViewportEnter={() => setVisible(true)}
+      >
+        <AnimatePresence>
+          {visible &&
+            data.map(({ title, icon, text }, i) => (
+              <StartCardItem id={`htag${i}`} title={title} icon={icon} key={nanoid()}>
+                {text}
+              </StartCardItem>
+            ))}
+        </AnimatePresence>
+      </motion.div>
+    );
+  };
   return (
-    <section className={`${brytzone}_home-start`}>
+    <section className={`${brytzone}_home-start`} ref={container}>
       <Heading bordered>Get to know us by chosing a starting point</Heading>
       <p>We offer a wide range of varieties such as internships, polls,chats, projects to to make you grow and so much more...</p>
-      <motion.div className="card_parent" viewport={{ once: true, amount: "all" }} onViewportEnter={() => console.log("fully in veiw")}>
-        {data.map(({ title, icon, text }, i) => (
-          <StartCardItem id={`htag${i}`} title={title} icon={icon} key={nanoid()}>
-            {text}
-          </StartCardItem>
-        ))}
-      </motion.div>
+
+      <Parent />
     </section>
   );
 };

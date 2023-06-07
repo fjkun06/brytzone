@@ -1,0 +1,9 @@
+  <motion.div
+        className="card_parent"
+        ref={ref}
+        // viewport={{ once: true, amount: tablet ? 1 : 0.5 }}
+        // onViewportEnter={() => {
+        //   setVisible(true);
+        //   console.log("fully in viewport");
+        // }}
+      >
