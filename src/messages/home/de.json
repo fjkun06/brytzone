@@ -57,10 +57,32 @@
     "communication": "Kommunikation",
     "an": "Ein bevorstehender Chat-Bereich, der Ihnen die Kommunikation mit anderen Kursteilnehmern ermöglicht"
   },
+   "home": {
+    "getto": "Lernen Sie uns kennen, indem Sie einen Startpunkt wählen"
+  },
 
   "how": {
     "howto": "So werden Sie Teil unserer Gemeinschaft",
     "getstarted": "Beginnen Sie in wenigen Schritten",
     "create": "Erstellen Sie ein Konto mit unserem Anmeldeformular"
+  },
+  "start": {
+    "gett": "Lernen Sie uns kennen, indem Sie einen Startpunkt wählen",
+     "weoffer": "Wir bieten eine breite Palette an Möglichkeiten wie Praktika, Umfragen, Chats, Projekte, die Sie wachsen lassen, und vieles mehr ...",
+      "cards":{
+      "one": {
+        "title": "Projekte",
+        "text": "Wir helfen Ihnen, Ihre Fähigkeiten zu erweitern, indem wir Sie bei der Erstellung persönlicher Projekte und Teamprojekte unterstützen"
+      },
+      "two": {
+         "title": "Umfragen",
+        "text": "Erstellen von Umfragen, die Lehrern helfen, ihre Kurse anzupassen"
+      },
+
+      "three":{
+         "title": "Praktika",
+        "text": "Wir verschaffen Ihnen Zugang zu allen verfügbaren Praktikumsprogrammen in Ihrer Nähe"
+      }
+    }
   }
 }

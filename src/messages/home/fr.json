@@ -45,6 +45,9 @@
     "we": "Nous offrons une variété de ressources, qui vous permettront d'évoluer vers une meilleure version de vous-même. Commencez dès aujourd'hui et voyez ce que nous vous proposons .........",
     "learn": "Apprendre encore plus"
   },
+   "home": {
+    "getto": "Apprenez à nous connaître en choisissant un point de départ"
+  },
 
   "know": {
     "our": "Notre approche",
@@ -60,6 +63,25 @@
     "howto": "Comment faire partie de notre communauté",
     "getstarted": "Démarrez en quelques étapes",
     "create": "Créez un compte avec notre formulaire d'inscription"
+  },
+  "start": {
+    "gett": "Apprenez à nous connaître en choisissant un point de départ",
+    "weoffer": "Nous offrons une large gamme de variétés telles que des stages, des sondages, des chats, des projets pour vous faire grandir et bien plus encore...",
+    "cards": {
+      "one": {
+        "title": "Projets",
+        "text": "Nous vous aidons à développer vos compétences en vous permettant de créer des projets personnels et d'équipe"
+      },
+      "two": {
+        "title": "Les sondages",
+        "text": "Créer des sondages qui aident les enseignants à ajuster leurs cours"
+      },
+
+      "three": {
+        "title": "Des stages",
+        "text": "Vous donnant accès à tous les programmes de stages disponibles dans votre région"
+      }
+    }
   }
 }
   
