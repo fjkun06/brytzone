@@ -11,25 +11,75 @@
     padding: 3.3rem;
 
     /**************************************Card**************************************/
-    .know_card {
+    section {
+      @include flex;
+      flex-wrap: wrap;
+      gap: 3rem;
       border: inherit;
-      width: 349.55px;
-      height: 241.71px;
-      // border-radius: 1rem;
-      @include customgrid(1, 1, 1fr);
-
-      //image
-      &-image {
-        @include position("1/2");
-        @include flex;
-        img {
-          @include size(auto);
-        }
+      width: 100%;
+      @media only screen and (width > 1024px) {
+        width: 97rem;
       }
-      //text
-      &-text {
-        @include position("1/2");
-        @include flex;
+      .know_card {
+        border: inherit;
+        width: 349.55px;
+        height: 241.71px;
+        @include customgrid(1, 1, 1fr);
+        border-bottom-right-radius: 50px;
+        overflow: hidden;
+        //image
+        &-image {
+          @include position("1/2");
+          @include flex;
+
+          img {
+            @include size(auto);
+            width: 349.55px;
+            height: 241.71px;
+          }
+        }
+
+        &:nth-child(2) {
+          .know_card-text {
+            background: $primary;
+          }
+        }
+        &:nth-child(4) {
+          .know_card-text {
+            background: $secondary;
+          }
+        }
+        &:nth-child(5) {
+          .know_card-text {
+            background: none;
+          }
+        }
+        //text
+        &-text {
+          @include position("1/2");
+          @include flex(column);
+          justify-content: flex-start;
+          align-items: flex-start;
+          @include size(100%);
+          background-color: greenyellow;
+          background: linear-gradient(99.97deg, rgba(60, 50, 50, 0.8) 13.56%, rgba(26, 20, 20, 0) 35.41%);
+          padding: 3rem 1.2rem;
+          border-radius: 1rem;
+          gap: 2rem;
+          h3 {
+            font-weight: 500;
+            font-size: 25px;
+            line-height: 38px;
+            @include formatText(500, 2.5rem, 3.8rem);
+            color: $tertiary;
+          }
+          p {
+            @include formatText(400, 1.8rem, 2.7rem);
+            color: $background;
+            width: 261.3px;
+            text-shadow: 1px 1px 2px $black;
+          }
+        }
       }
     }
   }
