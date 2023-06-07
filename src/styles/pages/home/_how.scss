@@ -70,6 +70,16 @@
         display: none;
       }
 
+
+      circle,path,
+      rect,
+      line {
+        stroke-width: 0.1px;
+        stroke-linecap: round;
+        // fill: transparent;
+      }
+
+
       ul {
         height: 18.2px;
         @include flex;
