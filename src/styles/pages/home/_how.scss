@@ -46,6 +46,8 @@
           @include position("1/2");
 
           g {
+            transition: fill-opacity 0.25s ease-in-out;
+
             circle + path {
               fill: $primary;
               transition: fill 0.25s ease-in-out;
@@ -62,6 +64,19 @@
                 fill: $background;
               }
             }
+          }
+          /**************************************rotatating SVGs**************************************/
+          g.rotate0 {
+            transform: translate(-114px, -346px);
+          }
+          g.rotate1 {
+            transform: translate(-114px, -52px);
+          }
+          g.rotate2 {
+            transform: translate(-440px, -438px);
+          }
+          g.rotate3 {
+            transform: translate(-36px, -52px);
           }
         }
       }
