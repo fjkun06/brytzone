@@ -11,7 +11,10 @@
     "use": "Useful Links",
     "res": "Resources",
     "con": "Contact Infos",
-    "cto": "Follow us on all our social media platforms top get more updates"
+    "cto": "Follow us on all our social media platforms top get more updates",
+    "brytzone": "2023, Brytzone Tous droits réservés",
+    "terms": "Conditions",
+    "privacy": "Confidentialité"
   },
   "routes": {
     "one": "Home",

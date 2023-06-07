@@ -34,7 +34,11 @@ const Footer = () => {
         <div className="brtyzone_footer_links-item">
           <h4>{footerT("res")}</h4>
           <div>
-            <span onClick={() => router.push("https://github.com/fjkun06/brytzone")}>Github</span>
+            <span
+              onClick={() => router.push("https://github.com/fjkun06/brytzone")}
+            >
+              Github
+            </span>
             {[
               {
                 text: "six",
@@ -45,7 +49,10 @@ const Footer = () => {
                 route: "Blog",
               },
             ].map(({ text, route }) => (
-              <span key={nanoid()} onClick={() => router.push(`/${route.toLowerCase()}`)}>
+              <span
+                key={nanoid()}
+                onClick={() => router.push(`/${route.toLowerCase()}`)}
+              >
                 {routesT(text)}
               </span>
             ))}
@@ -54,7 +61,10 @@ const Footer = () => {
         <div className="brtyzone_footer_links-item">
           <h4>{footerT("con")}</h4>
           <div>
-            <span className="" onClick={() => router.push("mailto:cotsite@ubuea.com")}>
+            <span
+              className=""
+              onClick={() => router.push("mailto:cotsite@ubuea.com")}
+            >
               {/* <Link href={"mailto:cotsite@ubuea.com"} passHref={true}>
                 cotsite@ubuea.com
               </Link> */}
@@ -66,7 +76,7 @@ const Footer = () => {
                 tel:+237650906666
               </Link> */}
             </span>
-            <span className="">Cameroon, Buea Molyko</span>
+            <span className="">{footerT("cameroon")}</span>
           </div>
         </div>
         <div className="brtyzone_footer_links-item">
@@ -90,7 +100,10 @@ const Footer = () => {
                 route: "About",
               },
             ].map(({ text, route }) => (
-              <span key={nanoid()} onClick={() => router.push(`/${route.toLowerCase()}`)}>
+              <span
+                key={nanoid()}
+                onClick={() => router.push(`/${route.toLowerCase()}`)}
+              >
                 {routesT(text)}
               </span>
             ))}
@@ -116,11 +129,11 @@ const Footer = () => {
       <section className="brtyzone_footer_rights">
         <div>
           <span className="">©</span>
-          <span className="">2023, Brytzone All rights reserved</span>
+          <span className="">{footerT('brytzone')}</span>
         </div>
         <div>
-          <span className="">Terms</span>
-          <span className="">Privacy</span>
+          <span className="">{footerT('terms')}</span>
+          <span className="">{footerT('privacy')}</span>
         </div>
       </section>
     </footer>
