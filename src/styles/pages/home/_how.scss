@@ -6,28 +6,94 @@
     color: $black;
     @include flex(column);
     @include size(100vw, auto);
-    gap: 3rem;
+    gap: 0rem;
     justify-content: flex-start;
     padding: 3.3rem;
+    border: 1px solid red;
+    h3 {
+      text-align: center;
+      @include formatText(500, 1.8rem, 2.7rem);
+    }
+    /**************************************Left**************************************/
+    .hleft {
+      border: inherit;
+      @include flex(column);
+      @include grid;
+      // background-color: red;
+      @include size(100%, 50rem);
+      align-items: flex-start;
 
-    /**************************************Card**************************************/
-    svg {
-      g {
-        circle + path {
-          fill: $primary;
-          cursor: pointer;
+      div {
+        @include size(auto);
+        transform: scale(1.5);
+        @include customgrid(1, 1, 1fr);
+
+        img {
+          @include size(auto);
+          @include position("1/2");
+          width: 214.12px;
+          height: 203.8px;
+          aspect-ratio: auto;
+          transform: scale(0.75) translateX(10px);
+          justify-self: center;
         }
-        &:hover {
-          // fill
-          circle {
-            fill: $primary;
-          }
-          path {
-            fill: $background;
+        svg {
+          width: 312.58px;
+          height: 285.72px;
+          @include position("1/2");
+
+          g {
+            circle + path {
+              fill: $primary;
+            }
+            &:hover {
+              cursor: pointer;
+              circle {
+                fill: $primary;
+              }
+              path {
+                fill: $background;
+              }
+            }
           }
         }
       }
-    
+    }
+    /**************************************Right**************************************/
+    .hright {
+      border: inherit;
+      @include flex(column);
+      @include grid;
+      // background-color: red;
+      @include size(100%, auto);
+      h3 {
+        display: none;
+      }
+
+      ul {
+        height: 18.2px;
+        @include flex;
+        background-color: greenyellow;
+        li {
+          list-style-type: none;
+          height: inherit;
+          @include flex;
+          gap: 0.5rem;
+          span {
+            height: 1.7rem;
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 10.7076px;
+            line-height: 16px;
+            @include flex;
+            padding-top: 0.25rem;
+          }
+          svg {
+            height: 1.7rem;
+          }
+        }
+      }
     }
   }
 }
