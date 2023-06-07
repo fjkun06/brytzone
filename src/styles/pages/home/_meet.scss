@@ -1,0 +1,94 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/variables" as *;
+@mixin meet {
+  &-meet {
+    border: 1px solid transparent;
+    color: $black;
+    @include flex(column);
+
+    @include size(100vw, auto);
+    gap: 3rem;
+    justify-content: flex-start;
+    padding: 3rem 3.3rem;
+    // border: 1px solid red;
+    border: 1px solid red;
+    height: 62rem;
+    /******************************Text******************************/
+    p {
+      text-align: center;
+      @include size(28.8rem, 9.2rem);
+      @include formatText(400, 1.5rem, 2.2rem);
+
+      @media only screen and (width > 500px) {
+        @include size(45.3rem, 9.2rem);
+        @include formatText(400, 1.6rem, 2.2rem);
+      }
+      @media only screen and (width > 800px) {
+        @include size(74rem, 5.4rem);
+        @include formatText(400, 1.8rem, 2.7rem);
+      }
+    }
+    /******************************Swiper Cards******************************/
+    article {
+      width: 201.5px;
+      height: 271.52px;
+    }
+    /******************************Swiper Carousel******************************/
+    .mySwiper {
+    }
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #cf1212;
+
+      /* Center slide text vertically */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 201.5px !important;
+      height: 271.52px;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .autoplay-progress {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      z-index: 10;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: var(--swiper-theme-color);
+    }
+
+    .autoplay-progress svg {
+      --progress: 0;
+      position: absolute;
+      left: 0;
+      top: 0px;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      stroke-width: 4px;
+      stroke: var(--swiper-theme-color);
+      fill: none;
+      stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
+      stroke-dasharray: 125.6;
+      transform: rotate(-90deg);
+    }
+  }
+}
