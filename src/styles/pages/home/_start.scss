@@ -35,6 +35,18 @@
           article {
             span {
               color: $background;
+              &:nth-child(1) {
+                svg {
+                  path,
+                  rect,
+                  polyline,
+                  ellipse,
+                  circle,
+                  line {
+                    stroke: $background;
+                  }
+                }
+              }
               &:nth-child(4) {
                 svg {
                   path {
@@ -97,19 +109,17 @@
             &:nth-child(1) {
               width: 73.25px;
               height: 73.25px;
-             
 
-              .cls-1 {
-                fill: none;
-                stroke: #000;
-                stroke-linecap: round;
-                stroke-miterlimit: 10;
-                stroke-width: 0.1px;
-              }
-              svg{
-                path,rect,polyline,ellipse,circle,line{
+              svg {
+                path,
+                rect,
+                polyline,
+                ellipse,
+                circle,
+                line {
                   stroke: $primary;
                   stroke-width: 2px;
+                  transition: stroke 0.25s ease-in-out;
                 }
               }
             }
