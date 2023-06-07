@@ -1,5 +1,5 @@
-import Heading from "@/stories/components/heading";
 import React from "react";
+import Heading from "@/stories/components/heading";
 import { brytzone } from "./header";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,8 +13,7 @@ import "swiper/css/navigation";
 
 // import required modules
 import SW, { Autoplay, Pagination, Navigation } from "swiper";
-
-const Meet = () => {
+const Saying = () => {
   const progressCircle = React.useRef(null);
   const progressContent = React.useRef(null);
   const onAutoplayTimeLeft = (s: SW, time: number, progress: number) => {
@@ -29,50 +28,21 @@ const Meet = () => {
   };
   return (
     <section className={`${brytzone}_home-meet`}>
-      <Heading bordered>Meet people who can help you</Heading>
-      <p>Meet professionals who can be of great help to you through their works. Just part of our collections who are able to make you grow your skills</p>
-      {/* <div className="meet_cards">
-        <article>
-          <span>pic</span>
-          <span>name</span>
-          <span>title</span>
-          <span>links</span>
-        </article>
-      </div> */}
-      {/* <Swiper
-        slidesPerView={1}
-        spaceBetween={30}
-        loop={true}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Pagination, Navigation]}
-        className="mySwiper"
-      >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
-      </Swiper> */}
+      <Heading bordered>What students are saying about us</Heading>
+
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
-        // autoplay={{
-        //   delay: 2500,
-        //   disableOnInteraction: false,
-        // }}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         pagination={{
           clickable: true,
         }}
         navigation={true}
-        modules={[ Pagination, Navigation]}
-        // modules={[Autoplay, Pagination, Navigation]}
+        // modules={[Pagination, Navigation]}
+        modules={[Autoplay, Pagination, Navigation]}
         onAutoplayTimeLeft={onAutoplayTimeLeft}
         className="mySwiper"
       >
@@ -103,4 +73,4 @@ const Meet = () => {
   );
 };
 
-export default Meet;
+export default Saying;
