@@ -4,6 +4,7 @@ import Image from "next/image";
 import Heading from "@/stories/components/heading";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { AnimatePresence, Variants, motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const Know = () => {
   const tablet = useMediaQuery("(width > 1024px)");
@@ -29,6 +30,7 @@ const Know = () => {
     close: { opacity: 0 },
   };
   const Parent = ({ children }: { children?: ReactNode }) => {
+    const knowT = useTranslations("know")
     return (
       <motion.section
         layout
@@ -43,41 +45,76 @@ const Know = () => {
         <AnimatePresence>
           {visible && (
             <>
-              <motion.div className="know_card" transition={{ duration: 0.5, ease: "easeInOut" }} variants={childVariants}>
+              <motion.div
+                className="know_card"
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                variants={childVariants}
+              >
                 <div className="know_card-image">
-                  <Image src="/home/know/img1.jpg" width={400} height={400} alt="card_img" />
+                  <Image
+                    src="/home/know/img1.jpg"
+                    width={400}
+                    height={400}
+                    alt="card_img"
+                  />
                 </div>
                 <div className="know_card-text">
-                  <h3>Our Approach</h3>
-                  <p>We make learning easy for you by bringing the clasroom closer to you</p>
+                  <h3>{knowT("our")}</h3>
+                  <p>{knowT("wemake")}</p>
                 </div>
               </motion.div>
-              <motion.div className="know_card" transition={{ duration: 0.5, ease: "easeInOut" }} variants={childVariants}>
+              <motion.div
+                className="know_card"
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                variants={childVariants}
+              >
                 <div className="know_card-image"></div>
                 <div className="know_card-text">
-                  <h3>Announcements</h3>
-                  <p>We keep you updated with the most reliable information on Campus.</p>
+                  <h3>{knowT("announcement")}</h3>
+                  <p>{knowT("wekeep")}</p>
                 </div>
               </motion.div>
-              <motion.div className="know_card" transition={{ duration: 0.5, ease: "easeInOut" }} variants={childVariants}>
+              <motion.div
+                className="know_card"
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                variants={childVariants}
+              >
                 <div className="know_card-image">
-                  <Image src={`/home/know/img${tablet ? "2a" : "2"}.jpg`} width={350} height={250} alt="card_img" />
+                  <Image
+                    src={`/home/know/img${tablet ? "2a" : "2"}.jpg`}
+                    width={350}
+                    height={250}
+                    alt="card_img"
+                  />
                 </div>
                 <div className="know_card-text">
-                  <h3>Projects</h3>
-                  <p>Get involved in personal and team p rojects that will help build your skills</p>
+                  <h3>{knowT("proj")}</h3>
+                  <p>{knowT("getinvolved")}</p>
                 </div>
               </motion.div>
-              <motion.div className="know_card" transition={{ duration: 0.5, ease: "easeInOut" }} variants={childVariants}>
+              <motion.div
+                className="know_card"
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                variants={childVariants}
+              >
                 <div className="know_card-image"></div>
                 <div className="know_card-text">
-                  <h3>Communication</h3>
-                  <p>An upcoming chat section that allows you communicate with other coursemates</p>
+                  <h3>{knowT("communication")}</h3>
+                  <p>{knowT("an")}</p>
                 </div>
               </motion.div>
-              <motion.div className="know_card" transition={{ duration: 0.5, ease: "easeInOut" }} variants={childVariants}>
+              <motion.div
+                className="know_card"
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                variants={childVariants}
+              >
                 <div className="know_card-image">
-                  <Image src="/home/know/img5.jpg" width={350} height={450} alt="card_img" />
+                  <Image
+                    src="/home/know/img5.jpg"
+                    width={350}
+                    height={450}
+                    alt="card_img"
+                  />
                 </div>
               </motion.div>
             </>
@@ -86,10 +123,10 @@ const Know = () => {
       </motion.section>
     );
   };
-
+const homeT = useTranslations("home")
   return (
     <section className={`${brytzone}_home-know`}>
-      <Heading bordered>Get to know us by chosing a starting point</Heading>
+      <Heading bordered>{homeT('getto')}</Heading>
       <Parent />
     </section>
   );

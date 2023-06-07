@@ -37,7 +37,30 @@
     "users": "Benutzer"
   },
   "community": {
-    "heading":"Werden Sie Teil unserer Gemeinschaft"
+    "heading": "Werden Sie Teil unserer Gemeinschaft",
+    "sign": "Melden Sie sich noch heute an und holen Sie das Beste aus unserer Website heraus – von Praktika, Umfragen, Zugang zu Projekten und vielem mehr.....",
+    "joinus": "Begleiten Sie uns"
+  },
+  "explore": {
+    "explore1": "Entdecken Sie Ihren Lernbereich und seien Sie wie ein Profi",
+    "we": "Wir bieten eine Vielzahl von Ressourcen, die es Ihnen ermöglichen, zu einer besseren Version Ihrer selbst heranzuwachsen. Beginnen Sie noch heute und sehen Sie, was wir Ihnen bieten.......",
+    "learn": "Erfahren Sie mehr"
+  },
+
+  "know": {
+    "our": "Unser Vorgehen",
+    "wemake": "Wir erleichtern Ihnen das Lernen, indem wir den Unterrichtsraum näher an Sie heranbringen",
+    "announcement": "Ankündigungen",
+    "wekeep": "Wir halten Sie mit den zuverlässigsten Informationen zum Campus auf dem Laufenden.",
+    "proj": "Projekte",
+    "getinvolved": "Beteiligen Sie sich an persönlichen und Teamprojekten, die Ihnen dabei helfen, Ihre Fähigkeiten auszubauen",
+    "communication": "Kommunikation",
+    "an": "Ein bevorstehender Chat-Bereich, der Ihnen die Kommunikation mit anderen Kursteilnehmern ermöglicht"
+  },
+
+  "how": {
+    "howto": "So werden Sie Teil unserer Gemeinschaft",
+    "getstarted": "Beginnen Sie in wenigen Schritten",
+    "create": "Erstellen Sie ein Konto mit unserem Anmeldeformular"
   }
-    
 }

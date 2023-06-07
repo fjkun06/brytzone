@@ -4,8 +4,8 @@ import { Button } from "@/stories/components/Button";
 import Heading from "@/stories/components/heading";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-const communityT = useTranslations('community')
 const Community = () => {
+  const communityT = useTranslations("community");
   return (
     <section className={`${brytzone}_home-community`}>
       <div className="">
@@ -19,10 +19,9 @@ const Community = () => {
       <div className="">
         <Heading>{communityT("heading")}</Heading>
         <p>
-          Sign up today and get the most out of our site ranging from
-          Internships, Polls, getting access to projects and so much more.....
+          {communityT('sign')}
         </p>
-        <Button category="content">Join Us</Button>
+        <Button category="content">{communityT('joinus')}</Button>
       </div>
     </section>
   );

@@ -121,7 +121,7 @@ const Start = () => {
   };
   return (
     <section className={`${brytzone}_home-start`} ref={container}>
-      <Heading bordered>Get to know us by chosing a starting point</Heading>
+      <Heading bordered>Get to know us by choosing a starting point</Heading>
       <p>We offer a wide range of varieties such as internships, polls,chats, projects to to make you grow and so much more...</p>
 
       <Parent />

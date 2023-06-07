@@ -36,6 +36,32 @@
     "users": "Users"
   },
   "community": {
-    "heading": "Be a part  of  our community"
+    "heading": "Be a part  of  our community",
+    "sign": "Sign up today and get the most out of our site ranging from Internships, Polls, getting access to projects and so much more.....",
+    "joinus": "Join Us"
+  },
+  "explore": {
+    "explore1": "Explore your learning area and be like a PRO",
+    "we": "We offer variety of resources, that will enable you grow to a better version of yourself. Get started today and see what we offer you.........",
+    "learn": "Learn More"
+  },
+  "know":{
+    "our": "Our Approach",
+    "wemake": "We make learning easy for you by bringing the clasroom closer to you",
+    "announcement": "Announcements",
+    "wekeep": "We keep you updated with the most reliable information on Campus.",
+    "proj": "Projects",
+    "getinvolved": "Get involved in personal and team p rojects that will help build your skills",
+    "communication": "Communication",
+    "an": "An upcoming chat section that allows you communicate with other coursemates"
+    
+  },
+  "home":{
+    "getto": "Get to know us by chosing a starting point"
+  },
+  "how":{
+    "howto": "How to be a part of our community",
+    "getstarted": "Get started in in few steps",
+    "create": "Create an account with our sign up form"
   }
 }

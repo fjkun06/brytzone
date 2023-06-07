@@ -4,8 +4,10 @@ import { brytzone } from "./header";
 import Image from "next/image";
 import { AnimatePresence, Variants, motion } from "framer-motion";
 import Mask from "./mask";
+import { useTranslations } from "next-intl";
 
 const How = () => {
+const howT = useTranslations("how");
   const liCheckVariants: Variants = {
     hidden: {},
     visible: {
@@ -47,16 +49,21 @@ const How = () => {
   };
   return (
     <section className={`${brytzone}_home-how`}>
-      <Heading bordered>How to be a part of our community</Heading>
+      <Heading bordered>{howT("howto")}</Heading>
       <div className="hleft">
-        <h3>Get started in in few steps</h3>
+        <h3>{howT("getstarted")}</h3>
         <div>
           <Mask />
-          <Image src="/home/how/lady.png" width={300} height={280} alt="lady_img" />
+          <Image
+            src="/home/how/lady.png"
+            width={300}
+            height={280}
+            alt="lady_img"
+          />
         </div>
       </div>
       <div className="hright">
-        <h3>Get started in in few steps</h3>
+        <h3>{howT("getstarted")}</h3>
 
         <motion.ul className="">
           <motion.li className="">
@@ -87,23 +94,125 @@ const How = () => {
                 pathLength={0}
               />
             </motion.svg>
-            <span>Create an account with our sign up form</span>
+            <span>{howT("create")}</span>
           </motion.li>
           <motion.li></motion.li>
         </motion.ul>
-        <motion.svg width="600" height="600" viewBox="0 0 600 600" initial="hidden" animate="visible">
-          <motion.circle cx="100" cy="100" r="80" stroke="#ff0055" variants={draw} custom={1} />
-          <motion.line x1="220" y1="30" x2="360" y2="170" stroke="#00cc88" variants={draw} custom={2} />
-          <motion.line x1="220" y1="170" x2="360" y2="30" stroke="#00cc88" variants={draw} custom={2.5} />
-          <motion.rect width="140" height="140" x="410" y="30" rx="20" stroke="#0099ff" variants={draw} custom={3} />
-          <motion.circle cx="100" cy="300" r="80" stroke="#0099ff" variants={draw} custom={2} />
-          <motion.line x1="220" y1="230" x2="360" y2="370" stroke="#ff0055" custom={3} variants={draw} />
-          <motion.line x1="220" y1="370" x2="360" y2="230" stroke="#ff0055" custom={3.5} variants={draw} />
-          <motion.rect width="140" height="140" x="410" y="230" rx="20" stroke="#00cc88" custom={4} variants={draw} />
-          <motion.circle cx="100" cy="500" r="80" stroke="#00cc88" variants={draw} custom={3} />
-          <motion.line x1="220" y1="430" x2="360" y2="570" stroke="#0099ff" variants={draw} custom={4} />
-          <motion.line x1="220" y1="570" x2="360" y2="430" stroke="#0099ff" variants={draw} custom={4.5} />
-          <motion.rect width="140" height="140" x="410" y="430" rx="20" stroke="#ff0055" variants={draw} custom={5} />
+        <motion.svg
+          width="600"
+          height="600"
+          viewBox="0 0 600 600"
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.circle
+            cx="100"
+            cy="100"
+            r="80"
+            stroke="#ff0055"
+            variants={draw}
+            custom={1}
+          />
+          <motion.line
+            x1="220"
+            y1="30"
+            x2="360"
+            y2="170"
+            stroke="#00cc88"
+            variants={draw}
+            custom={2}
+          />
+          <motion.line
+            x1="220"
+            y1="170"
+            x2="360"
+            y2="30"
+            stroke="#00cc88"
+            variants={draw}
+            custom={2.5}
+          />
+          <motion.rect
+            width="140"
+            height="140"
+            x="410"
+            y="30"
+            rx="20"
+            stroke="#0099ff"
+            variants={draw}
+            custom={3}
+          />
+          <motion.circle
+            cx="100"
+            cy="300"
+            r="80"
+            stroke="#0099ff"
+            variants={draw}
+            custom={2}
+          />
+          <motion.line
+            x1="220"
+            y1="230"
+            x2="360"
+            y2="370"
+            stroke="#ff0055"
+            custom={3}
+            variants={draw}
+          />
+          <motion.line
+            x1="220"
+            y1="370"
+            x2="360"
+            y2="230"
+            stroke="#ff0055"
+            custom={3.5}
+            variants={draw}
+          />
+          <motion.rect
+            width="140"
+            height="140"
+            x="410"
+            y="230"
+            rx="20"
+            stroke="#00cc88"
+            custom={4}
+            variants={draw}
+          />
+          <motion.circle
+            cx="100"
+            cy="500"
+            r="80"
+            stroke="#00cc88"
+            variants={draw}
+            custom={3}
+          />
+          <motion.line
+            x1="220"
+            y1="430"
+            x2="360"
+            y2="570"
+            stroke="#0099ff"
+            variants={draw}
+            custom={4}
+          />
+          <motion.line
+            x1="220"
+            y1="570"
+            x2="360"
+            y2="430"
+            stroke="#0099ff"
+            variants={draw}
+            custom={4.5}
+          />
+          <motion.rect
+            width="140"
+            height="140"
+            x="410"
+            y="430"
+            rx="20"
+            stroke="#ff0055"
+            variants={draw}
+            custom={5}
+          />
           <motion.path
             // initial={{ pathLength: 0 }}
             d="M10.0243 19.0746C5.00371 19.0746 0.922852 14.9937 0.922852 9.97308C0.922852 4.95244 5.00371 0.871582 10.0243 0.871582C15.045 0.871582 19.1258 4.95244 19.1258 9.97308C19.1258 14.9937 15.045 19.0746 10.0243 19.0746ZM10.0243 2.14156C5.70643 2.14156 2.19283 5.65516 2.19283 9.97308C2.19283 14.291 5.70643 17.8046 10.0243 17.8046C14.3423 17.8046 17.8559 14.291 17.8559 9.97308C17.8559 5.65516 14.3423 2.14156 10.0243 2.14156Z"
