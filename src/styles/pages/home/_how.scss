@@ -70,25 +70,30 @@
         display: none;
       }
 
-
-      circle,path,
+      circle,
+      path,
       rect,
       line {
-        stroke-width: 0.1px;
+        stroke-width: 0.5px;
         stroke-linecap: round;
         // fill: transparent;
       }
 
-
       ul {
-        height: 18.2px;
-        @include flex;
-        background-color: greenyellow;
+        min-height: 200.2px;
+        width: 33rem;
+        @include flex(column);
+        gap: 2rem;
+        justify-content: flex-start;
+        align-items: flex-start;
         li {
           list-style-type: none;
-          height: inherit;
+          height: auto;
           @include flex;
           gap: 0.5rem;
+          // border: 1px solid red;
+          // background-color: grey;
+          overflow: hidden;
           span {
             height: 1.7rem;
             font-family: "Poppins";
@@ -98,9 +103,13 @@
             line-height: 16px;
             @include flex;
             padding-top: 0.25rem;
+            // border: 1px solid red;
           }
           svg {
             height: 1.7rem;
+            path {
+              stroke: $primary;
+            }
           }
         }
       }
