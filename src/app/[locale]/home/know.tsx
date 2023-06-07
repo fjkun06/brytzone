@@ -50,13 +50,13 @@ const Know = () => {
                 </div>
                 <div className="know_card-text">
                   <h3>Our Approach</h3>
-                  <p>We keep you updated with the most reliable information on Campus.</p>
+                  <p>We make learning easy for you by bringing the clasroom closer to you</p>
                 </div>
               </motion.div>
               <motion.div className="know_card" transition={{ duration: 0.5, ease: "easeInOut" }} variants={childVariants}>
                 <div className="know_card-image"></div>
                 <div className="know_card-text">
-                  <h3>Our Approach</h3>
+                  <h3>Announcements</h3>
                   <p>We keep you updated with the most reliable information on Campus.</p>
                 </div>
               </motion.div>
@@ -65,15 +65,15 @@ const Know = () => {
                   <Image src={`/home/know/img${tablet ? "2a" : "2"}.jpg`} width={350} height={250} alt="card_img" />
                 </div>
                 <div className="know_card-text">
-                  <h3>Our Approach</h3>
-                  <p>We keep you updated with the most reliable information on Campus.</p>
+                  <h3>Projects</h3>
+                  <p>Get involved in personal and team p rojects that will help build your skills</p>
                 </div>
               </motion.div>
               <motion.div className="know_card" transition={{ duration: 0.5, ease: "easeInOut" }} variants={childVariants}>
                 <div className="know_card-image"></div>
                 <div className="know_card-text">
-                  <h3>Our Approach</h3>
-                  <p>We keep you updated with the most reliable information on Campus.</p>
+                  <h3>Communication</h3>
+                  <p>An upcoming chat section that allows you communicate with other coursemates</p>
                 </div>
               </motion.div>
               <motion.div className="know_card" transition={{ duration: 0.5, ease: "easeInOut" }} variants={childVariants}>
@@ -81,7 +81,6 @@ const Know = () => {
                   <Image src="/home/know/img5.jpg" width={350} height={450} alt="card_img" />
                 </div>
               </motion.div>
-           
             </>
           )}
         </AnimatePresence>
@@ -92,7 +91,7 @@ const Know = () => {
   return (
     <section className={`${brytzone}_home-know`}>
       <Heading bordered>Get to know us by chosing a starting point</Heading>
-        <Parent />
+      <Parent />
     </section>
   );
 };

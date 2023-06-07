@@ -2,7 +2,7 @@
 @use "../../utils/variables" as *;
 @mixin know {
   &-know {
-    border: 1px solid red;
+    border: 1px solid transparent;
     color: $black;
     @include flex(column);
     @include size(100vw, auto);
