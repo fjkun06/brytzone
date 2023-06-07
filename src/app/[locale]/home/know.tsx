@@ -36,8 +36,7 @@ const Know = () => {
         animate="visible"
         exit="close"
         variants={parentVariants}
-        className="card_parent"
-        viewport={{ amount: 0.35 }}
+        viewport={{ amount: 0.35, once: true }}
         onViewportLeave={() => setVisible(false)}
         onViewportEnter={() => setVisible(true)}
       >
