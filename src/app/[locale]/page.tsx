@@ -20,12 +20,16 @@ export default function Index() {
   const Start = dynamic(() => import("./home/start"), {
     loading: () => <p>Loading Start...</p>,
   });
+  const Know = dynamic(() => import("./home/know"), {
+    loading: () => <p>Loading Know...</p>,
+  });
   return (
     <section className={`${brytzone}_home`}>
       <Header />
       <Community />
       <Explore />
       <Start />
+      <Know />
     </section>
   );
 }

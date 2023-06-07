@@ -110,7 +110,7 @@ const Start = () => {
         variants={parentVariants}
         className="card_parent"
         ref={ref}
-        viewport={{ amount: tablet ? "all" : 0.35 }}
+        viewport={{ amount:  0.35 }}
         onViewportLeave={() => setVisible(false)}
         onViewportEnter={() => setVisible(true)}
       >

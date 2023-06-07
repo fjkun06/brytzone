@@ -4,6 +4,7 @@
 @use "community" as *;
 @use "explore" as *;
 @use "start" as *;
+@use "know" as *;
 
 .brytzone_home {
   @include size(100vw, auto);
@@ -18,4 +19,6 @@
   @include explore;
   /**************************************Start**************************************/
   @include start;
+  /**************************************Know**************************************/
+  @include know;
 }

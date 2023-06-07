@@ -1,0 +1,36 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/variables" as *;
+@mixin know {
+  &-know {
+    border: 1px solid red;
+    color: $black;
+    @include flex(column);
+    @include size(100vw, auto);
+    gap: 3rem;
+    justify-content: flex-start;
+    padding: 3.3rem;
+
+    /**************************************Card**************************************/
+    .know_card {
+      border: inherit;
+      width: 349.55px;
+      height: 241.71px;
+      // border-radius: 1rem;
+      @include customgrid(1, 1, 1fr);
+
+      //image
+      &-image {
+        @include position("1/2");
+        @include flex;
+        img {
+          @include size(auto);
+        }
+      }
+      //text
+      &-text {
+        @include position("1/2");
+        @include flex;
+      }
+    }
+  }
+}
