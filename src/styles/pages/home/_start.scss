@@ -17,10 +17,8 @@
     //cards
     div.card_parent {
       @include flex(column);
-      // width: 261px;
-      // height: 262px;
       @include size(100%, auto);
-
+      gap: 4rem;
       border: 1px solid red;
 
       // card-item
@@ -81,17 +79,16 @@
               stop {
                 transition: stop-color 0.5s ease-in-out;
                 &:nth-child(1) {
-                  stop-color: #fff;
+                  stop-color: $background;
                 }
                 &:nth-child(2) {
-                  stop-color: #fff;
+                  stop-color: $background;
                 }
               }
             }
           }
           rect.paint {
             @include size(100%);
-            // fill: url(#paint0);
             border-radius: 1rem;
           }
         }
@@ -107,8 +104,7 @@
             color: $primary;
             transition: color 0.25s ease-in-out;
             &:nth-child(1) {
-              width: 73.25px;
-              height: 73.25px;
+              @include size(7.325rem);
 
               svg {
                 path,
@@ -124,27 +120,14 @@
               }
             }
             &:nth-child(2) {
-              width: 73px;
-              height: 27px;
-              font-family: "Poppins";
-              font-style: normal;
-              font-weight: 500;
-              font-size: 18px;
-              line-height: 27px;
+              @include size(7.325rem, 2.7rem);
+              @include formatText(500, 1.8rem, 2.7rem);
               text-transform: capitalize;
             }
             &:nth-child(3) {
-              width: 171px;
-              height: 54px;
-              left: 44px;
-              top: 139px;
-
-              font-family: "Poppins";
-              font-style: normal;
-              font-weight: 400;
-              font-size: 12px;
-              line-height: 18px;
+              @include size(17.1rem, 5.4rem);
               text-align: center;
+              @include formatText(500, 1.2rem, 1.8rem);
             }
             &:nth-child(4) {
               @include size(2.75rem, 2.208rem);
