@@ -12,6 +12,7 @@
 
     /**************************************Card**************************************/
     section {
+      min-height: 46rem;
       @include flex;
       flex-wrap: wrap;
       gap: 3rem;
@@ -19,13 +20,15 @@
       width: 100%;
       @media only screen and (width > 1024px) {
         width: 97rem;
+        gap: 0;
+        min-height: 85.8rem;
       }
       .know_card {
         border: inherit;
         width: 349.55px;
         height: 241.71px;
         @include customgrid(1, 1, 1fr);
-        border-bottom-right-radius: 50px;
+
         overflow: hidden;
         //image
         &-image {
@@ -36,22 +39,8 @@
             @include size(auto);
             width: 349.55px;
             height: 241.71px;
-          }
-        }
-
-        &:nth-child(2) {
-          .know_card-text {
-            background: $primary;
-          }
-        }
-        &:nth-child(4) {
-          .know_card-text {
-            background: $secondary;
-          }
-        }
-        &:nth-child(5) {
-          .know_card-text {
-            background: none;
+            border-radius: 2rem;
+            aspect-ratio: auto !important;
           }
         }
         //text
@@ -64,7 +53,7 @@
           background-color: greenyellow;
           background: linear-gradient(99.97deg, rgba(60, 50, 50, 0.8) 13.56%, rgba(26, 20, 20, 0) 35.41%);
           padding: 3rem 1.2rem;
-          border-radius: 1rem;
+          border-radius: 2rem;
           gap: 2rem;
           h3 {
             font-weight: 500;
@@ -74,10 +63,108 @@
             color: $tertiary;
           }
           p {
-            @include formatText(400, 1.8rem, 2.7rem);
+            @include formatText(300, 1.8rem, 2.7rem);
             color: $background;
             width: 261.3px;
             text-shadow: 1px 1px 2px $black;
+          }
+        }
+
+        &:nth-child(1) {
+          @media only screen and (width > 800px) {
+            border-bottom-right-radius: 50px;
+          }
+          @media only screen and (width > 1024px) {
+            width: 618px;
+            height: 428px;
+            .know_card-image {
+              width: 618px;
+              height: 428px;
+              border-radius: 0px;
+              img {
+                @include size(inherit);
+              }
+            }
+          }
+        }
+        &:nth-child(2) {
+          @media only screen and (width > 800px) {
+            border-bottom-left-radius: 50px;
+          }
+          @media only screen and (width > 1024px) {
+            border-radius: 0px;
+            width: 350px;
+            height: 428px;
+          }
+          .know_card-text {
+            background: $primary;
+          }
+        }
+        &:nth-child(3) {
+          @media only screen and (width > 800px) {
+            border-top-right-radius: 50px;
+          }
+          @media only screen and (width > 1024px) {
+            border-radius: 0px;
+            width: 314.88px;
+            height: 428px;
+            .know_card-image {
+              width: 314.88px;
+              height: 428px;
+              img {
+                @include size(inherit);
+              }
+            }
+          }
+        }
+        &:nth-child(4) {
+          @media only screen and (width > 800px) {
+            border-top-left-radius: 50px;
+          }
+          @media only screen and (width > 1024px) {
+            border-radius: 0px;
+            width: 302px;
+            height: 428px;
+          }
+          .know_card-text {
+            background: $secondary;
+          }
+        }
+        &:nth-child(5) {
+          display: none;
+          @media only screen and (width > 800px) {
+          }
+          @media only screen and (width > 1024px) {
+            display: flex;
+
+            border-radius: 0px;
+            width: 350px;
+            height: 428px;
+          }
+          .know_card-image {
+            width: 350px;
+            height: 428px;
+            img {
+              @include size(inherit);
+            }
+          }
+          .know_card-text {
+            background: none;
+          }
+        }
+
+        @media only screen and (width > 1024px) {
+          border-radius: 0px !important;
+          width: 42.8rem;
+          &-text {
+            border-radius: 0px;
+          }
+          &-image {
+            width: 100%;
+            border-radius: 0px !important;
+            img {
+              border-radius: 0px !important;
+            }
           }
         }
       }

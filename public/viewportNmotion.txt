@@ -1,0 +1,58 @@
+  <motion.div
+        className="card_parent"
+        ref={ref}
+        // viewport={{ once: true, amount: tablet ? 1 : 0.5 }}
+        // onViewportEnter={() => {
+        //   setVisible(true);
+        //   console.log("fully in viewport");
+        // }}
+      >
+
+        const [visible, setVisible] = React.useState(false);
+  const ref = React.useRef(null);
+  const parentVariants: Variants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.5, // Adjust the stagger delay for desired effect
+      },
+    },
+    close: {
+      transition: {
+        staggerChildren: 0.5,
+        staggerDirection: -1,
+        // Adjust the stagger delay for desired effect
+      },
+    },
+  };
+  const childVariants: Variants = {
+    hidden: { y: 400 },
+    visible: { y: 0 },
+    close: { y: 400, opacity: 0.5 },
+  };
+  const Parent = ({}) => {
+    return (
+      <motion.div
+        layout
+        initial="hidden"
+        animate="visible"
+        exit="close"
+        variants={parentVariants}
+        className="card_parent"
+        viewport={{ amount: 0.35 }}
+        onViewportLeave={() => setVisible(false)}
+        onViewportEnter={() => setVisible(true)}
+      >
+        <AnimatePresence>
+          {visible && (
+            <>
+              <motion.div variants={childVariants}>hello</motion.div>
+              <motion.div variants={childVariants}>hello</motion.div>
+              <motion.div variants={childVariants}>hello</motion.div>
+              <motion.div variants={childVariants}>hello</motion.div>
+            </>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    );
+  };

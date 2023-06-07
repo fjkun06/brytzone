@@ -46,16 +46,7 @@ interface ParentProps {
 const StartCardItem = ({ id, icon, children, title }: StartCardProps) => {
   const router = useRouter();
   return (
-    <motion.div
-      layout
-      className="card_item"
-      onClick={() => router.push(`/${title.toLowerCase()}`)}
-      variants={childVariants}
-      transition={{
-        duration: 0.5,
-        ease: "easeInOut",
-      }}
-    >
+    <motion.div layout className="card_item" onClick={() => router.push(`/${title.toLowerCase()}`)} variants={childVariants} transition={{ duration: 0.5, ease: "easeInOut" }}>
       <svg>
         <defs>
           <linearGradient id={`paint_${id}`} x1="205" y1="46.9018" x2="236" y2="449.902" gradientUnits="userSpaceOnUse">
@@ -110,17 +101,20 @@ const Start = () => {
         variants={parentVariants}
         className="card_parent"
         ref={ref}
-        viewport={{ amount:  0.35 }}
+        viewport={{ amount: 0.35 }}
         onViewportLeave={() => setVisible(false)}
         onViewportEnter={() => setVisible(true)}
       >
         <AnimatePresence>
-          {visible &&
-            data.map(({ title, icon, text }, i) => (
-              <StartCardItem id={`htag${i}`} title={title} icon={icon} key={nanoid()}>
-                {text}
-              </StartCardItem>
-            ))}
+          {visible && (
+            <>
+              {data.map(({ title, icon, text }, i) => (
+                <StartCardItem id={`htag${i}`} title={title} icon={icon} key={nanoid()}>
+                  {text}
+                </StartCardItem>
+              ))}
+            </>
+          )}
         </AnimatePresence>
       </motion.div>
     );
