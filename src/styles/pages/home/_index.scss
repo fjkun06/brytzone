@@ -6,6 +6,8 @@
 @use "start" as *;
 @use "know" as *;
 @use "how" as *;
+@use "meet" as *;
+@use "saying" as *;
 
 .brytzone_home {
   @include size(100vw, auto);
@@ -24,4 +26,8 @@
   @include know;
   /**************************************How**************************************/
   @include how;
+  /**************************************Meet**************************************/
+  @include meet;
+  /**************************************Saying**************************************/
+  @include saying;
 }

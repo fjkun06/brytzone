@@ -5,12 +5,15 @@
     border: 1px solid transparent;
     color: $black;
     @include flex(column);
+
     @include size(100vw, auto);
     gap: 0rem;
     justify-content: flex-start;
-    padding: 3.3rem;
-    border: 1px solid red;
-    h3 {
+    padding: 0 3.3rem;
+    // border: 1px solid red;
+    background-color: $helperBlue1;
+
+    h2 {
       text-align: center;
       @include formatText(500, 1.8rem, 2.7rem);
     }
@@ -43,8 +46,14 @@
           @include position("1/2");
 
           g {
+            transition: fill-opacity 0.25s ease-in-out;
+
             circle + path {
               fill: $primary;
+              transition: fill 0.25s ease-in-out;
+            }
+            circle {
+              transition: fill 0.25s ease-in-out;
             }
             &:hover {
               cursor: pointer;
@@ -56,6 +65,19 @@
               }
             }
           }
+          /**************************************rotatating SVGs**************************************/
+          g.rotate0 {
+            transform: translate(-114px, -346px);
+          }
+          g.rotate1 {
+            transform: translate(-114px, -52px);
+          }
+          g.rotate2 {
+            transform: translate(-440px, -438px);
+          }
+          g.rotate3 {
+            transform: translate(-36px, -52px);
+          }
         }
       }
     }
@@ -66,29 +88,34 @@
       @include grid;
       // background-color: red;
       @include size(100%, auto);
-      h3 {
+      h2 {
         display: none;
       }
 
-
-      circle,path,
+      circle,
+      path,
       rect,
       line {
-        stroke-width: 0.1px;
+        stroke-width: 0.5px;
         stroke-linecap: round;
         // fill: transparent;
       }
 
-
       ul {
-        height: 18.2px;
-        @include flex;
-        background-color: greenyellow;
+        min-height: 200.2px;
+        width: 33rem;
+        @include flex(column);
+        gap: 2rem;
+        justify-content: flex-start;
+        align-items: flex-start;
         li {
           list-style-type: none;
-          height: inherit;
+          height: auto;
           @include flex;
           gap: 0.5rem;
+          // border: 1px solid red;
+          // background-color: grey;
+          overflow: hidden;
           span {
             height: 1.7rem;
             font-family: "Poppins";
@@ -98,9 +125,100 @@
             line-height: 16px;
             @include flex;
             padding-top: 0.25rem;
+            // border: 1px solid red;
           }
           svg {
             height: 1.7rem;
+            path {
+              stroke: $primary;
+            }
+          }
+        }
+      }
+    }
+
+    @media only screen and (width > 500px) {
+      .hright {
+        ul {
+          width: 38rem;
+          li {
+            gap: 1rem;
+            span {
+              line-height: auto;
+              height: auto;
+              font-size: 1.5rem;
+              align-items: flex-start;
+              padding-top: 0;
+            }
+            svg {
+              height: auto;
+            }
+            height: auto;
+          }
+        }
+      }
+    }
+
+    @media only screen and (width > 900px) {
+      @include flex;
+      flex-wrap: wrap;
+      height: 52rem;
+      align-items: flex-start;
+
+      //heading
+      .brytzone_heading--bordered {
+        width: 100vw;
+      }
+      h2 {
+        display: none;
+      }
+      .hright,
+      .hleft {
+        width: 50%;
+        height: auto;
+      }
+      .hright {
+        gap: 3rem;
+        ul {
+          gap: 4rem;
+        }
+        h2 {
+          display: flex;
+          font-size: 2rem;
+        }
+      }
+    }
+    @media only screen and (width > 1200px) {
+      .hright {
+        justify-content: flex-start;
+        padding-left: 10rem;
+      }
+    }
+    @media only screen and (width > 1300px) {
+      height: 66rem;
+      .hleft {
+        // justify-content: flex-end;
+        // padding-right: 10rem;
+        div {
+          transform: scale(2) translateY(2.5rem);
+        }
+      }
+      .hright {
+        height: 40rem;
+        h2 {
+          font-size: 3.5rem;
+        }
+        ul {
+          width: 100%;
+          li {
+            height: 3rem;
+            gap: 1;
+            span {
+              font-size: 2rem;
+            }
+            svg {
+              height: auto;
+            }
           }
         }
       }

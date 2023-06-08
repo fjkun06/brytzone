@@ -16,6 +16,9 @@
       width: 344.38px;
       @media only screen and (width > 900px) {
         width: 47.5rem;
+      @include formatText(400, 1.8rem, 2.7rem);
+      width: 74rem;
+
       }
     }
     //cards
