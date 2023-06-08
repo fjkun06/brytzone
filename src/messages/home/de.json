@@ -9,22 +9,22 @@
     "de": "Deutsch"
   },
   "footer": {
-    "use": "Useful Links",
-    "res": "Resources",
-    "con": "Contact Infos",
-    "cto": "Follow us on all our social media platforms top get more updates",
+    "use": "Nützliche Links",
+    "res": "Ressourcen",
+    "con": "Kontaktinformationen",
+    "cto": "Folgen Sie uns auf allen unseren Social-Media-Plattformen, um weitere Updates zu erhalten",
     "cameroon": "Kamerun, Buea Molyko",
     "brytzone": "2023, Brytzone Alle Rechte vorbehalten",
     "terms": "Bedingungen",
     "privacy": "Privatsphäre"
   },
   "routes": {
-    "one": "Home",
-    "two": "Internships",
-    "three": "Projects",
-    "four": "Polls",
-    "five": "About",
-    "six": "Contact",
+    "one": "Heim",
+    "two": "Praktika",
+    "three": "Projekte",
+    "four": "Umfragen",
+    "five": "Um",
+    "six": "Kontakt",
     "seven": "Blog"
   },
   "header": {
@@ -38,7 +38,8 @@
     "search": "Suchen",
     "projects": "Projekte",
     "tutors": "Nachhilfelehrerin",
-    "users": "Benutzer"
+    "users": "Benutzer",
+    "what": "Wonach suchst du?...."
   },
   "community": {
     "heading": "Werden Sie Teil unserer Gemeinschaft",

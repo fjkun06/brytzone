@@ -12,9 +12,9 @@
     "res": "Resources",
     "con": "Contact Infos",
     "cto": "Follow us on all our social media platforms top get more updates",
-    "brytzone": "2023, Brytzone Tous droits réservés",
-    "terms": "Conditions",
-    "privacy": "Confidentialité"
+    "brytzone": "2023, Brytzone All rights reserved",
+    "terms": "Terms",
+    "privacy": "Privacy"
   },
   "routes": {
     "one": "Home",
@@ -36,7 +36,8 @@
     "search": "Search",
     "projects": "Projects",
     "tutors": "Tutors",
-    "users": "Users"
+    "users": "Users",
+    "what": "What are you looking for?...."
   },
   "community": {
     "heading": "Be a part  of  our community",

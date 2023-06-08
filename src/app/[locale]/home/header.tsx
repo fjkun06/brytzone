@@ -36,7 +36,7 @@ const Header = () => {
               <SearchIcon />
               <input
                 type="text"
-                placeholder="What are you looking for?...."
+                placeholder={headerT('what')}
                 value={value}
               />
             </span>
