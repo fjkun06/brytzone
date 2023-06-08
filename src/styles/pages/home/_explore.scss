@@ -92,7 +92,6 @@
           text-align: left;
         }
         // align-items: flex-start;
-
       }
       p {
         @include formatText(400, 1.5rem, 2.2rem);
@@ -123,6 +122,8 @@
       button {
         @include size(20rem, 4.5rem);
         @include formatText(300, 2rem, 3rem);
+        width: max-content !important;
+
         @media only screen and (width > 800px) {
           @include size(24rem, 5rem);
           @include formatText(300, 2.5rem, 4rem);

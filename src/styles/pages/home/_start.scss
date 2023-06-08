@@ -139,8 +139,8 @@
               text-transform: capitalize;
             }
             &:nth-child(3) {
-              @include size(auto 5.4rem);
-              padding-inline: 0.5 ;
+              @include size(auto, 5.4rem);
+              padding-inline: 1.5rem ;
               text-align: center;
               @include formatText(500, 1.2rem, 1.8rem);
             }
