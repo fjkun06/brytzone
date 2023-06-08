@@ -6,14 +6,7 @@ import { AnimatePresence, Variants, motion } from "framer-motion";
 import Mask from "./mask";
 import { useTranslations } from "next-intl";
 
-const How = () => {
-const howT = useTranslations("how");
-  const liCheckVariants: Variants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.5, // Adjust the stagger delay for desired effect
-      },
+
 const parentVariants: Variants = {
   hidden: {},
   visible: {
@@ -65,13 +58,14 @@ const draw = {
 
 const How = () => {
   const [visible, setVisible] = React.useState(false);
+  const howT = useTranslations("how");
 
   const span = {};
   return (
     <section className={`${brytzone}_home-how`}>
       <Heading bordered>{howT("howto")}</Heading>
       <div className="hleft">
-        <h3>{howT("getstarted")}</h3>
+        <h2>{howT("getstarted")}</h2>
 
         <div>
           <Mask />
@@ -84,7 +78,7 @@ const How = () => {
         </div>
       </div>
       <div className="hright">
-        <h3>{howT("getstarted")}</h3>
+        <h2>{howT("getstarted")}</h2>
 
 
 
