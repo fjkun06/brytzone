@@ -11,6 +11,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@fontsource-variable/readex-pro": "^5.0.2",
     "@fontsource/poppins": "^5.0.1",
     "@storybook/addon-styling": "^1.0.8",
     "@types/nano": "^7.0.0",
@@ -31,6 +32,7 @@
     "react-spinners": "^0.13.8",
     "sass": "^1.62.1",
     "sharp": "^0.32.1",
+    "swiper": "^9.3.2",
     "typescript": "5.0.4",
     "universal-cookie": "^4.0.4"
   },

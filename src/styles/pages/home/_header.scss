@@ -21,7 +21,7 @@
 }
 @mixin header {
   &-header {
-    color: black;
+    color: $black;
     @include flex(column);
     border: 1px solid red;
     @include size(100vw, auto);
@@ -74,8 +74,7 @@
             input {
               caret-color: $primary;
               @include size(14.3rem, 1.6rem);
-              font-family: "Poppins";
-              @include formatText(400, 1.0537rem, 0.6rem);
+                    @include formatText(400, 1.0537rem, 0.6rem);
               border: none;
               background: transparent;
               outline: none;
@@ -93,7 +92,6 @@
       }
       h1 {
         @include size(33.285rem, 12.7rem);
-        font-family: "Poppins";
         @include formatText(400, 3.15rem, 4.2rem);
         .header_bold {
           font-weight: 500;
@@ -101,7 +99,6 @@
         }
       }
       p {
-        font-family: "Poppins";
         @include size(29.35rem, 6.9rem);
         @include formatText(400, 1.5rem, 2.2rem);
       }
@@ -147,8 +144,7 @@
         //texts in shapes
         span {
           color: $background;
-          font-family: "Poppins";
-
+  
           &:nth-child(1) {
             @include formatText(500, 2rem, 3.1rem);
             @include size(4.1rem, 3.1rem);
@@ -455,7 +451,7 @@
           }
           &:nth-child(11) {
             @include position("1/2", "3/4");
-            background-color: #fbb606;
+            background-color: $tertiary;
             border-bottom-right-radius: 50%;
             border-top-right-radius: 50%;
           }
@@ -505,6 +501,7 @@
     @media only screen and (width > 1750px) {
       .left {
         align-items: center;
+        transform: translateX(-10rem);
 
         div {
           width: 42rem;
@@ -512,7 +509,7 @@
         .header_blob {
           display: flex;
           width: 25vw;
-          transform: translate(25rem, -15rem);
+          transform: translate(28rem, -15rem);
         }
       }
 

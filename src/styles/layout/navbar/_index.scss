@@ -76,7 +76,7 @@ nav {
     &:nth-child(3) {
       flex-wrap: wrap;
       height: fit-content;
-      gap: 4vw;
+      gap: 2rem;
       padding-bottom: 6.5rem;
       span {
         @include size(12.3rem, 4.2rem);
