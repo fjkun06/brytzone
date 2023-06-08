@@ -4,7 +4,16 @@ import { brytzone } from "./header";
 import Image from "next/image";
 import { AnimatePresence, Variants, motion } from "framer-motion";
 import Mask from "./mask";
+import { useTranslations } from "next-intl";
 
+const How = () => {
+const howT = useTranslations("how");
+  const liCheckVariants: Variants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.5, // Adjust the stagger delay for desired effect
+      },
 const parentVariants: Variants = {
   hidden: {},
   visible: {
@@ -60,16 +69,24 @@ const How = () => {
   const span = {};
   return (
     <section className={`${brytzone}_home-how`}>
-      <Heading bordered>How to be a part of our community</Heading>
+      <Heading bordered>{howT("howto")}</Heading>
       <div className="hleft">
-        <h2>Get started in in few steps</h2>
+        <h3>{howT("getstarted")}</h3>
+
         <div>
           <Mask />
-          <Image src="/home/how/lady.png" width={300} height={280} alt="lady_img" />
+          <Image
+            src="/home/how/lady.png"
+            width={300}
+            height={280}
+            alt="lady_img"
+          />
         </div>
       </div>
       <div className="hright">
-        <h2>Get started in in few steps</h2>
+        <h3>{howT("getstarted")}</h3>
+
+
 
         <motion.ul className="" variants={parentVariants} viewport={{ amount: 1, once: true }} onViewportLeave={() => setVisible(false)} onViewportEnter={() => setVisible(true)}>
           {visible && (

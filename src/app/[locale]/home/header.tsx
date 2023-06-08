@@ -2,6 +2,7 @@ import { Button } from "@/stories/components/Button";
 import IconForward from "@/stories/components/IconForward";
 import SearchIcon from "@/stories/components/SearchIcon";
 import { nanoid } from "nanoid";
+import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import React from "react";
@@ -9,38 +10,52 @@ export const brytzone = "brytzone";
 const Header = () => {
   const [value, setValue] = React.useState(undefined);
   const Counter = dynamic(() => import("@/utils/Counter"), {
-    loading: () => <p>Loading Counter...</p>,
+    loading: () => <p>{headerT('counter')}</p>,
   });
+  const headerT = useTranslations("header")
   return (
     <header className={`${brytzone}_home-header`}>
       <div className="left">
         <div className="">
           <h1>
-            <span className="header_bold">Join</span> Today and Build a <span className="header_bold">Solid </span>Future with <span className="header_bold">Brytzone</span>
+            <span className="header_bold">{headerT("join")}</span>{" "}
+            {headerT("today")}{" "}
+            <span className="header_bold">{headerT("solid")}</span>{" "}
+            {headerT("future")} <span className="header_bold">Brytzone</span>
             <span className="header_bold dots">...</span>
           </h1>
-          <p>Did you know you can get real school experience with Brytzone? Not just that, but building a better you....</p>
+          <p>{headerT("did")}</p>
         </div>
 
         <div className="header_action">
           <Button icon={<IconForward />} category="content">
-            Get Started
+            {headerT("get")}
           </Button>
           <div className="header_search">
             <span className="">
               <SearchIcon />
-              <input type="text" placeholder="What are you looking for?...." value={value} />
+              <input
+                type="text"
+                placeholder={headerT('what')}
+                value={value}
+              />
             </span>
 
-            <Button category="search">Search</Button>
+            <Button category="search">{headerT('search')}</Button>
           </div>
         </div>
         <div className="header_blob">
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" id="blobSvg">
+          <svg
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 500 500"
+            width="100%"
+            id="blobSvg"
+          >
             <defs>
               <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="rgb(238, 205, 163)"/>
-                <stop offset="100%" stopColor="rgb(239, 98, 159)"/>
+                <stop offset="0%" stopColor="rgb(238, 205, 163)" />
+                <stop offset="100%" stopColor="rgb(239, 98, 159)" />
               </linearGradient>
             </defs>
             <path id="blob" fill="url(#gradient)">
@@ -63,7 +78,14 @@ const Header = () => {
         {...new Array(4).fill(4).map((_, i) => (
           <span className="" key={nanoid()}>
             {/* <Image style={{objectFit: "cover"}} src={`/hd/img${++i}.png`} alt='gallery_image' width={98} height={103} quality={100}/> */}
-            <Image style={{ objectFit: "cover" }} src={`/home/sharp/${++i}.webp`} alt="gallery_image" width={400} height={400} quality={100} />
+            <Image
+              style={{ objectFit: "cover" }}
+              src={`/home/sharp/${++i}.webp`}
+              alt="gallery_image"
+              width={400}
+              height={400}
+              quality={100}
+            />
           </span>
         ))}
         {...new Array(11).fill(11).map((_, i) => (
@@ -71,26 +93,32 @@ const Header = () => {
             {i === 1 && (
               <>
                 {/* <span>60+</span> */}
-                <Counter countEnd={60} text="+" duration={2}/>
-                <span>Projects</span>
+                <Counter countEnd={60} text="+" duration={2} />
+                <span>{headerT('projects')}</span>
               </>
             )}
             {i === 2 && (
               <>
-                <Counter countEnd={40} text="+" duration={2}/>
-                <span>Tutors</span>
+                <Counter countEnd={40} text="+" duration={2} />
+                <span>{headerT('tutors')}</span>
               </>
             )}
             {i === 0 && (
               <>
-                <Counter countEnd={200} text="+"/>
-                <span>Users</span>
+                <Counter countEnd={200} text="+" />
+                <span>{headerT('users')}</span>
               </>
             )}
           </span>
         ))}
         <span className="play">
-          <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            width="57"
+            height="57"
+            viewBox="0 0 57 57"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <circle cx="28.5803" cy="28.0175" r="28.0175" fill="#0A518B" />
             <path
               d="M39.0676 27.5116L24.0383 18.6264C22.8171 17.9048 20.947 18.605 20.947 20.3898V38.1559C20.947 39.757 22.6848 40.722 24.0383 39.9193L39.0676 31.0384C40.4082 30.2485 40.4125 28.3015 39.0676 27.5116Z"

@@ -11,8 +11,10 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@fontsource/poppins": "^5.0.2",
+
     "@fontsource-variable/readex-pro": "^5.0.2",
-    "@fontsource/poppins": "^5.0.1",
+
     "@storybook/addon-styling": "^1.0.8",
     "@types/nano": "^7.0.0",
     "@types/node": "20.2.5",

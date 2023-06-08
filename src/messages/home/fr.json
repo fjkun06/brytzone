@@ -8,18 +8,85 @@
     "de": "Allemand"
   },
   "footer": {
-    "use": "Useful Links",
-    "res": "Resources",
-    "con": "Contact Infos",
-    "cto": "Follow us on all our social media platforms top get more updates"
+    "use": "Liens utiles",
+    "res": "Ressources",
+    "con": "Coordonnées",
+    "cto": "Suivez-nous sur toutes nos plateformes de médias sociaux pour obtenir plus de mises à jour",
+    "cameroon": "Kamerun, Buéa Molyko",
+    "brytestone": "2023, Brytzone Tous droits réservés",
+    "terms": "Conditions",
+    "privacy": "Confidentialité"
   },
   "routes": {
-    "one": "Home",
-    "two": "Internships",
-    "three": "Projects",
-    "four": "Polls",
-    "five": "About",
+    "one": "Maison",
+    "two": "Des stages",
+    "three": "Projets",
+    "four": "Les sondages",
+    "five": "À propos",
     "six": "Contact",
     "seven": "Blog"
+  },
+  "header": {
+    "join": "Rejoignez-nous",
+    "today": "Aujourd'hui et construisez un",
+    "solid": "Solide",
+    "future": "Avenir avec",
+    "did": "Saviez-vous que vous pouvez acquérir une véritable expérience scolaire avec Brytzone ? Pas seulement cela, mais construire un meilleur vous...",
+    "get": "Commencer",
+    "counter": "Chargement du compteur...",
+    "search": "Recherche",
+    "projects": "Projets",
+    "tutors": "Tuteurs",
+    "users": "Utilisateurs",
+    "what": "Qu'est-ce que tu cherches?...."
+  },
+  "community": {
+    "heading": "Faites partie de notre communauté",
+    "sign": "Inscrivez-vous aujourd'hui et tirez le meilleur parti de notre site, allant des stages aux sondages, en passant par l'accès aux projets et bien plus encore .....",
+    "joinus": "Rejoignez-nous"
+  },
+  "explore": {
+    "explore1": "Explorez votre espace d'apprentissage et soyez comme un PRO",
+    "we": "Nous offrons une variété de ressources, qui vous permettront d'évoluer vers une meilleure version de vous-même. Commencez dès aujourd'hui et voyez ce que nous vous proposons .........",
+    "learn": "Apprendre encore plus"
+  },
+   "home": {
+    "getto": "Apprenez à nous connaître en choisissant un point de départ"
+  },
+
+  "know": {
+    "our": "Notre approche",
+    "wemake": "Nous vous facilitons l'apprentissage en rapprochant la salle de classe de vous",
+    "announcement": "Annonces",
+    "wekeep": "Nous vous tenons au courant des informations les plus fiables sur Campus.",
+    "proj": "Projets",
+    "getinvolved": "Impliquez-vous dans des projets personnels et d'équipe qui vous aideront à développer vos compétences",
+    "communication": "Communication",
+    "an": "Une section de chat à venir qui vous permet de communiquer avec d'autres camarades de cours"
+  },
+  "how": {
+    "howto": "Comment faire partie de notre communauté",
+    "getstarted": "Démarrez en quelques étapes",
+    "create": "Créez un compte avec notre formulaire d'inscription"
+  },
+  "start": {
+    "gett": "Apprenez à nous connaître en choisissant un point de départ",
+    "weoffer": "Nous offrons une large gamme de variétés telles que des stages, des sondages, des chats, des projets pour vous faire grandir et bien plus encore...",
+    "cards": {
+      "one": {
+        "title": "Projets",
+        "text": "Nous vous aidons à développer vos compétences en vous permettant de créer des projets personnels et d'équipe"
+      },
+      "two": {
+        "title": "Les sondages",
+        "text": "Créer des sondages qui aident les enseignants à ajuster leurs cours"
+      },
+
+      "three": {
+        "title": "Des stages",
+        "text": "Vous donnant accès à tous les programmes de stages disponibles dans votre région"
+      }
+    }
   }
 }
+  

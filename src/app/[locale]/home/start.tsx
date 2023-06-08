@@ -10,6 +10,7 @@ import ProjectIcon from "@/stories/components/ProjectIcon";
 import { nanoid } from "nanoid";
 import { useRouter } from "next/navigation";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import { useTranslations } from "next-intl";
 interface StartCardProps {
   id: number | string;
   children?: string;
@@ -68,21 +69,22 @@ const StartCardItem = ({ id, icon, children, title }: StartCardProps) => {
   );
 };
 const Start = () => {
+   const startT = useTranslations("start");
   const data = [
     {
-      title: "Projects",
+      title: "cards.one.title",
       icon: <ProjectIcon />,
-      text: "We help grow your skills by letting you create personal and team projects",
+      text: "cards.one.text",
     },
     {
-      title: "Polls",
+      title: "cards.two.title",
       icon: <PollsIcon />,
-      text: "Creating polls that helps teachers adjust their courses",
+      text: "cards.two.text",
     },
     {
-      title: "Internships",
+      title: "cards.three.title",
       icon: <InternshipIcon />,
-      text: "Giving you access to all available internship programs in your area",
+      text: "cards.three.text",
     },
   ];
 
@@ -109,8 +111,8 @@ const Start = () => {
           {visible && (
             <>
               {data.map(({ title, icon, text }, i) => (
-                <StartCardItem id={`htag${i}`} title={title} icon={icon} key={nanoid()}>
-                  {text}
+                <StartCardItem id={`htag${i}`} title={startT(title)} icon={icon} key={nanoid()}>
+                  {startT(text)}
                 </StartCardItem>
               ))}
             </>
@@ -121,8 +123,8 @@ const Start = () => {
   };
   return (
     <section className={`${brytzone}_home-start`} ref={container}>
-      <Heading bordered>Get to know us by chosing a starting point</Heading>
-      <p>We offer a wide range of varieties such as internships, polls,chats, projects to to make you grow and so much more...</p>
+      <Heading bordered>{startT("gett")}</Heading>
+      <p>{startT("weoffer")}</p>
 
       <Parent />
     </section>
