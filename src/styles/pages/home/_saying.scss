@@ -5,29 +5,19 @@
     border: 1px solid transparent;
     color: $black;
     @include flex(column);
-
     @include size(100vw, auto);
     gap: 3rem;
     justify-content: flex-start;
-    padding: 3rem 3.3rem;
+    // padding: 3rem 3.3rem;
     // border: 1px solid red;
+    padding-top: 3rem;
     border: 1px solid red;
-    height: 62rem;
-    /******************************Text******************************/
-    p {
-      text-align: center;
-      @include size(28.8rem, 9.2rem);
-      @include formatText(400, 1.5rem, 2.2rem);
-
-      @media only screen and (width > 500px) {
-        @include size(45.3rem, 9.2rem);
-        @include formatText(400, 1.6rem, 2.2rem);
-      }
-      @media only screen and (width > 800px) {
-        @include size(74rem, 5.4rem);
-        @include formatText(400, 1.8rem, 2.7rem);
-      }
+    height: 48rem;
+    background: $primary;
+    h3.brytzone_heading--bordered span {
+      color: $background;
     }
+
     /******************************Swiper Cards******************************/
     article {
       width: 201.5px;
@@ -37,38 +27,122 @@
     .mySwiper {
     }
     .swiper {
-      width: 100%;
-      // width: 60%;
-      height: 100%;
       border: 1px solid red;
-      // display: flex;
-      // justify-content: center;
-      // align-items: center;
-      // background-color: grey;
+      background: transparent;
+      @include size(100vw, 33rem);
+      //arrows
+      .swiper-button-next::after,.swiper-button-prev::after {
+        color: $background;
+      }
+
+      //bulltets
+      .swiper-pagination {
+        transform: translateY(-34px);
+        &-bullet {
+          @include size(1rem);
+          background: $background;
+          &-active {
+            @include size(1.2rem);
+            background: rgba($background, 0.57);
+          }
+        }
+      }
+
       .swiper-wrapper {
-        width: auto;
-        height: auto;
-        background-color: greenyellow;
-        // display: flex;
-        // justify-content: flex-start;
-        // align-items: center;
-        // width: 42rem;
-        // overflow: hidden;
+        @include size(auto);
+
+        background: inherit;
+
+        @media only screen and (width > 1200px) {
+          width: 100rem;
+        }
       }
     }
 
     .swiper-slide {
       text-align: center;
       font-size: 18px;
-      background: #cf1212;
-      width: 100%;
-      height: 100%;
-      /* Center slide text vertically */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      // width: 201.5px !important;
-      // height: 271.52px;
+      background: $primary;
+      @include size(100%, inherit);
+      @include flex;
+      border: 1px solid red;
+      height: 33rem;
+
+      @include flex(column);
+      article {
+        // border: 1px solid red;
+        @include size(27.5rem, 16.5rem);
+
+        @include flex(column);
+        gap: 3rem;
+        background: linear-gradient(111.5deg, rgba(255, 255, 255, 0.2) -17.53%, rgba(255, 255, 255, 0.052) 82.47%);
+        box-shadow: 10.4601px 8.258px 25.3245px rgba(0, 0, 0, 0.14);
+        -webkit-backdrop-filter: blur(2.4774px);
+        backdrop-filter: blur(2.4774px);
+        /* Note: backdrop-filter has minimal browser support */
+
+        border-radius: 1.10107px;
+        padding-top: 3rem;
+        div {
+          &:nth-child(1) {
+            @include flex(column);
+            // border: 1px solid red;
+            position: relative;
+            img {
+              @include size(10.1rem);
+              border-radius: 50%;
+              position: absolute;
+              top: -107px;
+            }
+            p {
+              color: $background;
+              @include formatText(400, 0.825rem, 1.2rem);
+              @include size(19.2rem, 4.8rem);
+              text-align: left;
+            }
+            span {
+              @include flex;
+              position: absolute;
+              svg {
+                width: 11px;
+                height: 28px;
+                @include size(1.1rem, 2.8rem);
+              }
+
+              &:nth-child(1) {
+                left: -24px;
+                top: -22px;
+              }
+              &.last {
+                right: -24px;
+                top: 40px;
+              }
+            }
+          }
+          &:nth-child(2) {
+            @include flex(column);
+            align-items: flex-start;
+            width: 192.52px;
+
+            // width: 100%;
+            h3 {
+              // width: 61px;
+              height: 17px;
+              color: $tertiary;
+              @include formatText(600, 1.1rem, 1.7rem);
+            }
+            span {
+              // border: 1px solid red;
+              // width: 119px;
+              color: $background;
+
+              height: 12px;
+
+              @include formatText(400, 0.77rem, 1.2rem);
+            }
+          }
+        }
+      }
     }
 
     .swiper-slide img {
