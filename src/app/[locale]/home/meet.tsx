@@ -20,9 +20,10 @@ import FacebookIcon from "@/stories/components/FacebookIcon";
 import TwitterIcon from "@/stories/components/TwitterIcon";
 import LinkedInIcon from "@/stories/components/LinkedInIcon";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Meet = () => {
-  const [swiperRef, setSwiperRef] = React.useState(null);
+  const router = useRouter();
   const max800 = useMediaQuery("(width > 800px)");
   const slidesToShow = max800 ? 3 : 1;
   const progressCircle = React.useRef(null);
@@ -52,10 +53,10 @@ const Meet = () => {
         pagination={{
           clickable: true,
         }}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
+        // autoplay={{
+        //   delay: 2500,
+        //   disableOnInteraction: false,
+        // }}
         navigation={true}
         loop={true}
         modules={[Autoplay, Pagination, Navigation]}
@@ -71,9 +72,15 @@ const Meet = () => {
               <span> {el === 1 ? "Peter Rogers" : el === 2 ? "Danielle Banks" : "David Blaque"} </span>
               <span> {el === 1 ? "Software Engineer" : el === 2 ? "Network Engineer" : "Data Scientist"} </span>
               <span>
-                <FacebookIcon />
-                <TwitterIcon />
-                <LinkedInIcon />
+                <em className="" onClick={() => (document.location.href = "https://facebook.com/")}>
+                  <FacebookIcon />
+                </em>
+                <em className="" onClick={() => (document.location.href = "https://twitter.com/")}>
+                  <TwitterIcon />
+                </em>
+                <em className="" onClick={() => (document.location.href = "https://linkedin.com/")}>
+                  <LinkedInIcon />
+                </em>
               </span>
             </article>
           </SwiperSlide>

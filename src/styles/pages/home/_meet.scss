@@ -131,22 +131,28 @@
             @media only screen and (width > 1200px) {
               gap: 3rem;
               padding-top: 2rem;
-              svg {
-                transform: scale(1.45);
+              em {
+                svg {
+                  transform: scale(1.45);
+                }
               }
             }
-            svg {
-              cursor: pointer;
-              g path,
-              path {
-                fill: $primary;
+            em {
+              width: max-content;
+
+              svg {
+                cursor: pointer;
+                g path,
+                path {
+                  fill: $primary;
+                }
               }
             }
           }
         }
         border-radius: 11.5334px;
         @media only screen and (width > 1200px) {
-                  @include size(26.2rem, 35.3rem);
+          @include size(26.2rem, 35.3rem);
         }
       }
     }

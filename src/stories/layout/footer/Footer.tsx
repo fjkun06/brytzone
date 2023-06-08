@@ -104,7 +104,7 @@ const Footer = () => {
             <span className="">{footerT("cto")}</span>
             <span className="">
               {externalUrls.map(({ url, icon }) => (
-                <Link href={url} passHref={true} key={nanoid()}>
+                <Link href={''} onClick={() => (document.location.href = url)} key={nanoid()}>
                   {icon}
                 </Link>
               ))}
