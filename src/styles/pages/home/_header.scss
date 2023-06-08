@@ -56,6 +56,7 @@
           gap: 0.25rem;
           button {
             @include size(5.857rem, 2.88rem);
+            width: min-content !important;
             font-size: 1.05373rem;
           }
           span {
@@ -74,7 +75,7 @@
             input {
               caret-color: $primary;
               @include size(14.3rem, 1.6rem);
-                    @include formatText(400, 1.0537rem, 0.6rem);
+              @include formatText(400, 1.0537rem, 0.6rem);
               border: none;
               background: transparent;
               outline: none;
@@ -93,6 +94,18 @@
       h1 {
         @include size(33.285rem, 12.7rem);
         @include formatText(400, 3.15rem, 4.2rem);
+        @media only screen and (600px > width) {
+          @include ellipsis;
+        }
+        @media only screen and (600px < width) {
+          width: 52.285rem;
+          height: auto;
+        }
+        @media only screen and (700px < width < 850px) {
+          width: 100% !important;
+        }
+        // @include ellipsis;
+
         .header_bold {
           font-weight: 500;
           color: $primary;
@@ -101,6 +114,8 @@
       p {
         @include size(29.35rem, 6.9rem);
         @include formatText(400, 1.5rem, 2.2rem);
+        @include ellipsis;
+        // }
       }
     }
     /**************************************Header Center Section**************************************/
@@ -144,7 +159,7 @@
         //texts in shapes
         span {
           color: $background;
-  
+
           &:nth-child(1) {
             @include formatText(500, 2rem, 3.1rem);
             @include size(4.1rem, 3.1rem);
@@ -223,6 +238,8 @@
           position: absolute;
           @include size(40vw);
           align-self: flex-end;
+          top: 180px;
+          right: -20px;
           svg {
             linearGradient {
               stop {
@@ -235,6 +252,14 @@
               }
             }
           }
+        }
+      }
+    }
+
+    @media only screen and (850px< width) {
+      .left {
+        .header_blob {
+          top: 0;
         }
       }
     }
@@ -272,12 +297,13 @@
           gap: 3rem;
         }
         h1 {
-          @include size(53.285rem, 12.7rem);
+          @include size(53.285rem, auto);
           @include formatText(400, 4.15rem, 4.8rem);
         }
         p {
           @include size(49.35rem, 6.9rem);
           @include formatText(400, 1.85rem, 2.8rem);
+          height: auto;
         }
       }
       .right {
@@ -371,10 +397,10 @@
           }
         }
         div {
-          gap: 7rem;
+          gap: 2rem;
         }
         h1 {
-          @include size(43.285rem, 12.7rem);
+          @include size(53.285rem, auto);
           @include formatText(400, 4.5rem, 6rem);
         }
         p {
@@ -509,7 +535,7 @@
         .header_blob {
           display: flex;
           width: 25vw;
-          transform: translate(28rem, -15rem);
+          transform: translate(30rem, -15rem);
         }
       }
 

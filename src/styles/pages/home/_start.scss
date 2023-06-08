@@ -134,12 +134,13 @@
               }
             }
             &:nth-child(2) {
-              @include size(7.325rem, 2.7rem);
+              @include size(auto, 2.7rem);
               @include formatText(500, 1.8rem, 2.7rem);
               text-transform: capitalize;
             }
             &:nth-child(3) {
-              @include size(17.1rem, 5.4rem);
+              @include size(auto 5.4rem);
+              padding-inline: 0.5 ;
               text-align: center;
               @include formatText(500, 1.2rem, 1.8rem);
             }
