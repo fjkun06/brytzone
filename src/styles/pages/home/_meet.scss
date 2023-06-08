@@ -13,6 +13,9 @@
     // border: 1px solid red;
     border: 1px solid red;
     height: 62rem;
+    @media only screen and (width > 1200px) {
+      height: 70rem;
+    }
     /******************************Text******************************/
     p {
       text-align: center;
@@ -28,84 +31,124 @@
         @include formatText(400, 1.8rem, 2.7rem);
       }
     }
-    /******************************Swiper Cards******************************/
-    article {
-      width: 201.5px;
-      height: 271.52px;
-    }
+
     /******************************Swiper Carousel******************************/
-    .mySwiper {
-    }
     .swiper {
-      width: 100%;
-      // width: 60%;
-      height: 100%;
-      border: 1px solid red;
-      // display: flex;
-      // justify-content: center;
-      // align-items: center;
-      // background-color: grey;
-      .swiper-wrapper {
-        width: auto;
-        height: auto;
-        background-color: greenyellow;
-        // display: flex;
-        // justify-content: flex-start;
-        // align-items: center;
-        // width: 42rem;
-        // overflow: hidden;
+      @include size(37rem, 100%);
+
+      @media only screen and (width > 800px) {
+        width: 70rem;
+        .swiper-pagination {
+          display: none;
+        }
+      }
+      @media only screen and (width > 1200px) {
+        @include size(100rem, 50rem);
       }
     }
 
     .swiper-slide {
       text-align: center;
       font-size: 18px;
-      background: #cf1212;
-      width: 100%;
-      height: 100%;
+      background: #fff;
+      // padding-inline: 3rem;
       /* Center slide text vertically */
       display: flex;
       justify-content: center;
       align-items: center;
-      // width: 201.5px !important;
-      // height: 271.52px;
-    }
+      border-radius: 15px;
+      // border: 1px solid red;
 
-    .swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+      /******************************Swiper Cards******************************/
+      article {
+        @include flex(column);
+        gap: 0.5rem;
+        @include size(20.1rem, 27rem);
+        background: linear-gradient(111.5deg, rgba(255, 255, 255, 0.2) -17.53%, rgba(255, 255, 255, 0.052) 82.47%);
+        box-shadow: 14.6089px 11.5334px 35.369px rgba(0, 0, 0, 0.14);
+        -webkit-backdrop-filter: blur(28.1445px);
+        backdrop-filter: blur(21.1445px);
 
-    .autoplay-progress {
-      position: absolute;
-      right: 16px;
-      bottom: 16px;
-      z-index: 10;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      color: var(--swiper-theme-color);
-    }
+        background: linear-gradient(111.5deg, rgba(255, 255, 255, 0.2) -17.53%, rgba(255, 255, 255, 0.052) 82.47%);
+        box-shadow: 19px 15px 46px rgba(0, 0, 0, 0.14);
+        backdrop-filter: blur(27.5px);
+        /* Note: backdrop-filter has minimal browser support */
 
-    .autoplay-progress svg {
-      --progress: 0;
-      position: absolute;
-      left: 0;
-      top: 0px;
-      z-index: 10;
-      width: 100%;
-      height: 100%;
-      stroke-width: 4px;
-      stroke: var(--swiper-theme-color);
-      fill: none;
-      stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
-      stroke-dasharray: 125.6;
-      transform: rotate(-90deg);
+        border-radius: 3rem;
+        span {
+          // border: 1px solid red;
+          @include flex;
+          gap: 1rem;
+          color: $textDark;
+
+          &:nth-child(1) {
+            @include size(200px, 145px);
+
+            img {
+              @include size(200px, 135px);
+            }
+            -webkit-mask-image: url(mask.png);
+            mask-image: url(mask.png);
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-size: 21rem 18rem;
+            -webkit-mask-clip: border-box;
+            mask-size: 21rem 18rem;
+            mask-clip: border-box;
+            -webkit-mask-position-y: -3rem;
+            overflow: hidden;
+            @media only screen and (width > 1200px) {
+              -webkit-mask-size: 26rem 20rem;
+              mask-size: 27rem 23rem;
+              -webkit-mask-position-y: -4rem;
+              -webkit-mask-position-x: -2rem;
+
+              img {
+                @include size(auto);
+              }
+            }
+          }
+          &:nth-child(2) {
+            color: $primary;
+            @include size(100%, 2.5rem);
+            @include formatText(500, 1.6rem, 2.5rem);
+            @media only screen and (width > 1200px) {
+              @include formatText(500, 2.2rem, 3.3rem);
+              height: 3.3rem;
+            }
+          }
+          &:nth-child(3) {
+            @include size(100%, 1.6rem);
+            @include formatText(400, 1.3rem, 2rem);
+            @media only screen and (width > 1200px) {
+              @include formatText(400, 1.7rem, 2.6rem);
+              height: 2.6rem;
+            }
+          }
+          &:nth-child(4) {
+            width: 100%;
+            height: 2rem;
+            @media only screen and (width > 1200px) {
+              gap: 3rem;
+              padding-top: 2rem;
+              svg {
+                transform: scale(1.45);
+              }
+            }
+            svg {
+              cursor: pointer;
+              g path,
+              path {
+                fill: $primary;
+              }
+            }
+          }
+        }
+        border-radius: 11.5334px;
+        @media only screen and (width > 1200px) {
+                  @include size(26.2rem, 35.3rem);
+        }
+      }
     }
   }
 }

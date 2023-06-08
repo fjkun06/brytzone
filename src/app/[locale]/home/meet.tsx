@@ -1,3 +1,4 @@
+"use client";
 import Heading from "@/stories/components/heading";
 import React from "react";
 import { brytzone } from "./header";
@@ -13,8 +14,17 @@ import "swiper/css/navigation";
 
 // import required modules
 import SW, { Autoplay, Pagination, Navigation } from "swiper";
+import useMediaQuery from "@/hooks/useMediaQuery";
+import { nanoid } from "nanoid";
+import FacebookIcon from "@/stories/components/FacebookIcon";
+import TwitterIcon from "@/stories/components/TwitterIcon";
+import LinkedInIcon from "@/stories/components/LinkedInIcon";
+import Image from "next/image";
 
 const Meet = () => {
+  const [swiperRef, setSwiperRef] = React.useState(null);
+  const max800 = useMediaQuery("(width > 800px)");
+  const slidesToShow = max800 ? 3 : 1;
   const progressCircle = React.useRef(null);
   const progressContent = React.useRef(null);
   const onAutoplayTimeLeft = (s: SW, time: number, progress: number) => {
@@ -27,77 +37,47 @@ const Meet = () => {
       prog.textContent = `${Math.ceil(time / 1000)}s`;
     }
   };
+
   return (
     <section className={`${brytzone}_home-meet`}>
       <Heading bordered>Meet people who can help you</Heading>
       <p>Meet professionals who can be of great help to you through their works. Just part of our collections who are able to make you grow your skills</p>
-      {/* <div className="meet_cards">
-        <article>
-          <span>pic</span>
-          <span>name</span>
-          <span>title</span>
-          <span>links</span>
-        </article>
-      </div> */}
-      {/* <Swiper
-        slidesPerView={1}
-        spaceBetween={30}
-        loop={true}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Pagination, Navigation]}
-        className="mySwiper"
-      >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
-      </Swiper> */}
+
       <Swiper
-        spaceBetween={30}
+        // onSwiper={setSwiperRef as any}
+        slidesPerView={slidesToShow}
         centeredSlides={true}
-        // autoplay={{
-        //   delay: 2500,
-        //   disableOnInteraction: false,
-        // }}
+        spaceBetween={0}
+        speed={1200}
         pagination={{
           clickable: true,
         }}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         navigation={true}
-        modules={[ Pagination, Navigation]}
-        // modules={[Autoplay, Pagination, Navigation]}
+        loop={true}
+        modules={[Autoplay, Pagination, Navigation]}
         onAutoplayTimeLeft={onAutoplayTimeLeft}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <article>
-            <span>pic</span>
-            <span>name</span>
-            <span>title</span>
-            <span>links</span>
-          </article>
-        </SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
-        <div className="autoplay-progress" slot="container-end">
-          <svg viewBox="0 0 48 48" ref={progressCircle}>
-            <circle cx="24" cy="24" r="20"></circle>
-          </svg>
-          <span ref={progressContent}></span>
-        </div>
+        {[1, 2, 3, 1, 2, 3, 3].map((el, i) => (
+          <SwiperSlide key={nanoid()}>
+            <article>
+              <span>
+                <Image src={`/home/meet/meet${el}.png`} width={240} height={167} alt="boy" />
+              </span>
+              <span> {el === 1 ? "Peter Rogers" : el === 2 ? "Danielle Banks" : "David Blaque"} </span>
+              <span> {el === 1 ? "Software Engineer" : el === 2 ? "Network Engineer" : "Data Scientist"} </span>
+              <span>
+                <FacebookIcon />
+                <TwitterIcon />
+                <LinkedInIcon />
+              </span>
+            </article>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </section>
   );

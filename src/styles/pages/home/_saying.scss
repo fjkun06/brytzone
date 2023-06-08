@@ -35,17 +35,31 @@
       // border: 1px solid red;
       background: transparent;
       @include size(100vw, 33rem);
-      @media only screen and (width > 800px) {
-        height: 38rem;
-      }
-      @media only screen and (width > 1200px) {
-        width: 100rem;
-        @include size(100rem, 47.5rem);
-      }
       //arrows
       .swiper-button-next::after,
       .swiper-button-prev::after {
         color: $background;
+        opacity: 1;
+        transition: opacity 0.25s ease-in-out;
+      }
+      @media only screen and (width > 800px) {
+        height: 38rem;
+        //display arrows on hover
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+          opacity: 0;
+        }
+
+        &:hover {
+          .swiper-button-next::after,
+          .swiper-button-prev::after {
+            opacity: 1;
+          }
+        }
+      }
+      @media only screen and (width > 1200px) {
+        width: 100rem;
+        @include size(100rem, 47.5rem);
       }
 
       //bulltets
@@ -74,7 +88,7 @@
             }
           }
         }
-        @media only screen and (width > 800px) {
+        @media only screen and (width > 1200px) {
           transform: translate(-88px, -95px);
           &-bullet {
             @include size(1.25rem);

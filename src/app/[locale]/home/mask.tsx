@@ -33,7 +33,7 @@ const Mask = () => {
       <g mask="url(#mask0_698_3081)">
         <rect x="98.1702" y="143.885" width="383.721" height="255.814" fill="url(#pattern0)" />
       </g>
-      <g className="rotate0" fill-opacity={0}>
+      <g className="rotate0" fillOpacity={0}>
       <animate attributeName="fill-opacity" values="0;0;0;1" repeatCount="1" dur="0.2s" begin="0s" fill="freeze" />
         <circle cx="132.684" cy="349.063" r="42.8593" fill="#FBB606">
           <animateMotion
@@ -56,7 +56,7 @@ const Mask = () => {
         </path>
       </g>
 
-      <g className="rotate1" fill-opacity={0}>
+      <g className="rotate1" fillOpacity={0}>
         <animate attributeName="fill-opacity" values="0;0;0;1" repeatCount="1" dur="0.2s" begin="8s" fill="freeze" />
 
         <circle cx="133.704" cy="58.8324" r="42.8593" fill="#FBB606">
@@ -79,7 +79,7 @@ const Mask = () => {
           />
         </path>
       </g>
-      <g className="rotate2" fill-opacity={0}>
+      <g className="rotate2" fillOpacity={0}>
         <animate attributeName="fill-opacity" values="0;0;0;1" repeatCount="1" dur="0.2s" begin="16s" fill="freeze" />
 
         <circle cx="431.025" cy="439.433" r="42.8593" fill="#FBB606">
@@ -105,7 +105,7 @@ const Mask = () => {
       <g className="rotate3">
         {/* <circle cx="451.025" cy="139.433" r="60.8593" fill="#FBB606" /> */}
         {/* <g > */}
-        <rect width="118.12" height="118.12" rx="59.06" fill="url(#pattern00)" fill-opacity={0}>
+        <rect width="118.12" height="118.12" rx="59.06" fill="url(#pattern00)" fillOpacity={0}>
           {/* <rect x="392.025" y="79" width="118.12" height="118.12" rx="59.06" fill="url(#pattern00)"> */}
           <animateMotion
             dur="20s"
