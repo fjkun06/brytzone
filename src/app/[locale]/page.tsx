@@ -32,6 +32,9 @@ export default function Index() {
   const Saying = dynamic(() => import("./home/saying"), {
     loading: () => <p>Loading Saying...</p>,
   });
+  const Faqs = dynamic(() => import("./home/faqs"), {
+    loading: () => <p>Loading Faqs...</p>,
+  });
   return (
     <section className={`${brytzone}_home`}>
       <Header />
@@ -42,6 +45,7 @@ export default function Index() {
       <How />
       <Meet />
       <Saying />
+      <Faqs />
     </section>
   );
 }

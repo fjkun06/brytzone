@@ -8,6 +8,7 @@
 @use "how" as *;
 @use "meet" as *;
 @use "saying" as *;
+@use "faq" as *;
 
 .brytzone_home {
   @include size(100vw, auto);
@@ -30,4 +31,6 @@
   @include meet;
   /**************************************Saying**************************************/
   @include saying;
+  /**************************************FAQs**************************************/
+  @include faq;
 }
