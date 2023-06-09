@@ -80,15 +80,19 @@ const How = () => {
       <div className="hright">
         <h2>{howT("getstarted")}</h2>
 
-
-
-        <motion.ul className="" variants={parentVariants} viewport={{ amount: 1, once: true }} onViewportLeave={() => setVisible(false)} onViewportEnter={() => setVisible(true)}>
+        <motion.ul
+          className=""
+          variants={parentVariants}
+          viewport={{ amount: 1, once: true }}
+          onViewportLeave={() => setVisible(false)}
+          onViewportEnter={() => setVisible(true)}
+        >
           {visible && (
             <>
-              <ListItem delay={0}> Create an account with our sign up form</ListItem>
-              <ListItem delay={0.75}>Get to give your opinions on your courses </ListItem>
-              <ListItem delay={1.5}>Be part of projects that will enable you grow</ListItem>
-              <ListItem delay={2.25}>Create profiles that makes you standout</ListItem>
+              <ListItem delay={0}> {howT("createa")}</ListItem>
+              <ListItem delay={0.75}>{howT("getto")} </ListItem>
+              <ListItem delay={1.5}>{howT("be")}</ListItem>
+              <ListItem delay={2.25}>{howT('createp')}</ListItem>
               <ListItem delay={3}>So much more....</ListItem>
 
               {/* <ListItem /> */}

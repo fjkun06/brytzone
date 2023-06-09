@@ -50,7 +50,7 @@
     "we": "Nous offrons une variété de ressources, qui vous permettront d'évoluer vers une meilleure version de vous-même. Commencez dès aujourd'hui et voyez ce que nous vous proposons .........",
     "learn": "Apprendre encore plus"
   },
-   "home": {
+  "home": {
     "getto": "Apprenez à nous connaître en choisissant un point de départ"
   },
 
@@ -67,7 +67,12 @@
   "how": {
     "howto": "Comment faire partie de notre communauté",
     "getstarted": "Démarrez en quelques étapes",
-    "create": "Créez un compte avec notre formulaire d'inscription"
+    "create": "Créez un compte avec notre formulaire d'inscription",
+    "createa": "Créez un compte avec notre formulaire d'inscription",
+    "getto": "Donnez votre avis sur vos cours",
+    "be": "Participez à des projets qui vous permettront de grandir",
+    "createp": "Créez des profils qui vous démarquent",
+    "so": "Tellement plus...."
   },
   "start": {
     "gett": "Apprenez à nous connaître en choisissant un point de départ",
@@ -87,6 +92,19 @@
         "text": "Vous donnant accès à tous les programmes de stages disponibles dans votre région"
       }
     }
+  },
+  "saying": {
+    "whats": "Ce que les étudiants disent de nous",
+    "what": "Ce que les étudiants disent de nous",
+    "indeed": "En effet, j'ai été béni par",
+    "brytezone": "BRYTZONE",
+    "considering": "compte tenu du fait que je suis capable de faire toutes les choses que je n'ai pas pu faire auparavant. en effet, je suis vraiment reconnaissant pour cette opportunité.",
+    "lilian": "Lilian Bach",
+    "computer": "Étudiant en génie informatique"
+  },
+  "meet": {
+    "meet": "Rencontrez des personnes qui peuvent vous aider",
+    "prof": "Rencontrez des professionnels qui peuvent vous être d'une grande aide à travers leurs travaux. Juste une partie de nos collections qui sont capables de vous faire grandir vos compétences"
   }
 }
   

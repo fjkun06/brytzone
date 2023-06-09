@@ -3,13 +3,13 @@
 @mixin explore {
   &-explore {
     border: 1px solid red;
-    color: $black;
+    color: var(--explore-text-color);
     @include flex(column);
     @include size(100vw, calc(54rem - 0rem));
     gap: 3rem;
     justify-content: flex-start;
     padding: 3.3rem;
-    background-color: $helperBlue1;
+    background-color: var(--explore-bg);
     @media only screen and (width > 800px) {
       @include flex;
       height: calc(52rem - 6.6rem);

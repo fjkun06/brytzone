@@ -62,32 +62,50 @@
     "communication": "Kommunikation",
     "an": "Ein bevorstehender Chat-Bereich, der Ihnen die Kommunikation mit anderen Kursteilnehmern ermöglicht"
   },
-   "home": {
+  "home": {
     "getto": "Lernen Sie uns kennen, indem Sie einen Startpunkt wählen"
   },
 
   "how": {
     "howto": "So werden Sie Teil unserer Gemeinschaft",
     "getstarted": "Beginnen Sie in wenigen Schritten",
-    "create": "Erstellen Sie ein Konto mit unserem Anmeldeformular"
+    "create": "Erstellen Sie ein Konto mit unserem Anmeldeformular",
+    "createa": "Erstellen Sie ein Konto mit unserem Anmeldeformular",
+    "getto": "Geben Sie Ihre Meinung zu Ihren Kursen ab",
+    "be": "Seien Sie Teil von Projekten, die Ihnen Wachstum ermöglichen",
+    "createp": "Erstellen Sie Profile, die Sie hervorheben",
+    "so": "So viel mehr...."
   },
   "start": {
     "gett": "Lernen Sie uns kennen, indem Sie einen Startpunkt wählen",
-     "weoffer": "Wir bieten eine breite Palette an Möglichkeiten wie Praktika, Umfragen, Chats, Projekte, die Sie wachsen lassen, und vieles mehr ...",
-      "cards":{
+    "weoffer": "Wir bieten eine breite Palette an Möglichkeiten wie Praktika, Umfragen, Chats, Projekte, die Sie wachsen lassen, und vieles mehr ...",
+    "cards": {
       "one": {
         "title": "Projekte",
         "text": "Wir helfen Ihnen, Ihre Fähigkeiten zu erweitern, indem wir Sie bei der Erstellung persönlicher Projekte und Teamprojekte unterstützen"
       },
       "two": {
-         "title": "Umfragen",
+        "title": "Umfragen",
         "text": "Erstellen von Umfragen, die Lehrern helfen, ihre Kurse anzupassen"
       },
 
-      "three":{
-         "title": "Praktika",
+      "three": {
+        "title": "Praktika",
         "text": "Wir verschaffen Ihnen Zugang zu allen verfügbaren Praktikumsprogrammen in Ihrer Nähe"
       }
     }
+  },
+  "saying": {
+    "whats": "Was Studierende über uns sagen",
+    "what": "Was Studierende über uns sagen",
+    "indeed": "In der Tat war es gut für mich",
+    "brytezone": "BRYTZONE",
+    "considering": "wenn man bedenkt, dass ich nun all die Dinge tun kann, die ich vorher nicht tun konnte. Tatsächlich bin ich wirklich dankbar für diese Gelegenheit.",
+    "lilian": "Lilian Bach",
+    "computer": "Student der Informatik"
+  },
+  "meet": {
+    "meet": "Treffen Sie Menschen, die Ihnen helfen können",
+    "prof": "Treffen Sie Fachleute, die Ihnen durch ihre Arbeit eine große Hilfe sein können. Nur ein Teil unserer Kollektionen, mit denen Sie Ihre Fähigkeiten erweitern können"
   }
 }

@@ -6,7 +6,7 @@
   @include size(100vw, 67.2rem);
   border: 1px solid red;
   padding: 6.825rem 3.7rem 2.5rem 3.7rem;
-  background-color: $primary;
+  background-color: var(--footer-bg);
 
   /**************************************Footer Item**************************************/
   &_links {

@@ -65,25 +65,43 @@
   "how": {
     "howto": "How to be a part of our community",
     "getstarted": "Get started in in few steps",
-    "create": "Create an account with our sign up form"
+    "create": "Create an account with our sign up form",
+    "createa": "Create an account with our sign up form",
+    "getto": "Get to give your opinions on your courses",
+    "be": " Be part of projects that will enable you grow",
+    "createp": "Create profiles that makes you standout",
+    "so": "So much more...."
   },
   "start": {
     "gett": "Get to know us by choosing a starting point",
     "weoffer": "We offer a wide range of varieties such as internships, polls,chats, projects to to make you grow and so much more...",
-    "cards":{
+    "cards": {
       "one": {
         "title": "Projects",
         "text": "We help grow your skills by letting you create personal and team projects"
       },
       "two": {
-         "title": "Polls",
+        "title": "Polls",
         "text": "Creating polls that helps teachers adjust their courses"
       },
 
-      "three":{
-         "title": "Internships",
+      "three": {
+        "title": "Internships",
         "text": "Giving you access to all available internship programs in your area"
       }
     }
+  },
+  "saying": {
+    "whats": "What students are saying about us",
+    "what": "What students are saying about us",
+    "indeed": "Indeed I've been blessed by",
+    "brytezone": "BRYTZONE",
+    "considering": "considering the fact that I'm being able to do all the things I haven't been able to do before. indeed I'm really grateful for this opportunity.",
+    "lilian": "Lilian Bach",
+    "computer": "Computer Engineering Student"
+  },
+  "meet": {
+    "meet": "Meet people who can help you",
+    "prof": "Meet professionals who can be of great help to you through their works. Just part of our collections who are able to make you grow your skills"
   }
 }

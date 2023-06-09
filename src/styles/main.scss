@@ -2,6 +2,8 @@
 @use "pages";
 @use "layout";
 @use "components";
+@use 'utils/light-palette';
+@use 'utils/dark-palette';
 
 //styling links
 a {

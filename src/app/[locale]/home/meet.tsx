@@ -21,8 +21,10 @@ import TwitterIcon from "@/stories/components/TwitterIcon";
 import LinkedInIcon from "@/stories/components/LinkedInIcon";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const Meet = () => {
+  const meetT = useTranslations("meet")
   const router = useRouter();
   const max800 = useMediaQuery("(width > 800px)");
   const slidesToShow = max800 ? 3 : 1;
@@ -41,8 +43,8 @@ const Meet = () => {
 
   return (
     <section className={`${brytzone}_home-meet`}>
-      <Heading bordered>Meet people who can help you</Heading>
-      <p>Meet professionals who can be of great help to you through their works. Just part of our collections who are able to make you grow your skills</p>
+      <Heading bordered>{meetT('meet')}</Heading>
+      <p>{meetT('prof')}</p>
 
       <Swiper
         // onSwiper={setSwiperRef as any}
