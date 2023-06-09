@@ -19,7 +19,7 @@
     "privacy": "Privatsphäre"
   },
   "routes": {
-    "one": "Heim",
+    "one": "Home",
     "two": "Praktika",
     "three": "Projekte",
     "four": "Umfragen",

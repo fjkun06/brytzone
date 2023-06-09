@@ -88,7 +88,8 @@ const ListItem = () => {
         ease: "easeInOut",
         duration: 0.25,
       }}
-      animate={{ height: isOpen ? 80 : 30 }}
+      animate={{ height: isOpen ? 140 : 51 }}
+      // animate={{ height: isOpen ? 100 : 30 }}
       onMouseLeave={() => setIsOpen(false)}
     >
       <div className="list">

@@ -17,6 +17,24 @@
     //   height: 70rem;
     // }
 
+    //paragraph
+    p {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 22px;
+      text-align: center;
+
+      color: #000000;
+      @media only screen and (width > 700px) {
+        font-size: 1.8rem;
+      }
+      @media only screen and (width > 1200px) {
+        font-size: 2.2rem;
+      }
+    }
+
     //list section
     section {
       @include flex(column);
@@ -26,7 +44,7 @@
         @include flex(column);
         // flex-wrap: wrap;
         height: auto;
-        gap: 1rem;
+        gap: 0rem;
         // border: 1px solid red;
         // width: max-content;
         transition: box-shadow 0.25s ease-in-out;
@@ -54,29 +72,77 @@
 
           &_text {
             width: auto;
-            font-family: "Poppins";
-            font-style: normal;
-            font-weight: 400;
-            font-size: 10.75385px;
-            line-height: 13px;
             @include ellipsis(1);
+            @include formatText(400, 1.1rem, 1.3rem);
+            font-size: 18px;
+            line-height: 27px;
+            font-size: 15px;
+            line-height: 23px;
           }
           &_icon {
             svg {
               cursor: pointer;
               fill: $primary;
               @include size(1.53rem);
-              // @include size(3.1rem);
+              @include size(3.1rem);
+            }
+          }
+          @media only screen and (width > 700px) {
+            height: 56.1474609375px;
+            width: 724.28564453125px;
+            width: 624.28564453125px;
+
+            border-radius: 30px;
+            &_icon {
+              svg {
+                @include size(2.7rem);
+              }
+            }
+            &_text {
+              font-size: 1.5rem;
+              line-height: 2.3rem;
+            }
+          }
+
+          @media only screen and (width > 1200px) {
+            width: 72.4rem;
+            border-radius: 4rem;
+          padding-inline: 4rem;
+
+            &_icon {
+              svg {
+                @include size(3.1rem);
+              }
+            }
+            &_text {
+              font-size: 1.8rem;
+              line-height: 2.7rem;
             }
           }
         }
         //text when opened
         .text {
+          align-self: flex-start;
           padding-inline: 2rem;
-          @include ellipsis(3);
+          @include ellipsis(2);
           @include flex;
           line-height: 1.85rem;
-          font-weight: 500;
+          font-weight: 300;
+          max-width: 43.6rem;
+          @include formatText(300, 1.1rem, 1.85rem);
+
+          @media only screen and (width > 700px) {
+            max-width: 600.28564453125px;
+            line-height: 2rem;
+            font-size: 15px;
+            line-height: 23px
+          }
+          @media only screen and (width > 1200px) {
+            max-width: 700.28564453125px;
+            line-height: 2.4rem;
+            font-size: 1.6rem;
+              line-height: 2.7rem;
+          }
         }
       }
     }

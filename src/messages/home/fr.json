@@ -19,10 +19,10 @@
   },
   "routes": {
     "one": "Maison",
-    "two": "Des stages",
+    "two": "Stages",
     "three": "Projets",
-    "four": "Les sondages",
-    "five": "À propos",
+    "four": "Sondages",
+    "five": "About",
     "six": "Contact",
     "seven": "Blog"
   },
