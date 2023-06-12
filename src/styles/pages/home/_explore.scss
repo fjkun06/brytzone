@@ -2,7 +2,7 @@
 @use "../../utils/variables" as *;
 @mixin explore {
   &-explore {
-    border: 1px solid red;
+    // border: 1px solid red;
     color: $black;
     @include flex(column);
     @include size(100vw, calc(54rem - 0rem));

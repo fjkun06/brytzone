@@ -23,7 +23,7 @@
   &-header {
     color: $black;
     @include flex(column);
-    border: 1px solid red;
+    // border: 1px solid red;
     @include size(100vw, auto);
     padding-block: 5.4rem;
     padding-inline: 3.3rem;

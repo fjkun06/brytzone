@@ -2,7 +2,7 @@
 @use "../../utils/variables" as *;
 @mixin start {
   &-start {
-    border: 1px solid red;
+    // border: 1px solid red;
     color: $black;
     @include flex(column);
     @include size(100vw, auto);
@@ -28,7 +28,7 @@
       min-width: 30rem;
       overflow: hidden;
       gap: 4rem;
-      border: 1px solid red;
+      // border: 1px solid red;
       @media only screen and (width > 900px) {
         @include flex;
         gap: 6rem;

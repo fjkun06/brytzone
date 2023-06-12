@@ -6,7 +6,7 @@
 @use "loader";
 @use "footer";
 #layout {
-  background-color: red;
+  // background-color: red;
   min-height: 100vh;
   width: 100vw;
   @include flex(column);
@@ -37,4 +37,6 @@
 
 #brytzone_children_layout {
   @include flex(column);
+  min-height: 100vh;
+  color: $black;
 }

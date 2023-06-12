@@ -27,6 +27,6 @@
       "@stories/*": ["./src/stories/*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/[locale]/faqs/page.js"],
   "exclude": ["node_modules"]
 }

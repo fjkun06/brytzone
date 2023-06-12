@@ -15,9 +15,13 @@ const Dashbaord = () => {
   console.log(path1.slice(3 - path1.length));
   // console.log(path.slice(3 - path.length) + "dashboard");
 
+  const initValues ={
+    
+  }
+
   return (
     <div>
-      <h1>{t("title")}</h1>
+      <h1>Contact</h1>
     </div>
   );
 };
