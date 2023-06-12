@@ -75,7 +75,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
   };
 
   const path = useSelectedLayoutSegment();
-  console.log(path);
+  // console.log(path);
   const router = useRouter();
 
   return (
