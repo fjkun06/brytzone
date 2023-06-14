@@ -4,6 +4,7 @@ import { hi } from "./controllers/hi";
 import { birdsRouter } from "./routers/birdRouter";
 import { userRouter } from "./routers/users/userRouter";
 import { Schema, model, connect } from "mongoose";
+import { authRouter } from "./routers/auth/authRouter";
 
 // import * as hi from './controllers/hi';
 
@@ -33,6 +34,9 @@ connectDB();
     // Add this line to parse JSON request bodies
     server.use(express.json());
     server.get("/hi", hi);
+    //authentication
+    server.use("/api/auth", authRouter);
+    
     server.use("/birds", birdsRouter);
     //users routes
     server.use("/user", userRouter);

@@ -1,20 +1,29 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document } from "mongoose";
 
 export interface IUser extends Document {
   name: string;
   email: string;
-  _id:string
+  _id: string;
   createdAt?: Date;
   updatedAt?: Date;
 }
 
-const userSchema: Schema = new Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true },
-  _id: { type: String, required: true}
-}, { timestamps: true });
+export interface User extends Document {
+  username: string;
+  password: string;
+  role: string;
+  _id: string;
+}
+const userSchema: Schema = new Schema(
+  {
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+    _id: { type: String, required: true },
+  },
+  { timestamps: true }
+);
 
-const UserSchema = new Schema({
+const UserSchema: Schema = new Schema({
   username: {
     type: String,
     unique: true,
@@ -30,8 +39,11 @@ const UserSchema = new Schema({
     default: "Basic",
     required: true,
   },
-})
+  _id: { type: String, required: true },
+});
 
-const User = mongoose.model<IUser>('User', userSchema);
+export const JWTUser = mongoose.model("jwtuser", UserSchema);
+
+const User = mongoose.model<IUser>("User", userSchema);
 
 export default User;
