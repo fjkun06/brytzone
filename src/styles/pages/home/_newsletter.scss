@@ -5,7 +5,7 @@
     border: 1px solid transparent;
     color: $black;
     @include flex(column);
-    border: 1px solid red;
+    // border: 1px solid red;
 
     @include size(100vw, auto);
     gap: 2rem;
@@ -13,7 +13,7 @@
     padding: 3rem 3.3rem;
     // section sub container
     .newsletter_content {
-      border: 1px solid red;
+      // border: 1px solid red;
       @include flex(column);
       gap: 2rem;
       @include size(100vw, auto);
@@ -24,7 +24,7 @@
         @include size(35rem, auto);
         gap: 1.25rem;
 
-        border: 1px solid red;
+        // border: 1px solid red;
         h2 {
           color: $primary;
           font-size: 1.8rem;
@@ -44,44 +44,44 @@
         //form item
         @include flex;
         form {
-          width: 146.219px;
-          height: 145.642px;
+          width: 14.6rem;
+          height: 14.5rem;
           @include flex(column);
           gap: 1rem;
           // border: 1px solid red;
-          border-radius: 8.848px;
+          border-radius: 0.8848rem;
           background: rgba(50, 119, 175, 0.65);
           padding: 1.5rem;
           transform: translate(4rem, 4rem);
           z-index: 2;
           h3 {
             color: #fff;
-            font-size: 12.977px;
+            font-size: 1.2977rem;
             font-family: "Poppins", sans-serif;
             font-weight: 400;
           }
           span {
             color: #000;
-            font-size: 8.848px;
+            font-size: 0.8848rem;
             font-family: "Poppins", sans-serif;
           }
 
           input {
-            width: 116.661px;
-            height: 23.594px;
-            border-radius: 2.949px;
+            width: 11.6661rem;
+            height: 2.3594rem;
+            border-radius: 0.2949rem;
             background: #effdf2;
             outline: none;
             border-color: transparent;
             color: #292d32;
-            font-size: 8.848px;
+            font-size: 0.8848rem;
             font-family: "Readex Pro Variable", sans-serif;
             padding-left: 0.5rem;
           }
           button {
-            width: 95.164px;
-            height: 23.594px;
-            font-size: 10.617px;
+            width: 9.5164rem;
+            height: 2.3594rem;
+            font-size: 1.0617rem;
             font-family: "Readex Pro Variable", sans-serif;
             font-weight: 500;
           }
@@ -89,8 +89,8 @@
 
         //side picture
         .mask {
-          width: 179.422px;
-          height: 182.856px;
+          width: 17.9422rem;
+          height: 18.2856rem;
           background-color: $primary;
           // transform: rotate(6.218deg);
           -webkit-mask-image: url(newslettermask.png);
@@ -128,30 +128,31 @@
           transform: translateY(3rem);
         }
       }
-      @media only screen and (width > 800px) {
-        height: 22rem;
-        height: 35rem;
+      @media only screen and (width > 900px) {
+        transform: translateX(5rem);
+        height: 18rem;
         @include flex;
         // align-items: flex-start;
         &_text {
           justify-self: center;
           // transform: translateY(-2rem);
-          width: 555.908px;
-
+          width: 391.908px;
           h2 {
-            font-size: 40px;
-            font-weight: 500;
-            width: 555.908px;
+            font-size: 26px;
+            font-weight: 600;
+            width: 318.908px;
+            align-self: flex-start;
           }
           p {
-            font-size: 20px;
-            width: 454.135px;
+            width: 401.135px;
             text-align: left;
             align-self: flex-start;
           }
         }
 
         &_form {
+          // display: none;
+          transform: scale(0.85);
           form {
             gap: 1.5rem;
             width: 247.889px;
@@ -180,27 +181,28 @@
 
         //side picture
         .mask {
-          width: 30.4rem;
-          height: 31rem;
-          -webkit-mask-size: 30.4rem 31rem;
-          mask-size: 30.4rem 31rem;
-
+          width: 24.4rem;
+          height: 25rem;
+          -webkit-mask-size: 24.4rem 25rem;
+          mask-size: 24.4rem 25rem;
           img {
-            width: 28rem;
-            height: 27.4rem;
+            // display: none;
+            width: 22rem;
+            height: 21.4rem;
             transform: translate(1.5rem, 1.5rem);
-            -webkit-mask-size: 28rem 27.4rem;
-            mask-size: 28rem 27.4rem;
+            -webkit-mask-size: 22rem 21.4rem;
+            mask-size: 22rem 21.4rem;
           }
         }
       }
-      @media only screen and (width > 1200px) {
+      @media only screen and (width > 1300px) {
         height: 22rem;
         height: 35rem;
         @include flex;
         // align-items: flex-start;
         &_text {
           justify-self: center;
+          align-items: center;
           // transform: translateY(-2rem);
           width: 555.908px;
 
@@ -218,6 +220,7 @@
         }
 
         &_form {
+          transform: none;
           form {
             gap: 1.5rem;
             width: 247.889px;
@@ -262,8 +265,11 @@
       }
     }
 
-    @media only screen and (width > 1200px) {
-      // height: 70rem;
+    // height: 70rem;
+    @media only screen and (width > 900px) {
+      height: 45rem;
+    }
+    @media only screen and (width > 1300px) {
       height: 60rem;
     }
   }
