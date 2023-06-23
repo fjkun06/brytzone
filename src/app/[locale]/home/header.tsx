@@ -18,9 +18,9 @@ const Header = () => {
       <div className="left">
         <div className="">
           <h1>
-            <span className="header_bold">{headerT("join")}</span>{" "}
-            {headerT("today")}{" "}
-            <span className="header_bold">{headerT("solid")}</span>{" "}
+            <span className="header_bold">{headerT("join")}</span>
+            {headerT("today")}
+            <span className="header_bold">{headerT("solid")}</span>
             {headerT("future")} <span className="header_bold">Brytzone</span>
             <span className="header_bold dots">...</span>
           </h1>
