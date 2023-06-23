@@ -15,6 +15,7 @@ import IconForward from "@/stories/components/IconForward";
 import LanguageComponent from "@/stories/components/LanguageComponent";
 import { useRouter, useSelectedLayoutSegment } from "next/navigation";
 import { useTranslations } from "next-intl";
+import LoginButton from "@/stories/components/LoginButton";
 
 interface NavbarProps {
   /**
@@ -175,9 +176,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
                   </motion.span>
                 )}
               </AnimatePresence>
-              <Button category="action" icon={<UserAddIcon />}>
-                Log In
-              </Button>
+             <LoginButton/>
               {/* <Button category="content" icon={<IconForward/>} >Get Started</Button> */}
               <Button>Donate</Button>
               <LanguageComponent hovered={hover} route={path} />
