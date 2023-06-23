@@ -36,6 +36,9 @@ export default function Index() {
   const Faqs = dynamic(() => import("./home/faqs"), {
     loading: () => <p>Loading Faqs...</p>,
   });
+  const NewsLetter = dynamic(() => import("./home/Newsletter"), {
+    loading: () => <p>Loading Newsletter...</p>,
+  });
 
   return (
     <section className={`${brytzone}_home`}>
@@ -48,7 +51,7 @@ export default function Index() {
       <Meet />
       <Saying />
       <Faqs />
-      {/* <Dash/> */}
+      <NewsLetter/>
     </section>
   );
 }

@@ -1,26 +1,31 @@
 import React from "react";
-import axios from "axios";
-const { google } = require('googleapis');
+import { brytzone } from "./header";
+import Heading from "@/stories/components/heading";
+import { Button } from "@/stories/components/Button";
+import Image from "next/image";
 const NewsLetter = () => {
-  const handleSendNewsletter = async () => {
-    try {
-      await axios.get("/api/newsletter");
-      alert("Newsletter sent successfully.");
-    } catch (error) {
-      console.error(error);
-      alert("Failed to send newsletter.");
-    }
-  };
-
-  React.useEffect(() => {
-   
-  }, [])
-  
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <button type="button" onClick={handleSendNewsletter}>Send Newsletter</button>
-    </div>
+    <section className={`${brytzone}_home-newsletter`}>
+      <Heading bordered>{"Subscribe to our newsletter"}</Heading>
+      <div className="newsletter_content">
+        <div className="newsletter_content_text">
+          <h2>Never miss our updates</h2>
+          <p>Always get updates on our new achievements and get new features for improvements...</p>
+        </div>
+        <div className="newsletter_content_form">
+          <form action="">
+            <h3>Get new updates</h3>
+            <span>Be the first to be notified on our updates</span>
+            <input type="text" placeholder="Email" />
+            <Button category="contact">Subscribe</Button>
+          </form>
+          <span className='mask'>
+            <Image src="/home/newsletter/newsletter.png" width={172} height={162} alt="dark-girl" quality={100}/>
+
+          </span>
+        </div>
+      </div>
+    </section>
   );
 };
 
