@@ -75,13 +75,14 @@
             border-color: transparent;
             color: #292d32;
             font-size: 8.848px;
-            font-family: "Readex Pro";
+            font-family: "Readex Pro Variable", sans-serif;
+            padding-left: 0.5rem;
           }
           button {
             width: 95.164px;
             height: 23.594px;
             font-size: 10.617px;
-            font-family: Readex Pro;
+            font-family: "Readex Pro Variable", sans-serif;
             font-weight: 500;
           }
         }
@@ -105,7 +106,6 @@
           img {
             width: 171.422px;
             height: 162.856px;
-            background-color: red;
             transform: translate(0.5rem, 1rem);
             -webkit-mask-image: url(newslettermask.png);
             mask-image: url(newslettermask.png);
@@ -119,10 +119,152 @@
           }
         }
       }
+      @media only screen and (width > 750px) {
+        height: 22rem;
+        @include flex;
+        align-items: flex-start;
+        &_text {
+          justify-self: center;
+          transform: translateY(3rem);
+        }
+      }
+      @media only screen and (width > 800px) {
+        height: 22rem;
+        height: 35rem;
+        @include flex;
+        // align-items: flex-start;
+        &_text {
+          justify-self: center;
+          // transform: translateY(-2rem);
+          width: 555.908px;
+
+          h2 {
+            font-size: 40px;
+            font-weight: 500;
+            width: 555.908px;
+          }
+          p {
+            font-size: 20px;
+            width: 454.135px;
+            text-align: left;
+            align-self: flex-start;
+          }
+        }
+
+        &_form {
+          form {
+            gap: 1.5rem;
+            width: 247.889px;
+            height: 246.911px;
+            transform: translate(7rem, 7rem);
+            h3 {
+              font-size: 22px;
+            }
+            span {
+              font-size: 15px;
+              width: 220.428px;
+              text-align: center;
+            }
+            input {
+              width: 197.778px;
+              height: 40px;
+              font-size: 15px;
+            }
+            button {
+              width: 161.333px;
+              height: 40px;
+              font-size: 18px;
+            }
+          }
+        }
+
+        //side picture
+        .mask {
+          width: 30.4rem;
+          height: 31rem;
+          -webkit-mask-size: 30.4rem 31rem;
+          mask-size: 30.4rem 31rem;
+
+          img {
+            width: 28rem;
+            height: 27.4rem;
+            transform: translate(1.5rem, 1.5rem);
+            -webkit-mask-size: 28rem 27.4rem;
+            mask-size: 28rem 27.4rem;
+          }
+        }
+      }
+      @media only screen and (width > 1200px) {
+        height: 22rem;
+        height: 35rem;
+        @include flex;
+        // align-items: flex-start;
+        &_text {
+          justify-self: center;
+          // transform: translateY(-2rem);
+          width: 555.908px;
+
+          h2 {
+            font-size: 40px;
+            font-weight: 500;
+            width: 555.908px;
+          }
+          p {
+            font-size: 20px;
+            width: 454.135px;
+            text-align: left;
+            align-self: flex-start;
+          }
+        }
+
+        &_form {
+          form {
+            gap: 1.5rem;
+            width: 247.889px;
+            height: 246.911px;
+            transform: translate(7rem, 7rem);
+            h3 {
+              font-size: 22px;
+            }
+            span {
+              font-size: 15px;
+              width: 220.428px;
+              text-align: center;
+            }
+            input {
+              width: 197.778px;
+              height: 40px;
+              font-size: 15px;
+            }
+            button {
+              width: 161.333px;
+              height: 40px;
+              font-size: 18px;
+            }
+          }
+        }
+
+        //side picture
+        .mask {
+          width: 30.4rem;
+          height: 31rem;
+          -webkit-mask-size: 30.4rem 31rem;
+          mask-size: 30.4rem 31rem;
+
+          img {
+            width: 28rem;
+            height: 27.4rem;
+            transform: translate(1.5rem, 1.5rem);
+            -webkit-mask-size: 28rem 27.4rem;
+            mask-size: 28rem 27.4rem;
+          }
+        }
+      }
     }
 
     @media only screen and (width > 1200px) {
       // height: 70rem;
+      height: 60rem;
     }
   }
 }

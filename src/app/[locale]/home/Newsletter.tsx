@@ -16,11 +16,11 @@ const NewsLetter = () => {
           <form action="">
             <h3>Get new updates</h3>
             <span>Be the first to be notified on our updates</span>
-            <input type="text" placeholder="Email" />
+            <input type="text" placeholder="Email address" />
             <Button category="contact">Subscribe</Button>
           </form>
           <span className='mask'>
-            <Image src="/home/newsletter/newsletter.png" width={172} height={162} alt="dark-girl" quality={100}/>
+            <Image src="/home/newsletter/newsletter.png" width={291} height={274} alt="dark-girl" quality={100}/>
 
           </span>
         </div>
