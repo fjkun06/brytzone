@@ -1,0 +1,161 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/variables" as *;
+@mixin start {
+  &-start {
+    // border: 1px solid red;
+    color: $black;
+    @include flex(column);
+    @include size(100vw, auto);
+    gap: 3rem;
+    justify-content: flex-start;
+    padding: 3.3rem;
+
+    p {
+      @include formatText(400, 1.5rem, 2.2rem);
+      text-align: center;
+      width: 344.38px;
+      @media only screen and (width > 900px) {
+        width: 47.5rem;
+      @include formatText(400, 1.8rem, 2.7rem);
+      width: 74rem;
+
+      }
+    }
+    //cards
+    div.card_parent {
+      @include flex(column);
+      @include size(auto,calc(30rem * 3));
+      min-width: 30rem;
+      overflow: hidden;
+      gap: 4rem;
+      // border: 1px solid red;
+      @media only screen and (width > 900px) {
+        @include flex;
+        gap: 6rem;
+        @include size(100%,30rem);
+      }
+
+      // card-item
+      div.card_item {
+        @include size(26.1rem);
+        @include customgrid(1, 1, 1fr);
+        border: 1px solid $primary;
+        border-radius: 1rem;
+        cursor: pointer;
+        overflow: hidden;
+        &:hover {
+          article {
+            span {
+              color: $background;
+              &:nth-child(1) {
+                svg {
+                  path,
+                  rect,
+                  polyline,
+                  ellipse,
+                  circle,
+                  line {
+                    stroke: $background;
+                  }
+                }
+              }
+              &:nth-child(4) {
+                svg {
+                  path {
+                    fill: $background;
+                  }
+                }
+              }
+            }
+          }
+          /**************************************Animating SVG Background**************************************/
+          svg {
+            defs {
+              linearGradient {
+                stop {
+                  &:nth-child(1) {
+                    stop-color: #0a518b;
+                  }
+                  &:nth-child(2) {
+                    stop-color: #3277af;
+                  }
+                }
+              }
+            }
+          }
+        }
+        svg {
+          @include size(inherit);
+          @include position("1/2");
+          /**************************************Animating SVG Background**************************************/
+          defs {
+            linearGradient {
+              stop {
+                transition: stop-color 0.5s ease-in-out;
+                &:nth-child(1) {
+                  stop-color: $background;
+                }
+                &:nth-child(2) {
+                  stop-color: $background;
+                }
+              }
+            }
+          }
+          rect.paint {
+            @include size(100%);
+            border-radius: 1rem;
+          }
+        }
+        article {
+          @include size(inherit);
+          @include position("1/2");
+          @include flex(column);
+          background-color: transparent;
+          gap: 1.5rem;
+          // display: none;
+          span {
+            @include flex(column);
+            color: $primary;
+            transition: color 0.25s ease-in-out;
+            &:nth-child(1) {
+              @include size(7.325rem);
+
+              svg {
+                path,
+                rect,
+                polyline,
+                ellipse,
+                circle,
+                line {
+                  stroke: $primary;
+                  stroke-width: 2px;
+                  transition: stroke 0.25s ease-in-out;
+                }
+              }
+            }
+            &:nth-child(2) {
+              @include size(auto, 2.7rem);
+              @include formatText(500, 1.8rem, 2.7rem);
+              text-transform: capitalize;
+            }
+            &:nth-child(3) {
+              @include size(auto, 5.4rem);
+              padding-inline: 1.5rem ;
+              text-align: center;
+              @include formatText(500, 1.2rem, 1.8rem);
+            }
+            &:nth-child(4) {
+              @include size(2.75rem, 2.208rem);
+              svg {
+                path {
+                  fill: $primary;
+                  transition: fill 0.25s ease-in-out;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
