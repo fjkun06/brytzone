@@ -4,7 +4,7 @@ import Heading from "@/stories/components/heading";
 import { Button } from "@/stories/components/Button";
 import Image from "next/image";
 import { toast, ToastContainer } from "react-toastify";
-import { registerToNewsletter } from "@/utils/mailing/registerToNewsletter";
+import { fetchData, registerToNewsletter } from "@/utils/mailing/registerToNewsletter";
 const NewsLetter = () => {
   const resolveAfter3Sec = new Promise((resolve) => setTimeout(resolve, 30000));
   const [loading, setLoading] = React.useState(false);
@@ -13,19 +13,41 @@ const NewsLetter = () => {
   const notify = async () => {
     // toast(<Retry/>);
     setLoading(true);
-    const res = registerToNewsletter("lolita2020")
-      .then((data) => {
-        console.log(data);
-        setLoading(false);
-        setRegistred(true);
-      })
-      .catch((err) => console.log(err));
+    // const res = registerToNewsletter("lolita2020")
+    //   .then((data) => {
+    //     console.log(data);
+    //     setLoading(false);
+    //     setRegistred(true);
+    //   })
+    //   .catch((err) => console.log(err));
 
-    toast.promise(res, {
-      pending: "Promise is pending",
-      success: "Promise resolved 👌",
-      error: "Promise rejected 🤯",
-    });
+    try {
+      const data = await toast
+        .promise(registerToNewsletter("lolita2seddas0@gmail.com"), {
+          pending: "Registration is pending",
+          success: "Successfully registered to newsletter! Check your mail box.",
+          // error:(error) => `Error: ${error.message}`,
+        })
+        .then((data) => {
+          setLoading(true);
+          setRegistred(true);
+          console.log(data);
+        });
+    } catch (error: any) {
+      if (error.response.data.message) {
+        toast.error(`${error.response.data.message}`, {
+          // position: toast.POSITION.BOTTOM_RIGHT,
+        });
+      } else {
+        toast.error(`${error.message}`, {
+          // position: toast.POSITION.BOTTOM_RIGHT,
+        });
+      }
+      setLoading(false);
+      setRegistred(false);
+      console.error("Error:", error);
+    }
+
     //  console.log(res);
 
     // console.log("clickeddddddddddd");
