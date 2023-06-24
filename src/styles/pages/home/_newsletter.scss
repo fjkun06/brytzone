@@ -47,6 +47,9 @@
           width: 14.6rem;
           height: 14.5rem;
           @include flex(column);
+          @media only screen and (500px < width < 900px) {
+            transform: scale(1.25) translate(2rem, 4rem);
+          }
           gap: 1rem;
           // border: 1px solid red;
           border-radius: 0.8848rem;
@@ -264,7 +267,9 @@
         }
       }
     }
-
+    @media only screen and (500px < width < 750px) {
+      margin-bottom: 5rem;
+    }
     // height: 70rem;
     @media only screen and (width > 900px) {
       height: 45rem;

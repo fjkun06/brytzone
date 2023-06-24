@@ -4,68 +4,61 @@ import Heading from "@/stories/components/heading";
 import { Button } from "@/stories/components/Button";
 import Image from "next/image";
 import { toast, ToastContainer } from "react-toastify";
-import { fetchData, registerToNewsletter } from "@/utils/mailing/registerToNewsletter";
+import { registerToNewsletter } from "@/utils/mailing/registerToNewsletter";
+import Link from "next/link";
+import { NavLink } from "@/stories/layout/navbar/NavLink";
 const NewsLetter = () => {
-  const resolveAfter3Sec = new Promise((resolve) => setTimeout(resolve, 30000));
   const [loading, setLoading] = React.useState(false);
   const [registred, setRegistred] = React.useState(false);
-
-  const notify = async () => {
-    // toast(<Retry/>);
+  const [email, setEmail] = React.useState("");
+  const handleEmail: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    setEmail(e.target.value);
+    console.log(e.target.value);
+  };
+  const register = async () => {
     setLoading(true);
-    // const res = registerToNewsletter("lolita2020")
-    //   .then((data) => {
-    //     console.log(data);
-    //     setLoading(false);
-    //     setRegistred(true);
-    //   })
-    //   .catch((err) => console.log(err));
 
     try {
       const data = await toast
-        .promise(registerToNewsletter("lolita2seddas0@gmail.com"), {
-          pending: "Registration is pending",
-          success: "Successfully registered to newsletter! Check your mail box.",
-          // error:(error) => `Error: ${error.message}`,
-        })
+        .promise(
+          registerToNewsletter(email),
+          {
+            pending: "Registration is pending",
+            success: "Successfully registered to newsletter! Check your mail box.",
+          },
+          {
+            autoClose: 3000,
+            toastId: "success",
+          }
+        )
         .then((data) => {
           setLoading(true);
           setRegistred(true);
-          console.log(data);
+          setEmail("");
         });
+
+      //display this toast after the user registers
+      toast.onChange(({ id, status }) => {
+        if (id === "success" && status === "removed") {
+          console.log("Hello babe");
+          toast(<NewsletterNext />, {
+            toastId: "redirect",
+          });
+        }
+      });
     } catch (error: any) {
-      if (error.response.data.message) {
+      if (error?.response?.data?.message) {
         toast.error(`${error.response.data.message}`, {
           // position: toast.POSITION.BOTTOM_RIGHT,
+          autoClose: 3000,
         });
       } else {
-        toast.error(`${error.message}`, {
-          // position: toast.POSITION.BOTTOM_RIGHT,
-        });
+        toast.error(`${error.message}`, {});
       }
       setLoading(false);
       setRegistred(false);
       console.error("Error:", error);
     }
-
-    //  console.log(res);
-
-    // console.log("clickeddddddddddd");
-    // toast.success("Success Notification !", {
-    //   position: toast.POSITION.TOP_CENTER,
-    // });
-
-    // toast.error("Error Notification !", {
-    //   position: toast.POSITION.TOP_LEFT,
-    // });
-
-    // toast.warn("Warning Notification !", {
-    //   position: toast.POSITION.BOTTOM_LEFT,
-    // });
-
-    // toast.info("Info Notification !", {
-    //   position: toast.POSITION.BOTTOM_CENTER,
-    // });
   };
   return (
     <section className={`${brytzone}_home-newsletter`}>
@@ -79,8 +72,8 @@ const NewsLetter = () => {
           <form action="">
             <h3>Get new updates</h3>
             <span>Be the first to be notified on our updates</span>
-            <input type="email" placeholder="Email address" />
-            <Button category="contact" onClick={() => notify()} disabled={loading ? true : false}>
+            <input type="email" name="email" value={email} onChange={handleEmail} required placeholder="Email address" />
+            <Button category="contact" onClick={() => register()} disabled={loading ? true : false}>
               {registred ? "Registered" : "Subscribe"}
             </Button>
           </form>
@@ -95,9 +88,24 @@ const NewsLetter = () => {
 };
 const Retry = ({ closeToast, toastProps }: { closeToast?: any; toastProps?: any }) => (
   <div>
-    Lorem ipsum dolor {toastProps.position}
     <button>Retry</button>
-    {/* <button onClick={closeToast}>Close</button> */}
   </div>
 );
+
+export const NewsletterNext = () => {
+  return (
+    <div>
+      <span>What is next?!</span>
+      <Link className={"nav_link nav_link-toast"} href="/signup">
+        Sign up
+      </Link>
+      or
+      <Link className={"nav_link nav_link-toast"} href="/login">
+        Login
+      </Link>
+      .
+    </div>
+  );
+};
+
 export default NewsLetter;
