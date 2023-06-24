@@ -37,8 +37,12 @@
   }
   &--contact {
     border-radius: 20px;
-    background: #fbb606;
+    background: $tertiary;
     color: $black;
+
+    &:disabled{
+      background-color: grey;
+    }
   }
   &--content {
     padding-inline: 2.5rem;
