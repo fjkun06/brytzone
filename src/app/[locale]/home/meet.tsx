@@ -45,7 +45,6 @@ const Meet = () => {
       <p>Meet professionals who can be of great help to you through their works. Just part of our collections who are able to make you grow your skills</p>
 
       <Swiper
-        // onSwiper={setSwiperRef as any}
         slidesPerView={slidesToShow}
         centeredSlides={true}
         spaceBetween={0}
@@ -53,10 +52,6 @@ const Meet = () => {
         pagination={{
           clickable: true,
         }}
-        // autoplay={{
-        //   delay: 2500,
-        //   disableOnInteraction: false,
-        // }}
         navigation={true}
         loop={true}
         modules={[Autoplay, Pagination, Navigation]}

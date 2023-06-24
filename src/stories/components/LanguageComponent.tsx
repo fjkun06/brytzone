@@ -29,9 +29,9 @@ const LanguageComponent = ({hovered,route}:{hovered:boolean,route:string|null}) 
   ];
   const t = useTranslations("navbar");
   const path = usePathname();
-  console.log(path);
-  console.log("laaaaaaaaaaaaaaaaaaaaaaaang",path.slice(3 - path.length));
-  console.log("ssssssssssssssssssssssssss",path.slice(0,3));
+  // console.log(path);
+  // console.log("laaaaaaaaaaaaaaaaaaaaaaaang",path.slice(3 - path.length));
+  // console.log("ssssssssssssssssssssssssss",path.slice(0,3));
   // console.log(path1.slice(3 - path1.length));
 
   

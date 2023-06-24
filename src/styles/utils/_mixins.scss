@@ -1,5 +1,14 @@
 @use "./variables";
 
+//reate ellipsis after set number of lines
+@mixin ellipsis($lineNumber:3){
+  width: 100% ;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $lineNumber;
+  -webkit-box-orient: vertical;
+}
+
 //sets display to grid
 @mixin grid {
   display: grid;

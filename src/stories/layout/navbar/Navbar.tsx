@@ -14,6 +14,8 @@ import UserAddIcon from "./UserAddIcon";
 import IconForward from "@/stories/components/IconForward";
 import LanguageComponent from "@/stories/components/LanguageComponent";
 import { useRouter, useSelectedLayoutSegment } from "next/navigation";
+import { useTranslations } from "next-intl";
+import LoginButton from "@/stories/components/LoginButton";
 
 interface NavbarProps {
   /**
@@ -32,9 +34,10 @@ interface NavbarProps {
   handleClick: () => void;
   storeCookie: (x: string) => void;
 }
-const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCookie, cookieVal,hover }) => {
+const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCookie, cookieVal, hover }) => {
+  const navbarT = useTranslations("routes");
   const globalTransition = { stiffness: 100, duration: 0.5, ease: "easeInOut" };
-  const routes: string[] = ["home", "internships", "projects", "polls", "about", "contact", "blog"];
+  const routes: string[] = ["one", "two", "three", "four", "five", "six", "seven"];
   const start = {
     x: 0,
     transition: {
@@ -73,7 +76,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
   };
 
   const path = useSelectedLayoutSegment();
-  console.log(path);
+  // console.log(path);
   const router = useRouter();
 
   return (
@@ -90,7 +93,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
             <>
               <motion.div className="navbar_mobile" layout variants={slideIn} initial="closed" animate="open" exit="closed">
                 {routes.map((route, index) => (
-                  <NavLink i={index} href={`/${route === "home" ? "" : route}`} text={route} type={desktop ? "desktop" : "mobile"} key={nanoid()} />
+                  <NavLink i={index} href={`/${route === "one" ? "" : navbarT(route).toLowerCase()}`} text={navbarT(route)} type={desktop ? "desktop" : "mobile"} key={nanoid()} />
                 ))}
               </motion.div>
               <motion.div className="navbar_mobile" transition={{ delay: 2.25 }} layout key={nanoid()} variants={slideInn} initial="closed" animate="open" exit="closed">
@@ -129,8 +132,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
                 <Button category="action" icon={<UserAddIcon />}>
                   Log In
                 </Button>
-                <LanguageComponent  hovered={hover} route={path}/>
-              
+                <LanguageComponent hovered={hover} route={path} />
               </motion.div>
             </>
           )}
@@ -139,7 +141,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
           <>
             <motion.div className="navbar_desktop" initial={false}>
               {routes.map((route, index) => (
-                <NavLink i={index} href={`/${route === "home" ? "/" : route}`} text={route} type={"desktop"} key={nanoid()} />
+                <NavLink i={index} href={`/${route === "one" ? "/" : navbarT(route).toLowerCase()}`} text={navbarT(route)} type={"desktop"} key={nanoid()} />
               ))}
             </motion.div>
             <motion.div layout className="navbar_desktop" initial={false} data-name="name" key={nanoid()}>
@@ -174,12 +176,10 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
                   </motion.span>
                 )}
               </AnimatePresence>
-              <Button category="action" icon={<UserAddIcon />}>
-                Log In
-              </Button>
+             <LoginButton/>
               {/* <Button category="content" icon={<IconForward/>} >Get Started</Button> */}
               <Button>Donate</Button>
-              <LanguageComponent  hovered={hover} route={path}/>
+              <LanguageComponent hovered={hover} route={path} />
             </motion.div>
           </>
         )}

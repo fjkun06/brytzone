@@ -72,15 +72,16 @@
           }
         }
         button {
-          @include size(20rem, 4.5rem);
+          @include size(auto, 4.5rem);
           @include formatText(500, 2rem, 3rem);
           @media only screen and (width > 800px) {
             @include size(24rem, 5rem);
-            @include formatText(500, 2.5rem, 4rem);
+            @include formatText(500, 2.25rem, 4rem);
           }
           @media only screen and (width > 1200px) {
             @include size(28rem, 6rem);
-            @include formatText(500, 3rem, 4.5rem);
+            @include formatText(500, 2.85rem, 4.5rem);
+            width: max-content;
             margin-top: 3rem;
           }
           @media only screen and (width > 1500px) {

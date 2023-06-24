@@ -20,9 +20,9 @@ interface ButtonProps {
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ children, category = "default", icon }: ButtonProps) => {
+export const Button = ({ children, category = "default", icon,onClick }: ButtonProps) => {
   return (
-    <button type="button" className={`brytzone_button brytzone_button--${category}`}>
+    <button type="button" className={`brytzone_button brytzone_button--${category}`} onClick={onClick}>
       {category === "action" && <>{icon}</>}
       {category === "content" && <>{icon}</>}
       {children}

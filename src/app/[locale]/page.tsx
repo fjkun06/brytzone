@@ -5,6 +5,7 @@ import UserAddIcon from "@/stories/layout/navbar/UserAddIcon";
 import { useTranslations } from "next-intl";
 import { brytzone } from "./home/header";
 import dynamic from "next/dynamic";
+import NewsLetter from "./home/Newsletter";
 
 export default function Index() {
   const t = useTranslations("Index");
@@ -32,6 +33,13 @@ export default function Index() {
   const Saying = dynamic(() => import("./home/saying"), {
     loading: () => <p>Loading Saying...</p>,
   });
+  const Faqs = dynamic(() => import("./home/faqs"), {
+    loading: () => <p>Loading Faqs...</p>,
+  });
+  const NewsLetter = dynamic(() => import("./home/Newsletter"), {
+    loading: () => <p>Loading Newsletter...</p>,
+  });
+
   return (
     <section className={`${brytzone}_home`}>
       <Header />
@@ -42,6 +50,8 @@ export default function Index() {
       <How />
       <Meet />
       <Saying />
+      <Faqs />
+      <NewsLetter/>
     </section>
   );
 }
