@@ -22,8 +22,8 @@ const p2 = path1.slice(3 - path1.length)
       <h1>Login</h1>
       {/* // When the user is on `/en`, the link will point to `/en/about` */}
       <Link href="/about">About</Link>
-      {/* // You can override the `locale` to switch to another language */}
-      <Link href={p2} locale="de">
+      {/* // You can override the `locale` to switch to another languag */}
+      <Link href={'login'} locale="de">
         Switch to German
       </Link>
     </div>

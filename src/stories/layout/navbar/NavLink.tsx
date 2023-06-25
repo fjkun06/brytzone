@@ -4,6 +4,7 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { motion } from "framer-motion";
+import LanLink from "next-intl/link";
 
 interface NavlinkProps {
   /**
@@ -27,6 +28,7 @@ interface LangaugeLinkProps {
    */
   to: string;
   text: string;
+  path: string;
 }
 
 export const NavLink: React.FC<NavlinkProps> = ({ href, text, toggle, type, i }) => {
@@ -59,11 +61,11 @@ export const NavLink: React.FC<NavlinkProps> = ({ href, text, toggle, type, i })
   );
 };
 
-export const LanguageLink: React.FC<LangaugeLinkProps> = ({ to, text }) => {
+export const LanguageLink: React.FC<LangaugeLinkProps> = ({ to, text,path }) => {
   // You can override the `locale` to switch to another language
   return (
-    <Link href="/" locale={to} className="nav_link">
+    <LanLink href={path} locale={to} className="nav_link">
       {text}
-    </Link>
+    </LanLink>
   );
 };

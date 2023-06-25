@@ -16,7 +16,6 @@ import LanguageComponent from "@/stories/components/LanguageComponent";
 import { useRouter, useSelectedLayoutSegment } from "next/navigation";
 import { useTranslations } from "next-intl";
 import LoginButton from "@/stories/components/LoginButton";
-import { usePathname } from "next/navigation";
 
 interface NavbarProps {
   /**
@@ -39,6 +38,9 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
   const navbarT = useTranslations("routes");
   const globalTransition = { stiffness: 100, duration: 0.5, ease: "easeInOut" };
   const routes: string[] = ["one", "two", "three", "four", "five", "six", "seven"];
+  // const routesPath: string[] = ["one", "two", "three", "four", "five", "six", "seven"];
+  const routesPath: string[] = ["home", "internships", "projects", "polls", "about", "contact", "blog"];
+
   const start = {
     x: 0,
     transition: {
@@ -79,11 +81,8 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
   const path = useSelectedLayoutSegment();
   // console.log(path);
   const router = useRouter();
-  const path1 = usePathname();
-  console.log("path: ", path1);
-  console.log(path1.slice(3 - path1.length));
   // console.log(path.slice(3 - path.length) + "dashboard");
-const p2 = path1.slice(3 - path1.length)
+// const p2 = path1.slice(3 - path1.length)
   return (
     <motion.nav layout animate={{ height: isOpen ? (desktop ? "9.6rem" : "70rem") : "9.6rem", paddingTop: isOpen ? (desktop ? "0rem" : "3rem") : "2.25rem" }} transition={globalTransition}>
       <motion.div>
@@ -98,7 +97,7 @@ const p2 = path1.slice(3 - path1.length)
             <>
               <motion.div className="navbar_mobile" layout variants={slideIn} initial="closed" animate="open" exit="closed">
                 {routes.map((route, index) => (
-                  <NavLink i={index} href={`/${route === "one" ? "" : navbarT(route).toLowerCase()}`} text={navbarT(route)} type={desktop ? "desktop" : "mobile"} key={nanoid()} />
+                  <NavLink i={index} href={`/${routesPath[index] === "home" ? "" : routesPath[index].toLowerCase()}`} text={navbarT(route)} type={desktop ? "desktop" : "mobile"} key={nanoid()} />
                 ))}
               </motion.div>
               <motion.div className="navbar_mobile" transition={{ delay: 2.25 }} layout key={nanoid()} variants={slideInn} initial="closed" animate="open" exit="closed">
@@ -146,8 +145,8 @@ const p2 = path1.slice(3 - path1.length)
           <>
             <motion.div className="navbar_desktop" initial={false}>
               {routes.map((route, index) => (
-                <NavLink i={index} href={`/${route === "one" ? "/" : navbarT(route).toLowerCase()}`} text={navbarT(route)} type={"desktop"} key={nanoid()} />
-              ))}
+                  <NavLink i={index} href={`/${routesPath[index] === "home" ? "" : routesPath[index].toLowerCase()}`} text={navbarT(route)} type={desktop ? "desktop" : "mobile"} key={nanoid()} />
+                  ))}
             </motion.div>
             <motion.div layout className="navbar_desktop" initial={false} data-name="name" key={nanoid()}>
               <AnimatePresence>
