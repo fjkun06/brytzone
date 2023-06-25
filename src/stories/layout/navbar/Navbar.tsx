@@ -16,6 +16,7 @@ import LanguageComponent from "@/stories/components/LanguageComponent";
 import { useRouter, useSelectedLayoutSegment } from "next/navigation";
 import { useTranslations } from "next-intl";
 import LoginButton from "@/stories/components/LoginButton";
+import { usePathname } from "next/navigation";
 
 interface NavbarProps {
   /**
@@ -78,7 +79,11 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
   const path = useSelectedLayoutSegment();
   // console.log(path);
   const router = useRouter();
-
+  const path1 = usePathname();
+  console.log("path: ", path1);
+  console.log(path1.slice(3 - path1.length));
+  // console.log(path.slice(3 - path.length) + "dashboard");
+const p2 = path1.slice(3 - path1.length)
   return (
     <motion.nav layout animate={{ height: isOpen ? (desktop ? "9.6rem" : "70rem") : "9.6rem", paddingTop: isOpen ? (desktop ? "0rem" : "3rem") : "2.25rem" }} transition={globalTransition}>
       <motion.div>

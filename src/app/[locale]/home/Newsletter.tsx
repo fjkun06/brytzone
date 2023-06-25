@@ -13,7 +13,6 @@ const NewsLetter = () => {
   const [email, setEmail] = React.useState("");
   const handleEmail: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setEmail(e.target.value);
-    console.log(e.target.value);
   };
   const register = async () => {
     setLoading(true);
@@ -53,7 +52,7 @@ const NewsLetter = () => {
           autoClose: 3000,
         });
       } else {
-        toast.error(`${error.message}`, {});
+        toast.error(`${error.message}: Please retry.`);
       }
       setLoading(false);
       setRegistred(false);
