@@ -33,10 +33,11 @@ interface LangaugeLinkProps {
 
 export const NavLink: React.FC<NavlinkProps> = ({ href, text, toggle, type, i }) => {
   //getting current route
-  const pathname = usePathname();
-  const isActive = pathname.startsWith(href);
+  const mainRegex = /^\/(?!(?:fr|de)$)(?!fr\/|de\/)[a-zA-Z]*$/;
+  const path = usePathname();
+  const href2 = path.length > 3 ? (mainRegex.test(path) ? path.slice(0 - path.length) : path.slice(3 - path.length)) : "/";
+  const isActive = href2 === href;
 
-  const lg = useMediaQuery("(width > 840px)");
   const itemVariants = {
     open: (i: number) => ({
       x: 0,
@@ -61,7 +62,7 @@ export const NavLink: React.FC<NavlinkProps> = ({ href, text, toggle, type, i })
   );
 };
 
-export const LanguageLink: React.FC<LangaugeLinkProps> = ({ to, text,path }) => {
+export const LanguageLink: React.FC<LangaugeLinkProps> = ({ to, text, path }) => {
   // You can override the `locale` to switch to another language
   return (
     <LanLink href={path} locale={to} className="nav_link">

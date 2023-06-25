@@ -24,17 +24,15 @@ interface NavbarProps {
    * @param {void} handleClick - Toggle menu state.
    * @param {void} storeCookie - Update theme cookie value.
    * @param {string} cookieVal - Toggle menu state.
-   * @param {boolean} hover - language menu state.
    *
    * */
   isOpen: boolean;
-  hover: boolean;
   desktop: boolean;
   cookieVal: string;
   handleClick: () => void;
   storeCookie: (x: string) => void;
 }
-const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCookie, cookieVal, hover }) => {
+const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCookie, cookieVal }) => {
   const navbarT = useTranslations("routes");
   const globalTransition = { stiffness: 100, duration: 0.5, ease: "easeInOut" };
   const routes: string[] = ["one", "two", "three", "four", "five", "six", "seven"];
@@ -136,7 +134,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
                 <Button category="action" icon={<UserAddIcon />}>
                   Log In
                 </Button>
-                <LanguageComponent hovered={hover} route={path} />
+                <LanguageComponent />
               </motion.div>
             </>
           )}
@@ -183,7 +181,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
              <LoginButton/>
               {/* <Button category="content" icon={<IconForward/>} >Get Started</Button> */}
               <Button>Donate</Button>
-              <LanguageComponent hovered={hover} route={path} />
+              <LanguageComponent  />
             </motion.div>
           </>
         )}

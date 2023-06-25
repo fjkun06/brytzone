@@ -11,7 +11,7 @@ import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import Link from "next-intl/link";
 
-const LanguageComponent = ({ hovered, route }: { hovered: boolean; route: string | null }) => {
+const LanguageComponent = () => {
   const [hover, setHover] = React.useState(false);
   const mainRegex = /^\/(?!(?:fr|de)$)(?!fr\/|de\/)[a-zA-Z]*$/;
   const languages = [
@@ -33,7 +33,7 @@ const LanguageComponent = ({ hovered, route }: { hovered: boolean; route: string
   ];
   const t = useTranslations("navbar");
   const path = usePathname();
-  const href = mainRegex.test(path) ? path.slice(0 - path.length) : path.slice(3 - path.length);
+  const href = path.length > 3 ? mainRegex.test(path) ? path.slice(0 - path.length) : path.slice(3 - path.length): "/"
 
   return (
     <motion.span
