@@ -4,6 +4,7 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { motion } from "framer-motion";
+import LanLink from "next-intl/link";
 
 interface NavlinkProps {
   /**
@@ -27,14 +28,16 @@ interface LangaugeLinkProps {
    */
   to: string;
   text: string;
+  path: string;
 }
 
 export const NavLink: React.FC<NavlinkProps> = ({ href, text, toggle, type, i }) => {
   //getting current route
-  const pathname = usePathname();
-  const isActive = pathname.startsWith(href);
+  const mainRegex = /^\/(?!(?:fr|de)$)(?!fr\/|de\/)[a-zA-Z]*$/;
+  const path = usePathname();
+  const href2 = path.length > 3 ? (mainRegex.test(path) ? path.slice(0 - path.length) : path.slice(3 - path.length)) : "/";
+  const isActive = href2 === href;
 
-  const lg = useMediaQuery("(width > 840px)");
   const itemVariants = {
     open: (i: number) => ({
       x: 0,
@@ -48,22 +51,22 @@ export const NavLink: React.FC<NavlinkProps> = ({ href, text, toggle, type, i })
 
   return type === "mobile" ? (
     <motion.span custom={i} className="" variants={itemVariants} animate="open" initial="closed">
-      <Link className={isActive ? "nav_link nav_link-active" : "nav_link"} href={href}>
+      <Link prefetch className={isActive ? "nav_link nav_link-active" : "nav_link"} href={href}>
         {text}
       </Link>
     </motion.span>
   ) : (
-    <Link className={isActive ? "nav_link nav_link-active" : "nav_link"} href={href}>
+    <Link prefetch className={isActive ? "nav_link nav_link-active" : "nav_link"} href={href}>
       {text}
     </Link>
   );
 };
 
-export const LanguageLink: React.FC<LangaugeLinkProps> = ({ to, text }) => {
+export const LanguageLink: React.FC<LangaugeLinkProps> = ({ to, text, path }) => {
   // You can override the `locale` to switch to another language
   return (
-    <Link href="/" locale={to} className="nav_link">
+    <LanLink href={path} locale={to} className="nav_link">
       {text}
-    </Link>
+    </LanLink>
   );
 };

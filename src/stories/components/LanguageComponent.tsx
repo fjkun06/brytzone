@@ -9,32 +9,31 @@ import GermanyIcon from "../layout/navbar/GermanyIcon";
 import { LanguageLink } from "../layout/navbar/NavLink";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
+import Link from "next-intl/link";
 
-const LanguageComponent = ({hovered,route}:{hovered:boolean,route:string|null}) => {
+const LanguageComponent = () => {
   const [hover, setHover] = React.useState(false);
-  const [current, setCurrent] = React.useState('/')
+  const mainRegex = /^\/(?!(?:fr|de)$)(?!fr\/|de\/)[a-zA-Z]*$/;
   const languages = [
     {
       icon: <EnglandIcon />,
-      abbrev: "/",
+      abbrev: "en",
+      regex: mainRegex,
     },
     {
       icon: <FranceIcon />,
-      abbrev: "/fr",
+      abbrev: "fr",
+      regex: /^\/fr(\/.*)?$/,
     },
     {
       icon: <GermanyIcon />,
-      abbrev: "/de",
+      abbrev: "de",
+      regex: /^\/de(\/.*)?$/,
     },
   ];
   const t = useTranslations("navbar");
   const path = usePathname();
-  // console.log(path);
-  // console.log("laaaaaaaaaaaaaaaaaaaaaaaang",path.slice(3 - path.length));
-  // console.log("ssssssssssssssssssssssssss",path.slice(0,3));
-  // console.log(path1.slice(3 - path1.length));
-
-  
+  const href = path.length > 3 ? mainRegex.test(path) ? path.slice(0 - path.length) : path.slice(3 - path.length): "/"
 
   return (
     <motion.span
@@ -47,16 +46,13 @@ const LanguageComponent = ({hovered,route}:{hovered:boolean,route:string|null}) 
     >
       <motion.span layout className="brytzone_language_container" style={{ justifyContent: hover ? "flex-start !important" : "center" }}>
         <>
-          {languages.map(({ icon, abbrev }) => {
-            if (path === abbrev) {
-              const temp = abbrev === "/" ? "en" : abbrev.slice(-2);
-
+          {languages.map(({ icon, abbrev, regex }) => {
+            if (regex.test(path)) {
               return (
                 <motion.span layout className="row" key={nanoid()}>
                   <span className="icon ic_one">{icon}</span>
                   <span className="">
-                  {/* <span className="" onClick={() => setCurrent(temp)}> */}
-                    <LanguageLink to={temp} text={t(temp)} />
+                    <LanguageLink to={abbrev} text={t(abbrev)} path={href} />
                   </span>
                   <span className="icon ic_two">{hover ? <CollapseIcon /> : <ExpandIcon />}</span>
                 </motion.span>
@@ -64,26 +60,22 @@ const LanguageComponent = ({hovered,route}:{hovered:boolean,route:string|null}) 
             }
           })}
         </>
-        {/*
-        
-
-       */}
 
         <AnimatePresence>
           {hover && (
             <>
-              {languages.map(({ icon, abbrev }) => {
-                if (path !== abbrev) {
-                  const temp = abbrev === "/" ? "en" : abbrev.slice(-2);
-                  return (
-                    <motion.span  transition={{ delay: 0, duration: 0.15, ease: "easeInOut" }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} animate={{ opacity: 1 }} className="row" key={nanoid()}>
-                      <span className="icon ic_one">{icon}</span>
-                      <span className="">
-                        <LanguageLink to={temp} text={t(temp)} />
-                      </span>
-                    </motion.span>
-                  );
+              {languages.map(({ icon, abbrev, regex }) => {
+                if (regex.test(path)) {
+                  return;
                 }
+                return (
+                  <motion.span transition={{ delay: 0, duration: 0.15, ease: "easeInOut" }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} animate={{ opacity: 1 }} className="row" key={nanoid()}>
+                    <span className="icon ic_one">{icon}</span>
+                    <span className="">
+                      <LanguageLink path={href} to={abbrev} text={t(abbrev)} />
+                    </span>
+                  </motion.span>
+                );
               })}
             </>
           )}

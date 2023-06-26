@@ -1,20 +1,15 @@
 "use client";
-import { Button } from "@/stories/components/Button";
-import IconForward from "@/stories/components/IconForward";
-import UserAddIcon from "@/stories/layout/navbar/UserAddIcon";
 import { useTranslations } from "next-intl";
 import { brytzone } from "./home/header";
 import dynamic from "next/dynamic";
-import NewsLetter from "./home/Newsletter";
-
+import { useRef } from "react";
+import Community from "./home/community";
 export default function Index() {
   const t = useTranslations("Index");
   const Header = dynamic(() => import("./home/header"), {
     loading: () => <p>Loading Header...</p>,
   });
-  const Community = dynamic(() => import("./home/community"), {
-    loading: () => <p>Loading Community...</p>,
-  });
+
   const Explore = dynamic(() => import("./home/explore"), {
     loading: () => <p>Loading Explore...</p>,
   });
@@ -40,18 +35,46 @@ export default function Index() {
     loading: () => <p>Loading Newsletter...</p>,
   });
 
+
+  const headerRef = useRef<HTMLElement>(null);
+
+  function scrollToCommunity() {
+    if (headerRef.current) {
+      headerRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <section className={`${brytzone}_home`}>
-      <Header />
-      <Community />
-      <Explore />
+      <Header target={scrollToCommunity}/>
+      <Community forwardedRef={headerRef}/>
+      <Explore scrollToTop={handleScrollToTop}/>
       <Start />
       <Know />
       <How />
       <Meet />
       <Saying />
       <Faqs />
-      <NewsLetter/>
+      <NewsLetter />
     </section>
   );
 }
+
+const SmoothScrollButton = () => {
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  return (
+    <button onClick={handleScrollToTop}>Scroll to Top</button>
+  );
+};

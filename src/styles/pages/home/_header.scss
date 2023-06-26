@@ -121,9 +121,15 @@
     /**************************************Header Center Section**************************************/
     .center {
       // border: 1px solid red;
-      cursor: pointer;
       @include size(100%, 12rem);
-
+      //clickable section
+      p {
+        @include size(5rem, 12rem);
+        background-color: white;
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+      }
       span {
         -webkit-user-select: none;
         user-select: none;

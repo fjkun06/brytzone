@@ -91,7 +91,7 @@ const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
   const handleIsOpen = () => setIsOpen(!isOpen);
   return (
     <main id="layout">
-      <Navbar hover={isOpen} handleClick={handleIsOpen} isOpen={isOpen} desktop={min980} storeCookie={setThemeCookie} cookieVal={cookie} />
+      <Navbar handleClick={handleIsOpen} isOpen={isOpen} desktop={min980} storeCookie={setThemeCookie} cookieVal={cookie} />
       <AnimatePresence>
         {isOpen && (
           <motion.div

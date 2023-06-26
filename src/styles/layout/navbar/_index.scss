@@ -161,6 +161,11 @@ nav {
   color: $primary;
   // color: red;
 }
+.nav_link-toast {
+  color: $primary;
+  font-size: 1.5rem !important;
+  padding-inline: 1rem;
+}
 
 /**************************************Navbar Modal**************************************/
 #modal {

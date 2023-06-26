@@ -24,20 +24,21 @@ interface NavbarProps {
    * @param {void} handleClick - Toggle menu state.
    * @param {void} storeCookie - Update theme cookie value.
    * @param {string} cookieVal - Toggle menu state.
-   * @param {boolean} hover - language menu state.
    *
    * */
   isOpen: boolean;
-  hover: boolean;
   desktop: boolean;
   cookieVal: string;
   handleClick: () => void;
   storeCookie: (x: string) => void;
 }
-const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCookie, cookieVal, hover }) => {
+const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCookie, cookieVal }) => {
   const navbarT = useTranslations("routes");
   const globalTransition = { stiffness: 100, duration: 0.5, ease: "easeInOut" };
   const routes: string[] = ["one", "two", "three", "four", "five", "six", "seven"];
+  // const routesPath: string[] = ["one", "two", "three", "four", "five", "six", "seven"];
+  const routesPath: string[] = ["home", "internships", "projects", "polls", "about", "contact", "blog"];
+
   const start = {
     x: 0,
     transition: {
@@ -78,7 +79,8 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
   const path = useSelectedLayoutSegment();
   // console.log(path);
   const router = useRouter();
-
+  // console.log(path.slice(3 - path.length) + "dashboard");
+// const p2 = path1.slice(3 - path1.length)
   return (
     <motion.nav layout animate={{ height: isOpen ? (desktop ? "9.6rem" : "70rem") : "9.6rem", paddingTop: isOpen ? (desktop ? "0rem" : "3rem") : "2.25rem" }} transition={globalTransition}>
       <motion.div>
@@ -93,7 +95,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
             <>
               <motion.div className="navbar_mobile" layout variants={slideIn} initial="closed" animate="open" exit="closed">
                 {routes.map((route, index) => (
-                  <NavLink i={index} href={`/${route === "one" ? "" : navbarT(route).toLowerCase()}`} text={navbarT(route)} type={desktop ? "desktop" : "mobile"} key={nanoid()} />
+                  <NavLink i={index} href={`/${routesPath[index] === "home" ? "" : routesPath[index].toLowerCase()}`} text={navbarT(route)} type={desktop ? "desktop" : "mobile"} key={nanoid()} />
                 ))}
               </motion.div>
               <motion.div className="navbar_mobile" transition={{ delay: 2.25 }} layout key={nanoid()} variants={slideInn} initial="closed" animate="open" exit="closed">
@@ -132,7 +134,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
                 <Button category="action" icon={<UserAddIcon />}>
                   Log In
                 </Button>
-                <LanguageComponent hovered={hover} route={path} />
+                <LanguageComponent />
               </motion.div>
             </>
           )}
@@ -141,8 +143,8 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
           <>
             <motion.div className="navbar_desktop" initial={false}>
               {routes.map((route, index) => (
-                <NavLink i={index} href={`/${route === "one" ? "/" : navbarT(route).toLowerCase()}`} text={navbarT(route)} type={"desktop"} key={nanoid()} />
-              ))}
+                  <NavLink i={index} href={`/${routesPath[index] === "home" ? "" : routesPath[index].toLowerCase()}`} text={navbarT(route)} type={desktop ? "desktop" : "mobile"} key={nanoid()} />
+                  ))}
             </motion.div>
             <motion.div layout className="navbar_desktop" initial={false} data-name="name" key={nanoid()}>
               <AnimatePresence>
@@ -179,7 +181,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
              <LoginButton/>
               {/* <Button category="content" icon={<IconForward/>} >Get Started</Button> */}
               <Button>Donate</Button>
-              <LanguageComponent hovered={hover} route={path} />
+              <LanguageComponent  />
             </motion.div>
           </>
         )}
