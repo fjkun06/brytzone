@@ -39,7 +39,6 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
   // const routesPath: string[] = ["one", "two", "three", "four", "five", "six", "seven"];
   const routesPath: string[] = ["home", "internships", "projects", "polls", "about", "contact", "blog"];
   const path = usePathname();
-  // console.log("path: ", path);
   const start = {
     x: 0,
     transition: {
@@ -79,7 +78,6 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
 
   //handling navbar diaplay for specific routes
   const showNavbar = path.includes("login") || path.includes("signup") || path.includes("recovery");
-  console.log(showNavbar + ": navvvvvvvvvvvvvvvvvvvvvvvvvvv?");
 
   const router = useRouter();
 

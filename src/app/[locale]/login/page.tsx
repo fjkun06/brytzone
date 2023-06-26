@@ -19,6 +19,9 @@ const Polls = () => {
   const p2 = path1.slice(3 - path1.length);
   return (
     <section className={`${brytzone}_login`}>
+      <nav className={`${brytzone}_special_nav`}>
+        navbar
+      </nav>
       <div>
         <h1>Login</h1>
         <Link href="/about">About</Link>
