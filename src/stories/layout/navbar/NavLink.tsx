@@ -51,12 +51,12 @@ export const NavLink: React.FC<NavlinkProps> = ({ href, text, toggle, type, i })
 
   return type === "mobile" ? (
     <motion.span custom={i} className="" variants={itemVariants} animate="open" initial="closed">
-      <Link className={isActive ? "nav_link nav_link-active" : "nav_link"} href={href}>
+      <Link prefetch className={isActive ? "nav_link nav_link-active" : "nav_link"} href={href}>
         {text}
       </Link>
     </motion.span>
   ) : (
-    <Link className={isActive ? "nav_link nav_link-active" : "nav_link"} href={href}>
+    <Link prefetch className={isActive ? "nav_link nav_link-active" : "nav_link"} href={href}>
       {text}
     </Link>
   );
