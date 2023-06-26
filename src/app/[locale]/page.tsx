@@ -43,12 +43,18 @@ export default function Index() {
       headerRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
   return (
     <section className={`${brytzone}_home`}>
       <Header target={scrollToCommunity}/>
       <Community forwardedRef={headerRef}/>
-      <Explore />
+      <Explore scrollToTop={handleScrollToTop}/>
       <Start />
       <Know />
       <How />
@@ -60,3 +66,15 @@ export default function Index() {
   );
 }
 
+const SmoothScrollButton = () => {
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  return (
+    <button onClick={handleScrollToTop}>Scroll to Top</button>
+  );
+};

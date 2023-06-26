@@ -1,5 +1,16 @@
 @use "../../utils/mixins" as *;
 @use "../../utils/variables" as *;
+@keyframes verticalBounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 @mixin explore {
   &-explore {
     // border: 1px solid red;
@@ -136,6 +147,23 @@
         }
         @media only screen and (width > 1500px) {
           align-self: flex-start;
+        }
+      }
+
+      //scroll to top button
+      .scroll_top {
+        cursor: pointer;
+        position: fixed;
+        top: 90%;
+        right: 5%;
+        svg {
+          @include size(5rem);
+
+          animation: verticalBounce 0.3s ease-in-out;
+          animation-iteration-count: 2;
+          circle {
+            fill: $white;
+          }
         }
       }
     }
