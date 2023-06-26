@@ -23,7 +23,7 @@ const Login = () => {
     <section className={`${brytzone}_login`}>
       <nav className={`${brytzone}_special_nav`}>
         {/* <Image width={280} height={209} src={logo} alt="" onClick={() => router.push("/")}/> */}
-        <Image width={84} height={63} src={logo} alt="" onClick={() => router.push("/")} />
+        <Image width={84} height={63} src={logo} alt="brytzone-logo" onClick={() => router.push("/")} />
       </nav>
       <div className="login_body">
         {/* <h1>Login</h1> */}
@@ -43,8 +43,8 @@ const Login = () => {
               />
             </g>
             <defs>
-              <filter id="filter0_ddddd_414_3126" x="0.666626" y="0.918457" width="198.833" height="173" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <filter id="filter0_ddddd_414_3126" x="0.666626" y="0.918457" width="198.833" height="173" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                 <feOffset />
                 <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
@@ -75,7 +75,9 @@ const Login = () => {
           </svg>
         </span>
         <div className="body">
-          <div className="left">Left</div>
+          <div className="left">
+            <Image width={560} height={460} src={"/login/login_avatar.webp"} alt="login-image" quality={100} />
+          </div>
           <div className="right">Right</div>
         </div>
       </div>

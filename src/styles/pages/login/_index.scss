@@ -25,13 +25,14 @@
     @include flex(column);
     justify-content: flex-start;
     justify-self: center;
-    border: 1px solid red;
+    border: 3px solid red;
+
     & > * {
-      border: 1px solid red;
+      // border: 1px solid red;
     }
     @media only screen and (width > 1200px) {
-      width: 120rem;
-      @include size(120rem, 55rem);
+      gap: 3rem;
+      @include size(120rem, 65rem);
     }
     .heading {
       @include flex;
@@ -41,17 +42,25 @@
         @include flex;
         transform: translateY(5rem) scale(0.9);
         // transform: translateY(5rem);
-
       }
     }
     .body {
       @include flex;
       @include size(100%);
-
-      & > * {
+      .left,
+      .right {
         border: 1px solid red;
         @include size(100%);
         @include flex(column);
+      }
+      .left {
+        background-color: rgb(36, 197, 44);
+        img {
+          border: 3px solid rgb(36, 197, 44);
+        }
+      }
+
+      .right {
       }
     }
   }

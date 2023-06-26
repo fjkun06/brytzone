@@ -85,7 +85,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
     <motion.nav layout animate={{ height: isOpen ? (desktop ? "9.6rem" : "70rem") : "9.6rem", paddingTop: isOpen ? (desktop ? "0rem" : "3rem") : "2.25rem" }} transition={globalTransition}>
       <motion.div>
         <span className="logo" onClick={() => router.push("/")}>
-          <Image src={logo} alt="" />
+          <Image src={logo} alt="brytzone-logo" />
         </span>
         {!desktop && <Menu isOpen={isOpen} toggleNavbarState={handleClick} />}
       </motion.div>
