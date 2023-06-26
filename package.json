@@ -10,6 +10,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "server": "nodemon -e ts --watch server --exec npm run type-run",
+    "sharp": "node ./src/utils/sharp",
     "type-run": "ts-node --project tsconfig.server.json server/index.ts"
   },
   "dependencies": {
