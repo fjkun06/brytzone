@@ -83,10 +83,11 @@ const Header = ({target}:{target:any}) => {
       </div>
       {/* <a onClick={() => scroll.scrollToBottom()}>Scroll To Bottom</a> */}
 
-      <div className="center" onClick={target}>
+      <div className="center" >
         <span />
         <span />
         <span />
+        <p onClick={target}/>
       </div>
       <div className="right">
         {...new Array(4).fill(4).map((_, i) => (
