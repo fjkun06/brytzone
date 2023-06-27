@@ -1,0 +1,10 @@
+@use "../utils/mixins" as *;
+@use "../utils/variables" as *;
+span.brytzone_sublink{
+  color: #0a518b !important;
+  text-align: center;
+  font-size: 18px;
+  font-family: "Poppins";
+  width: max-content;
+  cursor: pointer;
+}

@@ -1,18 +1,18 @@
 "use client";
-import logo from "../../../../public/assets/images/icon.png";
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
-import Link from "next-intl/link";
 import { brytzone } from "../home/header";
 import Image from "next/image";
 import { useState } from "react";
 import NormalInput, { PasswordInput } from "@/stories/components/Input";
+import { Button } from "@/stories/components/Button";
+import SubLink from "@/stories/components/SubLinks";
+import SpecialNav from "@/stories/layout/navbar/SpecialNav";
 
 const Login = () => {
   const router = useRouter();
   const [matricle, setMatricle] = useState("");
   const [password, setPassword] = useState("");
-
 
   const handleMatricle: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setMatricle(e.target.value);
@@ -20,13 +20,10 @@ const Login = () => {
   const handlePassword: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setPassword(e.target.value);
   };
-  const path = usePathname();
 
   return (
     <section className={`${brytzone}_login`}>
-      <nav className={`${brytzone}_special_nav`}>
-        <Image width={84} height={63} src={logo} alt="brytzone-logo" onClick={() => router.push("/")} />
-      </nav>
+      <SpecialNav />
       <div className="login_body">
         <span className="heading">
           <svg width="200" height="174" viewBox="0 0 200 174" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -82,6 +79,13 @@ const Login = () => {
             <form>
               <NormalInput label="matricule" name="matricle" value={matricle} onChange={handleMatricle} />
               <PasswordInput label="password" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
+              <div className="actions">
+                <Button category="content">Login</Button>
+                <span className="help">
+                  <span>Don’t have an account?</span>
+                  <SubLink route="/password_recovery">Sign Up</SubLink>
+                </span>
+              </div>
             </form>
           </div>
         </div>

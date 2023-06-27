@@ -1,0 +1,16 @@
+@use "../utils/mixins" as *;
+@use "../utils/variables" as *;
+nav.brytzone_special_nav {
+  // display: none;
+  max-height: 30rem;
+  height: 10rem;
+  justify-self: flex-start;
+  align-self: flex-start;
+  @include flex;
+  padding-inline: 6rem;
+  justify-content: flex-start;
+  background-color: transparent;
+  img {
+    transform: scale(1);
+  }
+}

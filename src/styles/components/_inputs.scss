@@ -62,14 +62,14 @@
     width: 45rem;
     @include flex;
     justify-content: flex-end;
-    span {
-      color: #0a518b;
-      text-align: center;
-      font-size: 18px;
-      font-family: Poppins;
-      width: max-content;
-      cursor: pointer;
-    }
+    // span {
+    //   color: #0a518b;
+    //   text-align: center;
+    //   font-size: 18px;
+    //   font-family: Poppins;
+    //   width: max-content;
+    //   cursor: pointer;
+    // }
 
     // align-self: flex-end;
   }
