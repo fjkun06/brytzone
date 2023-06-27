@@ -8,12 +8,32 @@ import NormalInput, { PasswordInput } from "@/stories/components/Input";
 import { Button } from "@/stories/components/Button";
 import SubLink from "@/stories/components/SubLinks";
 import SpecialNav from "@/stories/layout/navbar/SpecialNav";
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion";
 
 const Login = () => {
   const router = useRouter();
   const [matricle, setMatricle] = useState("");
   const [password, setPassword] = useState("");
+  const [step, setStep] = useState(1);
+
+  //handle steps
+  const increment = () => {
+    if (!(step >= 1 && step < 3)) {
+      return;
+    }
+    console.log(`before ${step}`);
+    setStep((s) => s + 1);
+    console.log(`after ${step}`);
+  };
+  const decrement = () => {
+    if (!(step > 1 && step <= 3)) {
+      return;
+    }
+    console.log(`before ${step}`);
+
+    setStep((s) => s - 1);
+    console.log(`after ${step}`);
+  };
 
   const handleMatricle: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setMatricle(e.target.value);
@@ -52,20 +72,34 @@ const Login = () => {
 
             <form>
               <div className="container">
-                <div className="sub-container">
-                  <NormalInput label="matricule" name="matricle" value={matricle} onChange={handleMatricle} />
-                  <PasswordInput label="password" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
-                </div>
-                <div className="sub-container">
-                  <NormalInput label="matricule" name="matricle" value={matricle} onChange={handleMatricle} />
-                  <PasswordInput label="password" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
-                </div>
-                <div className="sub-container">
-                  <NormalInput label="matricule" name="matricle" value={matricle} onChange={handleMatricle} />
-                  <PasswordInput label="password" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
-                </div>
+                <MyComponent isVisible={step===1}>
+                  <div className="sub-container">
+                    <NormalInput label="matricule" name="matricle" value={matricle} onChange={handleMatricle} />
+                    <PasswordInput label="password" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
+                  </div>
+                </MyComponent>
+                <MyComponent isVisible={step===2}>
+                  <div className="sub-container">
+                    <NormalInput label="matricule1" name="matricle" value={matricle} onChange={handleMatricle} />
+                    <PasswordInput label="password1" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
+                  </div>
+                </MyComponent>
+                <MyComponent isVisible={step===3}>
+                  <div className="sub-container">
+                    <NormalInput label="matricule2" name="matricle" value={matricle} onChange={handleMatricle} />
+                    <PasswordInput label="password2" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
+                  </div>
+                </MyComponent>
               </div>
               <div className="actions">
+                {step > 1 && (
+                  <Button category="content" onClick={decrement}>
+                    previous
+                  </Button>
+                )}
+                <Button category="content" onClick={increment}>
+                  next
+                </Button>
                 <Button category="content">Proceed</Button>
                 <span className="help">
                   <span>Already have an account?</span>
@@ -103,16 +137,4 @@ const Login = () => {
 
 export default Login;
 
-
-const MyComponent = ({ isVisible }:{isVisible:boolean}) => (
-  <AnimatePresence>
-    {isVisible && (
-      <motion.div
-        key="modal"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-      />
-    )}
-  </AnimatePresence>
-)
+const MyComponent = ({ isVisible, children }: { isVisible: boolean; children: any }) => <AnimatePresence>{isVisible && <>{children}</>}</AnimatePresence>;
