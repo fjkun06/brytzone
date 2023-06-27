@@ -70,6 +70,17 @@
           @include flex(column);
 
           gap: 2rem;
+          /***********************************************Container fields***********************************************/
+          .container {
+            @include size(100%);
+            @include size(inherit);
+            @include customgrid(1, 1, auto);
+            background-color: red;
+            .sub-container {
+              background-color: rgb(0, 255, 81);
+              @include position("1/2");
+            }
+          }
           /***********************************************Actions fields***********************************************/
           .actions {
             width: max-content;

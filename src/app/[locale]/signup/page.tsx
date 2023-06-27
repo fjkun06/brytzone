@@ -8,6 +8,7 @@ import NormalInput, { PasswordInput } from "@/stories/components/Input";
 import { Button } from "@/stories/components/Button";
 import SubLink from "@/stories/components/SubLinks";
 import SpecialNav from "@/stories/layout/navbar/SpecialNav";
+import { motion, AnimatePresence } from "framer-motion"
 
 const Login = () => {
   const router = useRouter();
@@ -50,8 +51,20 @@ const Login = () => {
             </span>
 
             <form>
-              <NormalInput label="matricule" name="matricle" value={matricle} onChange={handleMatricle} />
-              <PasswordInput label="password" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
+              <div className="container">
+                <div className="sub-container">
+                  <NormalInput label="matricule" name="matricle" value={matricle} onChange={handleMatricle} />
+                  <PasswordInput label="password" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
+                </div>
+                <div className="sub-container">
+                  <NormalInput label="matricule" name="matricle" value={matricle} onChange={handleMatricle} />
+                  <PasswordInput label="password" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
+                </div>
+                <div className="sub-container">
+                  <NormalInput label="matricule" name="matricle" value={matricle} onChange={handleMatricle} />
+                  <PasswordInput label="password" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
+                </div>
+              </div>
               <div className="actions">
                 <Button category="content">Proceed</Button>
                 <span className="help">
@@ -89,3 +102,17 @@ const Login = () => {
 };
 
 export default Login;
+
+
+const MyComponent = ({ isVisible }:{isVisible:boolean}) => (
+  <AnimatePresence>
+    {isVisible && (
+      <motion.div
+        key="modal"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      />
+    )}
+  </AnimatePresence>
+)
