@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 
-interface Skill {
+export interface Skill {
   id: number;
   name: string;
   category: string;
@@ -71,19 +71,18 @@ const skillsList: Skill[] = [
   // Add more skills here...
 ];
 
-const SkillsComponent: React.FC = () => {
-  const [selectedSkills, setSelectedSkills] = useState<Skill[]>([]);
+const SkillsComponent = ({ skills, setSkills }: { skills: Skill[]; setSkills: (skills: Skill[]) => void }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSkillClick = (skill: Skill) => {
-    setSearchQuery('')
+    setSearchQuery("");
 
-    if (selectedSkills.find((selected) => selected.id === skill.id)) {
+    if (skills.find((selected) => selected.id === skill.id)) {
       // Skill already selected, remove it
-      setSelectedSkills((prevSkills) => prevSkills.filter((selected) => selected.id !== skill.id));
+      setSkills(skills.filter((selected) => selected.id !== skill.id));
     } else {
       // Skill not selected, add it
-      setSelectedSkills((prevSkills) => [...prevSkills, skill]);
+      setSkills([...skills, skill]);
     }
   };
 
@@ -91,15 +90,7 @@ const SkillsComponent: React.FC = () => {
     setSearchQuery(event.target.value);
   };
 
-  // Filter skills based on the search query
-  // const filteredSkills = skillsList.filter((skill) =>
-  //  skill.name.toLowerCase().includes(searchQuery.toLowerCase()) && selectedSkills?.some((sk) => sk.name !== skill.name)
-  //  );
-
-  const filteredSkills = skillsList.filter((skill) =>
-  skill.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
-  !selectedSkills?.some((selectedSkill) => selectedSkill.name === skill.name)
-);
+  const filteredSkills = skillsList.filter((skill) => skill.name.toLowerCase().includes(searchQuery.toLowerCase()) && !skills?.some((selectedSkill) => selectedSkill.name === skill.name));
 
   return (
     <div>
@@ -108,25 +99,25 @@ const SkillsComponent: React.FC = () => {
       <div>
         {searchQuery.length > 0 &&
           filteredSkills.map((skill) => (
-            <button type="button" key={skill.id} onClick={() => handleSkillClick(skill)} className={selectedSkills.find((selected) => selected.id === skill.id) ? "selected" : ""}>
+            <button type="button" key={skill.id} onClick={() => handleSkillClick(skill)} className={skills.find((selected) => selected.id === skill.id) ? "selected" : ""}>
               {skill.name}
             </button>
           ))}
       </div>
-      {selectedSkills.length > 0 && (
-        <>
+      {skills.length > 0 && (
+        <div>
           <h3>Selected Skills:</h3>
           <ul>
-            {selectedSkills.map((selectedSkill) => (
+            {skills.map((selectedSkill) => (
               <li key={selectedSkill.id}>
                 {selectedSkill.name}
-                <button type="button" onClick={() => setSelectedSkills((prevSkills) => prevSkills.filter((selected) => selected.id !== selectedSkill.id))}>
+                <button type="button" onClick={() => setSkills(skills.filter((selected) => selected.id !== selectedSkill.id))}>
                   Remove
                 </button>
               </li>
             ))}
           </ul>
-        </>
+        </div>
       )}
     </div>
   );
