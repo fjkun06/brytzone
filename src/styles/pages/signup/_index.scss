@@ -60,6 +60,16 @@
           svg {
             transform: scale(0.73);
             width: 30rem;
+            & > * {
+              // stroke: url("#skyGradient");
+              stroke: $primary;
+
+            }
+            & > line {
+              stroke: $primary;
+              // stroke: url("#skyGradient");
+
+            }
           }
         }
         //forms

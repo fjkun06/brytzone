@@ -15,6 +15,7 @@ const Login = () => {
   const [matricle, setMatricle] = useState("");
   const [password, setPassword] = useState("");
   const [step, setStep] = useState(1);
+  const [completed, setCompleted] = useState(false);
 
   //handle steps
   const increment = () => {
@@ -42,6 +43,42 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
+  //configs for animationd
+  const check = {
+    animate: {
+      pathLength: 1,
+      transition: { duration: 0.5, ease: "easeInOut" },
+    },
+    exit: {
+      pathLength: 0,
+      transition: { delay: 1, duration: 0.5, ease: "easeInOut" },
+    },
+  };
+  const line = {
+    animate: {
+      pathLength: 1,
+      transition: { delay: 0.5,duration: 0.5, ease: "easeInOut" },
+    },
+    exit: {
+      pathLength: 0,
+      transition: { delay: 0.5, duration: 0.5, ease: "easeInOut" },
+    },
+  };
+  const circle = {
+    animate: {
+      pathLength: 1,
+      transition: { delay: 1.05, duration: 0.5, ease: "easeInOut" },
+    },
+    exit: {
+      pathLength: 0,
+      transition: { duration: 0.5, ease: "easeInOut" },
+    },
+  };
+  const init = { pathLength: 0 };
+  const mainAnim = {
+    pathLength: 1,
+  };
+
   return (
     <section className={`${brytzone}_signup`}>
       <SpecialNav />
@@ -50,51 +87,91 @@ const Login = () => {
           <div className="right">
             <span className="heading" />
             <span className="testx">
-            
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" width="600" height="200">
-  <circle cx="100" cy="100" r="90" fill="none" stroke="#FBB606" strokeWidth="12" strokeDasharray="565.49" strokeDashoffset="565.49" transform="scale(-1,-1) translate(-200,-200)">
-    <animate attributeName="stroke-dashoffset" from="565.49" to="0" dur="1s" begin="0s" fill="freeze" />
-  </circle>
-  <path d="M50,100 L85,135 L150,70" stroke="#FBB606" strokeWidth="18" strokeDasharray="230" strokeDashoffset="230" fill="none">
-    <animate attributeName="stroke-dashoffset" from="230" to="0" dur="1s" fill="freeze" begin="1s" />
-  </path>
-  <line x1="190" y1="100" x2="400" y2="100" stroke="#FBB606" strokeWidth="12" strokeDasharray="210" strokeDashoffset="210">
-    <animate attributeName="stroke-dashoffset" from="150" to="0" dur="1s" fill="freeze" begin="1.5s" />
-  </line>
-  <circle cx="490" cy="100" r="90" fill="none" stroke="#FBB606" strokeWidth="12" strokeDasharray="565.49" strokeDashoffset="565.49" transform="scale(-1,-1) translate(-985,-200)">
-    <animate attributeName="stroke-dashoffset" from="565.49" to="0" dur="1s" begin="2.5s" fill="freeze" />
-  </circle>
-  <path d="M450,100 L485,135 L550,70" stroke="#FBB606" strokeWidth="18" strokeDasharray="230" strokeDashoffset="230" fill="none">
-    <animate attributeName="stroke-dashoffset" from="230" to="0" dur="1s" fill="freeze" begin="3.5s" />
-  </path>
-  <line x1="590" y1="100" x2="810" y2="100" stroke="#FBB606" strokeWidth="12" strokeDasharray="220" strokeDashoffset="220">
-    <animate attributeName="stroke-dashoffset" from="170" to="0" dur="1s" fill="freeze" begin="4s" />
-  </line>
-  <circle cx="890" cy="100" r="90" fill="none" stroke="#FBB606" strokeWidth="12" strokeDasharray="565.49" strokeDashoffset="565.49" transform="scale(-1,-1) translate(-1790, -200)">
-    <animate attributeName="stroke-dashoffset" from="565.49" to="0" dur="1s" begin="4.5s" fill="freeze" />
-  </circle>
-  <path d="M850,100 L885,135 L950,70" stroke="#FBB606" strokeWidth="18" strokeDasharray="230" strokeDashoffset="230" fill="none">
-    <animate attributeName="stroke-dashoffset" from="230" to="0" dur="1s" fill="freeze" begin="5.5s" />
-  </path>
-</svg>
+              <motion.svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" width="600" height="200">
+                <defs>
+                  {/* <!-- Define a linear gradient for the night sky effect --> */}
+                  <linearGradient id="skyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#000022" />
+                    <stop offset="50%" stopColor="#001E3C" />
+                    <stop offset="100%" stopColor="#000022" />
+                  </linearGradient>
+                </defs>
+                <motion.circle initial={init} animate={mainAnim} cx="100" cy="100" r="90" fill="none" stroke="#FBB606" strokeWidth="12" transform="scale(-1,-1) translate(-200,-200)" />
+                <AnimatePresence>
+                  {step >= 2 && (
+                    <>
+                      <motion.path initial={init} exit={check.exit} animate={check.animate} d="M50,100 L85,135 L150,70" stroke="#FBB606" strokeWidth="18" fill="none" />
+
+                      <motion.line initial={init} exit={line.exit} animate={line.animate} x1="190" y1="100" x2="400" y2="100" stroke="url(#skyGradient)" strokeWidth="12" />
+                      <motion.circle
+                        initial={init}
+                        exit={circle.exit}
+                        animate={circle.animate}
+                        cx="490"
+                        cy="100"
+                        r="90"
+                        fill="none"
+                        stroke="#FBB606"
+                        strokeWidth="12"
+                        transform="scale(-1,-1) translate(-985,-200)"
+                      />
+                    </>
+                  )}
+                </AnimatePresence>
+
+                <AnimatePresence>
+                  {step === 3 && (
+                    <>
+                      <motion.path d="M450,100 L485,135 L550,70" stroke="#FBB606" initial={init} exit={check.exit} animate={check.animate} strokeWidth="18" fill="none" />
+
+                      <motion.line x1="590" y1="100" x2="810" initial={init} exit={line.exit} animate={line.animate} y2="100" stroke="#FBB606" strokeWidth="12" />
+                      <motion.circle
+                        cx="890"
+                        cy="100"
+                        r="90"
+                        fill="none"
+                        stroke="#FBB606"
+                        initial={init}
+                        exit={circle.exit}
+                        animate={circle.animate}
+                        strokeWidth="12"
+                        transform="scale(-1,-1) translate(-1790, -200)"
+                      />
+                    </>
+                  )}
+                </AnimatePresence>
+                <AnimatePresence>
+                  {completed && (
+                    <motion.path
+                      initial={init}
+                      exit={{ pathLength: 0, transition: { duration: 0.5, ease: "easeInOut" } }}
+                      animate={{ pathLength: 1, transition: { delay: 1.05, duration: 0.5, ease: "easeInOut" } }}
+                      d="M850,100 L885,135 L950,70"
+                      stroke="#FBB606"
+                      strokeWidth="18"
+                      fill="none"
+                    />
+                  )}
+                </AnimatePresence>
+              </motion.svg>
             </span>
 
             <form>
               <div className="container">
-                <MyComponent isVisible={step===1}>
-                  <div className="sub-container">
+                <MyComponent isVisible={step === 1}>
+                  <div className="subContainer">
                     <NormalInput label="matricule" name="matricle" value={matricle} onChange={handleMatricle} />
                     <PasswordInput label="password" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
                   </div>
                 </MyComponent>
-                <MyComponent isVisible={step===2}>
-                  <div className="sub-container">
+                <MyComponent isVisible={step === 2}>
+                  <div className="subContainer">
                     <NormalInput label="matricule1" name="matricle" value={matricle} onChange={handleMatricle} />
                     <PasswordInput label="password1" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
                   </div>
                 </MyComponent>
-                <MyComponent isVisible={step===3}>
-                  <div className="sub-container">
+                <MyComponent isVisible={step === 3}>
+                  <div className="subContainer">
                     <NormalInput label="matricule2" name="matricle" value={matricle} onChange={handleMatricle} />
                     <PasswordInput label="password2" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
                   </div>
