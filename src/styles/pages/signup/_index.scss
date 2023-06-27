@@ -25,12 +25,16 @@
     }
     .heading {
       @include flex;
-      width: 100%;
       @include size(100%, 7rem);
-      svg {
-        @include flex;
-        transform: translateY(5rem) scale(0.9);
-      }
+      width: 22rem;
+      background-image: url("sign.png");
+      background-position-x: 50%;
+      -webkit-mask-image: url(signup.svg);
+      mask-image: url(signup.svg);
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-clip: border-box;
+      mask-clip: border-box;
     }
     .body {
       @include flex;
