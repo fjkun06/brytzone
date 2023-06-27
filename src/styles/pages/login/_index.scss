@@ -61,6 +61,72 @@
       }
 
       .right {
+        form {
+          width: 100%;
+          border: 1px solid red;
+          @include size(100%);
+          padding-inline: 2rem;
+          @include flex(column);
+
+          gap: 3rem;
+          /***********************************************Input fields***********************************************/
+          .field_normal,
+          .field_password {
+            height: 8.6rem;
+            // border: 1px solid red;
+            gap: 0.5rem;
+            width: 100%;
+            @include flex(column);
+            align-items: flex-start;
+
+            span {
+              height: 2.7rem;
+              width: 100%;
+              @include flex;
+              justify-content: flex-start;
+              // border: 1px solid rgb(0, 255, 60);
+              color: $black;
+              text-align: center;
+              font-size: 18px;
+              font-family: Poppins;
+              font-weight: 500;
+            }
+
+            div.visibility {
+              width: 100%;
+              @include flex;
+              justify-content: flex-start;
+              gap: 3rem;
+
+              div {
+                cursor: pointer;
+              }
+            }
+            input,
+            div.visibility input {
+              @include flex;
+              height: 53px;
+              border-radius: 5px;
+              background: #eff0f2;
+              color: rgba(60, 50, 50, 0.8);
+              text-align: left;
+              font-size: 18px;
+              font-family: "Poppins";
+              outline: none;
+              border-color: transparent;
+              width: 100%;
+              padding-left: 2.4rem;
+              text-transform: uppercase;
+              max-width: 45rem;
+              // justify-content: flex-start;
+            }
+          }
+
+          /***********************************************Password input fields***********************************************/
+          .field_password {
+            height: 15rem;
+          }
+        }
       }
     }
   }
