@@ -80,10 +80,10 @@ const Login = () => {
               <NormalInput label="matricule" name="matricle" value={matricle} onChange={handleMatricle} />
               <PasswordInput label="password" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
               <div className="actions">
-                <Button category="content">Login</Button>
+                <Button category="content">Log In</Button>
                 <span className="help">
                   <span>Don’t have an account?</span>
-                  <SubLink route="/password_recovery">Sign Up</SubLink>
+                  <SubLink route="/signup">Sign Up</SubLink>
                 </span>
               </div>
             </form>

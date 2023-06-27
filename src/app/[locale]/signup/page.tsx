@@ -1,26 +1,52 @@
 "use client";
-
 import { useTranslations } from "next-intl";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-export const metadata = {
-  title: "Ensome | Services",
-  description: "section displaying all the services we offer",
-};
+import { usePathname, useRouter } from "next/navigation";
+import { brytzone } from "../home/header";
+import Image from "next/image";
+import { useState } from "react";
+import NormalInput, { PasswordInput } from "@/stories/components/Input";
+import { Button } from "@/stories/components/Button";
+import SubLink from "@/stories/components/SubLinks";
+import SpecialNav from "@/stories/layout/navbar/SpecialNav";
 
-const SignUP = () => {
-  // const t = useTranslations("dash");
-  const path1 = usePathname();
-  console.log("path: ", path1);
-  console.log(path1.slice(3 - path1.length));
-  // console.log(path.slice(3 - path.length) + "dashboard");
+const Login = () => {
+  const router = useRouter();
+  const [matricle, setMatricle] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleMatricle: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    setMatricle(e.target.value);
+  };
+  const handlePassword: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    setPassword(e.target.value);
+  };
 
   return (
-    <div>
-      {/* <h1>{t("title")}</h1> */}
-      <h1>SignUP</h1>
-    </div>
+    <section className={`${brytzone}_signup`}>
+      <SpecialNav />
+      <div className="login_body">
+        <span className="heading">Sign Up</span>
+        <div className="body">
+          <div className="left">
+            <Image width={560} height={460} src={"/login/login_avatar.webp"} alt="login-image" quality={100} />
+          </div>
+          <div className="right">
+            <form>
+              <NormalInput label="matricule" name="matricle" value={matricle} onChange={handleMatricle} />
+              <PasswordInput label="password" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
+              <div className="actions">
+                <Button category="content">Proceed</Button>
+                <span className="help">
+                  <span>Already have an account?</span>
+                  <SubLink route="/login">Login</SubLink>
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
-export default SignUP;
+export default Login;
