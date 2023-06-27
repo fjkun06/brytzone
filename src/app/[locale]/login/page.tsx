@@ -39,36 +39,6 @@ const Login = () => {
                 fill="white"
               />
             </g>
-            <defs>
-              <filter id="filter0_ddddd_414_3126" x="0.666626" y="0.918457" width="198.833" height="173" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                <feOffset />
-                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
-                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_414_3126" />
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                <feOffset dy="5" />
-                <feGaussianBlur stdDeviation="5.5" />
-                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
-                <feBlend mode="normal" in2="effect1_dropShadow_414_3126" result="effect2_dropShadow_414_3126" />
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                <feOffset dx="1" dy="19" />
-                <feGaussianBlur stdDeviation="9.5" />
-                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.09 0" />
-                <feBlend mode="normal" in2="effect2_dropShadow_414_3126" result="effect3_dropShadow_414_3126" />
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                <feOffset dx="3" dy="43" />
-                <feGaussianBlur stdDeviation="13" />
-                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0" />
-                <feBlend mode="normal" in2="effect3_dropShadow_414_3126" result="effect4_dropShadow_414_3126" />
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                <feOffset dx="5" dy="77" />
-                <feGaussianBlur stdDeviation="15.5" />
-                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.01 0" />
-                <feBlend mode="normal" in2="effect4_dropShadow_414_3126" result="effect5_dropShadow_414_3126" />
-                <feBlend mode="normal" in="SourceGraphic" in2="effect5_dropShadow_414_3126" result="shape" />
-              </filter>
-            </defs>
           </svg>
         </span>
         <div className="body">

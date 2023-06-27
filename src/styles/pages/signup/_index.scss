@@ -24,19 +24,7 @@
       gap: 3rem;
       @include size(120rem, 85rem);
     }
-    .heading {
-      @include flex;
-      @include size(100%, 7rem);
-      width: 22rem;
-      background-image: url("sign.png");
-      background-position-x: 50%;
-      -webkit-mask-image: url(signup.svg);
-      mask-image: url(signup.svg);
-      -webkit-mask-repeat: no-repeat;
-      mask-repeat: no-repeat;
-      -webkit-mask-clip: border-box;
-      mask-clip: border-box;
-    }
+
     .body {
       @include flex;
       @include size(100%);
@@ -51,6 +39,30 @@
       }
 
       .right {
+        //heading
+        .heading {
+          @include flex;
+          @include size(100%, 7rem);
+          width: 22rem;
+          background-image: url("sign.png");
+          background-position-x: 50%;
+          -webkit-mask-image: url(signup.svg);
+          mask-image: url(signup.svg);
+          -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+          -webkit-mask-clip: border-box;
+          mask-clip: border-box;
+        }
+        //testx progres
+        .testx {
+          border: 1px solid red;
+          width: 30rem;
+          svg {
+            transform: scale(0.3);
+            width: 30rem;
+          }
+        }
+        //forms
         form {
           width: 100%;
           @include size(100%);
