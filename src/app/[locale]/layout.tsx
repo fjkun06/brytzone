@@ -20,7 +20,7 @@ export function generateStaticParams() {
 
 export const metadata = {
   title: "Brytzone",
-  description: "our proposed solutions to common digital problems",
+  description: "an acedemic platform for student guidance, monitoring, projects and more.",
 };
 
 export default async function LocaleLayout({ children, params: { locale } }: LayoutProps) {
