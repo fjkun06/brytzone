@@ -11,17 +11,18 @@
   background-position: center center;
 
   /***********************************************Login Body***********************************************/
-  .login_body {
+  .signup_body {
     @include flex(column);
     justify-content: flex-start;
     justify-self: center;
     margin-block: 5rem;
+    border: 1px solid red;
 
     & > * {
     }
     @media only screen and (width > 1200px) {
       gap: 3rem;
-      @include size(120rem, 65rem);
+      @include size(120rem, 85rem);
     }
     .heading {
       @include flex;
