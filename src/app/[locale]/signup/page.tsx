@@ -9,6 +9,7 @@ import { Button } from "@/stories/components/Button";
 import SubLink from "@/stories/components/SubLinks";
 import SpecialNav from "@/stories/layout/navbar/SpecialNav";
 import { motion, AnimatePresence } from "framer-motion";
+import SkillList from "./skills";
 
 const Login = () => {
   const router = useRouter();
@@ -78,6 +79,14 @@ const Login = () => {
   const mainAnim = {
     pathLength: 1,
   };
+
+  //form interface
+  interface Form {
+    name: string;
+    matricule: string;
+    level: number;
+    email: string;
+  }
 
   return (
     <section className={`${brytzone}_signup`}>
@@ -162,6 +171,7 @@ const Login = () => {
                   <div className="subContainer">
                     <NormalInput label="matricule" name="matricle" value={matricle} onChange={handleMatricle} />
                     <PasswordInput label="password" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
+                 <SkillList/>
                   </div>
                 </MyComponent>
                 <MyComponent isVisible={step === 2}>
