@@ -50,24 +50,33 @@ const Login = () => {
           <div className="right">
             <span className="heading" />
             <span className="testx">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200">
-                <circle cx="100" cy="100" r="90" fill="none" stroke="#FBB606" strokeWidth="12" />
-                <path d="M50,100 L85,135 L150,70" stroke="#FBB606" strokeWidth="12" strokeDasharray="170" strokeDashoffset="170" fill="none">
-                  <animate attributeName="stroke-dashoffset" from="170" to="0" dur="1s" begin="0s" fill="freeze" />
-                </path>
-                {/* <!-- Linking Line --> */}
-                <line x1="190" y1="100" x2="340" y2="100" stroke="#FBB606" strokeWidth="12" strokeDasharray="150" strokeDashoffset="150">
-                  <animate attributeName="stroke-dashoffset" from="150" to="0" dur="1s" begin="1s" fill="freeze" />
-                </line>
-
-                {/* <!-- Second Encircled Checkmark --> */}
-                <circle cx="400" cy="100" r="90" fill="none" stroke="#FBB606" strokeWidth="12">
-                  <animate attributeName="r" values="90; 95; 90" dur="2s" repeatCount="indefinite" begin="1s" />
-                </circle>
-                <path d="M350,100 L385,135 L450,70" stroke="#FBB606" strokeWidth="18" strokeDasharray="230" strokeDashoffset="230" fill="none">
-                  <animate attributeName="stroke-dashoffset" from="230" to="0" dur="1s" begin="1s" fill="freeze" />
-                </path>
-              </svg>
+            
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" width="600" height="200">
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#FBB606" strokeWidth="12" strokeDasharray="565.49" strokeDashoffset="565.49" transform="scale(-1,-1) translate(-200,-200)">
+    <animate attributeName="stroke-dashoffset" from="565.49" to="0" dur="1s" begin="0s" fill="freeze" />
+  </circle>
+  <path d="M50,100 L85,135 L150,70" stroke="#FBB606" strokeWidth="18" strokeDasharray="230" strokeDashoffset="230" fill="none">
+    <animate attributeName="stroke-dashoffset" from="230" to="0" dur="1s" fill="freeze" begin="1s" />
+  </path>
+  <line x1="190" y1="100" x2="400" y2="100" stroke="#FBB606" strokeWidth="12" strokeDasharray="210" strokeDashoffset="210">
+    <animate attributeName="stroke-dashoffset" from="150" to="0" dur="1s" fill="freeze" begin="1.5s" />
+  </line>
+  <circle cx="490" cy="100" r="90" fill="none" stroke="#FBB606" strokeWidth="12" strokeDasharray="565.49" strokeDashoffset="565.49" transform="scale(-1,-1) translate(-985,-200)">
+    <animate attributeName="stroke-dashoffset" from="565.49" to="0" dur="1s" begin="2.5s" fill="freeze" />
+  </circle>
+  <path d="M450,100 L485,135 L550,70" stroke="#FBB606" strokeWidth="18" strokeDasharray="230" strokeDashoffset="230" fill="none">
+    <animate attributeName="stroke-dashoffset" from="230" to="0" dur="1s" fill="freeze" begin="3.5s" />
+  </path>
+  <line x1="590" y1="100" x2="810" y2="100" stroke="#FBB606" strokeWidth="12" strokeDasharray="220" strokeDashoffset="220">
+    <animate attributeName="stroke-dashoffset" from="170" to="0" dur="1s" fill="freeze" begin="4s" />
+  </line>
+  <circle cx="890" cy="100" r="90" fill="none" stroke="#FBB606" strokeWidth="12" strokeDasharray="565.49" strokeDashoffset="565.49" transform="scale(-1,-1) translate(-1790, -200)">
+    <animate attributeName="stroke-dashoffset" from="565.49" to="0" dur="1s" begin="4.5s" fill="freeze" />
+  </circle>
+  <path d="M850,100 L885,135 L950,70" stroke="#FBB606" strokeWidth="18" strokeDasharray="230" strokeDashoffset="230" fill="none">
+    <animate attributeName="stroke-dashoffset" from="230" to="0" dur="1s" fill="freeze" begin="5.5s" />
+  </path>
+</svg>
             </span>
 
             <form>
