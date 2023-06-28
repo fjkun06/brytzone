@@ -118,22 +118,77 @@
           gap: 2rem;
           /***********************************************Container fields***********************************************/
           .container {
-            @include size(100%);
-            @include size(inherit);
+            @include size(100%, 54rem);
+            @include size(inherit, 54rem);
             // @include customgrid(1, 1, 95%);
             @include flex(column);
             gap: 2rem;
 
-            // background-color: red;
+            background-color: red;
             .sub-container {
-              // background-color: rgb(0, 255, 81);
+              background-color: rgb(0, 255, 81);
               // @include position("1/2");
-              @include size(auto);
+              @include size(auto, 32.8rem);
               @include flex(column);
               gap: 1.5rem;
               padding: 2rem;
               label {
                 width: 45rem;
+              }
+
+              .test {
+                // Style the select element
+                select {
+                  // Styling properties for the select element itself
+                  width: 200px;
+                  padding: 8px;
+                  border: 1px solid #ccc;
+                  border-radius: 0px;
+                  font-family: Arial, sans-serif;
+                  font-size: 14px;
+                  background-color: #fff;
+                  color: #333;
+
+                  // Styling properties for the select arrow icon
+                  // appearance: none;
+                  // background-image: url("arrow-icon.png");
+                  background-repeat: no-repeat;
+                  background-position: right center;
+                  padding-right: 24px;
+                }
+
+                // Style the dropdown list
+                select option {
+                  // Styling properties for each option in the dropdown list
+                  padding: 8px;
+                  font-family: Arial, sans-serif;
+                  font-size: 14px;
+                  background-color: #fff;
+                  color: #333;
+                }
+
+                // Style the dropdown list when it's expanded
+                select:active,
+                select:focus {
+                  // Styling properties for the select element when active or focused
+                  outline: none;
+                  border-color: #007bff;
+                  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+                }
+
+                // Style the dropdown list when it's disabled
+                select:disabled {
+                  // Styling properties for the select element when disabled
+                  opacity: 0.5;
+                  cursor: not-allowed;
+                }
+
+                // Style the dropdown list when an option is selected
+                select option:checked {
+                  // Styling properties for the selected option
+                  background-color: #007bff;
+                  color: #fff;
+                }
               }
             }
             //buttons

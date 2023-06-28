@@ -14,6 +14,10 @@ import AreaOfInterestSelector from "./interest";
 import Demo from "./Demo";
 import Filer from "./upload";
 import Progress from "./progress";
+import Mosaic from "./mosaic";
+import Navigator from "./navigator";
+import { useForm, Controller } from "react-hook-form";
+import Dropdown from "./level";
 
 const Login = () => {
   const router = useRouter();
@@ -21,30 +25,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [step, setStep] = useState(1);
   const [completed, setCompleted] = useState(false);
-
-  //handle steps
-  const increment = () => {
-    if (step === 3) {
-      setCompleted(true);
-    }
-    if (!(step >= 1 && step < 3)) {
-      return;
-    }
-
-    console.log(`before ${step}`);
-    setStep((s) => s + 1);
-    console.log(`after ${step}`);
-  };
-  const decrement = () => {
-    if (!(step > 1 && step <= 3)) {
-      return;
-    }
-    console.log(`before ${step}`);
-    setCompleted(false);
-
-    setStep((s) => s - 1);
-    console.log(`after ${step}`);
-  };
 
   const handleMatricle: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setMatricle(e.target.value);
@@ -57,7 +37,7 @@ const Login = () => {
   interface Form {
     name: string;
     matricule: string;
-    level: number;
+    level: string;
     email: string;
   }
 
@@ -67,6 +47,23 @@ const Login = () => {
     setSelectedSkills(skills);
     console.log(skills);
   };
+  /**********************************************Handling input fields**********************************************/
+  type FormValues = {
+    matricule: string;
+    name: string;
+    password: string;
+    level: string;
+    email: string;
+  };
+  const { handleSubmit, control } = useForm<FormValues>({
+    defaultValues: {
+      matricule: "",
+      password: "",
+      level: "",
+      email: "",
+      name: "",
+    },
+  });
 
   return (
     <section className={`${brytzone}_signup`}>
@@ -81,42 +78,67 @@ const Login = () => {
               <motion.div layout className="container">
                 <MyComponent isVisible={step === 1}>
                   <motion.div layout className="sub-container">
-                    <NormalInput label="Full Name" name="name" value={matricle} onChange={handleMatricle} />
-                    <NormalInput label="matricule" name="matricle" value={matricle} onChange={handleMatricle} />
-                    <NormalInput label="level" name="level" value={matricle} onChange={handleMatricle} />
+                    <Controller
+                      control={control}
+                      name="name"
+                      render={({ field: { onChange, onBlur, value, ref } }) => <NormalInput onBlur={onBlur} label="full name" value={value} onChange={onChange} />}
+                    />
+                    <Controller
+                      control={control}
+                      name="matricule"
+                      render={({ field: { onChange, onBlur, value, ref } }) => <NormalInput onBlur={onBlur} label="matricule" value={value} onChange={onChange} />}
+                    />
+                    <Controller
+                      control={control}
+                      name="level"
+                      render={({ field: { onChange, onBlur, value, ref } }) => <NormalInput onBlur={onBlur} label="level" value={value} onChange={onChange} />}
+                    />
                     {/* <PasswordInput label="password" forgot placeholder="password" name="password" value={password} onChange={handlePassword} /> */}
                     {/* <SkillList skills={selectedSkills} setSkills={handleSlillList} /> */}
-                    {/* <AreaOfInterestSelector /> */}
+                    {/* <AreaOfInterestSelector/> */}
                   </motion.div>
                 </MyComponent>
                 <MyComponent isVisible={step === 2}>
-                  <div className="subContainer">
-                    <NormalInput label="matricule1" name="matricle" value={matricle} onChange={handleMatricle} />
-                    <PasswordInput label="password1" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
+                  <div className="sub-container">
+                    <Controller
+                      control={control}
+                      name="matricule"
+                      render={({ field: { onChange, onBlur, value, ref } }) => <NormalInput onBlur={onBlur} label="matricule" value={value} onChange={onChange} />}
+                    />
+                    <Controller
+                      control={control}
+                      name="password"
+                      render={({ field: { onChange, onBlur, value, ref } }) => <PasswordInput onBlur={onBlur} label="password" placeholder="password" value={value} onChange={onChange} />}
+                    />
+                    {/* <Dropdown /> */}
+                    <div className="test">
+                      <label htmlFor="pet-select">Choose a pet:</label>
+
+                      <select name="pets" id="pet-select">
+                        <option value="">--Please choose a level--</option>
+                        <option value="dog">200</option>
+                        <option value="cat">Cat</option>
+                        <option value="hamster">Hamster</option>
+                        <option value="parrot">Parrot</option>
+                        <option value="spider">Spider</option>
+                        <option value="goldfish">Goldfish</option>
+                      </select>
+                    </div>
                   </div>
                 </MyComponent>
                 <MyComponent isVisible={step === 3}>
-                  <div className="subContainer">
+                  <div className="sub-container">
                     <NormalInput label="matricule2" name="matricle" value={matricle} onChange={handleMatricle} />
                     <PasswordInput label="password2" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
                     <Filer />
                   </div>
                 </MyComponent>
-                <div className="btns">
-                  {/* {step > 1 && ( */}
-                  <button type="button" style={{ opacity: step > 1 ? 1 : 0 }}  onClick={decrement}>
-                    Back
-                  </button>
-                  {/* )} */}
-                  <Button category="content" onClick={increment}>
-                    Next
-                  </Button>
-                  {/* <Button category="content">Back</Button>
-                  <Button category="content">Next</Button> */}
-                </div>
+                <Navigator step={step} stepCallback={setStep} completeCallback={setCompleted} />
               </motion.div>
               <div className="actions">
-                <Button category="content">Proceed</Button>
+                <Button category="content" onClick={handleSubmit((data) => console.log(data))}>
+                  Proceed
+                </Button>
                 <span className="help">
                   <span>Already have an account?</span>
                   <SubLink route="/login">Login</SubLink>
@@ -124,27 +146,7 @@ const Login = () => {
               </div>
             </form>
           </div>
-          <div className="left">
-            <svg width="645" height="736" viewBox="0 0 645 736" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g filter="url(#filter0_ddddd_297_2520)">
-                <rect x="171.766" y="16.403" width="376.982" height="565.069" fill="url(#pattern0)" />
-                <ellipse cx="191.788" cy="564.696" rx="45.6906" ry="45.511" fill="#0A518B" />
-                <path d="M188.693 274.458L129.846 320.09L119.752 246.311L188.693 274.458Z" fill="#FBB606">
-                  <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 154.77 283.2" to="360 154.77 283.2" dur="10s" repeatCount="indefinite" />
-                </path>
-                <rect x="525.229" y="441.429" width="63.3504" height="63.6372" rx="9.68393" fill="#FBB606">
-                  <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 556.404 473.748" to="360 556.404 473.748" dur="10s" begin="3s" repeatCount="indefinite" />
-                </rect>
-              </g>
-              <defs>
-                <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-                  <use href="#image0_297_2520" transform="matrix(0.00245098 0 0 0.00163515 0 -0.00035712)" />
-                </pattern>
-                <image id="image0_297_2520" width="408" height="612" href="/signup/mosaic.webp" />
-              </defs>
-            </svg>
-            {/* <Image width={560} height={460} src={"/login/login_avatar.webp"} alt="login-image" quality={100} /> */}
-          </div>
+          <Mosaic />
         </div>
       </div>
       {/* <Demo/> */}

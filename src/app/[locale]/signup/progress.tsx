@@ -1,5 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { nanoid } from "nanoid";
 interface Progressprops {
   step: number;
   completed: boolean;
@@ -112,7 +113,7 @@ const Progress: React.FC<Progressprops> = ({ step, completed }) => {
             animate={circle.animate}
             strokeWidth="12"
             transform="scale(-1,-1) translate(-1790, -200)"
-            key={"xyz"}
+            key={nanoid()}
           />
           <AnimatePresence>
             {step === 3 && (
@@ -127,19 +128,19 @@ const Progress: React.FC<Progressprops> = ({ step, completed }) => {
                 animate={circle.animate}
                 strokeWidth="12"
                 transform="scale(-1,-1) translate(-1790, -200)"
-                key={"xyz"}
+                key={nanoid()}
               />
             )}
             {completed && (
               <motion.path
                 initial={init}
                 exit={{ pathLength: 0, transition: { duration: 0.5, ease: "easeInOut" } }}
-                animate={{ pathLength: 1, transition: { delay: 1.05, duration: 0.5, ease: "easeInOut" } }}
+                animate={{ pathLength: 1, transition: { duration: 0.5, ease: "easeInOut" } }}
                 d="M850,100 L885,135 L950,70"
                 stroke="#FBB606"
                 strokeWidth="18"
                 fill="none"
-                key={"dxyz"}
+                key={nanoid()}
               />
             )}
           </AnimatePresence>
