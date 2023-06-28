@@ -2,7 +2,7 @@
 @use "../utils/variables" as *;
 nav.brytzone_special_nav {
   // display: none;
-  max-height: 30rem;
+  // max-height: 30rem;
   height: 10rem;
   justify-self: flex-start;
   align-self: flex-start;
@@ -10,6 +10,7 @@ nav.brytzone_special_nav {
   padding-inline: 6rem;
   justify-content: flex-start;
   background-color: transparent;
+  transform: translate(10px, 10px);
   img {
     transform: scale(1);
   }

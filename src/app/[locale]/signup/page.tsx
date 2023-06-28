@@ -18,8 +18,9 @@ import Mosaic from "./mosaic";
 import Navigator from "./navigator";
 import { useForm, Controller } from "react-hook-form";
 import LevelComponent from "./level";
+import { nanoid } from "nanoid";
 
-const Login = () => {
+const SignUp = () => {
   const router = useRouter();
   const [matricle, setMatricle] = useState("");
   const [password, setPassword] = useState("");
@@ -81,7 +82,7 @@ const Login = () => {
             <form>
               <motion.div layout className="container">
                 <AnimatePresence>
-                  <SubContainer isVisible={step === 1}>
+                  <SubContainer isVisible={step === 1} key={nanoid()} >
                     <Controller
                       control={control}
                       name="name"
@@ -99,7 +100,7 @@ const Login = () => {
                     {/* <AreaOfInterestSelector/> */}
                   </SubContainer>
 
-                  <SubContainer isVisible={step === 2}>
+                  <SubContainer isVisible={step === 2} key={nanoid()} >
                     <Controller
                       control={control}
                       name="matricule"
@@ -111,7 +112,7 @@ const Login = () => {
                       render={({ field: { onChange, onBlur, value, ref } }) => <PasswordInput onBlur={onBlur} label="password" placeholder="password" value={value} onChange={onChange} />}
                     />
                   </SubContainer>
-                  <SubContainer isVisible={step === 3}>
+                  <SubContainer isVisible={step === 3} key={nanoid()} >
                     <NormalInput label="matricule2" name="matricle" value={matricle} onChange={handleMatricle} />
                     <PasswordInput label="password2" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
                     <Filer />
@@ -144,7 +145,7 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
 
 const SubContainer = ({ isVisible, children }: { isVisible: boolean; children: any }) => {
   const circle = {
@@ -161,7 +162,7 @@ const SubContainer = ({ isVisible, children }: { isVisible: boolean; children: a
   return (
     <>
       {isVisible && (
-        <motion.div initial={init} exit={circle.exit} animate={circle.animate} layout className="sub-container">
+        <motion.div  initial={init} exit={circle.exit} animate={circle.animate} layout className="sub-container">
           {children}
         </motion.div>
       )}

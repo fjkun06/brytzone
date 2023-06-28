@@ -53,21 +53,20 @@ const Progress: React.FC<Progressprops> = ({ step, completed }) => {
           </linearGradient>
         </defs>
         <motion.g id="g1">
+        <motion.circle className="placeholder" key={nanoid()} cx="100" cy="100" r="90" fill="none" stroke="#FBB606" strokeWidth="12" transform="scale(-1,-1) translate(-200,-200)" />
+
           <motion.circle initial={init} animate={mainAnim} cx="100" cy="100" r="90" fill="none" stroke="#FBB606" strokeWidth="12" transform="scale(-1,-1) translate(-200,-200)" />
           <AnimatePresence>
             {step >= 2 && <motion.path initial={init} exit={check.exit} animate={check.animate} d="M50,100 L85,135 L150,70" stroke="#FBB606" strokeWidth="18" fill="none" />}
           </AnimatePresence>
         </motion.g>
-        <motion.line className="placeholder" id="l1" initial={init} exit={line.exit} animate={line.animate} x1="190" y1="100" x2="910" y2="100" stroke="url(#skyGradient)" strokeWidth="12" />
+        <motion.line className="placeholder" id="l1"  x1="190" y1="100" x2="910" y2="100" stroke="url(#skyGradient)" strokeWidth="12" />
 
         <AnimatePresence>
           {step >= 2 && <motion.line id="l1" initial={init} exit={line.exit} animate={line.animate} x1="190" y1="100" x2="910" y2="100" stroke="url(#skyGradient)" strokeWidth="12" />}
         </AnimatePresence>
         <motion.g id="g2">
           <motion.circle
-            initial={init}
-            exit={circle.exit}
-            animate={circle.animate}
             cx="490"
             cy="100"
             r="90"
@@ -76,6 +75,7 @@ const Progress: React.FC<Progressprops> = ({ step, completed }) => {
             className="placeholder"
             strokeWidth="12"
             transform="scale(-1,-1) translate(-985,-200)"
+            key={nanoid()}
           />
           <AnimatePresence>
             {step >= 2 && (
@@ -83,6 +83,7 @@ const Progress: React.FC<Progressprops> = ({ step, completed }) => {
                 initial={init}
                 exit={circle.exit}
                 animate={circle.animate}
+                key={nanoid()}
                 cx="490"
                 cy="100"
                 r="90"
@@ -95,7 +96,7 @@ const Progress: React.FC<Progressprops> = ({ step, completed }) => {
             {step === 3 && <motion.path d="M450,100 L485,135 L550,70" stroke="#FBB606" initial={init} exit={check.exit} animate={check.animate} strokeWidth="18" fill="none" />}
           </AnimatePresence>
         </motion.g>
-        <motion.line className="placeholder" id="l2" x1="590" y1="100" x2="1310" initial={init} exit={line.exit} animate={line.animate} y2="100" stroke="#FBB606" strokeWidth="12" />
+        <motion.line className="placeholder" id="l2" x1="590" y1="100" x2="1310"  y2="100" stroke="#FBB606" strokeWidth="12" />
 
         <AnimatePresence>
           {step >= 3 && <motion.line id="l2" x1="590" y1="100" x2="1310" initial={init} exit={line.exit} animate={line.animate} y2="100" stroke="#FBB606" strokeWidth="12" />}
@@ -108,10 +109,7 @@ const Progress: React.FC<Progressprops> = ({ step, completed }) => {
             fill="none"
             stroke="#FBB606"
             className="placeholder"
-            initial={init}
-            exit={circle.exit}
-            animate={circle.animate}
-            strokeWidth="12"
+                  strokeWidth="12"
             transform="scale(-1,-1) translate(-1790, -200)"
             key={nanoid()}
           />
@@ -133,7 +131,7 @@ const Progress: React.FC<Progressprops> = ({ step, completed }) => {
             )}
             {completed && (
               <motion.path
-              id='last'
+                id="last"
                 initial={init}
                 exit={{ pathLength: 0, transition: { duration: 0.5, ease: "easeInOut" } }}
                 animate={{ pathLength: 1, transition: { duration: 0.5, ease: "easeInOut" } }}
