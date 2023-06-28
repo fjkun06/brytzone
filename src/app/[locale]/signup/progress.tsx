@@ -133,6 +133,7 @@ const Progress: React.FC<Progressprops> = ({ step, completed }) => {
             )}
             {completed && (
               <motion.path
+              id='last'
                 initial={init}
                 exit={{ pathLength: 0, transition: { duration: 0.5, ease: "easeInOut" } }}
                 animate={{ pathLength: 1, transition: { duration: 0.5, ease: "easeInOut" } }}

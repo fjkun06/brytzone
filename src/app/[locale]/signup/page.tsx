@@ -67,7 +67,7 @@ const Login = () => {
 
   const handleLevel = (value: number) => {
     setValue("level", value);
-  }
+  };
 
   return (
     <section className={`${brytzone}_signup`}>
@@ -80,8 +80,8 @@ const Login = () => {
             <Progress step={step} completed={completed} />
             <form>
               <motion.div layout className="container">
-                <MyComponent isVisible={step === 1}>
-                  <motion.div layout className="sub-container">
+                <AnimatePresence>
+                  <SubContainer isVisible={step === 1}>
                     <Controller
                       control={control}
                       name="name"
@@ -92,16 +92,14 @@ const Login = () => {
                       name="matricule"
                       render={({ field: { onChange, onBlur, value, ref } }) => <NormalInput onBlur={onBlur} label="matricule" value={value} onChange={onChange} />}
                     />
-                    <LevelComponent  setLevel={handleLevel}/>
+                    <LevelComponent setLevel={handleLevel} />
 
-                 
                     {/* <PasswordInput label="password" forgot placeholder="password" name="password" value={password} onChange={handlePassword} /> */}
                     {/* <SkillList skills={selectedSkills} setSkills={handleSlillList} /> */}
                     {/* <AreaOfInterestSelector/> */}
-                  </motion.div>
-                </MyComponent>
-                <MyComponent isVisible={step === 2}>
-                  <div className="sub-container">
+                  </SubContainer>
+
+                  <SubContainer isVisible={step === 2}>
                     <Controller
                       control={control}
                       name="matricule"
@@ -112,28 +110,13 @@ const Login = () => {
                       name="password"
                       render={({ field: { onChange, onBlur, value, ref } }) => <PasswordInput onBlur={onBlur} label="password" placeholder="password" value={value} onChange={onChange} />}
                     />
-                    {/* <div className="test">
-                      <label htmlFor="pet-select">Choose a pet:</label>
-
-                      <select name="pets" id="pet-select">
-                        <option value="">--Please choose a level--</option>
-                        <option value="dog">200</option>
-                        <option value="cat">Cat</option>
-                        <option value="hamster">Hamster</option>
-                        <option value="parrot">Parrot</option>
-                        <option value="spider">Spider</option>
-                        <option value="goldfish">Goldfish</option>
-                      </select>
-                    </div> */}
-                  </div>
-                </MyComponent>
-                <MyComponent isVisible={step === 3}>
-                  <div className="sub-container">
+                  </SubContainer>
+                  <SubContainer isVisible={step === 3}>
                     <NormalInput label="matricule2" name="matricle" value={matricle} onChange={handleMatricle} />
                     <PasswordInput label="password2" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
                     <Filer />
-                  </div>
-                </MyComponent>
+                  </SubContainer>
+                </AnimatePresence>
                 <Navigator step={step} stepCallback={setStep} completeCallback={setCompleted} />
               </motion.div>
               <div className="actions">
@@ -163,4 +146,25 @@ const Login = () => {
 
 export default Login;
 
-const MyComponent = ({ isVisible, children }: { isVisible: boolean; children: any }) => <AnimatePresence>{isVisible && <>{children}</>}</AnimatePresence>;
+const SubContainer = ({ isVisible, children }: { isVisible: boolean; children: any }) => {
+  const circle = {
+    animate: {
+      opacity: 1,
+      transition: { delay: 0.25, duration: 0.35, ease: "easeInOut" },
+    },
+    exit: {
+      opacity: 0,
+      transition: { delay: 0.25, duration: 0.35, ease: "easeInOut" },
+    },
+  };
+  const init = { opacity: 0 };
+  return (
+    <>
+      {isVisible && (
+        <motion.div initial={init} exit={circle.exit} animate={circle.animate} layout className="sub-container">
+          {children}
+        </motion.div>
+      )}
+    </>
+  );
+};

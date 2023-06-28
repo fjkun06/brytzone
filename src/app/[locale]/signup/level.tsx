@@ -17,7 +17,7 @@ const LevelComponent = ({ setLevel }: { setLevel: (value: number) => void }) => 
 
   return (
     <div className="signup_level">
-      <span>Level</span>
+      <span >Level</span>
       <Select
         options={options}
         value={options.find((option) => option.value === selectedOption)}
