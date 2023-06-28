@@ -11,6 +11,7 @@ import SpecialNav from "@/stories/layout/navbar/SpecialNav";
 import { motion, AnimatePresence } from "framer-motion";
 import SkillList, { Skill } from "./skills";
 import AreaOfInterestSelector from "./interest";
+import Demo from "./Demo";
 import Filer from "./upload";
 
 const Login = () => {
@@ -194,7 +195,7 @@ const Login = () => {
                   <div className="subContainer">
                     <NormalInput label="matricule2" name="matricle" value={matricle} onChange={handleMatricle} />
                     <PasswordInput label="password2" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
-                    <Filer />
+                <Filer/>
                   </div>
                 </MyComponent>
               </div>
@@ -238,6 +239,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <Demo/>
     </section>
   );
 };
