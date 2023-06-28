@@ -195,7 +195,7 @@ const Login = () => {
                   <div className="subContainer">
                     <NormalInput label="matricule2" name="matricle" value={matricle} onChange={handleMatricle} />
                     <PasswordInput label="password2" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
-                <Filer/>
+                    <Filer />
                   </div>
                 </MyComponent>
               </div>
@@ -239,7 +239,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <Demo/>
+      {/* <Demo/> */}
     </section>
   );
 };
