@@ -18,7 +18,7 @@ import Mosaic from "./mosaic";
 import Navigator from "./navigator";
 import { useForm, Controller } from "react-hook-form";
 import LevelComponent from "./level";
-import { nanoid } from "nanoid";
+import CustomSelect from "./interests";
 
 const SignUp = () => {
   const router = useRouter();
@@ -82,7 +82,7 @@ const SignUp = () => {
             <form>
               <motion.div layout className="container">
                 <AnimatePresence>
-                  <SubContainer isVisible={step === 1} key={nanoid()} >
+                  <SubContainer isVisible={step === 1}  >
                     <Controller
                       control={control}
                       name="name"
@@ -100,7 +100,7 @@ const SignUp = () => {
                     {/* <AreaOfInterestSelector/> */}
                   </SubContainer>
 
-                  <SubContainer isVisible={step === 2} key={nanoid()} >
+                  <SubContainer isVisible={step === 2}  >
                     <Controller
                       control={control}
                       name="matricule"
@@ -112,10 +112,11 @@ const SignUp = () => {
                       render={({ field: { onChange, onBlur, value, ref } }) => <PasswordInput onBlur={onBlur} label="password" placeholder="password" value={value} onChange={onChange} />}
                     />
                   </SubContainer>
-                  <SubContainer isVisible={step === 3} key={nanoid()} >
+                  <SubContainer isVisible={step === 3}  >
                     <NormalInput label="matricule2" name="matricle" value={matricle} onChange={handleMatricle} />
                     <PasswordInput label="password2" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
-                    <Filer />
+                    <CustomSelect/>
+                    {/* <Filer /> */}
                   </SubContainer>
                 </AnimatePresence>
                 <Navigator step={step} stepCallback={setStep} completeCallback={setCompleted} />
@@ -128,7 +129,7 @@ const SignUp = () => {
                   })}
                 >
                   Proceed
-                </Button>
+                </Button> 
 
                 <span className="help">
                   <span>Already have an account?</span>
