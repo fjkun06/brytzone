@@ -136,58 +136,72 @@
                 width: 45rem;
               }
 
-              .test {
-                // Style the select element
-                select {
-                  // Styling properties for the select element itself
-                  width: 200px;
-                  padding: 8px;
-                  border: 1px solid #ccc;
-                  border-radius: 0px;
-                  font-family: Arial, sans-serif;
-                  font-size: 14px;
-                  background-color: #fff;
-                  color: #333;
-
-                  // Styling properties for the select arrow icon
-                  // appearance: none;
-                  // background-image: url("arrow-icon.png");
-                  background-repeat: no-repeat;
-                  background-position: right center;
-                  padding-right: 24px;
+              .signup_level {
+                @include flex(column);
+                align-items: flex-start;
+                gap: 0.5rem;
+                span {
+                  font-family: "Poppins";
+                  font-size: 1.8rem;
+                  font-weight: 500;
+                  text-transform: capitalize;
                 }
+                .react-select-container {
+                  .react-select {
+                    //controller
+                    &__control {
+                      outline: none !important;
+                      box-shadow: none;
+                      border-color: transparent;
+                      @include size(45rem, 5.3rem);
+                      .react-select__value-container {
+                        padding-inline: 2.4rem;
+                        font-family: "Poppins";
+                        font-size: 1.8rem;
+                      .react-select__single-value {
+                        color: $grey;
+                      }
+                      }
+                    }
 
-                // Style the dropdown list
-                select option {
-                  // Styling properties for each option in the dropdown list
-                  padding: 8px;
-                  font-family: Arial, sans-serif;
-                  font-size: 14px;
-                  background-color: #fff;
-                  color: #333;
-                }
+                    //menu and items
+                    &__menu {
+                      &-list {
+                        box-shadow: none;
+                        border-color: transparent;
+                        .react-select__option {
+                          transition: all 0.15s ease-in-out;
+                          font-family: "Poppins";
+                          font-size: 1.8rem;
+                          color: $grey;
+                          cursor: pointer;
+                          &--is-selected {
+                            background: lighten($grey, 20%);
+                          }
 
-                // Style the dropdown list when it's expanded
-                select:active,
-                select:focus {
-                  // Styling properties for the select element when active or focused
-                  outline: none;
-                  border-color: #007bff;
-                  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-                }
+                          &:hover {
+                            background: lighten($grey, 20%);
+                          }
+                        }
 
-                // Style the dropdown list when it's disabled
-                select:disabled {
-                  // Styling properties for the select element when disabled
-                  opacity: 0.5;
-                  cursor: not-allowed;
-                }
+                        &::-webkit-scrollbar {
+                          width: 0.7rem;
+                        }
 
-                // Style the dropdown list when an option is selected
-                select option:checked {
-                  // Styling properties for the selected option
-                  background-color: #007bff;
-                  color: #fff;
+                        /* Track */
+                        &::-webkit-scrollbar-track {
+                          background: transparent;
+                        }
+
+                        /* Handle */
+                        &::-webkit-scrollbar-thumb {
+                          background: darken($grey, 20%);
+                          background: $grey;
+                          border-radius: 100px;
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }

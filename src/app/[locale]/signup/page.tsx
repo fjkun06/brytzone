@@ -17,7 +17,7 @@ import Progress from "./progress";
 import Mosaic from "./mosaic";
 import Navigator from "./navigator";
 import { useForm, Controller } from "react-hook-form";
-import Dropdown from "./level";
+import LevelComponent from "./level";
 
 const Login = () => {
   const router = useRouter();
@@ -52,18 +52,22 @@ const Login = () => {
     matricule: string;
     name: string;
     password: string;
-    level: string;
+    level: number;
     email: string;
   };
-  const { handleSubmit, control } = useForm<FormValues>({
+  const { handleSubmit, control, setValue } = useForm<FormValues>({
     defaultValues: {
       matricule: "",
       password: "",
-      level: "",
+      level: 0,
       email: "",
       name: "",
     },
   });
+
+  const handleLevel = (value: number) => {
+    setValue("level", value);
+  }
 
   return (
     <section className={`${brytzone}_signup`}>
@@ -88,11 +92,9 @@ const Login = () => {
                       name="matricule"
                       render={({ field: { onChange, onBlur, value, ref } }) => <NormalInput onBlur={onBlur} label="matricule" value={value} onChange={onChange} />}
                     />
-                    <Controller
-                      control={control}
-                      name="level"
-                      render={({ field: { onChange, onBlur, value, ref } }) => <NormalInput onBlur={onBlur} label="level" value={value} onChange={onChange} />}
-                    />
+                    <LevelComponent  setLevel={handleLevel}/>
+
+                 
                     {/* <PasswordInput label="password" forgot placeholder="password" name="password" value={password} onChange={handlePassword} /> */}
                     {/* <SkillList skills={selectedSkills} setSkills={handleSlillList} /> */}
                     {/* <AreaOfInterestSelector/> */}
@@ -110,8 +112,7 @@ const Login = () => {
                       name="password"
                       render={({ field: { onChange, onBlur, value, ref } }) => <PasswordInput onBlur={onBlur} label="password" placeholder="password" value={value} onChange={onChange} />}
                     />
-                    {/* <Dropdown /> */}
-                    <div className="test">
+                    {/* <div className="test">
                       <label htmlFor="pet-select">Choose a pet:</label>
 
                       <select name="pets" id="pet-select">
@@ -123,7 +124,7 @@ const Login = () => {
                         <option value="spider">Spider</option>
                         <option value="goldfish">Goldfish</option>
                       </select>
-                    </div>
+                    </div> */}
                   </div>
                 </MyComponent>
                 <MyComponent isVisible={step === 3}>
@@ -136,9 +137,15 @@ const Login = () => {
                 <Navigator step={step} stepCallback={setStep} completeCallback={setCompleted} />
               </motion.div>
               <div className="actions">
-                <Button category="content" onClick={handleSubmit((data) => console.log(data))}>
+                <Button
+                  category="content"
+                  onClick={handleSubmit((data) => {
+                    console.log(data);
+                  })}
+                >
                   Proceed
                 </Button>
+
                 <span className="help">
                   <span>Already have an account?</span>
                   <SubLink route="/login">Login</SubLink>
