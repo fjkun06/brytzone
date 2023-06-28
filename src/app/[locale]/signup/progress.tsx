@@ -1,6 +1,7 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { nanoid } from "nanoid";
+import { genId } from "@/utils/config";
 interface Progressprops {
   step: number;
   completed: boolean;
@@ -41,6 +42,32 @@ const Progress: React.FC<Progressprops> = ({ step, completed }) => {
   const mainAnim = {
     pathLength: 1,
   };
+
+  //momoizing steps
+  const [stepOne, setOne] = React.useState(step >= 2);
+  const [stepTwo, setTwo] = React.useState(step >= 3);
+  const s1 = React.useMemo(() => {
+    return stepOne;
+  }, [stepOne]);
+  const s2 = React.useMemo(() => {
+    return stepTwo;
+  }, [stepTwo]);
+
+  React.useEffect(() => {
+    if (step >= 2) {
+      setOne(true);
+    }
+    if (step < 2) {
+      setOne(false);
+    }
+    if (step < 3) {
+      setTwo(false);
+    }
+    if (step >= 3) {
+      setTwo(true);
+    }
+  }, [step]);
+
   return (
     <span className="signup_progress">
       <motion.svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200">
@@ -53,37 +80,25 @@ const Progress: React.FC<Progressprops> = ({ step, completed }) => {
           </linearGradient>
         </defs>
         <motion.g id="g1">
-        <motion.circle className="placeholder" key={nanoid()} cx="100" cy="100" r="90" fill="none" stroke="#FBB606" strokeWidth="12" transform="scale(-1,-1) translate(-200,-200)" />
-
+          <motion.circle className="placeholder" cx="100" cy="100" r="90" fill="none" stroke="#FBB606" strokeWidth="12" transform="scale(-1,-1) translate(-200,-200)" />
           <motion.circle initial={init} animate={mainAnim} cx="100" cy="100" r="90" fill="none" stroke="#FBB606" strokeWidth="12" transform="scale(-1,-1) translate(-200,-200)" />
-          <AnimatePresence>
-            {step >= 2 && <motion.path initial={init} exit={check.exit} animate={check.animate} d="M50,100 L85,135 L150,70" stroke="#FBB606" strokeWidth="18" fill="none" />}
-          </AnimatePresence>
+          <AnimatePresence>{s1 && <motion.path initial={init} exit={check.exit} animate={check.animate} d="M50,100 L85,135 L150,70" stroke="#FBB606" strokeWidth="18" fill="none" />}</AnimatePresence>
         </motion.g>
-        <motion.line className="placeholder" id="l1"  x1="190" y1="100" x2="910" y2="100" stroke="url(#skyGradient)" strokeWidth="12" />
+        <motion.line className="placeholder" id="l1" x1="190" y1="100" x2="910" y2="100" stroke="url(#skyGradient)" strokeWidth="12" />
 
         <AnimatePresence>
-          {step >= 2 && <motion.line id="l1" initial={init} exit={line.exit} animate={line.animate} x1="190" y1="100" x2="910" y2="100" stroke="url(#skyGradient)" strokeWidth="12" />}
+          {s1 && <motion.line id="l1" initial={init} exit={line.exit} animate={line.animate} x1="190" y1="100" x2="910" y2="100" stroke="url(#skyGradient)" strokeWidth="12" />}
         </AnimatePresence>
         <motion.g id="g2">
-          <motion.circle
-            cx="490"
-            cy="100"
-            r="90"
-            fill="none"
-            stroke="#FBB606"
-            className="placeholder"
-            strokeWidth="12"
-            transform="scale(-1,-1) translate(-985,-200)"
-            key={nanoid()}
-          />
+          <motion.circle cx="490" cy="100" r="90" fill="none" stroke="#FBB606" className="placeholder" strokeWidth="12" transform="scale(-1,-1) translate(-985,-200)" />
           <AnimatePresence>
-            {step >= 2 && (
+            {s2 && (
               <motion.circle
                 initial={init}
-                exit={circle.exit}
-                animate={circle.animate}
-                key={nanoid()}
+                // exit={circle.exit}
+                // animate={circle.animate}
+                exit={{ pathLength: 0, transition: { delay: 1.5,duration: 0.5, ease: "easeInOut" } }}
+                animate={{ pathLength: 1, transition: { duration: 0.5, ease: "easeInOut" } }}
                 cx="490"
                 cy="100"
                 r="90"
@@ -91,15 +106,42 @@ const Progress: React.FC<Progressprops> = ({ step, completed }) => {
                 stroke="#FBB606"
                 strokeWidth="12"
                 transform="scale(-1,-1) translate(-985,-200)"
+                key={genId()}
               />
             )}
-            {step === 3 && <motion.path d="M450,100 L485,135 L550,70" stroke="#FBB606" initial={init} exit={check.exit} animate={check.animate} strokeWidth="18" fill="none" />}
+            {s2 && (
+              <motion.path
+                key={genId()}
+                d="M450,100 L485,135 L550,70"
+                stroke="#FBB606"
+                initial={init}
+                // exit={check.exit} animate={check.animate}
+                exit={{ pathLength: 0, transition: { delay: 1, duration: 0.5, ease: "easeInOut" } }}
+                animate={{ pathLength: 1, transition: { delay: 0.5, duration: 0.5, ease: "easeInOut" } }}
+                strokeWidth="18"
+                fill="none"
+              />
+            )}
           </AnimatePresence>
         </motion.g>
-        <motion.line className="placeholder" id="l2" x1="590" y1="100" x2="1310"  y2="100" stroke="#FBB606" strokeWidth="12" />
+        <motion.line className="placeholder" id="l2" x1="590" y1="100" x2="1310" y2="100" stroke="#FBB606" strokeWidth="12" />
 
         <AnimatePresence>
-          {step >= 3 && <motion.line id="l2" x1="590" y1="100" x2="1310" initial={init} exit={line.exit} animate={line.animate} y2="100" stroke="#FBB606" strokeWidth="12" />}
+          {s2 && (
+            <motion.line
+              id="l2"
+              x1="590"
+              y1="100"
+              x2="1310"
+              initial={init}
+              // exit={line.exit} animate={line.animate}
+              exit={{ pathLength: 0, transition: { delay: 0.5, duration: 0.5, ease: "easeInOut" } }}
+              animate={{ pathLength: 1, transition: { delay: 1, duration: 0.5, ease: "easeInOut" } }}
+              y2="100"
+              stroke="#FBB606"
+              strokeWidth="12"
+            />
+          )}
         </AnimatePresence>
         <motion.g id="g3">
           <motion.circle
@@ -109,12 +151,15 @@ const Progress: React.FC<Progressprops> = ({ step, completed }) => {
             fill="none"
             stroke="#FBB606"
             className="placeholder"
-                  strokeWidth="12"
+            // initial={init}
+            // exit={circle.exit}
+            // animate={circle.animate}
+            strokeWidth="12"
             transform="scale(-1,-1) translate(-1790, -200)"
-            key={nanoid()}
+            key={genId()}
           />
           <AnimatePresence>
-            {step === 3 && (
+            {s2 && (
               <motion.circle
                 cx="890"
                 cy="100"
@@ -122,16 +167,18 @@ const Progress: React.FC<Progressprops> = ({ step, completed }) => {
                 fill="none"
                 stroke="#FBB606"
                 initial={init}
-                exit={circle.exit}
-                animate={circle.animate}
+                // exit={circle.exit}
+                // animate={circle.animate}
+                exit={{ pathLength: 0, transition: {  duration: 0.5, ease: "easeInOut" } }}
+                animate={{ pathLength: 1, transition: {delay: 1.5, duration: 0.5, ease: "easeInOut" } }}
+
                 strokeWidth="12"
                 transform="scale(-1,-1) translate(-1790, -200)"
-                key={nanoid()}
+                key={genId()}
               />
             )}
             {completed && (
               <motion.path
-                id="last"
                 initial={init}
                 exit={{ pathLength: 0, transition: { duration: 0.5, ease: "easeInOut" } }}
                 animate={{ pathLength: 1, transition: { duration: 0.5, ease: "easeInOut" } }}
@@ -139,7 +186,7 @@ const Progress: React.FC<Progressprops> = ({ step, completed }) => {
                 stroke="#FBB606"
                 strokeWidth="18"
                 fill="none"
-                key={nanoid()}
+                key={genId()}
               />
             )}
           </AnimatePresence>

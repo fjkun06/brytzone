@@ -9,21 +9,27 @@ interface NavigatorProps {
 }
 const Navigator: React.FC<NavigatorProps> = ({ step, stepCallback, completeCallback }) => {
   //handle steps
-  const increment = () => {
-    if (step === 3) {
+  React.useEffect(() => {
+    if (step === 4) {
       completeCallback(true);
+    } else {
+      completeCallback(false);
     }
-    if (!(step >= 1 && step < 3)) {
-      return;
-    }
+  }, [step]);
 
-    stepCallback((s) => s + 1);
+  const increment = () => {
+    if (step >= 1 && step <= 3) {
+      stepCallback((s) => s + 1);
+    }
   };
   const decrement = () => {
-    if (!(step > 1 && step <= 3)) {
+    if (!(step > 1 && step <= 4)) {
       return;
     }
-    completeCallback(false);
+    // if (step === 4) {
+    //   stepCallback(2);
+    // }
+    // completeCallback(false);
 
     stepCallback((s) => s - 1);
   };
