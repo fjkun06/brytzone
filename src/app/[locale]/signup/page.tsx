@@ -13,6 +13,7 @@ import SkillList, { Skill } from "./skills";
 import AreaOfInterestSelector from "./interest";
 import Demo from "./Demo";
 import Filer from "./upload";
+import Progress from "./progress";
 
 const Login = () => {
   const router = useRouter();
@@ -23,9 +24,13 @@ const Login = () => {
 
   //handle steps
   const increment = () => {
+    if (step === 3) {
+      setCompleted(true);
+    }
     if (!(step >= 1 && step < 3)) {
       return;
     }
+
     console.log(`before ${step}`);
     setStep((s) => s + 1);
     console.log(`after ${step}`);
@@ -35,6 +40,7 @@ const Login = () => {
       return;
     }
     console.log(`before ${step}`);
+    setCompleted(false);
 
     setStep((s) => s - 1);
     console.log(`after ${step}`);
@@ -45,42 +51,6 @@ const Login = () => {
   };
   const handlePassword: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setPassword(e.target.value);
-  };
-
-  //configs for animationd
-  const check = {
-    animate: {
-      pathLength: 1,
-      transition: { duration: 0.5, ease: "easeInOut" },
-    },
-    exit: {
-      pathLength: 0,
-      transition: { delay: 1, duration: 0.5, ease: "easeInOut" },
-    },
-  };
-  const line = {
-    animate: {
-      pathLength: 1,
-      transition: { delay: 0.5, duration: 0.5, ease: "easeInOut" },
-    },
-    exit: {
-      pathLength: 0,
-      transition: { delay: 0.5, duration: 0.5, ease: "easeInOut" },
-    },
-  };
-  const circle = {
-    animate: {
-      pathLength: 1,
-      transition: { delay: 1.05, duration: 0.5, ease: "easeInOut" },
-    },
-    exit: {
-      pathLength: 0,
-      transition: { duration: 0.5, ease: "easeInOut" },
-    },
-  };
-  const init = { pathLength: 0 };
-  const mainAnim = {
-    pathLength: 1,
   };
 
   //form interface
@@ -105,85 +75,19 @@ const Login = () => {
         <div className="body">
           <div className="right">
             <span className="heading" />
-            <span className="testx">
-              <motion.svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" width="600" height="200">
-                <defs>
-                  {/* <!-- Define a linear gradient for the night sky effect --> */}
-                  <linearGradient id="skyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#000022" />
-                    <stop offset="50%" stopColor="#001E3C" />
-                    <stop offset="100%" stopColor="#000022" />
-                  </linearGradient>
-                </defs>
-                <motion.circle initial={init} animate={mainAnim} cx="100" cy="100" r="90" fill="none" stroke="#FBB606" strokeWidth="12" transform="scale(-1,-1) translate(-200,-200)" />
-                <AnimatePresence>
-                  {step >= 2 && (
-                    <>
-                      <motion.path initial={init} exit={check.exit} animate={check.animate} d="M50,100 L85,135 L150,70" stroke="#FBB606" strokeWidth="18" fill="none" />
 
-                      <motion.line initial={init} exit={line.exit} animate={line.animate} x1="190" y1="100" x2="400" y2="100" stroke="url(#skyGradient)" strokeWidth="12" />
-                      <motion.circle
-                        initial={init}
-                        exit={circle.exit}
-                        animate={circle.animate}
-                        cx="490"
-                        cy="100"
-                        r="90"
-                        fill="none"
-                        stroke="#FBB606"
-                        strokeWidth="12"
-                        transform="scale(-1,-1) translate(-985,-200)"
-                      />
-                    </>
-                  )}
-                </AnimatePresence>
-
-                <AnimatePresence>
-                  {step === 3 && (
-                    <>
-                      <motion.path d="M450,100 L485,135 L550,70" stroke="#FBB606" initial={init} exit={check.exit} animate={check.animate} strokeWidth="18" fill="none" />
-
-                      <motion.line x1="590" y1="100" x2="810" initial={init} exit={line.exit} animate={line.animate} y2="100" stroke="#FBB606" strokeWidth="12" />
-                      <motion.circle
-                        cx="890"
-                        cy="100"
-                        r="90"
-                        fill="none"
-                        stroke="#FBB606"
-                        initial={init}
-                        exit={circle.exit}
-                        animate={circle.animate}
-                        strokeWidth="12"
-                        transform="scale(-1,-1) translate(-1790, -200)"
-                      />
-                    </>
-                  )}
-                </AnimatePresence>
-                <AnimatePresence>
-                  {completed && (
-                    <motion.path
-                      initial={init}
-                      exit={{ pathLength: 0, transition: { duration: 0.5, ease: "easeInOut" } }}
-                      animate={{ pathLength: 1, transition: { delay: 1.05, duration: 0.5, ease: "easeInOut" } }}
-                      d="M850,100 L885,135 L950,70"
-                      stroke="#FBB606"
-                      strokeWidth="18"
-                      fill="none"
-                    />
-                  )}
-                </AnimatePresence>
-              </motion.svg>
-            </span>
-
+            <Progress step={step} completed={completed} />
             <form>
-              <div className="container">
+              <motion.div layout className="container">
                 <MyComponent isVisible={step === 1}>
-                  <div className="subContainer">
+                  <motion.div layout className="sub-container">
+                    <NormalInput label="Full Name" name="name" value={matricle} onChange={handleMatricle} />
                     <NormalInput label="matricule" name="matricle" value={matricle} onChange={handleMatricle} />
-                    <PasswordInput label="password" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
-                    <SkillList skills={selectedSkills} setSkills={handleSlillList} />
-                    <AreaOfInterestSelector />
-                  </div>
+                    <NormalInput label="level" name="level" value={matricle} onChange={handleMatricle} />
+                    {/* <PasswordInput label="password" forgot placeholder="password" name="password" value={password} onChange={handlePassword} /> */}
+                    {/* <SkillList skills={selectedSkills} setSkills={handleSlillList} /> */}
+                    {/* <AreaOfInterestSelector /> */}
+                  </motion.div>
                 </MyComponent>
                 <MyComponent isVisible={step === 2}>
                   <div className="subContainer">
@@ -198,16 +102,20 @@ const Login = () => {
                     <Filer />
                   </div>
                 </MyComponent>
-              </div>
-              <div className="actions">
-                {step > 1 && (
-                  <Button category="content" onClick={decrement}>
-                    previous
+                <div className="btns">
+                  {/* {step > 1 && ( */}
+                  <button type="button" style={{ opacity: step > 1 ? 1 : 0 }}  onClick={decrement}>
+                    Back
+                  </button>
+                  {/* )} */}
+                  <Button category="content" onClick={increment}>
+                    Next
                   </Button>
-                )}
-                <Button category="content" onClick={increment}>
-                  next
-                </Button>
+                  {/* <Button category="content">Back</Button>
+                  <Button category="content">Next</Button> */}
+                </div>
+              </motion.div>
+              <div className="actions">
                 <Button category="content">Proceed</Button>
                 <span className="help">
                   <span>Already have an account?</span>
