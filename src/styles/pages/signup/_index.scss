@@ -1,6 +1,7 @@
 @use "../../utils/mixins" as *;
 @use "../../utils/variables" as *;
 @use "form" as *;
+@use "submit" as *;
 .brytzone_signup {
   @include flex(column);
   @include size(100vw, 100vh);
@@ -60,6 +61,8 @@
 
         /***********************************************Signup Form***********************************************/
         @include form;
+        /***********************************************Submit Modal***********************************************/
+        @include submitModal;
       }
     }
   }

@@ -19,6 +19,19 @@ import LevelComponent from "./level";
 import { genId } from "@/utils/config";
 import CustomSelectDropdown from "./CustomDropDown";
 import { updatedInterests, updatedSkills } from "./config";
+import SubmitModal from "./modal";
+
+export type FormValues = {
+  matricule: string;
+  name: string;
+  password: string;
+  confirmPassword: string;
+  level: number;
+  email: string;
+  skills: string[];
+  interests: string[];
+  picture: File | undefined;
+};
 
 const SignUp = () => {
   const router = useRouter();
@@ -47,17 +60,8 @@ const SignUp = () => {
   /**********************************************Skills List **********************************************/
 
   /**********************************************Handling input fields**********************************************/
-  type FormValues = {
-    matricule: string;
-    name: string;
-    password: string;
-    confirmPassword: string;
-    level: number;
-    email: string;
-    skills: string[];
-    interests: string[];
-  };
-  const { handleSubmit, control, setValue } = useForm<FormValues>({
+
+  const { handleSubmit, control, setValue,getValues } = useForm<FormValues>({
     defaultValues: {
       matricule: "",
       password: "",
@@ -67,6 +71,7 @@ const SignUp = () => {
       name: "",
       skills: [],
       interests: [],
+      picture: undefined,
     },
   });
 
@@ -80,6 +85,16 @@ const SignUp = () => {
   const handleSkills = (value: string[]) => {
     setValue("skills", value);
   };
+  const handlePicture = (pic: File | undefined) => {
+    setValue("picture", pic);
+  };
+  const onSubmit = (data: FormValues) => {
+    // Handle form submission
+    console.log(data);
+    
+  };
+
+  const handleData = () => getValues();
 
   return (
     <section className={`${brytzone}_signup`}>
@@ -88,7 +103,7 @@ const SignUp = () => {
         <div className="body">
           <div className="right">
             <span className="heading" />
-            <span className="counter" >{step}</span>
+            <span className="counter">{step}</span>
             <form>
               <motion.div layout className="container">
                 <Progress step={step} completed={completed} />
@@ -117,7 +132,7 @@ const SignUp = () => {
                     <CustomSelectDropdown setter={handleInterests} data={updatedInterests} heading="Area(s) of Interest" />
                     <CustomSelectDropdown setter={handleSkills} data={updatedSkills} heading="Skill(s)" />
                   </SubContainer>
-                  <SubContainer isVisible={step === 3} key={genId()}>
+                  <SubContainer isVisible={step >= 3} key={genId()}>
                     <Controller
                       control={control}
                       name="password"
@@ -130,17 +145,13 @@ const SignUp = () => {
                         <PasswordInput label="confirm password" placeholder="confirm password" onBlur={onBlur} value={value} onChange={onChange} />
                       )}
                     />
-                    {/* <FileInput label="upload image"/> */}
-                    <Filer />
+                    <Filer setter={handlePicture} />
                   </SubContainer>
                   <SubContainer isVisible={step === 4} key={genId()}>
-                    <NormalInput label="matricule2" name="matricle" value={matricle} onChange={handleMatricle} />
-                    <PasswordInput label="password" placeholder="password" name="password" value={password} onChange={handlePassword} />
-                    {/* <CustomSelect /> */}
-                    {/* <Filer /> */}
+                    <SubmitModal stepCallback={setStep} formCallback={handleSubmit(onSubmit)} loadData={handleData}/>
                   </SubContainer>
                 </AnimatePresence>
-                <Navigator step={step} stepCallback={setStep} completeCallback={setCompleted} />
+                <Navigator step={step} stepCallback={setStep} completeCallback={setCompleted}  />
               </motion.div>
               <div className="actions">
                 {/* <Button

@@ -1,5 +1,5 @@
 import { FileInput } from "@/stories/components/Input";
-import { backendPort } from "@/utils/config";
+import { backendPort, genId } from "@/utils/config";
 import formatFileSize from "@/utils/formatFlieSize";
 import axios from "axios";
 import React, { useState, createRef, ChangeEvent } from "react";
@@ -17,7 +17,7 @@ const initialState: FileState = {
   error: null,
 };
 
-const Filer = () => {
+const Filer = ({ setter }: { setter: (pic: File | undefined) => void }) => {
   const [fileState, setFileState] = useState<FileState>(initialState);
   //cropper states
   const [image, setImage] = useState(undefined);
@@ -74,23 +74,8 @@ const Filer = () => {
       setImage(reader.result as any);
       setSetshowCropper(true);
     };
-    console.log(files[0]);
 
     reader.readAsDataURL(files[0]);
-  };
-
-  //crop ops
-  const onCrop = () => {
-    const cropper = cropperRef.current?.cropper;
-    if (!cropper) {
-      return;
-    }
-    console.log(cropper?.getCroppedCanvas().toDataURL());
-    const croppedCanvas = cropper.getCroppedCanvas();
-    const maxWidth = croppedCanvas.width;
-    const maxHeight = croppedCanvas.height;
-    console.log("Max Width:", maxWidth);
-    console.log("Max Height:", maxHeight);
   };
 
   const getCropData = () => {
@@ -103,13 +88,15 @@ const Filer = () => {
 
     data.toBlob((blob) => {
       if (blob) {
-        const file = new File([blob], "cropped-image.png", {
+        const file = new File([blob], `${genId()}.png`, {
           type: "image/png",
           lastModified: Date.now(),
         });
         // setCroppedImage(file);
 
         console.log(file);
+        //passfile to hookform
+        setter(file);
       }
     }, "image/png");
   };
@@ -147,7 +134,6 @@ const Filer = () => {
                 autoCropArea={1}
                 checkOrientation={false}
                 guides={true}
-                crop={onCrop}
                 cropBoxResizable={false}
               />
               <p className="btn">
@@ -161,7 +147,6 @@ const Filer = () => {
             </div>
 
             <div className="file_crop_preview">
-           
               <div className="box">
                 <h1>Crop Preview</h1>
 
