@@ -30,45 +30,44 @@ export const Demo: React.FC = () => {
   };
 
   const getCropData = () => {
-    if (typeof cropperRef.current?.cropper !== "undefined") {
-      const data = cropperRef.current?.cropper.getCroppedCanvas()
-
-      setCropData(data.toDataURL());
-
-      data.toBlob((blob) => {
-        if (blob) {
-          const file = new File([blob], "cropped-image.png", {
-            type: "image/png",
-            lastModified: Date.now(),
-          });
-          // setCroppedImage(file);
-
-          console.log(file);
-          
-        }
-      }, "image/png");
+    if (typeof cropperRef.current?.cropper === "undefined") {
+      return;
     }
+    const data = cropperRef.current?.cropper.getCroppedCanvas();
+
+    setCropData(data.toDataURL());
+
+    data.toBlob((blob) => {
+      if (blob) {
+        const file = new File([blob], "cropped-image.png", {
+          type: "image/png",
+          lastModified: Date.now(),
+        });
+        // setCroppedImage(file);
+
+        console.log(file);
+      }
+    }, "image/png");
   };
 
   const onCrop = () => {
     const cropper = cropperRef.current?.cropper;
-    if (cropper) {
-      console.log(cropper?.getCroppedCanvas().toDataURL());
-      const croppedCanvas = cropper.getCroppedCanvas();
-      const maxWidth = croppedCanvas.width;
-      const maxHeight = croppedCanvas.height;
-      console.log("Max Width:", maxWidth);
-      console.log("Max Height:", maxHeight);
+    if (!cropper) {
+      return;
     }
+    console.log(cropper?.getCroppedCanvas().toDataURL());
+    const croppedCanvas = cropper.getCroppedCanvas();
+    const maxWidth = croppedCanvas.width;
+    const maxHeight = croppedCanvas.height;
+    console.log("Max Width:", maxWidth);
+    console.log("Max Height:", maxHeight);
   };
 
   return (
-    <div>
-      <div style={{ width: "100%" }}>
-        <input type="file" onChange={onChange} />
-        <br />
-        <br />
-        {showCropper && (
+    <div style={{ width: "100%" }}>
+      <input type="file" onChange={onChange} />
+      {showCropper && (
+        <>
           <Cropper
             ref={cropperRef}
             style={{ height: 400, width: 400 }}
@@ -87,15 +86,12 @@ export const Demo: React.FC = () => {
             crop={onCrop}
             cropBoxResizable={false}
           />
-        )}
-      </div>
-      {showCropper && (
-        <div>
-          <div className="box" style={{ width: "50%", float: "right" }}>
-            <h1>Preview</h1>
-            <div className="img-preview" style={{ width: "100%", float: "left", height: "300px" }} />
-          </div>
-          <>
+
+          <div>
+            <div className="box" style={{ width: "50%", float: "right" }}>
+              <h1>Preview</h1>
+              <div className="img-preview" style={{ width: "100%", float: "left", height: "300px" }} />
+            </div>
             <div className="box" style={{ width: "50%", float: "right", height: "300px" }}>
               <h1>
                 <span>Crop</span>
@@ -105,11 +101,9 @@ export const Demo: React.FC = () => {
               </h1>
               {cropData.length > 0 && <img style={{ width: "200px", height: "200px" }} src={cropData} alt="cropped" />}
             </div>
-          </>
-        </div>
+          </div>
+        </>
       )}
-
-      <br style={{ clear: "both" }} />
     </div>
   );
 };

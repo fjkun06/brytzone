@@ -1,0 +1,387 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/variables" as *;
+@mixin form {
+  form {
+    width: 100%;
+    @include size(100%);
+    padding: 2rem;
+    @include flex(column);
+    justify-content: space-evenly;
+
+    gap: 2rem;
+    /***********************************************Container fields***********************************************/
+    .container {
+      @include size(100%, 50rem);
+      @include size(inherit, 46rem);
+      // @include customgrid(1, 1, 95%);
+      @include flex(column);
+      justify-content: unset;
+      // @include flex;
+      gap: 2rem;
+
+      // background-color: red;
+      border: 1px solid $primary;
+      .sub-container {
+        // background-color: rgb(0, 255, 81);
+        // @include position("1/2");
+        transition: all 0.25s ease-in-out;
+        @include size(auto, 40rem);
+        @include flex(column);
+        justify-content: space-evenly;
+        gap: 1.5rem;
+        padding: 2rem;
+        label {
+          width: 45rem;
+        }
+
+        //
+        /***********************************************Process component***********************************************/
+        .signup_progress {
+          // border: 1px solid red;
+          width: 30rem;
+          width: 50rem;
+          height: 5rem;
+
+          svg {
+            @include size(inherit);
+
+            //resizing groups
+            #g1,
+            #g2,
+            #g3 {
+              & > * {
+                // stroke: url("#skyGradient");
+                stroke: $primary;
+              }
+              & > .placeholder {
+                // stroke: url("#skyGradient");
+                stroke: $progress;
+              }
+            }
+
+            #g1 {
+              transform: scale(0.8) translate(-39%, 10%);
+            }
+            #l1 {
+              transform: translateX(-33.5%);
+            }
+            #g2 {
+              transform: scale(0.8) translate(20%, 10%);
+            }
+            #l2 {
+              transform: translateX(6.5%);
+            }
+            #g3 {
+              transform: scale(0.8) translate(78%, 10%);
+            }
+            & > * {
+              // stroke: url("#skyGradient");
+              stroke: $primary;
+            }
+            & > line {
+              stroke: $primary;
+              stroke-width: 2rem;
+              // stroke: url("#skyGradient");
+            }
+            & > .placeholder {
+              stroke: $progress;
+              stroke-width: 2rem;
+              // stroke: url("#skyGradient");
+            }
+          }
+        }
+        /***********************************************Dropdown components***********************************************/
+
+        .signup_level,
+        .signup_dropdown {
+          @include flex(column);
+          align-items: flex-start;
+          gap: 0.5rem;
+          span,
+          p {
+            font-family: "Poppins";
+            font-size: 1.8rem;
+            font-weight: 500;
+            text-transform: capitalize;
+          }
+          .react-select-container {
+            .react-select {
+              //controller
+              &__control {
+                outline: none !important;
+                box-shadow: none;
+                background: #eff0f2;
+                // background: lighten($grey, 20%);
+
+                border-color: transparent;
+                @include size(45rem, 5.3rem);
+                .react-select__value-container {
+                  padding-inline: 2.4rem;
+                  font-family: "Poppins";
+                  font-size: 1.8rem;
+                  .react-select__single-value,
+                  .react-select__multi-value {
+                    color: $grey;
+                  }
+                  .react-select__multi-value {
+                    &__label {
+                      font-size: 1rem;
+                      transition: all 0.15s ease-in-out;
+                      &:hover {
+                        background: lighten($grey, 20%);
+                      }
+                    }
+                    &__remove {
+                      cursor: pointer;
+                      color: $grey;
+                      background-color: transparent;
+                      transition: all 0.15s ease-in-out;
+
+                      &:hover {
+                        background: lighten($grey, 20%);
+                      }
+                    }
+                  }
+                }
+              }
+
+              //menu and items
+              &__menu {
+                &-list {
+                  box-shadow: none;
+                  border-color: transparent;
+                  .react-select__option {
+                    transition: all 0.15s ease-in-out;
+                    font-family: "Poppins";
+                    font-size: 1.8rem;
+                    color: $grey;
+                    cursor: pointer;
+                    &--is-selected {
+                      background: lighten($grey, 30%);
+                    }
+
+                    &:hover {
+                      background: lighten($grey, 30%);
+                    }
+                  }
+
+                  &::-webkit-scrollbar {
+                    width: 0.7rem;
+                  }
+
+                  /* Track */
+                  &::-webkit-scrollbar-track {
+                    background: transparent;
+                  }
+
+                  /* Handle */
+                  &::-webkit-scrollbar-thumb {
+                    background: darken($grey, 20%);
+                    background: $grey;
+                    border-radius: 100px;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        /***********************************************File component***********************************************/
+        .file_main {
+          p {
+            color: $black;
+            font-size: 1.25rem;
+            font-family: "Poppins";
+            @include flex;
+            // padding-inline: 2.4rem;
+            text-transform: capitalize;
+            font-weight: 400;
+            // width: 100%;
+            justify-content: flex-start;
+            padding-top: 0.5rem;
+            color: red;
+          }
+        }
+        .file_crop {
+          position: absolute;
+          @include size(100vw, 100vh);
+          top: 0;
+          left: 0;
+          @include flex;
+          gap: 10rem;
+
+          background-color: rgba($secondary, 0.5);
+          z-index: 99999;
+          &_cropper {
+            background-color: $secondary;
+            @include size(55rem, 60rem);
+            @include flex(column);
+            gap: 4rem;
+            div {
+              @include size(40rem);
+            }
+            .cropper-crop-box,
+            .cropper-move,
+            .cropper-view-box {
+              border-radius: 50%;
+            }
+            .btn {
+              width: 100%;
+              @include flex;
+              gap: 5rem;
+
+              button {
+                transition: all 0.25s ease-in-out;
+
+                background: lighten($grey, 30%);
+                border: none;
+                border-radius: 2.5px;
+                color: $black;
+                padding: 1rem;
+                font-size: 1.5rem;
+                font-family: "Poppins";
+                cursor: pointer;
+                &:hover {
+                  background: lighten($grey, 20%);
+                }
+              }
+            }
+
+            //closer button
+            #closer {
+              position: absolute;
+              top: 2rem;
+              right: 2rem;
+              cursor: pointer;
+              svg {
+                transition: all 0.25s ease-in-out;
+                @include size(4rem);
+                stroke-width: 2rem;
+                fill: $primary;
+              }
+              &:hover {
+                svg {
+                  transform: scale(1.15);
+                }
+              }
+            }
+          }
+          &_preview {
+            background-color: transparent;
+            @include size(50rem, 70rem);
+            @include flex(column);
+            gap: 5rem;
+            .box {
+              min-height: 22rem;
+              width: 30rem !important;
+              height: 30rem !important;
+              background-color: $secondary;
+              @include flex(column);
+              padding: 2rem;
+              justify-content: space-between;
+              h1 {
+                color: $white;
+                text-align: center;
+                font-size: 2.5rem;
+                font-family: "Poppins";
+                @include flex;
+                padding-inline: 2.4rem;
+                text-transform: capitalize;
+                font-weight: 400;
+              }
+
+              img,
+              #preview img {
+                @include size(20.5rem);
+                width: 20.5rem !important;
+                height: 20.5rem !important;
+                border-radius: 50%;
+                transform: none !important;
+                // border: 1px solid red;
+              }
+              #preview {
+                overflow: hidden;
+                width: 20.5rem !important;
+                height: 20.5rem !important;
+              }
+            }
+          }
+        }
+      }
+
+      .signup_dropdown {
+        p {
+          font-size: 1rem !important;
+        }
+        .react-select-container {
+          .react-select {
+            //controller
+            &__control {
+              min-height: 5.3rem;
+              height: auto !important;
+            }
+          }
+        }
+      }
+
+      /***********************************************Buttons fields***********************************************/
+      .btns {
+        @include flex;
+        @include size(100%, auto);
+        padding-inline: 2rem;
+        justify-content: space-between;
+        // background-color: blue;
+        button {
+          border: none;
+          padding: 0.5rem;
+          background: none;
+          @include flex;
+          gap: 0.5rem;
+          cursor: pointer;
+          &:hover {
+            svg {
+              transform: translateX(0.5rem);
+            }
+            svg#back {
+              transform: scale(-1, 1) translateX(0.5rem);
+            }
+          }
+          svg {
+            @include size(2rem);
+            color: $primary;
+            transition: all 0.25s ease-in-out;
+          }
+        }
+      }
+    }
+    /***********************************************Actions fields***********************************************/
+    .actions {
+      width: max-content;
+      @include flex(column);
+      transform: translate(-5rem, 3rem);
+      gap: 1.5rem;
+      .help {
+        gap: 0.5rem;
+        @include flex;
+
+        span {
+          color: #000;
+          text-align: center;
+          font-size: 18px;
+          font-family: "Poppins";
+        }
+      }
+      button {
+        width: 304.286px;
+        height: 58.256px;
+        border-radius: 5px;
+        background: $primary;
+        color: #fff;
+        text-align: center;
+        font-size: 30px;
+        font-family: "Poppins";
+        font-weight: 500;
+      }
+    }
+  }
+}

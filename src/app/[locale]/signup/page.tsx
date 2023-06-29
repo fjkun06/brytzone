@@ -120,7 +120,7 @@ const SignUp = () => {
                     <Controller
                       control={control}
                       name="password"
-                      render={({ field: { onChange, onBlur, value, ref } }) => <PasswordInput label="password2" placeholder="password" onBlur={onBlur} value={value} onChange={onChange} />}
+                      render={({ field: { onChange, onBlur, value, ref } }) => <PasswordInput label="password" placeholder="password" onBlur={onBlur} value={value} onChange={onChange} />}
                     />
                     <Controller
                       control={control}
