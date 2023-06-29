@@ -18,7 +18,6 @@ const CustomSelectDropdown:React.FC<CustomSelectDropdownProps> = ({ setter,data,
     if (selectedOptions.length <= MAX_SELECTIONS) {
       setSelectedOptions(selectedOptions);
       setErrorMessage("");
-      console.dir(selectedOptions);
       setter(selectedOptions);
     } else {
       setErrorMessage(`Maximum ${MAX_SELECTIONS} selections allowed.`);

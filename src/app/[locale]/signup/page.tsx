@@ -57,6 +57,7 @@ const SignUp = () => {
     matricule: string;
     name: string;
     password: string;
+    confirmPassword: string;
     level: number;
     email: string;
     skills: string[];
@@ -66,6 +67,7 @@ const SignUp = () => {
     defaultValues: {
       matricule: "",
       password: "",
+      confirmPassword: "",
       level: 0,
       email: "",
       name: "",
@@ -74,6 +76,7 @@ const SignUp = () => {
     },
   });
 
+  //getting dropdown item values
   const handleLevel = (value: number) => {
     setValue("level", value);
   };
@@ -124,13 +127,23 @@ const SignUp = () => {
                     <CustomSelectDropdown setter={handleSkills} data={updatedSkills} heading="Skill(s)" />
                   </SubContainer>
                   <SubContainer isVisible={step === 3} key={genId()}>
-                    <NormalInput label="matricule2" name="matricle" value={matricle} onChange={handleMatricle} />
-                    <PasswordInput label="password2" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
+                    <Controller
+                      control={control}
+                      name="password"
+                      render={({ field: { onChange, onBlur, value, ref } }) => <PasswordInput label="password2" placeholder="password" onBlur={onBlur} value={value} onChange={onChange} />}
+                    />
+                    <Controller
+                      control={control}
+                      name="confirmPassword"
+                      render={({ field: { onChange, onBlur, value, ref } }) => (
+                        <PasswordInput label="confirm password" placeholder="confirm password" onBlur={onBlur} value={value} onChange={onChange} />
+                      )}
+                    />
                     {/* <Filer /> */}
                   </SubContainer>
                   <SubContainer isVisible={step === 4} key={genId()}>
                     <NormalInput label="matricule2" name="matricle" value={matricle} onChange={handleMatricle} />
-                    <PasswordInput label="password2" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
+                    <PasswordInput label="password" placeholder="password" name="password" value={password} onChange={handlePassword} />
                     {/* <CustomSelect /> */}
                     {/* <Filer /> */}
                   </SubContainer>
