@@ -120,7 +120,7 @@ const Filer = () => {
 
   return (
     <div className="file_main">
-      <FileInput label="upload image" fileName={fileState?.file?.name} fileSize={formatFileSize(fileState?.file?.size as number)} onChange={handleFileChange} />
+      <FileInput label="upload profile picture" fileName={fileState?.file?.name} fileSize={formatFileSize(fileState?.file?.size as number)} onChange={handleFileChange} />
 
       {/* {fileState?.file?.size && <span>{formatFileSize(fileState?.file?.size)}</span>} */}
       {fileState.error && <p>{fileState.error}</p>}
