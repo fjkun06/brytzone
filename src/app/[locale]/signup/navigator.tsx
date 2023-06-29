@@ -21,17 +21,15 @@ const Navigator: React.FC<NavigatorProps> = ({ step, stepCallback, completeCallb
     if (step >= 1 && step <= 3) {
       stepCallback((s) => s + 1);
     }
+    console.log(step, " :ggggggggggggggggggggggggggggggggggggggg");
   };
   const decrement = () => {
     if (!(step > 1 && step <= 4)) {
       return;
     }
-    // if (step === 4) {
-    //   stepCallback(2);
-    // }
-    // completeCallback(false);
 
     stepCallback((s) => s - 1);
+    console.log(step, " :ggggggggggggggggggggggggggggggggggggggg");
   };
   return (
     <motion.div className="btns">

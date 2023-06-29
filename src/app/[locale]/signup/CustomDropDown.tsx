@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from "react";
 import Select, { StylesConfig } from "react-select";
 import { CustomDropdownItem } from "./config";

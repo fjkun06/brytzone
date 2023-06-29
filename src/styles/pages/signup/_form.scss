@@ -6,21 +6,78 @@
     @include size(100%);
     padding: 2rem;
     @include flex(column);
-    justify-content: space-evenly;
+    justify-content: flex-start;
 
-    gap: 2rem;
+    // gap: 2rem;
     /***********************************************Container fields***********************************************/
     .container {
       @include size(100%, 50rem);
-      @include size(inherit, 46rem);
+      @include size(inherit, 53rem);
       // @include customgrid(1, 1, 95%);
       @include flex(column);
-      justify-content: unset;
+      justify-content: flex-start;
       // @include flex;
       gap: 2rem;
 
       // background-color: red;
-      border: 1px solid $primary;
+      // border: 1px solid $primary;
+      /***********************************************Process component***********************************************/
+      .signup_progress {
+        // border: 1px solid red;
+        width: 30rem;
+        width: 50rem;
+        height: 5rem;
+
+        svg {
+          @include size(inherit);
+
+          //resizing groups
+          #g1,
+          #g2,
+          #g3 {
+            & > * {
+              // stroke: url("#skyGradient");
+              stroke: $primary;
+            }
+            & > .placeholder {
+              // stroke: url("#skyGradient");
+              stroke: $progress;
+            }
+          }
+
+          #g1 {
+            transform: scale(0.8) translate(-39%, 10%);
+          }
+          #l1 {
+            transform: translateX(-33.5%);
+          }
+          #g2 {
+            transform: scale(0.8) translate(20%, 10%);
+          }
+          #l2 {
+            transform: translateX(6.5%);
+          }
+          #g3 {
+            transform: scale(0.8) translate(78%, 10%);
+          }
+          & > * {
+            // stroke: url("#skyGradient");
+            stroke: $primary;
+          }
+          & > line {
+            stroke: $primary;
+            stroke-width: 2rem;
+            // stroke: url("#skyGradient");
+          }
+          & > .placeholder {
+            stroke: $progress;
+            stroke-width: 2rem;
+            // stroke: url("#skyGradient");
+          }
+        }
+      }
+
+      /***********************************************Screens component***********************************************/
       .sub-container {
         // background-color: rgb(0, 255, 81);
         // @include position("1/2");
@@ -34,62 +91,6 @@
           width: 45rem;
         }
 
-        //
-        /***********************************************Process component***********************************************/
-        .signup_progress {
-          // border: 1px solid red;
-          width: 30rem;
-          width: 50rem;
-          height: 5rem;
-
-          svg {
-            @include size(inherit);
-
-            //resizing groups
-            #g1,
-            #g2,
-            #g3 {
-              & > * {
-                // stroke: url("#skyGradient");
-                stroke: $primary;
-              }
-              & > .placeholder {
-                // stroke: url("#skyGradient");
-                stroke: $progress;
-              }
-            }
-
-            #g1 {
-              transform: scale(0.8) translate(-39%, 10%);
-            }
-            #l1 {
-              transform: translateX(-33.5%);
-            }
-            #g2 {
-              transform: scale(0.8) translate(20%, 10%);
-            }
-            #l2 {
-              transform: translateX(6.5%);
-            }
-            #g3 {
-              transform: scale(0.8) translate(78%, 10%);
-            }
-            & > * {
-              // stroke: url("#skyGradient");
-              stroke: $primary;
-            }
-            & > line {
-              stroke: $primary;
-              stroke-width: 2rem;
-              // stroke: url("#skyGradient");
-            }
-            & > .placeholder {
-              stroke: $progress;
-              stroke-width: 2rem;
-              // stroke: url("#skyGradient");
-            }
-          }
-        }
         /***********************************************Dropdown components***********************************************/
 
         .signup_level,

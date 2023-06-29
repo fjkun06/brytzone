@@ -88,10 +88,11 @@ const SignUp = () => {
         <div className="body">
           <div className="right">
             <span className="heading" />
-
-            <Progress step={step} completed={completed} />
+            <span className="counter" >{step}</span>
             <form>
               <motion.div layout className="container">
+                <Progress step={step} completed={completed} />
+
                 <AnimatePresence initial={false} mode="wait">
                   <SubContainer isVisible={step === 1} key={genId()}>
                     <Controller
@@ -142,14 +143,14 @@ const SignUp = () => {
                 <Navigator step={step} stepCallback={setStep} completeCallback={setCompleted} />
               </motion.div>
               <div className="actions">
-                <Button
+                {/* <Button
                   category="content"
                   onClick={handleSubmit((data) => {
                     console.log(data);
                   })}
                 >
                   Proceed
-                </Button>
+                </Button> */}
 
                 <span className="help">
                   <span>Already have an account?</span>
