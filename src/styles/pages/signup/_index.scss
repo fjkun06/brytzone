@@ -125,12 +125,12 @@
             // @include flex;
             gap: 2rem;
 
-            // background-color: red;
+            background-color: red;
             border: 1px solid $primary;
             .sub-container {
-              // background-color: rgb(0, 255, 81);
+              background-color: rgb(0, 255, 81);
               // @include position("1/2");
-              @include size(auto, 32.8rem);
+              @include size(auto, 40rem);
               @include flex(column);
               gap: 1.5rem;
               padding: 2rem;
@@ -138,12 +138,16 @@
                 width: 45rem;
               }
 
-              //level component
-              .signup_level {
+              //
+              /***********************************************level component***********************************************/
+
+              .signup_level,
+              .signup_dropdown {
                 @include flex(column);
                 align-items: flex-start;
                 gap: 0.5rem;
-                span {
+                span,
+                p {
                   font-family: "Poppins";
                   font-size: 1.8rem;
                   font-weight: 500;
@@ -156,14 +160,36 @@
                       outline: none !important;
                       box-shadow: none;
                       background: #eff0f2;
+                      // background: lighten($grey, 20%);
+
                       border-color: transparent;
                       @include size(45rem, 5.3rem);
                       .react-select__value-container {
                         padding-inline: 2.4rem;
                         font-family: "Poppins";
                         font-size: 1.8rem;
-                        .react-select__single-value {
+                        .react-select__single-value,
+                        .react-select__multi-value {
                           color: $grey;
+                        }
+                        .react-select__multi-value {
+                          &__label {
+                            font-size: 1rem;
+                            transition: all 0.15s ease-in-out;
+                            &:hover {
+                              background: lighten($grey, 20%);
+                            }
+                          }
+                          &__remove {
+                            cursor: pointer;
+                            color: $grey;
+                            background-color: transparent;
+                            transition: all 0.15s ease-in-out;
+
+                            &:hover {
+                              background: lighten($grey, 20%);
+                            }
+                          }
                         }
                       }
                     }
@@ -180,11 +206,11 @@
                           color: $grey;
                           cursor: pointer;
                           &--is-selected {
-                            background: lighten($grey, 20%);
+                            background: lighten($grey, 30%);
                           }
 
                           &:hover {
-                            background: lighten($grey, 20%);
+                            background: lighten($grey, 30%);
                           }
                         }
 
@@ -209,6 +235,22 @@
                 }
               }
             }
+
+            .signup_dropdown {
+              p {
+                font-size: 1rem !important;
+              }
+              .react-select-container {
+                .react-select {
+                  //controller
+                  &__control {
+                    min-height: 5.3rem;
+                    height: auto !important;
+                  }
+                }
+              }
+            }
+
             //buttons
             .btns {
               @include flex;

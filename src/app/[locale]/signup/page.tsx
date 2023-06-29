@@ -18,8 +18,9 @@ import Mosaic from "./mosaic";
 import Navigator from "./navigator";
 import { useForm, Controller } from "react-hook-form";
 import LevelComponent from "./level";
-import CustomSelect from "./interests";
 import { genId } from "@/utils/config";
+import CustomSelectDropdown from "./CustomDropDown";
+import { updatedInterests, updatedSkills } from "./config";
 
 const SignUp = () => {
   const router = useRouter();
@@ -41,6 +42,8 @@ const SignUp = () => {
     matricule: string;
     level: string;
     email: string;
+    skills: string[];
+    interests: string[];
   }
 
   /**********************************************Skills List **********************************************/
@@ -56,6 +59,8 @@ const SignUp = () => {
     password: string;
     level: number;
     email: string;
+    skills: string[];
+    interests: string[];
   };
   const { handleSubmit, control, setValue } = useForm<FormValues>({
     defaultValues: {
@@ -64,11 +69,19 @@ const SignUp = () => {
       level: 0,
       email: "",
       name: "",
+      skills: [],
+      interests: [],
     },
   });
 
   const handleLevel = (value: number) => {
     setValue("level", value);
+  };
+  const handleInterests = (value: string[]) => {
+    setValue("interests", value);
+  };
+  const handleSkills = (value: string[]) => {
+    setValue("skills", value);
   };
 
   return (
@@ -107,22 +120,18 @@ const SignUp = () => {
                       name="email"
                       render={({ field: { onChange, onBlur, value, ref } }) => <NormalInput onBlur={onBlur} label="email" value={value} onChange={onChange} />}
                     />
-                    <Controller
-                      control={control}
-                      name="password"
-                      render={({ field: { onChange, onBlur, value, ref } }) => <PasswordInput onBlur={onBlur} label="password" placeholder="password" value={value} onChange={onChange} />}
-                    />
+                    <CustomSelectDropdown setter={handleInterests} data={updatedInterests} heading="Area(s) of Interest" />
+                    <CustomSelectDropdown setter={handleSkills} data={updatedSkills} heading="Skill(s)" />
                   </SubContainer>
                   <SubContainer isVisible={step === 3} key={genId()}>
                     <NormalInput label="matricule2" name="matricle" value={matricle} onChange={handleMatricle} />
                     <PasswordInput label="password2" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
-                    <CustomSelect />
                     {/* <Filer /> */}
                   </SubContainer>
                   <SubContainer isVisible={step === 4} key={genId()}>
                     <NormalInput label="matricule2" name="matricle" value={matricle} onChange={handleMatricle} />
                     <PasswordInput label="password2" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
-                    <CustomSelect />
+                    {/* <CustomSelect /> */}
                     {/* <Filer /> */}
                   </SubContainer>
                 </AnimatePresence>
