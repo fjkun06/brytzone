@@ -1,3 +1,4 @@
+import { FileInput } from "@/stories/components/Input";
 import { backendPort } from "@/utils/config";
 import formatFileSize from "@/utils/formatFlieSize";
 import axios from "axios";
@@ -54,10 +55,16 @@ const Filer = () => {
 
   return (
     <div>
-      <input type="file" onChange={handleFileChange} />
-      {fileState?.file?.size && <span>{formatFileSize(fileState?.file?.size)}</span>}
+      <FileInput label="upload image" fileName={fileState?.file?.name}
+      fileSize={formatFileSize(fileState?.file?.size as number)} onChange={handleFileChange} />
+
+      {/* {fileState?.file?.size && <span>{formatFileSize(fileState?.file?.size)}</span>} */}
       {fileState.error && <p>{fileState.error}</p>}
-      {fileState?.file?.size && <button type="button" onClick={handleFileSend} >Send</button>}
+      {/* {fileState?.file?.size && (
+        <button type="button" onClick={handleFileSend}>
+          Send
+        </button>
+      )} */}
     </div>
   );
 };

@@ -4,13 +4,11 @@ import { usePathname, useRouter } from "next/navigation";
 import { brytzone } from "../home/header";
 import Image from "next/image";
 import { useState } from "react";
-import NormalInput, { PasswordInput } from "@/stories/components/Input";
+import NormalInput, { FileInput, PasswordInput } from "@/stories/components/Input";
 import { Button } from "@/stories/components/Button";
 import SubLink from "@/stories/components/SubLinks";
 import SpecialNav from "@/stories/layout/navbar/SpecialNav";
 import { motion, AnimatePresence } from "framer-motion";
-import SkillList, { Skill } from "./skills";
-import AreaOfInterestSelector from "./interest";
 import Demo from "./Demo";
 import Filer from "./upload";
 import Progress from "./progress";
@@ -47,11 +45,7 @@ const SignUp = () => {
   }
 
   /**********************************************Skills List **********************************************/
-  const [selectedSkills, setSelectedSkills] = useState<Skill[]>([]);
-  const handleSlillList = (skills: Skill[]) => {
-    setSelectedSkills(skills);
-    console.log(skills);
-  };
+
   /**********************************************Handling input fields**********************************************/
   type FormValues = {
     matricule: string;
@@ -111,10 +105,6 @@ const SignUp = () => {
                       render={({ field: { onChange, onBlur, value, ref } }) => <NormalInput onBlur={onBlur} label="matricule" value={value} onChange={onChange} />}
                     />
                     <LevelComponent setLevel={handleLevel} />
-
-                    {/* <PasswordInput label="password" forgot placeholder="password" name="password" value={password} onChange={handlePassword} /> */}
-                    {/* <SkillList skills={selectedSkills} setSkills={handleSlillList} /> */}
-                    {/* <AreaOfInterestSelector/> */}
                   </SubContainer>
 
                   <SubContainer isVisible={step === 2} key={genId()}>
@@ -139,7 +129,8 @@ const SignUp = () => {
                         <PasswordInput label="confirm password" placeholder="confirm password" onBlur={onBlur} value={value} onChange={onChange} />
                       )}
                     />
-                    {/* <Filer /> */}
+                    {/* <FileInput label="upload image"/> */}
+                    <Filer />
                   </SubContainer>
                   <SubContainer isVisible={step === 4} key={genId()}>
                     <NormalInput label="matricule2" name="matricle" value={matricle} onChange={handleMatricle} />
