@@ -1,3 +1,5 @@
+import { backendPort } from "@/utils/config";
+
 interface AreaOfInterest {
   id: number;
   label?: string;
@@ -138,3 +140,76 @@ export const updatedSkills = sortedSkills.map((interest) => {
 });
 
 export type CustomDropdownItem = typeof updatedInterests;
+
+export const resend = async () => {
+  try {
+    const res = await fetch(`http://localhost:${backendPort}/resend`, {
+      credentials: "include",
+    });
+
+    const datum = await res.json();
+    console.log(datum);
+  } catch (error: any) {
+    console.log(error);
+  }
+};
+
+export const verifyOTP = async (otp: string) => {
+  const data = { otp: "" };
+  data.otp = otp;
+
+  //reset errors
+  // setOTPError("");
+  try {
+    const res = await fetch(`http://localhost:${backendPort}/signup/verify`, {
+      method: "POST",
+      credentials: "include",
+      body: JSON.stringify({ otp }),
+      headers: { "Content-Type": "application/json" },
+    });
+    // const res = await fetch(`http://localhost:${backendPort}/login`, {
+    //   credentials: "include",
+    // });
+    // const res = await fetch(`http://localhost:${backendPort}/signup/verify`, {
+    //   credentials: "include",
+    // });
+    const datum = await res.json();
+    console.log(datum);
+    // if (datum.errors) {
+    //   setEmailError(datum.errors.email);
+    //   setPasswordError(datum.errors.password);
+    // }
+    if (datum.user) {
+      // location.assign("/login");
+      console.log(datum.user);
+    }
+  } catch (error: any) {
+    console.log(error);
+  }
+};
+
+/*********************************User interface******************************** */
+interface Group {
+  label: string;
+  category: string;
+  value?: string;
+}
+
+export interface DatabaseUserProps {
+  otp?: string;
+  active: boolean;
+  resendAttempts: number;
+  lastResendDate: Date;
+  loginAttempts: number;
+  lastLoginDate: Date;
+}
+export interface User extends DatabaseUserProps {
+  matricule: string;
+  name: string;
+  password: string;
+  level: number;
+  email: string;
+  skills: Group[];
+  interests: Group[];
+  picture: string;
+}

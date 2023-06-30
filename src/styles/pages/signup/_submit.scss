@@ -16,10 +16,19 @@
       padding: 5rem;
       justify-content: space-between;
       border-radius: 1rem;
-      p {
+      p,span.error {
         text-align: center;
         font-family: "Poppins";
         line-height: 2.5rem;
+        label {
+          width: 40rem;
+          span {
+            display: none;
+          }
+        }
+      }
+      span.error{
+        color: red;
       }
       //heading
       h2 {
@@ -43,14 +52,19 @@
           gap: 0.5rem;
           transition: all 0.25s ease-in-out;
           &:hover {
-            // transform: scale(1.05);
+            transform: scale(1.05);
+            svg {
+              opacity: 1;
+            }
           }
           // width: 6rem;
           svg {
             @include size(1.75rem);
+            transition: all 0.25s ease-in-out;
             fill: none;
             stroke: currentColor;
             stroke-width: 1;
+            opacity: 0;
           }
         }
         .return {

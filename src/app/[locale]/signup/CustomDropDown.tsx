@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Select, { StylesConfig } from "react-select";
 import { CustomDropdownItem } from "./config";
 import { AnimatePresence, motion } from "framer-motion";
+import { genId } from "@/utils/config";
 
 const MAX_SELECTIONS = 5;
 const colourStyles: StylesConfig<any, true> = {};
@@ -38,6 +39,7 @@ const CustomSelectDropdown:React.FC<CustomSelectDropdownProps> = ({ setter,data,
         styles={colourStyles}
         onChange={handleOptionChange}
         onBlur={() => setErrorMessage("")}
+        id={genId()}
       />
       <AnimatePresence>
         {errorMessage && (
