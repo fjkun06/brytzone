@@ -63,7 +63,7 @@
 
 .brytzone_field_normal,
 .brytzone_field_password {
-  height: 8.6rem;
+  min-height: 8.6rem;
   // border: 1px solid red;
   gap: 0.5rem;
   width: 100%;
@@ -72,6 +72,11 @@
 
   span {
     @include inputText;
+  }
+  span.error {
+    font-size: 1.5rem;
+    padding-left: 2.4rem;
+    color: red;
   }
 
   div.visibility {

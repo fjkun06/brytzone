@@ -51,8 +51,15 @@
           @include size(100%);
           padding-inline: 2rem;
           @include flex(column);
-
-          gap: 2rem;
+          justify-content: space-evenly;
+          height: 46rem;
+          span.limit_error {
+            text-align: left;
+            width: 100%;
+            color: red;
+            font-family: "Poppins";
+          }
+          // gap: 2rem;
           /***********************************************Actions fields***********************************************/
           .actions {
             width: max-content;

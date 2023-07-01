@@ -7,6 +7,7 @@ import { CircleLoader } from "react-spinners";
 import axios from "axios";
 import NormalInput from "@/stories/components/Input";
 import { User } from "./config";
+import { useRouter } from "next/navigation";
 
 interface SubmitModalProps {
   stepCallback: Dispatch<SetStateAction<number>>;
@@ -160,6 +161,9 @@ export const SignUpSucess: React.FC<Screen> = ({ visible, increment }) => {
 };
 export const SignUpComplete: React.FC<{ visible: boolean }> = ({ visible }) => {
   const [user, setUser] = useState<User>();
+  const userName = user?.name.split(" ")[0];
+  const router = useRouter();
+
   React.useEffect(() => {
     const welcome = async () => {
       try {
@@ -170,7 +174,12 @@ export const SignUpComplete: React.FC<{ visible: boolean }> = ({ visible }) => {
         //   headers: { "Content-Type": "multipart/form-data" },
         //   withCredentials: true,
         // });
-        if (res) setUser(res.data.user);
+        if (res) {
+          setUser(res.data.user);
+          setTimeout(() => {
+            if (userName) router.push(`${userName.toLocaleLowerCase()}/profile`);
+          }, 3000);
+        }
 
         // const datum = res;
         console.log(res);
@@ -181,14 +190,15 @@ export const SignUpComplete: React.FC<{ visible: boolean }> = ({ visible }) => {
     setTimeout(() => {
       if (visible) welcome();
     }, 1000);
-  }, []);
+  }, [userName,visible,router]);
+
   return (
     <SubContainer isVisible={visible}>
-      {user?.name ? (
-      // {user?.name ? (
+      {userName ? (
+        // {user?.name ? (
         <>
           <motion.h2 initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="">
-            Welcome, {user?.name}
+            Welcome, {userName}
           </motion.h2>
           <motion.p animate={{ scale: 2.5, y: 0 }}>
             <CircleLoader cssOverride={{ color: "var(--test)" }} color="" aria-label="Loading Spinner" data-testid="loader" className="wave" />

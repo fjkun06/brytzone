@@ -10,25 +10,27 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   fileName?: string;
   fileSize?: string;
   forgot?: boolean;
+  error?: string;
 }
 
-const NormalInput: React.FC<InputProps> = ({ label, ...rest }) => {
+const NormalInput: React.FC<InputProps> = ({ label,error, ...rest }) => {
   return (
     <label className={`${brytzone}_field_normal`}>
       <span>{label}</span>
       <input {...rest} placeholder={label} />
+      {error && <span className="password error">{error}</span>}
     </label>
   );
 };
 export const FileInput: React.FC<InputProps> = ({ label, fileName, fileSize, ...rest }) => {
   const size = fileSize?.includes("NaN") ? "" : `: : ${fileSize}`;
-  
+
   return (
     <div className={`${brytzone}_field_file`}>
       <span className="file_heading">{label}</span>
       <div className="input">
         <span>
-          {fileName ?? "Click icon to upload"}  {size}
+          {fileName ?? "Click icon to upload"} {size}
         </span>
         <label htmlFor="pic">
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,7 +45,7 @@ export const FileInput: React.FC<InputProps> = ({ label, fileName, fileSize, ...
     </div>
   );
 };
-export const PasswordInput: React.FC<InputProps> = ({ label, forgot, ...rest }) => {
+export const PasswordInput: React.FC<InputProps> = ({ label, forgot, error, ...rest }) => {
   const [showPassword, setShowPassword] = useState(false);
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
@@ -57,6 +59,8 @@ export const PasswordInput: React.FC<InputProps> = ({ label, forgot, ...rest }) 
         <input type={showPassword ? "text" : "password"} placeholder="password" {...rest} />
         <div onClick={handleTogglePassword}>{showPassword ? <ShowPasswordIcon /> : <HidePasswordIcon />}</div>
       </div>
+      {error && <span className="password error">{error}</span>}
+
       {forgot && (
         <div className="password">
           <SubLink route="/password_recovery">Forgot password?</SubLink>

@@ -8,17 +8,90 @@ import NormalInput, { PasswordInput } from "@/stories/components/Input";
 import { Button } from "@/stories/components/Button";
 import SubLink from "@/stories/components/SubLinks";
 import SpecialNav from "@/stories/layout/navbar/SpecialNav";
+import React from "react";
+import axios from "axios";
+import { backendPort } from "@/utils/config";
+import { User } from "../signup/config";
+import { CircleLoader } from "react-spinners";
 
+type Input = string | undefined;
 const Login = () => {
   const router = useRouter();
-  const [matricle, setMatricle] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [limitError, setLimitError] = useState<Input>(undefined);
+  const [emailError, setEmailError] = useState<Input>(undefined);
+  const [passwordError, setPasswordError] = useState<Input>(undefined);
+  const [user, setUser] = useState<User>();
+  const [loading, setLoading] = useState(false);
 
-  const handleMatricle: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setMatricle(e.target.value);
+  const handleEmail: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    setEmail(e.target.value);
   };
   const handlePassword: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setPassword(e.target.value);
+  };
+
+  const onSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
+    const userData = { email: "", password: "" };
+    userData.email = email;
+    userData.password = password;
+    console.log(userData);
+
+    //reset errors
+    setEmailError("");
+    setPasswordError("");
+    setLimitError("");
+    try {
+      setLoading(true);
+      const res = await axios.post(
+        `http://localhost:${backendPort}/login`,
+        { ...userData },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+      const datum = await res.data;
+      console.log(datum);
+      if (res.data.errors) {
+        setLoading(false);
+
+        setEmailError(datum.errors.email);
+        setPasswordError(datum.errors.password);
+      }
+      if (res) {
+        setUser(res.data.user);
+        const userName = res.data.user.split(" ")[0];
+
+        setTimeout(() => {
+          if (userName) router.push(`${userName.toLocaleLowerCase()}/profile`);
+        }, 1500);
+      }
+    } catch (error: any) {
+      console.log(error);
+      console.log(error.response.data.message);
+      if (error.response.data.errors) {
+        const { email, limit, password } = error?.response?.data?.errors;
+        setEmailError(email);
+        setPasswordError(password);
+        setLimitError(limit);
+        setLoading(false);
+      }
+      if (error.response.data.message) {
+        setLimitError(error.response.data.message);
+        setLoading(false);
+      }
+
+      if (error.response.status === 401 || error.response.status === 400) {
+        console.log(401);
+
+        // location.assign("/signup/verify");
+      }
+    }
   };
 
   return (
@@ -46,14 +119,18 @@ const Login = () => {
             <Image width={560} height={460} src={"/login/login_avatar.webp"} alt="login-image" quality={100} />
           </div>
           <div className="right">
-            <form>
-              <NormalInput label="matricule" name="matricle" value={matricle} onChange={handleMatricle} />
-              <PasswordInput label="password" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
+            <form onSubmit={onSubmit}>
+              <NormalInput error={emailError} label="email" name="email" value={email} onChange={handleEmail} />
+              <PasswordInput error={passwordError} label="password" forgot placeholder="password" name="password" value={password} onChange={handlePassword} />
+              {limitError && <span className="limit_error">{limitError}</span>}
+
               <div className="actions">
-                <Button category="content">Log In</Button>
+                <Button type="submit" category="content">
+                  {loading ? <CircleLoader cssOverride={{ color: "white" }} color="" aria-label="Loading Spinner" data-testid="loader" className="wave" /> : "Log In"}
+                </Button>
                 <span className="help">
                   <span>Don’t have an account?</span>
-                  <SubLink route="/signup">Sign Up</SubLink>
+                  <SubLink route="/signup">Sign Up</SubLink> 
                 </span>
               </div>
             </form>
