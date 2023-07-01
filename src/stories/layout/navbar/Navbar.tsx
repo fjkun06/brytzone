@@ -13,7 +13,7 @@ import { Button } from "@/stories/components/Button";
 import UserAddIcon from "./UserAddIcon";
 import IconForward from "@/stories/components/IconForward";
 import LanguageComponent from "@/stories/components/LanguageComponent";
-import { useRouter, useSelectedLayoutSegment } from "next/navigation";
+import { usePathname, useRouter, useSelectedLayoutSegment } from "next/navigation";
 import { useTranslations } from "next-intl";
 import LoginButton from "@/stories/components/LoginButton";
 
@@ -38,7 +38,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
   const routes: string[] = ["one", "two", "three", "four", "five", "six", "seven"];
   // const routesPath: string[] = ["one", "two", "three", "four", "five", "six", "seven"];
   const routesPath: string[] = ["home", "internships", "projects", "polls", "about", "contact", "blog"];
-
+  const path = usePathname();
   const start = {
     x: 0,
     transition: {
@@ -76,16 +76,16 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
     close: { opacity: 0, transition: globalTransition },
   };
 
-  const path = useSelectedLayoutSegment();
-  // console.log(path);
+  //handling navbar diaplay for specific routes
+  const showNavbar = path.includes("login") || path.includes("signup") || path.includes("recovery");
+
   const router = useRouter();
-  // console.log(path.slice(3 - path.length) + "dashboard");
-// const p2 = path1.slice(3 - path1.length)
-  return (
+
+  return showNavbar ? null : (
     <motion.nav layout animate={{ height: isOpen ? (desktop ? "9.6rem" : "70rem") : "9.6rem", paddingTop: isOpen ? (desktop ? "0rem" : "3rem") : "2.25rem" }} transition={globalTransition}>
       <motion.div>
         <span className="logo" onClick={() => router.push("/")}>
-          <Image src={logo} alt="" />
+          <Image src={logo} alt="brytzone-logo" />
         </span>
         {!desktop && <Menu isOpen={isOpen} toggleNavbarState={handleClick} />}
       </motion.div>
@@ -143,8 +143,8 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
           <>
             <motion.div className="navbar_desktop" initial={false}>
               {routes.map((route, index) => (
-                  <NavLink i={index} href={`/${routesPath[index] === "home" ? "" : routesPath[index].toLowerCase()}`} text={navbarT(route)} type={desktop ? "desktop" : "mobile"} key={nanoid()} />
-                  ))}
+                <NavLink i={index} href={`/${routesPath[index] === "home" ? "" : routesPath[index].toLowerCase()}`} text={navbarT(route)} type={desktop ? "desktop" : "mobile"} key={nanoid()} />
+              ))}
             </motion.div>
             <motion.div layout className="navbar_desktop" initial={false} data-name="name" key={nanoid()}>
               <AnimatePresence>
@@ -178,10 +178,10 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
                   </motion.span>
                 )}
               </AnimatePresence>
-             <LoginButton/>
+              <LoginButton />
               {/* <Button category="content" icon={<IconForward/>} >Get Started</Button> */}
               <Button>Donate</Button>
-              <LanguageComponent  />
+              <LanguageComponent />
             </motion.div>
           </>
         )}

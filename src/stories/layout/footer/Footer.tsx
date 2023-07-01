@@ -6,7 +6,7 @@ import TwitterIcon from "@/stories/components/TwitterIcon";
 import LinkedInIcon from "@/stories/components/LinkedInIcon";
 import Link from "next/link";
 import { nanoid } from "nanoid";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 
 const Footer = () => {
@@ -28,7 +28,13 @@ const Footer = () => {
       url: "https://lnkedin.com",
     },
   ];
-  return (
+
+  //handling footer diaplay for specific routes
+  const path = usePathname();
+  const showFooter = path.includes("login") || path.includes("signup") || path.includes("recovery");
+
+
+  return showFooter? null:(
     <footer className="brtyzone_footer">
       <section className="brtyzone_footer_links">
         <div className="brtyzone_footer_links-item">
@@ -65,16 +71,12 @@ const Footer = () => {
               className=""
               onClick={() => router.push("mailto:cotsite@ubuea.com")}
             >
-              {/* <Link href={"mailto:cotsite@ubuea.com"} passHref={true}>
-                cotsite@ubuea.com
-              </Link> */}
+          
               cotsite@ubuea.com
             </span>
             <span className="" onClick={() => router.push("tel:+237650906666")}>
               +237 650906666
-              {/* <Link href={"tel:+237650906666"} passHref={true}>
-                tel:+237650906666
-              </Link> */}
+          
             </span>
             <span className="">{footerT("cameroon")}</span>
           </div>
