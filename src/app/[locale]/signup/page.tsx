@@ -24,6 +24,7 @@ import SubmitModal from "./modal";
 export type FormValues = {
   matricule: string;
   name: string;
+  username: string;
   password: string;
   confirmPassword: string;
   level: number;
@@ -35,27 +36,8 @@ export type FormValues = {
 
 const SignUp = () => {
   const router = useRouter();
-  const [matricle, setMatricle] = useState("");
-  const [password, setPassword] = useState("");
   const [step, setStep] = useState(1);
   const [completed, setCompleted] = useState(false);
-
-  const handleMatricle: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setMatricle(e.target.value);
-  };
-  const handlePassword: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setPassword(e.target.value);
-  };
-
-  //form interface
-  interface Form {
-    name: string;
-    matricule: string;
-    level: string;
-    email: string;
-    skills: string[];
-    interests: string[];
-  }
 
   /**********************************************Skills List **********************************************/
 
@@ -69,6 +51,7 @@ const SignUp = () => {
       level: 0,
       email: "",
       name: "",
+      username: "",
       skills: [],
       interests: [],
       picture: undefined,
@@ -114,6 +97,11 @@ const SignUp = () => {
                       control={control}
                       name="name"
                       render={({ field: { onChange, onBlur, value, ref } }) => <NormalInput onBlur={onBlur} label="full name" value={value} onChange={onChange} />}
+                    />
+                    <Controller
+                      control={control}
+                      name="username"
+                      render={({ field: { onChange, onBlur, value, ref } }) => <NormalInput onBlur={onBlur} label="username" value={value} onChange={onChange} />}
                     />
                     <Controller
                       control={control}

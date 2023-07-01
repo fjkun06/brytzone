@@ -161,7 +161,7 @@ export const SignUpSucess: React.FC<Screen> = ({ visible, increment }) => {
 };
 export const SignUpComplete: React.FC<{ visible: boolean }> = ({ visible }) => {
   const [user, setUser] = useState<User>();
-  const userName = user?.name.split(" ")[0];
+  const userName = user?.username;
   const router = useRouter();
 
   React.useEffect(() => {

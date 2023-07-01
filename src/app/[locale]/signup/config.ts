@@ -206,6 +206,7 @@ export interface DatabaseUserProps {
 export interface User extends DatabaseUserProps {
   matricule: string;
   name: string;
+  username: string;
   password: string;
   level: number;
   email: string;
