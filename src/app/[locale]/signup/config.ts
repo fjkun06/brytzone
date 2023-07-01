@@ -212,4 +212,5 @@ export interface User extends DatabaseUserProps {
   skills: Group[];
   interests: Group[];
   picture: string;
+  uname:string
 }
