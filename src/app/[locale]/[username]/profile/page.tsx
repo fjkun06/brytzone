@@ -1,11 +1,12 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { backendPort } from "@/utils/config";
 import axios from "axios";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname, useRouter, useSelectedLayoutSegment } from "next/navigation";
 import { User } from "../../signup/config";
+import { AuthContext } from "../../sublayout";
 export const metadata = {
   title: "Ensome | Services",
   description: "section displaying all the services we offer",
@@ -14,7 +15,7 @@ export const metadata = {
 const Polls = async () => {
   // const t = useTranslations("dash");
   const path = usePathname();
-  const router = useRouter()
+  const router = useRouter();
   // console.log("path: ", path1.split("/")[1]);
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState({ code: 0, message: "" });
@@ -22,15 +23,16 @@ const Polls = async () => {
   // console.log(path.slice(3 - path.length) + "dashboard");
 
   const [user, setUser] = useState<User | null | undefined>(null);
+  //setting user contxet
+  const { currentUser, setCurrentUser } = useContext(AuthContext);
   // During hydration `useEffect` is called. `window` is available in `useEffect`. In this case because we know we're in the browser checking for window is not needed. If you need to read something from window that is fine.
   // By calling `setColor` in `useEffect` a render is triggered after hydrating, this causes the "browser specific" value to be available. In this case 'red'.
   useEffect(() => {
-  
     const verifyUsername = async () => {
       //reset errors
       const strings = path.split("/");
       const username = strings[strings.length - 2];
-      // console.log(username);
+      // console.log(username)
 
       try {
         const res = await axios.post(`http://localhost:${backendPort}/user/check`, JSON.stringify({ username }), {
@@ -41,6 +43,13 @@ const Polls = async () => {
 
         console.log(res);
         setUser(res.data.user);
+        if (res.data.user.name && res.data.loggedIn) {
+          setCurrentUser({ user: res.data.user, state: res.data.loggedIn });
+          // console.log(res.data.user, isLoggenIn)
+        }
+        if (!res.data.loggedIn) {
+          setCurrentUser({ user: res.data.user, state: false });
+        }
       } catch (error: any) {
         console.log(error);
         console.log(error.response.data.message);

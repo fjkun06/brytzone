@@ -19,6 +19,7 @@ import LoginButton from "@/stories/components/LoginButton";
 import axios from "axios";
 import { backendPort } from "@/utils/config";
 import { User } from "@/app/[locale]/signup/config";
+import { AuthContext } from "@/app/[locale]/sublayout";
 
 interface NavbarProps {
   /**
@@ -31,13 +32,13 @@ interface NavbarProps {
    *
    * */
   isOpen: boolean;
-  isLoggedIn: boolean;
+  // isLoggedIn: boolean;
   desktop: boolean;
   cookieVal: string;
   handleClick: () => void;
   storeCookie: (x: string) => void;
 }
-const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCookie, cookieVal,isLoggedIn }) => {
+const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCookie, cookieVal }) => {
   const navbarT = useTranslations("routes");
   const globalTransition = { stiffness: 100, duration: 0.5, ease: "easeInOut" };
   const routes: string[] = ["one", "two", "three", "four", "five", "six", "seven"];
@@ -82,41 +83,9 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
   };
 
   //check logged in user
-  const [userName, setUserName] = React.useState(undefined);
-  const [isLoggenIn, setIsLoggenIn] = React.useState(false);
-  React.useEffect(() => {
-      //relaod page
-      router.refresh();
-    const welcome = async () => {
-      try {
-        setIsLoggenIn(false);
-        const res = await axios.get(`http://localhost:${backendPort}/user`, {
-          withCredentials: true,
-        });
-        // const res = await axios.post(`http://localhost:${backendPort}/signup`, data, {
-        //   headers: { "Content-Type": "multipart/form-data" },
-        //   withCredentials: true,
-        // });
-        console.log('responsssssssssssssssssssssssssssse: ',res.data);
-        
-        if (res.data.user.name) {
-          setUserName(res.data.user.username);
-          // console.log(res.data.user, isLoggenIn);
-        }
-        if(res.data.loggedIn){
-          setIsLoggenIn(true);
-          console.log(isLoggenIn);
-          
-        }
+  const auth = React.useContext(AuthContext).currentUser;
+console.dir( auth);
 
-        // const datum = res;
-      } catch (error: any) {
-        console.log(error);
-      }
-    };
-
-    welcome();
-  }, []);
 
   //handling navbar diaplay for specific routes
   const showNavbar = path.includes("login") || path.includes("signup") || path.includes("recovery");
@@ -172,7 +141,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
                     </motion.span>
                   )}
                 </AnimatePresence>
-                {isLoggenIn ? (
+                {auth?.state ? (
                   <Button category="action" icon={<UserAddIcon />}>
                     Log Out
                   </Button>
@@ -228,10 +197,10 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
               </AnimatePresence>
               {/* <LoginButton isLoggedIn={isLoggenIn} />
                */}
-              {isLoggenIn ? (
+              {auth?.state ? (
                 <Button category="action" icon={<UserAddIcon />}>
                   {
-                  userName}
+                  auth?.user?.username ?? "Kurtis"}
                 </Button>
               ) : (
                 <Button category="action" icon={<UserAddIcon />}>

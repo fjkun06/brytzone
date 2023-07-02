@@ -11,50 +11,57 @@ import { switchTheme } from "@/utils/themeSwitcher";
 import Footer from "@/stories/layout/footer/Footer";
 import axios from "axios";
 import { backendPort } from "@/utils/config";
+import { User } from "./signup/config";
 interface SubLayoutProps {
   children?: React.ReactNode;
 }
+interface Auth {
+  state: boolean;
+  user: null | User;
+}
+export const AuthContext = React.createContext<any>(null);
+
 const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const min980 = useWindowSize().width > 1200;
   // console.log(min980, useWindowSize().width);
 
-   //check logged in user
-   const [userName, setUser] = React.useState(undefined);
-   const [isLoggenIn, setIsLoggenIn] = React.useState(false);
-   React.useEffect(() => {
-       //relaod page
-      //  router.refresh();
-     const welcome = async () => {
-       try {
-         setIsLoggenIn(false);
-         const res = await axios.get(`http://localhost:${backendPort}/user`, {
-           withCredentials: true,
-         });
-         // const res = await axios.post(`http://localhost:${backendPort}/signup`, data, {
-         //   headers: { "Content-Type": "multipart/form-data" },
-         //   withCredentials: true,
-         // });
-         console.log('responsssssssssssssssssssssssssssse: ',res.data);
-         
-         if (res.data.user.name) {
-           setUser(res.data.user);
-           // console.log(res.data.user, isLoggenIn);
-         }
-         if(res.data.loggedIn){
-           setIsLoggenIn(true);
-           console.log(isLoggenIn);
-           
-         }
- 
-         // const datum = res;
-       } catch (error: any) {
-         console.log(error);
-       }
-     };
- 
-     welcome();
-   }, []);
+  //check logged in user
+  // const [user, setUser] = React.useState(null);
+  // const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [currentUser, setCurrentUser] = React.useState<Auth | null>({ state: false, user: null });
+  React.useEffect(() => {
+    //relaod page
+    //  router.refresh();
+    const welcome = async () => {
+      console.log("raaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaan");
+
+      try {
+        const res = await axios.get(`http://localhost:${backendPort}/user`, {
+          withCredentials: true,
+        });
+        // const res = await axios.post(`http://localhost:${backendPort}/signup`, data, {
+        //   headers: { "Content-Type": "multipart/form-data" },
+        //   withCredentials: true,
+        // });
+        console.log("responsssssssssssssssssssssssssssse: ", res.data);
+
+        if (res.data.user.name && res.data.loggedIn) {
+          setCurrentUser({user:res.data.user,state:res.data.loggedIn});
+          // console.log(res.data.user, isLoggenIn)
+        }
+        if (!res.data.loggedIn) {
+          setCurrentUser({user:res.data.user,state:false});
+        }
+
+        // const datum = res;
+      } catch (error: any) {
+        console.log(error);
+      }
+    };
+
+    welcome();
+  }, []);
   //scroll useEffect
   React.useEffect(() => {
     if (min980) {
@@ -129,38 +136,45 @@ const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
 
   const handleIsOpen = () => setIsOpen(!isOpen);
   return (
-    <main id="layout">
-      <Navbar handleClick={handleIsOpen} isOpen={isOpen} desktop={min980} storeCookie={setThemeCookie} cookieVal={cookie} />
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            key={nanoid()}
-            onClick={() => setIsOpen(false)}
-            id="modal"
-            layout
-            animate={{ height: min980 ? "0rem" : "100vh" }}
-            transition={{
-              delay: 0.35,
-            }}
-            exit={{
-              height: 0,
-              transition: {
+    <AuthContext.Provider
+      value={{
+        currentUser,
+        setCurrentUser,
+      }}
+    >
+      <main id="layout">
+        <Navbar handleClick={handleIsOpen} isOpen={isOpen} desktop={min980} storeCookie={setThemeCookie} cookieVal={cookie} />
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              key={nanoid()}
+              onClick={() => setIsOpen(false)}
+              id="modal"
+              layout
+              animate={{ height: min980 ? "0rem" : "100vh" }}
+              transition={{
                 delay: 0.35,
-                ease: "easeInOut",
-              },
-            }}
-          />
+              }}
+              exit={{
+                height: 0,
+                transition: {
+                  delay: 0.35,
+                  ease: "easeInOut",
+                },
+              }}
+            />
+          )}
+        </AnimatePresence>
+        {loading && (
+          <section id="loader">
+            <CircleLoader cssOverride={{ color: "var(--test)" }} color="" loading={loading} aria-label="Loading Spinner" data-testid="loader" className="wave" />
+            {/* <CircleLoader cssOverride={{color:"var(--test)"}} color="red" loading aria-label="Loading Spinner" data-testid="loader" /> */}
+          </section>
         )}
-      </AnimatePresence>
-      {loading && (
-        <section id="loader">
-          <CircleLoader cssOverride={{ color: "var(--test)" }} color="" loading={loading} aria-label="Loading Spinner" data-testid="loader" className="wave" />
-          {/* <CircleLoader cssOverride={{color:"var(--test)"}} color="red" loading aria-label="Loading Spinner" data-testid="loader" /> */}
-        </section>
-      )}
-      {children}
-      <Footer />
-    </main>
+        {children}
+        <Footer />
+      </main>
+    </AuthContext.Provider>
   );
 };
 
