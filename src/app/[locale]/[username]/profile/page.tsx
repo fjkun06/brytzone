@@ -14,9 +14,45 @@ import FacebookIcon from "@/stories/components/FacebookIcon";
 import TwitterIcon from "@/stories/components/TwitterIcon";
 import LinkedInIcon from "@/stories/components/LinkedInIcon";
 import GithubIcon from "@/stories/components/GithubIcon";
+import TechnologyCategory from "@/stories/components/TechnologyCatefory";
+import DesignCategory from "@/stories/components/DesignCategory";
+import BusinessCategory from "@/stories/components/BusinessCategory";
+import ArtsCategory from "@/stories/components/ArtsCategory";
+import HealthCategory from "@/stories/components/HealthCategory";
+import CulinaryCategory from "@/stories/components/CulinaryCategory";
+import LifestyleCategory from "@/stories/components/LifestyleCategory";
+import CreativeCategory from "@/stories/components/CreativeCategory";
+import FrontendCategoryIcon from "@/stories/components/FrontendCategoryIcon";
+import BackendCategoryIcon from "@/stories/components/BackendCategoryIcon";
+import DatabaseCategoryIcon from "@/stories/components/DatabaseCategoryIcon";
+import DevOpsCategoryIcon from "@/stories/components/DevOpsCategoryIcon";
+import MobileCategoryIcon from "@/stories/components/MobileCategoryIcon";
+import DataScienceCategoryIcon from "@/stories/components/DataScienceCategoryIcon";
+import OthersCategoryIcon from "@/stories/components/OthersCategoryIcon";
 export const metadata = {
   title: "Ensome | Services",
   description: "section displaying all the services we offer",
+};
+
+export const interestsCategoryIcons = {
+  Technology: <TechnologyCategory />,
+  Design: <DesignCategory />,
+  Business: <BusinessCategory />,
+  Arts: <ArtsCategory />,
+  Health: <HealthCategory />,
+  Culinary: <CulinaryCategory />,
+  Lifestyle: <LifestyleCategory />,
+  Creative: <CreativeCategory />,
+};
+
+export const skillCategories = {
+  Frontend: <FrontendCategoryIcon />,
+  Backend: <BackendCategoryIcon />,
+  Databases: <DatabaseCategoryIcon />,
+  DevOps: <DevOpsCategoryIcon />,
+  Mobile: <MobileCategoryIcon />,
+  "Data Science": <DataScienceCategoryIcon />,
+  "Other Skills": <OthersCategoryIcon />,
 };
 
 const Polls = async () => {
@@ -199,6 +235,7 @@ const Polls = async () => {
         <div className="title">Skills</div>
         <div className="categories">
           <div className="skill">skill</div>
+          <TechnologyCategory />
           <div className="skill">skill</div>
           <div className="skill">skill</div>
           <div className="skill">skill</div>
