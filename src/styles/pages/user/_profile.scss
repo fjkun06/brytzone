@@ -12,11 +12,36 @@
     .layer1 {
       @include size(100vw, calc(100% - 33.1rem));
       background-color: coral;
-      background: url('profile_bg.webp') no-repeat;
+      background: url("profile_bg.webp") no-repeat;
       background-size: cover;
-      @include flex(column);
-      justify-content: flex-end;
+      @include flex;
+      align-items: flex-end;
       padding: 2.6rem 17.1rem;
+      .content {
+        gap: 1.5rem;
+        height: 4.5rem;
+        @include flex;
+        hr {
+          border: none;
+          width: 0.2rem;
+          height: 39.65px;
+          background: $black;
+          color: $black;
+        }
+        .name {
+          color: $black;
+          @include formatText(500, 3rem, normal);
+          @include flex;
+          align-items: flex-end;
+        }
+        .others {
+          color: #000;
+          @include formatText(500, 1.6rem, normal);
+          font-family: "DM Mono", sans-serif;
+          height: 2.1rem;
+          padding-top: 0.25rem;
+        }
+      }
     }
     .layer2 {
       @include size(100vw, 33.1rem);

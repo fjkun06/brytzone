@@ -113,7 +113,13 @@ const Polls = async () => {
   return user?.active ? (
     <section className={`${brytzone}_profile`}>
       <div className="greetings">
-        <section className="layer1">layer1</section>
+        <section className="layer1">
+          <div className="content">
+            <span className="name">Frank Jordan</span>
+            <hr />
+            <span className="others">Level 300(CT21A036) : delac1630@gmail.com</span>
+          </div>
+        </section>
         <section className="layer2">layer2</section>
       </div>
       <div className="skills">

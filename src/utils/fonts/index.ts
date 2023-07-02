@@ -6,3 +6,4 @@ import "@fontsource/poppins/200.css";
 import "@fontsource/poppins/700.css";
 // Supports weights 200-700
 import '@fontsource-variable/readex-pro';
+import '@fontsource/dm-mono';
