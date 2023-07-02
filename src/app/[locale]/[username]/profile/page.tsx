@@ -7,6 +7,7 @@ import Link from "next/link";
 import { usePathname, useRouter, useSelectedLayoutSegment } from "next/navigation";
 import { User } from "../../signup/config";
 import { AuthContext } from "../../sublayout";
+import { brytzone } from "../../home/header";
 export const metadata = {
   title: "Ensome | Services",
   description: "section displaying all the services we offer",
@@ -110,12 +111,32 @@ const Polls = async () => {
     );
   }
   return user?.active ? (
-    <div>
-      <h1>{`${user.username}'s Profile`}</h1>
+    <section className={`${brytzone}_profile`}>
+      <div className="greetings">
+        <section className="layer1">layer1</section>
+        <section className="layer2">layer2</section>
+      </div>
+      <div className="skills">
+        <div className="skill">skill</div>
+        <div className="skill">skill</div>
+        <div className="skill">skill</div>
+        <div className="skill">skill</div>
+        <div className="skill">skill</div>
+      </div>
+      <div className="projects">
+        <h3 className="heading">Projects</h3>
+        <span className="serach">Q</span>
+        <section className="projects">
+          <h3 className="project-title"></h3>
+          <article className="project-card"></article>
+        </section>
+      </div>
+
+      {/* <h1>{`${user.username}'s Profile`}</h1>
       <button type="button" onClick={handleLogOut}>
         Logout
-      </button>
-    </div>
+      </button> */}
+    </section>
   ) : null;
   // return <div><h1>{`${data.name}'s Profile`}</h1></div>;
 };

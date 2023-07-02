@@ -1,0 +1,34 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/variables" as *;
+.brytzone_profile {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: red;
+  @include flex(column);
+  /***********************************************Greetings section***********************************************/
+  .greetings {
+    background-color: #fff;
+    @include size(100vw, 59.8rem);
+    .layer1 {
+      @include size(100vw, calc(100% - 33.1rem));
+      background-color: coral;
+      background: url('profile_bg.webp') no-repeat;
+      background-size: cover;
+      @include flex(column);
+      justify-content: flex-end;
+      padding: 2.6rem 17.1rem;
+    }
+    .layer2 {
+      @include size(100vw, 33.1rem);
+    }
+  }
+  /***********************************************Skills section***********************************************/
+  .skills {
+    background-color: green;
+    @include size(100vw, 40.6rem);
+  }
+  /***********************************************Projects section***********************************************/
+  .projects {
+    @include size(100vw, 92.8rem);
+  }
+}
