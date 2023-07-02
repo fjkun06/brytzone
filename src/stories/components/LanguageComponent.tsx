@@ -13,7 +13,7 @@ import Link from "next-intl/link";
 
 const LanguageComponent = () => {
   const [hover, setHover] = React.useState(false);
-  const mainRegex = /^\/(?!(?:fr|de)$)(?!fr\/|de\/)[a-zA-Z]*$/;
+  const mainRegex = /^\/(?!(?:fr|de)($|\/)).*$/;
   const languages = [
     {
       icon: <EnglandIcon />,

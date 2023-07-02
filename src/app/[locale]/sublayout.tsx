@@ -9,6 +9,8 @@ import { CircleLoader } from "react-spinners";
 import Cookies from "universal-cookie";
 import { switchTheme } from "@/utils/themeSwitcher";
 import Footer from "@/stories/layout/footer/Footer";
+import axios from "axios";
+import { backendPort } from "@/utils/config";
 interface SubLayoutProps {
   children?: React.ReactNode;
 }
@@ -16,6 +18,43 @@ const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const min980 = useWindowSize().width > 1200;
   // console.log(min980, useWindowSize().width);
+
+   //check logged in user
+   const [userName, setUser] = React.useState(undefined);
+   const [isLoggenIn, setIsLoggenIn] = React.useState(false);
+   React.useEffect(() => {
+       //relaod page
+      //  router.refresh();
+     const welcome = async () => {
+       try {
+         setIsLoggenIn(false);
+         const res = await axios.get(`http://localhost:${backendPort}/user`, {
+           withCredentials: true,
+         });
+         // const res = await axios.post(`http://localhost:${backendPort}/signup`, data, {
+         //   headers: { "Content-Type": "multipart/form-data" },
+         //   withCredentials: true,
+         // });
+         console.log('responsssssssssssssssssssssssssssse: ',res.data);
+         
+         if (res.data.user.name) {
+           setUser(res.data.user);
+           // console.log(res.data.user, isLoggenIn);
+         }
+         if(res.data.loggedIn){
+           setIsLoggenIn(true);
+           console.log(isLoggenIn);
+           
+         }
+ 
+         // const datum = res;
+       } catch (error: any) {
+         console.log(error);
+       }
+     };
+ 
+     welcome();
+   }, []);
   //scroll useEffect
   React.useEffect(() => {
     if (min980) {

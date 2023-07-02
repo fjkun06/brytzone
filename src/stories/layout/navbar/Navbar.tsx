@@ -23,6 +23,7 @@ import { User } from "@/app/[locale]/signup/config";
 interface NavbarProps {
   /**
    * @param {boolean} [isOpen=false] - Used to check if navbar is open or not.
+   * @param {boolean} [isLoggedIn=false] - Used to check if navbar is open or not.
    * @param {boolean} [desktop=false] - Used to check if the min width is 960pxt.
    * @param {void} handleClick - Toggle menu state.
    * @param {void} storeCookie - Update theme cookie value.
@@ -30,12 +31,13 @@ interface NavbarProps {
    *
    * */
   isOpen: boolean;
+  isLoggedIn: boolean;
   desktop: boolean;
   cookieVal: string;
   handleClick: () => void;
   storeCookie: (x: string) => void;
 }
-const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCookie, cookieVal }) => {
+const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCookie, cookieVal,isLoggedIn }) => {
   const navbarT = useTranslations("routes");
   const globalTransition = { stiffness: 100, duration: 0.5, ease: "easeInOut" };
   const routes: string[] = ["one", "two", "three", "four", "five", "six", "seven"];
@@ -83,6 +85,8 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
   const [userName, setUserName] = React.useState(undefined);
   const [isLoggenIn, setIsLoggenIn] = React.useState(false);
   React.useEffect(() => {
+      //relaod page
+      router.refresh();
     const welcome = async () => {
       try {
         setIsLoggenIn(false);
@@ -93,10 +97,16 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
         //   headers: { "Content-Type": "multipart/form-data" },
         //   withCredentials: true,
         // });
+        console.log('responsssssssssssssssssssssssssssse: ',res.data);
+        
         if (res.data.user.name) {
           setUserName(res.data.user.username);
+          // console.log(res.data.user, isLoggenIn);
+        }
+        if(res.data.loggedIn){
           setIsLoggenIn(true);
-          console.log(res.data.user, isLoggenIn);
+          console.log(isLoggenIn);
+          
         }
 
         // const datum = res;
