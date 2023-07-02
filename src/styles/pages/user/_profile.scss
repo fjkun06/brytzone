@@ -159,12 +159,7 @@
             h2,
             h2 span {
               color: #000;
-              text-align: center;
-              font-size: 40px;
-              font-family: "Poppins";
-              font-style: normal;
-              font-weight: 500;
-              line-height: normal;
+              @include formatText(500, 4rem, normal);
             }
             h2 span {
               font-weight: 400;
@@ -174,26 +169,60 @@
       }
     }
   }
-  /***********************************************Skills section***********************************************/
+  /***********************************************Skills section**********************************************/
   .skills {
     @include flex(column);
-    background-color: green;
+    background-color: $primary;
     @include size(100vw, 40.6rem);
     padding-top: 2.6rem;
+    padding-bottom: 4.75rem;
+    justify-content: space-between;
     .title {
       color: #fff;
       text-align: center;
-      font-size: 35px;
-      font-family: "Poppins";
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
+      @include formatText(500, 3.5rem, normal);
       @include size(8.7rem, 5.3rem);
-      background-color: red;
+      // background-color: red;
     }
     .categories {
       @include size(100%, 23rem);
-      border: 1px solid red;
+      // border: 1px solid red;
+      @include flex;
+      gap: 10rem;
+      .skill {
+        @include size(23rem);
+        // background-color: #fff;
+        @include flex(column);
+
+        .icon {
+          @include size(15rem);
+          border-radius: 15rem;
+          border: 1px dashed $grey;
+          @include flex;
+
+          svg {
+            @include size(7rem);
+            fill: linear-gradient(to bottom, #3c78df, #ffffff);
+            fill: url(#profileGradient);
+            p {
+              fill: linear-gradient(to bottom, #3c78df, #ffffff);
+              fill: url(#profileGradient);
+            }
+          }
+        }
+        .category {
+          color: #fff;
+          text-align: center;
+          @include formatText(500, 2.5rem, normal);
+        }
+        .list {
+          color: $white;
+          text-align: center;
+          @include formatText(300, 1.8rem, normal);
+          font-family: "DM Mono", sans-serif;
+          @include linearTextEllipsis(24rem);
+        }
+      }
     }
   }
   /***********************************************Projects section***********************************************/

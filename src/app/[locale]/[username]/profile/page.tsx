@@ -173,6 +173,7 @@ const Polls = async () => {
   }
   return user?.active ? (
     <section className={`${brytzone}_profile`}>
+      {/* <object data="./gradient.svg" type="image/svg+xml" /> */}
       <div className="greetings">
         <section className="layer1">
           <div className="body">
@@ -234,12 +235,35 @@ const Polls = async () => {
       <div className="skills">
         <div className="title">Skills</div>
         <div className="categories">
-          <div className="skill">skill</div>
-          <TechnologyCategory />
-          <div className="skill">skill</div>
-          <div className="skill">skill</div>
-          <div className="skill">skill</div>
-          <div className="skill">skill</div>
+          <div className="skill">
+            {/* <TechnologyCategory /> */}
+
+            <span className="icon">{skillCategories["Frontend"]}</span>
+            <span className="category">Design</span>
+            <span className="list">HTML5,CSS3,Bootstrap5,XYZ</span>
+          </div>
+          <div className="skill">
+            {/* <TechnologyCategory /> */}
+
+            <span className="icon">{skillCategories["Backend"]}</span>
+            <span className="category">Design</span>
+            <span className="list">Figma,Canva...</span>
+          </div>
+          <div className="skill">
+            {/* <TechnologyCategory /> */}
+
+            <span className="icon">{skillCategories["Databases"]}</span>
+            <span className="category">Design</span>
+            <span className="list">HTML5,CSS3,Bootstrap5,XYZ</span>
+          </div>
+          <div className="skill">
+            {/* <TechnologyCategory /> */}
+
+            <span className="icon">{skillCategories["DevOps"]}</span>
+            <span className="category">Design</span>
+            <span className="list">ReactNative,Ionic...</span>
+          </div>
+         
         </div>
       </div>
       <div className="projects">
