@@ -170,18 +170,18 @@
     }
   }
   /***********************************************Skills section**********************************************/
-  .skills {
+  .skills,.interest {
     @include flex(column);
-    background-color: $primary;
+    background-color: $white;
     @include size(100vw, 40.6rem);
     padding-top: 2.6rem;
     padding-bottom: 4.75rem;
     justify-content: space-between;
     .title {
-      color: #fff;
+      color: $primary;
       text-align: center;
       @include formatText(500, 3.5rem, normal);
-      @include size(8.7rem, 5.3rem);
+      @include size(auto, 5.3rem);
       // background-color: red;
     }
     .categories {
@@ -193,34 +193,57 @@
         @include size(23rem);
         // background-color: #fff;
         @include flex(column);
+        gap: 1rem;
 
         .icon {
           @include size(15rem);
           border-radius: 15rem;
-          border: 1px dashed $grey;
+          border: 1px double $grey;
           @include flex;
 
           svg {
             @include size(7rem);
-            fill: linear-gradient(to bottom, #3c78df, #ffffff);
-            fill: url(#profileGradient);
+            fill: $primary;
             p {
-              fill: linear-gradient(to bottom, #3c78df, #ffffff);
-              fill: url(#profileGradient);
+              fill: $primary;
             }
           }
         }
         .category {
-          color: #fff;
+          color: $primary;
           text-align: center;
           @include formatText(500, 2.5rem, normal);
         }
         .list {
-          color: $white;
+          color: $primary;
           text-align: center;
           @include formatText(300, 1.8rem, normal);
           font-family: "DM Mono", sans-serif;
           @include linearTextEllipsis(24rem);
+        }
+      }
+    }
+  }
+  .interest {
+    background-color: $primary;
+    .title {
+      color: $white;
+    }
+    .skill {
+      .category {
+        color: $white !important;
+      }
+      .list {
+        color: $white !important;
+      }
+      .icon{
+        border: 1px dashed $grey !important;
+
+        svg {
+          fill: url(#profileGradient) !important;
+          p {
+            fill: url(#profileGradient) !important;
+          }
         }
       }
     }

@@ -266,6 +266,40 @@ const Polls = async () => {
          
         </div>
       </div>
+      <div className="interest skills">
+        <div className="title">Areas of Interest</div>
+        <div className="categories">
+          <div className="skill">
+            {/* <TechnologyCategory /> */}
+
+            <span className="icon">{interestsCategoryIcons["Technology"]}</span>
+            <span className="category">Design</span>
+            <span className="list">HTML5,CSS3,Bootstrap5,XYZ</span>
+          </div>
+          <div className="skill">
+            {/* <TechnologyCategory /> */}
+
+            <span className="icon">{interestsCategoryIcons["Business"]}</span>
+            <span className="category">Design</span>
+            <span className="list">Figma,Canva...</span>
+          </div>
+          <div className="skill">
+            {/* <TechnologyCategory /> */}
+
+            <span className="icon">{interestsCategoryIcons["Arts"]}</span>
+            <span className="category">Design</span>
+            <span className="list">HTML5,CSS3,Bootstrap5,XYZ</span>
+          </div>
+          <div className="skill">
+            {/* <TechnologyCategory /> */}
+
+            <span className="icon">{interestsCategoryIcons["Health"]}</span>
+            <span className="category">Design</span>
+            <span className="list">ReactNative,Ionic...</span>
+          </div>
+         
+        </div>
+      </div>
       <div className="projects">
         <h3 className="heading">Projects</h3>
         <span className="serach">Q</span>
