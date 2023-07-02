@@ -16,35 +16,165 @@
       background-size: cover;
       @include flex;
       align-items: flex-end;
-      padding: 2.6rem 17.1rem;
-      .content {
-        gap: 1.5rem;
-        height: 4.5rem;
+      justify-content: center;
+
+      padding: 2rem 17.1rem;
+      .body {
+        @include size(91.1rem, 100%);
+        position: relative;
         @include flex;
-        hr {
-          border: none;
-          width: 0.2rem;
-          height: 39.65px;
-          background: $black;
-          color: $black;
+        align-items: flex-end;
+        justify-content: flex-end;
+
+        img {
+          @include size(20.55rem);
+          border-radius: 241.471px;
+          border: 7.244px solid #0a518b;
+          box-shadow: 0px 0px 0px 0px rgba(0, 0, 255, 0.2), 1px 3px 8px 0px rgba(0, 0, 255, 0.2), 6px 12px 14px 0px rgba(0, 0, 255, 0.17), 13px 28px 19px 0px rgba(0, 0, 255, 0.1),
+            24px 50px 22px 0px rgba(0, 0, 255, 0.03), 37px 78px 24px 0px rgba(0, 0, 255, 0);
+          transform: translate(-50px, 100px);
+          z-index: 999;
+          color: $primary;
+          // position: absolute;
+          // left: 0rem;
+          // top: 24rem;
         }
-        .name {
-          color: $black;
-          @include formatText(500, 3rem, normal);
+        .content {
+          gap: 1.5rem;
+          height: 4.5rem;
           @include flex;
-          align-items: flex-end;
-        }
-        .others {
-          color: #000;
-          @include formatText(500, 1.6rem, normal);
-          font-family: "DM Mono", sans-serif;
-          height: 2.1rem;
-          padding-top: 0.25rem;
+          justify-content: flex-end;
+
+          hr {
+            border: none;
+            @include size(0.2rem, 3.965rem);
+            background: $black;
+            color: $black;
+          }
+          .name {
+            color: $black;
+            @include formatText(500, 3rem, normal);
+            @include flex;
+            align-items: flex-end;
+          }
+          .others {
+            color: #000;
+            @include formatText(500, 1.6rem, normal);
+            font-family: "DM Mono", sans-serif;
+            height: 2.1rem;
+            padding-top: 0.25rem;
+          }
         }
       }
     }
     .layer2 {
       @include size(100vw, 33.1rem);
+      @include flex;
+      .body {
+        @include size(95rem, 100%);
+        // border: 1px solid red;
+        transform: translateX(10rem);
+        padding-block: 3.746rem;
+        .actions {
+          @include size(100%, 3.9rem);
+          // border: 1px solid red;
+          background-color: #fff;
+          color: $black;
+          @include flex;
+          justify-content: flex-end;
+          gap: 2.5rem;
+          span {
+            // border: 1px solid red;
+            @include flex;
+            @include size(12.694rem, 3.9rem);
+            color: #0a518b;
+            text-align: center;
+            @include formatText(400, 1.4rem, normal);
+            cursor: pointer;
+            transition: all 0.25s ease-in-out;
+            border: 0.25rem solid $primary;
+            &:nth-child(1) {
+              background-color: $primary;
+              color: $white;
+            }
+            &:nth-child(2) {
+              &:hover {
+                background-color: $primary;
+                color: $white;
+              }
+            }
+          }
+        }
+        .content {
+          @include size(100%, 25rem);
+          // border: 1px solid red;
+          background-color: $white;
+          @include flex;
+          justify-content: flex-start;
+          gap: 10rem;
+          .left {
+            width: 115.91px;
+            height: 119.609px;
+            // background-color: red;
+          }
+          .right {
+            // border: 1px solid red;
+            @include size(60rem, 100%);
+            @include flex(column);
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 2.5rem;
+            .about {
+              @include flex(column);
+              gap: 1.5rem;
+            align-items: flex-start;
+         
+                          .text {
+                display: flex;
+                width: 100%;
+                height: 6rem;
+                flex-direction: column;
+                color: #292d32;
+                font-size: 20px;
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+              }
+              .icon {
+                width: 131.995px;
+                height: 26.139px;
+                // border: 1px solid red;
+                @include flex;
+                justify-content: space-between;
+                svg {
+                  transform: scale(1.5);
+                  cursor: pointer;
+                  -webkit-user-select: none;
+                  user-select: none;
+                  & > path,
+                  g path {
+                    fill: $primary;
+                  }
+                }
+              }
+            }
+            h2,
+            h2 span {
+              color: #000;
+              text-align: center;
+              font-size: 40px;
+              font-family: "Poppins";
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+            }
+            h2 span {
+              font-weight: 400;
+            }
+          }
+        }
+      }
     }
   }
   /***********************************************Skills section***********************************************/
