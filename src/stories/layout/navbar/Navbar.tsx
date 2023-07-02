@@ -220,7 +220,8 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
                */}
               {isLoggenIn ? (
                 <Button category="action" icon={<UserAddIcon />}>
-                  {userName}
+                  {
+                  userName}
                 </Button>
               ) : (
                 <Button category="action" icon={<UserAddIcon />}>
