@@ -16,6 +16,9 @@ import LanguageComponent from "@/stories/components/LanguageComponent";
 import { usePathname, useRouter, useSelectedLayoutSegment } from "next/navigation";
 import { useTranslations } from "next-intl";
 import LoginButton from "@/stories/components/LoginButton";
+import axios from "axios";
+import { backendPort } from "@/utils/config";
+import { User } from "@/app/[locale]/signup/config";
 
 interface NavbarProps {
   /**
@@ -76,6 +79,35 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
     close: { opacity: 0, transition: globalTransition },
   };
 
+  //check logged in user
+  const [userName, setUserName] = React.useState(undefined);
+  const [isLoggenIn, setIsLoggenIn] = React.useState(false);
+  React.useEffect(() => {
+    const welcome = async () => {
+      try {
+        setIsLoggenIn(false);
+        const res = await axios.get(`http://localhost:${backendPort}/user`, {
+          withCredentials: true,
+        });
+        // const res = await axios.post(`http://localhost:${backendPort}/signup`, data, {
+        //   headers: { "Content-Type": "multipart/form-data" },
+        //   withCredentials: true,
+        // });
+        if (res.data.user.name) {
+          setUserName(res.data.user.username);
+          setIsLoggenIn(true);
+          console.log(res.data.user, isLoggenIn);
+        }
+
+        // const datum = res;
+      } catch (error: any) {
+        console.log(error);
+      }
+    };
+
+    welcome();
+  }, []);
+
   //handling navbar diaplay for specific routes
   const showNavbar = path.includes("login") || path.includes("signup") || path.includes("recovery");
 
@@ -130,10 +162,16 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
                     </motion.span>
                   )}
                 </AnimatePresence>
+                {isLoggenIn ? (
+                  <Button category="action" icon={<UserAddIcon />}>
+                    Log Out
+                  </Button>
+                ) : (
+                  <Button category="action" icon={<UserAddIcon />}>
+                    Log In
+                  </Button>
+                )}
 
-                <Button category="action" icon={<UserAddIcon />}>
-                  Log In
-                </Button>
                 <LanguageComponent />
               </motion.div>
             </>
@@ -178,7 +216,17 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
                   </motion.span>
                 )}
               </AnimatePresence>
-              <LoginButton />
+              {/* <LoginButton isLoggedIn={isLoggenIn} />
+               */}
+              {isLoggenIn ? (
+                <Button category="action" icon={<UserAddIcon />}>
+                  {userName}
+                </Button>
+              ) : (
+                <Button category="action" icon={<UserAddIcon />}>
+                  Log In
+                </Button>
+              )}
               {/* <Button category="content" icon={<IconForward/>} >Get Started</Button> */}
               <Button>Donate</Button>
               <LanguageComponent />
