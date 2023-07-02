@@ -196,11 +196,14 @@ const Polls = async () => {
         </section>
       </div>
       <div className="skills">
-        <div className="skill">skill</div>
-        <div className="skill">skill</div>
-        <div className="skill">skill</div>
-        <div className="skill">skill</div>
-        <div className="skill">skill</div>
+        <div className="title">Skills</div>
+        <div className="categories">
+          <div className="skill">skill</div>
+          <div className="skill">skill</div>
+          <div className="skill">skill</div>
+          <div className="skill">skill</div>
+          <div className="skill">skill</div>
+        </div>
       </div>
       <div className="projects">
         <h3 className="heading">Projects</h3>
