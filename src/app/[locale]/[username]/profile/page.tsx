@@ -2,6 +2,8 @@
 import { useEffect, useState, useContext } from "react";
 import { backendPort } from "@/utils/config";
 import axios from "axios";
+import { AnimatePresence, motion } from "framer-motion";
+
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname, useRouter, useSelectedLayoutSegment } from "next/navigation";
@@ -29,6 +31,7 @@ import DevOpsCategoryIcon from "@/stories/components/DevOpsCategoryIcon";
 import MobileCategoryIcon from "@/stories/components/MobileCategoryIcon";
 import DataScienceCategoryIcon from "@/stories/components/DataScienceCategoryIcon";
 import OthersCategoryIcon from "@/stories/components/OthersCategoryIcon";
+import SearchIcon from "@/stories/components/SearchIcon";
 export const metadata = {
   title: "Ensome | Services",
   description: "section displaying all the services we offer",
@@ -263,7 +266,6 @@ const Polls = async () => {
             <span className="category">Design</span>
             <span className="list">ReactNative,Ionic...</span>
           </div>
-         
         </div>
       </div>
       <div className="interest skills">
@@ -297,16 +299,14 @@ const Polls = async () => {
             <span className="category">Design</span>
             <span className="list">ReactNative,Ionic...</span>
           </div>
-         
         </div>
       </div>
       <div className="projects">
         <h3 className="heading">Projects</h3>
-        <span className="serach">Q</span>
-        <section className="projects">
-          <h3 className="project-title"></h3>
-          <article className="project-card"></article>
-        </section>
+        <span className="search">
+          <SearchIcon />
+        </span>
+        <ProjectComponent />
       </div>
 
       {/* <h1>{`${user.username}'s Profile`}</h1>
@@ -319,3 +319,40 @@ const Polls = async () => {
 };
 
 export default Polls;
+
+// import React from 'react'
+
+const ProjectComponent = () => {
+  const [viewAll, setViewAll] = useState(false);
+  const data = new Array(10).fill(10);
+  console.log(data.length, data);
+  const toggleVisibility = () => setViewAll(!viewAll);
+  return (
+    <motion.section layout className="projects-group">
+      <h3 className="project-title">Personal Projects</h3>
+      <motion.div layout animate={{ height: viewAll ? `${(data.length * 26) / 3}rem` : "26rem",overflowY: viewAll? "scroll":"hidden" }} className="project-cards">
+        {data.map((el) => (
+          <article key={nanoid()} className="project-card">
+            <span className="img"></span>
+            <div className="text">
+              <span className="heading"></span>
+              <span className="repo"></span>
+              <span className="date"></span>
+            </div>
+          </article>
+        ))}
+        {/*        
+        <article className="project-card"></article>
+        <article className="project-card"></article>
+        <article className="project-card"></article>
+        <article className="project-card"></article>
+        <article className="project-card"></article> */}
+      </motion.div>
+      <span className="see-all" onClick={toggleVisibility}>
+        {viewAll ? "See Less" : "See All"}
+      </span>
+    </motion.section>
+  );
+};
+
+// export default

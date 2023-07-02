@@ -170,7 +170,8 @@
     }
   }
   /***********************************************Skills section**********************************************/
-  .skills,.interest {
+  .skills,
+  .interest {
     @include flex(column);
     background-color: $white;
     @include size(100vw, 40.6rem);
@@ -236,7 +237,7 @@
       .list {
         color: $white !important;
       }
-      .icon{
+      .icon {
         border: 1px dashed $grey !important;
 
         svg {
@@ -250,6 +251,91 @@
   }
   /***********************************************Projects section***********************************************/
   .projects {
-    @include size(100vw, 92.8rem);
+    @include size(100vw, auto);
+    min-height: 92.8rem;
+    @include flex(column);
+    padding: 3.4rem 10.6rem;
+    .heading {
+      color: $primary;
+      text-align: center;
+      @include formatText(500, 3.5rem, normal);
+      @include size(auto, 5.3rem);
+      background-color: goldenrod;
+    }
+    .search {
+      padding-inline: 4rem;
+      @include flex;
+      justify-content: flex-end;
+      @include size(100%, 3rem);
+      background-color: aliceblue;
+      svg {
+        @include size(3rem);
+      }
+    }
+
+    .projects-group {
+      @include size(100%, auto);
+      background-color: rgb(179, 144, 204);
+      min-height: 35rem;
+      @include flex(column);
+      overflow: hidden;
+      gap: 2rem;
+      padding-inline: 1rem;
+
+      .project-title {
+        color: #0a518b;
+        @include formatText(500, 2.5rem, normal);
+        align-self: flex-start;
+      }
+      .project-cards {
+        overflow: hidden;
+        @include size(100%, auto);
+        height: 26rem;
+        // overflow-y: scroll;
+        // min-height: 26rem;
+        background-color: aqua;
+        transition: height 0.25s ease-in-out;
+        @include flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 0.5rem;
+        row-gap: 4rem;
+
+        //scrollbar
+
+        &::-webkit-scrollbar {
+          width: 0.7rem;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+          background: darken($grey, 20%);
+          background: $grey;
+          border-radius: 100px;
+        }
+        .project-card {
+          width: 330px;
+          height: 243.625px;
+          background-color: grey;
+          border-radius: 12px;
+          box-shadow: 19px 15px 46px 0px rgba(0, 0, 0, 0.14);
+          -webkit-backdrop-filter: blur(2.75rem);
+          backdrop-filter: blur(2.75rem);
+          // border-radius: 12px 12px 0px 0px;
+        }
+      }
+      .see-all {
+        color: #0a518b;
+        @include formatText(500, 2rem, normal);
+        font-family: "DM Mono", sans-serif;
+        align-self: flex-end;
+        cursor: pointer;
+      }
+    }
   }
 }
