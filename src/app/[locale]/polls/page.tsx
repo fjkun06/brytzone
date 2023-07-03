@@ -37,6 +37,30 @@ const Polls = () => {
       setIsLoading(false);
     }
   };
+  const [semesterOpen, setSemesterOpen] = React.useState(false);
+  const [levelOpen, setLevelOpen] = React.useState(false);
+  const [departmentOpen, setDepartmentOpen] = React.useState(false);
+  const handleSemester = () => {
+    setSemesterOpen(!semesterOpen);
+    setDepartmentOpen(false);
+    setLevelOpen(false);
+  };
+  const handleLevel = () => {
+    setSemesterOpen(false);
+    setDepartmentOpen(false);
+    setLevelOpen(!levelOpen);
+  };
+  const handleDepartment = () => {
+    setSemesterOpen(false);
+    setDepartmentOpen(!departmentOpen);
+    setLevelOpen(false);
+  };
+
+  const closeAll = (e: React.MouseEvent<HTMLElement>) => {
+    setSemesterOpen(false);
+    setDepartmentOpen(false);
+    setLevelOpen(false);
+  };
 
   return (
     <section className={`${brytzone}_polls`}>
@@ -67,14 +91,15 @@ const Polls = () => {
           <input onChange={handleSearch} value={query} type="search" placeholder="Search a poll" />
         </div>
       </section>
-      <section className="polls-container">
+      <section className="polls-container"  onMouseLeave={closeAll}>
         <div className="filters">
-          <div className="available">Available Courses</div>
-          <PollFilter title="Department" />
-          <PollFilter title="Choose Level" />
-          <PollFilter title="Select Semester" />
+          <div className="available">Available Courses for: Second Semester</div>
+          <PollFilter toggler={handleDepartment} isOpen={departmentOpen} title="Department" />
+          <PollFilter toggler={handleLevel} isOpen={levelOpen} title="Choose Level" />
+          <PollFilter toggler={handleSemester} isOpen={semesterOpen} title="Select Semester" />
         </div>
-        <div className="cards-container">
+        <div className="criteria" onMouseEnter={closeAll}>Criteria:</div>
+        <div className="cards-container" onMouseEnter={closeAll}>
           <div className="content"></div>
           <div className="pagination"></div>
         </div>
@@ -86,13 +111,23 @@ const Polls = () => {
 export default Polls;
 interface PollFilterprops {
   title: "Department" | "Choose Level" | "Select Semester";
+  isOpen: boolean;
+  toggler: () => void
 }
-export const PollFilter: React.FC<PollFilterprops> = ({ title }) => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const handleState = () => setIsOpen(!isOpen);
+export const PollFilter: React.FC<PollFilterprops> = ({ title,isOpen,toggler }) => {
+
   return (
-    <div className="filter" onClick={handleState}>
+    <motion.div className="filter" onClick={toggler}  >
       {title ?? "Title Here"} {isOpen ? <ChevronArrowUpIcon /> : <ChevronArrowDownIcon />}
-    </div>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.ul onMouseLeave={toggler} initial={{ opacity: 0 }} exit={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ ease: "easeInOut", duration: 0.25 }} className="filter-dropdown">
+            <li>Embedded Systems 1</li>
+            <li>Software Architecture</li>
+            <li>5 Questions Available</li>
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
