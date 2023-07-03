@@ -1,8 +1,9 @@
 @use "../../utils/mixins" as *;
 @use "../../utils/variables" as *;
+@use "card" as *;
 .brytzone_polls {
   @include flex(column);
-  @include size(100vw, 100vh);
+  @include size(100vw, auto);
   justify-content: flex-start;
   background-color: #000;
   background-image: url("./../login/login_light.svg");
@@ -11,7 +12,7 @@
   background-position: center center;
   min-height: 200vh;
   gap: 6rem;
-
+  padding-bottom: 6rem;
   /***********************************************Header Section***********************************************/
   header {
     @include size(130rem, 70rem);
@@ -136,6 +137,10 @@
   }
   /***********************************************Header Section***********************************************/
   .polls-container {
+    @include flex(column);
+    gap: 3rem;
+    @include size(100%, auto);
+
     .filters {
       width: 1092.5px;
       height: 62px;
@@ -210,8 +215,27 @@
         }
       }
     }
+    .criteria {
+      width: 100rem;
+      @include formatText(500, 1.8rem, normal);
+      font-family: "DM Mono", sans-serif;
+      text-transform: capitalize;
+      .clear {
+        text-transform: lowercase;
+        border-bottom: 1px double #000;
+        justify-self: flex-end;
+        margin-left: 6rem;
+        cursor: pointer;
+      }
+    }
     .cards-container {
       .content {
+        @include flex;
+        @include size(94rem, auto);
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 8rem;
+        @include poll-card;
       }
       .pagination {
       }
