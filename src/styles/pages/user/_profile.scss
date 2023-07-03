@@ -241,6 +241,7 @@
       }
       .icon {
         // border: 1px dashed $grey !important;
+        mix-blend-mode: screen;
 
         svg {
           fill: url(#profileGradient) !important;
@@ -253,10 +254,10 @@
   }
   /***********************************************Projects section***********************************************/
   .projects {
-    @include size(100vw, auto);
+    @include size(109.1rem, auto);
     min-height: 92.8rem;
     @include flex(column);
-    padding: 3.4rem 10.6rem;
+    padding: 3.4rem .6rem;
     .heading {
       color: $primary;
       text-align: center;
