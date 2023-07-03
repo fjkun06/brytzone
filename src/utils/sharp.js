@@ -1,8 +1,8 @@
 const sharp = require("sharp");
 const fs = require("fs");
 // const directory = './../../public/login';
-// const directory = 'public/signup';
-const directory = "public/defaults";
+const directory = 'public/polls';
+// const directory = "public/defaults";
 // const directory = 'public/login/community';
 
 // fs.readdirSync(directory).forEach(file => {

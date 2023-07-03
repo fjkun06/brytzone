@@ -111,7 +111,7 @@ const Polls = async () => {
           setError(true);
           setErrorMessage({
             code: "",
-            message:  `Oopss! ${error.message}. Please check your internet connection`,
+            message:  `Oops! ${error.message}. Please check your internet connection`,
           });
         }
       }

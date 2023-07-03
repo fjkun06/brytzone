@@ -1,0 +1,25 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/variables" as *;
+.brytzone_polls {
+  @include flex(column);
+  @include size(100vw, 100vh);
+  justify-content: flex-start;
+  background-color: #000;
+  background-image: url("./../login/login_light.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  /***********************************************Login Body***********************************************/
+  div {
+    // background-color: red;
+    @include size(57.6rem);
+    svg {
+      g {
+        mask {
+          mask-type: alpha;
+        }
+      }
+    }
+  }
+}
