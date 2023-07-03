@@ -1,10 +1,24 @@
 import React from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const GridImage = () => {
   const t = 1;
   return (
-    <motion.svg width="100%" height="100%" viewBox="0 0 593 585" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <motion.svg
+      transition={{
+        duration: 1,
+        ease: "easeInOut",
+        delayChildren: 1.5,
+      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      width="100%"
+      height="100%"
+      viewBox="0 0 593 585"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <g id="Mask group1">
         <mask id="mask0_1260_2948" maskUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%">
           <motion.g layout id="Group 75952">
@@ -36,7 +50,7 @@ const GridImage = () => {
                 height: 245.704,
                 transition: {
                   delay: 0,
-                  duration: t+1,
+                  duration: t + 1,
                   ease: "easeInOut",
                 },
               }}
@@ -54,7 +68,7 @@ const GridImage = () => {
                 height: 158.018,
                 transition: {
                   delay: t,
-                  duration: t+0.5,
+                  duration: t + 0.5,
                   ease: "easeInOut",
                 },
               }}
@@ -71,8 +85,8 @@ const GridImage = () => {
               animate={{
                 height: 128.789,
                 transition: {
-                  delay: t-0.25,
-                  duration: t+0.25,
+                  delay: t - 0.25,
+                  duration: t + 0.25,
                   ease: "easeInOut",
                 },
               }}
@@ -89,8 +103,8 @@ const GridImage = () => {
               animate={{
                 height: 151.624,
                 transition: {
-                  delay: t+0.8,
-                  duration: t+0.5,
+                  delay: t + 0.8,
+                  duration: t + 0.5,
                   ease: "easeInOut",
                 },
               }}
@@ -107,8 +121,8 @@ const GridImage = () => {
               animate={{
                 height: 120.568,
                 transition: {
-                  delay: t+1.75,
-                  duration: t+0.25,
+                  delay: t + 1.75,
+                  duration: t + 0.25,
                   ease: "easeInOut",
                 },
               }}
@@ -125,8 +139,8 @@ const GridImage = () => {
               animate={{
                 height: 117.828,
                 transition: {
-                  delay: t+1.25,
-                  duration: t+0.25,
+                  delay: t + 1.25,
+                  duration: t + 0.25,
                   ease: "easeInOut",
                 },
               }}
@@ -143,8 +157,8 @@ const GridImage = () => {
               animate={{
                 height: 115.088,
                 transition: {
-                  delay: t+2.75,
-                  duration: t+0.25,
+                  delay: t + 2.75,
+                  duration: t + 0.25,
                   ease: "easeInOut",
                 },
               }}
@@ -161,8 +175,8 @@ const GridImage = () => {
               animate={{
                 height: 200.034,
                 transition: {
-                  delay: t+2.5,
-                  duration: t+0.75,
+                  delay: t + 2.5,
+                  duration: t + 0.75,
                   ease: "easeInOut",
                 },
               }}
@@ -179,8 +193,8 @@ const GridImage = () => {
               animate={{
                 height: 126.049,
                 transition: {
-                  delay: t+2.25,
-                  duration: t+0.25,
+                  delay: t + 2.25,
+                  duration: t + 0.25,
                   ease: "easeInOut",
                 },
               }}
@@ -197,8 +211,8 @@ const GridImage = () => {
               animate={{
                 height: 59.8333,
                 transition: {
-                  delay: t+3.5,
-                  duration: t-0.5,
+                  delay: t + 3.5,
+                  duration: t - 0.5,
                   ease: "easeInOut",
                 },
               }}
