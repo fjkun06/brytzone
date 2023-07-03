@@ -1,0 +1,15 @@
+@use "../../../utils/mixins" as *;
+@use "../../../utils/variables" as *;
+@use "card" as *;
+.brytzone_poll {
+  @include flex(column);
+  @include size(100vw, auto);
+  justify-content: flex-start;
+  background-color: $white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  min-height: 100vh;
+  gap: 6rem;
+  padding-bottom: 6rem;
+}
