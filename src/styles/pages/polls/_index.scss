@@ -9,16 +9,19 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  min-height: 200vh;
+  gap: 6rem;
 
   /***********************************************Header Section***********************************************/
   header {
     @include size(130rem, 70rem);
-    background-color: goldenrod;
     padding-block: 6.55rem;
     padding-left: 8.5rem;
     padding-right: 2rem;
     @include flex(column);
     gap: 4rem;
+    // border: 1px solid black;
+
     @media only screen and (width > 1500px) {
       width: 145rem;
     }
@@ -28,6 +31,7 @@
       color: #0a518b;
       @include flex;
       @include formatText(500, 5rem, normal);
+      text-transform: capitalize;
     }
     .header-content {
       @include size(100%, 49rem);
@@ -36,7 +40,6 @@
 
       .greetings {
         @include size(62rem, 100%);
-        border: 1px solid black;
         @include flex(column);
         align-items: flex-start;
         justify-content: space-evenly;
@@ -50,7 +53,6 @@
         }
 
         p {
-          // width: 26.5rem;
           color: #000;
           @include formatText(400, 3.5rem, normal);
           span {
@@ -65,16 +67,67 @@
         }
       }
       div {
-        // background-color: red;
-        @include size(57.6rem);
-        width: 537.991px;
-        height: 576.353px;
+        @include size(53.8rem, 57.6rem);
         svg {
           g {
             mask {
               mask-type: alpha;
             }
           }
+        }
+      }
+    }
+  }
+  /***********************************************Header Section***********************************************/
+  .search {
+    @include size(100%, 30.5rem);
+    // background-color: aquamarine;
+    @include flex(column);
+    justify-content: flex-start;
+    gap: 4rem;
+    p {
+      @include size(77.5rem, auto);
+      color: #000;
+      @include flex;
+      @include formatText(400, 2.8rem, normal);
+    }
+    &-bar {
+      @include size(100%, auto);
+      width: 752.5px;
+      height: 65px;
+      @include flex;
+      // border: 1px solid red;
+      border-radius: 3.5rem;
+      gap: 1.5rem;
+      background-color: $white;
+      padding-inline: 2rem;
+      input {
+        color: #000;
+        @include formatText(400, 1.8rem, normal);
+        height: 6.5rem;
+        width: calc(100% - 7.2rem);
+        border-radius: 3.5rem;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border: none;
+        outline: none;
+        caret-color: $grey;
+      }
+      &:focus-within {
+        svg {
+          path {
+            fill: $primary;
+          }
+        }
+        input {
+          caret-color: $primary;
+        }
+      }
+      svg {
+        @include size(2.7rem);
+        path {
+          fill: $grey;
+          transition: all 0.25s ease-in-out;
         }
       }
     }
