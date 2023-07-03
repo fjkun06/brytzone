@@ -3,7 +3,7 @@
 .brytzone_profile {
   min-height: 100vh;
   min-width: 100vw;
-  background-color: red;
+  background-color: transparent;
   @include flex(column);
   /***********************************************Greetings section***********************************************/
   .greetings {
@@ -199,8 +199,10 @@
         .icon {
           @include size(15rem);
           border-radius: 15rem;
-          border: 1px double $grey;
+          // border: 1px double $grey;
           @include flex;
+          background: url('skill-blob.svg') no-repeat;
+          background-size: cover;
 
           svg {
             @include size(7rem);
@@ -238,7 +240,7 @@
         color: $white !important;
       }
       .icon {
-        border: 1px dashed $grey !important;
+        // border: 1px dashed $grey !important;
 
         svg {
           fill: url(#profileGradient) !important;
@@ -260,81 +262,129 @@
       text-align: center;
       @include formatText(500, 3.5rem, normal);
       @include size(auto, 5.3rem);
-      background-color: goldenrod;
+      background-color: transparent;
     }
     .search {
       padding-inline: 4rem;
       @include flex;
       justify-content: flex-end;
       @include size(100%, 3rem);
-      background-color: aliceblue;
+      background-color: transparent;
       svg {
         @include size(3rem);
       }
     }
-
-    .projects-group {
+    .projects-container {
       @include size(100%, auto);
-      background-color: rgb(179, 144, 204);
-      min-height: 35rem;
+      padding-block: 2rem;
       @include flex(column);
-      overflow: hidden;
-      gap: 2rem;
-      padding-inline: 1rem;
-
-      .project-title {
-        color: #0a518b;
-        @include formatText(500, 2.5rem, normal);
-        align-self: flex-start;
-      }
-      .project-cards {
-        overflow: hidden;
+      gap: 4rem;
+      .projects-group {
         @include size(100%, auto);
-        height: 26rem;
-        // overflow-y: scroll;
-        // min-height: 26rem;
-        background-color: aqua;
-        transition: height 0.25s ease-in-out;
-        @include flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        padding: 0.5rem;
-        row-gap: 4rem;
+        background-color: transparent;
+        min-height: 35rem;
+        @include flex(column);
+        overflow: hidden;
+        gap: 2rem;
+        padding-inline: 1rem;
 
-        //scrollbar
+        .project-title {
+          color: #0a518b;
+          @include formatText(500, 2.5rem, normal);
+          align-self: flex-start;
+          text-transform: capitalize;
+        }
+        .project-cards {
+          overflow: hidden;
+          @include size(100%, 26rem);
+          // background-color: aqua;
+          transition: height 0.25s ease-in-out;
+          @include flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          padding: 0.5rem;
+          row-gap: 4rem;
 
-        &::-webkit-scrollbar {
-          width: 0.7rem;
-        }
+          //scrollbar
 
-        /* Track */
-        &::-webkit-scrollbar-track {
-          background: transparent;
-        }
+          &::-webkit-scrollbar {
+            width: 0.7rem;
+          }
 
-        /* Handle */
-        &::-webkit-scrollbar-thumb {
-          background: darken($grey, 20%);
-          background: $grey;
-          border-radius: 100px;
+          /* Track */
+          &::-webkit-scrollbar-track {
+            background: transparent;
+          }
+
+          /* Handle */
+          &::-webkit-scrollbar-thumb {
+            background: darken($grey, 20%);
+            background: $grey;
+            border-radius: 100px;
+          }
+          .project-card {
+            @include size(33rem, 24.4rem);
+            background-color: transparent;
+            // border-radius: 12px;
+
+            // border-radius: 12px 12px 0px 0px;
+            @include flex(column);
+            .img {
+              @include size(33rem, 15rem);
+
+              flex-shrink: 0;
+              background-color: transparent;
+              border-radius: 12px 12px 0px 0px;
+              overflow: hidden;
+              img {
+                aspect-ratio: auto;
+                @include size(inherit);
+              }
+            }
+            .text {
+              @include flex;
+              flex-wrap: wrap;
+              padding: 1.5rem 3.1rem;
+              justify-content: flex-start;
+              width: 330px;
+              height: 100px;
+              @include size(33rem, 10rem);
+
+              background-color: $primary;
+              column-gap: 2rem;
+              flex-shrink: 0;
+              border-radius: 0px 0px 12px 12px;
+              // background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+              box-shadow: 19px 15px 46px 0px rgba(0, 0, 0, 0.14);
+              -webkit-backdrop-filter: blur(2.75rem);
+              backdrop-filter: blur(2.75rem);
+              .card-heading {
+                color: $white;
+                @include formatText(500, 2rem, normal);
+                @include linearTextEllipsis(22rem);
+              }
+              .repo {
+                @include size(2.5rem);
+                svg {
+                  @include size(100%);
+                  fill: $white;
+                }
+              }
+              .date {
+                color: $white;
+                @include formatText(300, 1.5rem, normal);
+                font-family: "DM Mono", sans-serif;
+              }
+            }
+          }
         }
-        .project-card {
-          width: 330px;
-          height: 243.625px;
-          background-color: grey;
-          border-radius: 12px;
-          box-shadow: 19px 15px 46px 0px rgba(0, 0, 0, 0.14);
-          -webkit-backdrop-filter: blur(2.75rem);
-          backdrop-filter: blur(2.75rem);
-          // border-radius: 12px 12px 0px 0px;
+        .see-all {
+          color: #0a518b;
+          @include formatText(500, 2rem, normal);
+          font-family: "DM Mono", sans-serif;
+          align-self: flex-end;
+          cursor: pointer;
         }
-      }
-      .see-all {
-        color: #0a518b;
-        @include formatText(500, 2rem, normal);
-        font-family: "DM Mono", sans-serif;
-        align-self: flex-end;
-        cursor: pointer;
       }
     }
   }

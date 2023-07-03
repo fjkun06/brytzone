@@ -133,6 +133,8 @@ const Polls = async () => {
     },
   ];
 
+  const data = new Array(10).fill(10);
+
   //handling logout
   const handleLogOut = async () => {
     // const authorize = async () => {
@@ -306,7 +308,18 @@ const Polls = async () => {
         <span className="search">
           <SearchIcon />
         </span>
-        <ProjectComponent />
+        <motion.div layout className="projects-container">
+          <ProjectComponent type="personal" cardsNumber={data.length}>
+            {data.map((el) => (
+              <ProjectComponentItem key={nanoid()} />
+            ))}
+          </ProjectComponent>
+          <ProjectComponent type="team" cardsNumber={data.length}>
+            {data.map((el) => (
+              <ProjectComponentItem key={nanoid()} />
+            ))}
+          </ProjectComponent>
+        </motion.div>
       </div>
 
       {/* <h1>{`${user.username}'s Profile`}</h1>
@@ -321,32 +334,19 @@ const Polls = async () => {
 export default Polls;
 
 // import React from 'react'
-
-const ProjectComponent = () => {
+interface ProjectComponentProps {
+  type: "team" | "personal";
+  children: React.ReactNode;
+  cardsNumber: number;
+}
+const ProjectComponent: React.FC<ProjectComponentProps> = ({ type, children, cardsNumber }) => {
   const [viewAll, setViewAll] = useState(false);
-  const data = new Array(10).fill(10);
-  console.log(data.length, data);
   const toggleVisibility = () => setViewAll(!viewAll);
   return (
     <motion.section layout className="projects-group">
-      <h3 className="project-title">Personal Projects</h3>
-      <motion.div layout animate={{ height: viewAll ? `${(data.length * 26) / 3}rem` : "26rem",overflowY: viewAll? "scroll":"hidden" }} className="project-cards">
-        {data.map((el) => (
-          <article key={nanoid()} className="project-card">
-            <span className="img"></span>
-            <div className="text">
-              <span className="heading"></span>
-              <span className="repo"></span>
-              <span className="date"></span>
-            </div>
-          </article>
-        ))}
-        {/*        
-        <article className="project-card"></article>
-        <article className="project-card"></article>
-        <article className="project-card"></article>
-        <article className="project-card"></article>
-        <article className="project-card"></article> */}
+      <h3 className="project-title">{type} Projects</h3>
+      <motion.div layout animate={{ height: viewAll ? `${(cardsNumber * 26) / 3}rem` : "26rem", overflowY: viewAll ? "scroll" : "hidden" }} className="project-cards">
+        {children}
       </motion.div>
       <span className="see-all" onClick={toggleVisibility}>
         {viewAll ? "See Less" : "See All"}
@@ -354,5 +354,32 @@ const ProjectComponent = () => {
     </motion.section>
   );
 };
+interface ProjectComponentItemProps {
+  url?: string;
+  dateString?: string;
+  projectTitle?: string;
+  thumbnail?: string;
+}
+const ProjectComponentItem: React.FC<ProjectComponentItemProps> = ({ url, dateString, projectTitle, thumbnail }) => {
+  const ref = url ?? "https://github.com";
+  const path = usePathname();
+  console.log();
 
-// export default
+  return (
+    <article key={nanoid()} className="project-card">
+      <span className="img">
+        <Image src={thumbnail ?? "/defaults/profile_bg.png"} alt="project-picture" width={330} height={150} />
+        {/* <Image src="/defaults/test.png" alt="project-picture" width={330} height={150} /> */}
+      </span>
+      <div className="text">
+        <span className="card-heading">{projectTitle ?? "Farming Website"}</span>
+        <span className="repo">
+          <Link href={path.slice(3, path.length)} onClick={() => (document.location.href = ref)} key={nanoid()}>
+            <GithubIcon />
+          </Link>
+        </span>
+        <span className="date">{dateString ?? "17th Jan 2023"}</span>
+      </div>
+    </article>
+  );
+};
