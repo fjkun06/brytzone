@@ -89,12 +89,20 @@ const Polls = () => {
       ...prevFilters,
       filter1: "",
       filter2: "",
-      filter3: ""
+      filter3: "",
     }));
   };
 
-  const filterArray = Object.values(filters).filter((el) => el.length > 0)
+  const filterArray = Object.values(filters).filter((el) => el.length > 0);
 
+  //scrolling to polls
+  const headerRef = React.useRef<HTMLElement>(null);
+
+  function scrollToPolls() {
+    if (headerRef.current) {
+      headerRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }
   return (
     <section className={`${brytzone}_polls`}>
       <header>
@@ -108,7 +116,7 @@ const Polls = () => {
             <p>
               Have most of your <span>worries answered</span> through our online <span>Polls.</span> all you need do is to select your Level, semester, course and answer the questions that follow.
             </p>
-            <Button>Be Part Now</Button>
+            <Button onClick={scrollToPolls}>Be Part Now</Button>
           </article>
           <motion.div viewport={{ amount: 0.5, once: false }} onViewportLeave={() => setVisible(false)} onViewportEnter={() => setVisible(true)}>
             <AnimatePresence>{visible && <GridImage />}</AnimatePresence>
@@ -124,7 +132,7 @@ const Polls = () => {
           <input onChange={handleSearch} value={query} type="search" placeholder="Search a poll" />
         </div>
       </section>
-      <section className="polls-container" onMouseLeave={closeAll}>
+      <section className="polls-container" onMouseLeave={closeAll} ref={headerRef}>
         <div className="filters">
           <div className="available">Available Courses</div>
           <PollFilter toggler={handleDepartment} isOpen={departmentOpen} title="Department" update={updateFilters} filter="filter1" />
@@ -136,7 +144,11 @@ const Polls = () => {
           {true && <span>{filterArray.join(" | ")}</span>}
           {/* {filters.filter1 && <span>| {filters?.filter2}</span>} */}
           {/* {filters.filter1 && <span>| {filters?.filter3}</span>} */}
-          {filterArray.length > 0 && <span className="clear" onClick={clearFilters}>clear</span>}
+          {filterArray.length > 0 && (
+            <span className="clear" onClick={clearFilters}>
+              clear
+            </span>
+          )}
           <span></span>
           <span></span>
         </div>

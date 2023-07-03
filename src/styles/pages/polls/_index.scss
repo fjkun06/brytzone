@@ -140,6 +140,7 @@
     @include flex(column);
     gap: 3rem;
     @include size(100%, auto);
+    margin-top: 6rem;
 
     .filters {
       width: 1092.5px;
