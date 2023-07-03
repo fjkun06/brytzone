@@ -25,7 +25,7 @@ const Footer = () => {
     },
     {
       icon: <LinkedInIcon />,
-      url: "https://lnkedin.com",
+      url: "https://linkedin.com",
     },
   ];
 

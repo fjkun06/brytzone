@@ -19,10 +19,12 @@ import LoginButton from "@/stories/components/LoginButton";
 import axios from "axios";
 import { backendPort } from "@/utils/config";
 import { User } from "@/app/[locale]/signup/config";
+import { AuthContext } from "@/app/[locale]/sublayout";
 
 interface NavbarProps {
   /**
    * @param {boolean} [isOpen=false] - Used to check if navbar is open or not.
+   * @param {boolean} [isLoggedIn=false] - Used to check if navbar is open or not.
    * @param {boolean} [desktop=false] - Used to check if the min width is 960pxt.
    * @param {void} handleClick - Toggle menu state.
    * @param {void} storeCookie - Update theme cookie value.
@@ -30,6 +32,7 @@ interface NavbarProps {
    *
    * */
   isOpen: boolean;
+  // isLoggedIn: boolean;
   desktop: boolean;
   cookieVal: string;
   handleClick: () => void;
@@ -80,33 +83,9 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
   };
 
   //check logged in user
-  const [userName, setUserName] = React.useState(undefined);
-  const [isLoggenIn, setIsLoggenIn] = React.useState(false);
-  React.useEffect(() => {
-    const welcome = async () => {
-      try {
-        setIsLoggenIn(false);
-        const res = await axios.get(`http://localhost:${backendPort}/user`, {
-          withCredentials: true,
-        });
-        // const res = await axios.post(`http://localhost:${backendPort}/signup`, data, {
-        //   headers: { "Content-Type": "multipart/form-data" },
-        //   withCredentials: true,
-        // });
-        if (res.data.user.name) {
-          setUserName(res.data.user.username);
-          setIsLoggenIn(true);
-          console.log(res.data.user, isLoggenIn);
-        }
+  const auth = React.useContext(AuthContext).currentUser;
+console.dir( auth);
 
-        // const datum = res;
-      } catch (error: any) {
-        console.log(error);
-      }
-    };
-
-    welcome();
-  }, []);
 
   //handling navbar diaplay for specific routes
   const showNavbar = path.includes("login") || path.includes("signup") || path.includes("recovery");
@@ -162,7 +141,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
                     </motion.span>
                   )}
                 </AnimatePresence>
-                {isLoggenIn ? (
+                {auth?.state ? (
                   <Button category="action" icon={<UserAddIcon />}>
                     Log Out
                   </Button>
@@ -218,9 +197,10 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
               </AnimatePresence>
               {/* <LoginButton isLoggedIn={isLoggenIn} />
                */}
-              {isLoggenIn ? (
+              {auth?.state ? (
                 <Button category="action" icon={<UserAddIcon />}>
-                  {userName}
+                  {
+                  auth?.user?.username ?? "Kurtis"}
                 </Button>
               ) : (
                 <Button category="action" icon={<UserAddIcon />}>

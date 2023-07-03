@@ -9,6 +9,13 @@
   -webkit-box-orient: vertical;
 }
 
+@mixin linearTextEllipsis($width){
+  width: $width;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 //sets display to grid
 @mixin grid {
   display: grid;

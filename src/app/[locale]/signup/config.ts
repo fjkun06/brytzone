@@ -9,6 +9,7 @@ interface AreaOfInterest {
 }
 
 const allInterests: AreaOfInterest[] = [
+
   { id: 1, name: "Web Development", category: "Technology" },
   { id: 2, name: "Mobile App Development", category: "Technology" },
   { id: 3, name: "Data Science", category: "Technology" },
@@ -60,6 +61,7 @@ const allInterests: AreaOfInterest[] = [
   { id: 49, name: "Film-making", category: "Creative" },
   { id: 50, name: "Music Production", category: "Creative" },
 ];
+
 export interface Skill {
   id: number;
   name: string;
@@ -141,52 +143,7 @@ export const updatedSkills = sortedSkills.map((interest) => {
 
 export type CustomDropdownItem = typeof updatedInterests;
 
-export const resend = async () => {
-  try {
-    const res = await fetch(`http://localhost:${backendPort}/resend`, {
-      credentials: "include",
-    });
 
-    const datum = await res.json();
-    console.log(datum);
-  } catch (error: any) {
-    console.log(error);
-  }
-};
-
-export const verifyOTP = async (otp: string) => {
-  const data = { otp: "" };
-  data.otp = otp;
-
-  //reset errors
-  // setOTPError("");
-  try {
-    const res = await fetch(`http://localhost:${backendPort}/signup/verify`, {
-      method: "POST",
-      credentials: "include",
-      body: JSON.stringify({ otp }),
-      headers: { "Content-Type": "application/json" },
-    });
-    // const res = await fetch(`http://localhost:${backendPort}/login`, {
-    //   credentials: "include",
-    // });
-    // const res = await fetch(`http://localhost:${backendPort}/signup/verify`, {
-    //   credentials: "include",
-    // });
-    const datum = await res.json();
-    console.log(datum);
-    // if (datum.errors) {
-    //   setEmailError(datum.errors.email);
-    //   setPasswordError(datum.errors.password);
-    // }
-    if (datum.user) {
-      // location.assign("/login");
-      console.log(datum.user);
-    }
-  } catch (error: any) {
-    console.log(error);
-  }
-};
 
 /*********************************User interface******************************** */
 interface Group {

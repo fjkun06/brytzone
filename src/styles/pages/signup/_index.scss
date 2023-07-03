@@ -56,6 +56,7 @@
         //counter
         .counter {
           opacity: 0;
+          -webkit-user-select: none;
           user-select: none;
         }
 

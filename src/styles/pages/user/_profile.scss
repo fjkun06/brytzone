@@ -1,0 +1,392 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/variables" as *;
+.brytzone_profile {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: transparent;
+  @include flex(column);
+  /***********************************************Greetings section***********************************************/
+  .greetings {
+    background-color: #fff;
+    @include size(100vw, 59.8rem);
+    .layer1 {
+      @include size(100vw, calc(100% - 33.1rem));
+      background-color: coral;
+      background: url("profile_bg.webp") no-repeat;
+      background-size: cover;
+      @include flex;
+      align-items: flex-end;
+      justify-content: center;
+
+      padding: 2rem 17.1rem;
+      .body {
+        @include size(91.1rem, 100%);
+        position: relative;
+        @include flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+
+        img {
+          @include size(20.55rem);
+          border-radius: 241.471px;
+          border: 7.244px solid #0a518b;
+          box-shadow: 0px 0px 0px 0px rgba(0, 0, 255, 0.2), 1px 3px 8px 0px rgba(0, 0, 255, 0.2), 6px 12px 14px 0px rgba(0, 0, 255, 0.17), 13px 28px 19px 0px rgba(0, 0, 255, 0.1),
+            24px 50px 22px 0px rgba(0, 0, 255, 0.03), 37px 78px 24px 0px rgba(0, 0, 255, 0);
+          transform: translate(-50px, 100px);
+          z-index: 999;
+          color: $primary;
+        }
+        .content {
+          gap: 1.5rem;
+          height: 4.5rem;
+          @include flex;
+          justify-content: flex-end;
+
+          hr {
+            border: none;
+            @include size(0.2rem, 3.965rem);
+            background: $black;
+            color: $black;
+          }
+          .name {
+            color: $black;
+            @include formatText(500, 3rem, normal);
+            @include flex;
+            align-items: flex-end;
+          }
+          .others {
+            color: #000;
+            @include formatText(500, 1.6rem, normal);
+            font-family: "DM Mono", sans-serif;
+            height: 2.1rem;
+            padding-top: 0.25rem;
+          }
+        }
+      }
+    }
+    .layer2 {
+      @include size(100vw, 33.1rem);
+      @include flex;
+      .body {
+        @include size(95rem, 100%);
+        // border: 1px solid red;
+        transform: translateX(10rem);
+        padding-block: 3.746rem;
+        .actions {
+          @include size(100%, 3.9rem);
+          // border: 1px solid red;
+          background-color: #fff;
+          color: $black;
+          @include flex;
+          justify-content: flex-end;
+          gap: 2.5rem;
+          span {
+            // border: 1px solid red;
+            @include flex;
+            @include size(12.694rem, 3.9rem);
+            color: #0a518b;
+            text-align: center;
+            @include formatText(400, 1.4rem, normal);
+            cursor: pointer;
+            transition: all 0.25s ease-in-out;
+            border: 0.25rem solid $primary;
+            &:nth-child(1) {
+              background-color: $primary;
+              color: $white;
+            }
+            &:nth-child(2) {
+              &:hover {
+                background-color: $primary;
+                color: $white;
+              }
+            }
+          }
+        }
+        .content {
+          @include size(100%, 25rem);
+          // border: 1px solid red;
+          background-color: $white;
+          @include flex;
+          justify-content: flex-start;
+          gap: 10rem;
+          .left {
+            width: 115.91px;
+            height: 119.609px;
+            // background-color: red;
+          }
+          .right {
+            // border: 1px solid red;
+            @include size(60rem, 100%);
+            @include flex(column);
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 2.5rem;
+            .about {
+              @include flex(column);
+              gap: 1.5rem;
+              align-items: flex-start;
+
+              .text {
+                display: flex;
+                width: 100%;
+                height: 6rem;
+                flex-direction: column;
+                color: #292d32;
+                font-size: 20px;
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+              }
+              .icon {
+                width: 131.995px;
+                height: 26.139px;
+                // border: 1px solid red;
+                @include flex;
+                justify-content: space-between;
+                svg {
+                  transform: scale(1.5);
+                  cursor: pointer;
+                  -webkit-user-select: none;
+                  user-select: none;
+                  & > path,
+                  g path {
+                    fill: $primary;
+                  }
+                }
+              }
+            }
+            h2,
+            h2 span {
+              color: #000;
+              @include formatText(500, 4rem, normal);
+            }
+            h2 span {
+              font-weight: 400;
+            }
+          }
+        }
+      }
+    }
+  }
+  /***********************************************Skills section**********************************************/
+  .skills,
+  .interest {
+    @include flex(column);
+    background-color: $white;
+    @include size(100vw, 40.6rem);
+    padding-top: 2.6rem;
+    padding-bottom: 4.75rem;
+    justify-content: space-between;
+    .title {
+      color: $primary;
+      text-align: center;
+      @include formatText(500, 3.5rem, normal);
+      @include size(auto, 5.3rem);
+      // background-color: red;
+    }
+    .categories {
+      @include size(100%, 23rem);
+      // border: 1px solid red;
+      @include flex;
+      gap: 10rem;
+      .skill {
+        @include size(23rem);
+        // background-color: #fff;
+        @include flex(column);
+        gap: 1rem;
+
+        .icon {
+          @include size(15rem);
+          border-radius: 15rem;
+          // border: 1px double $grey;
+          @include flex;
+          background: url('skill-blob.svg') no-repeat;
+          background-size: cover;
+
+          svg {
+            @include size(7rem);
+            fill: $primary;
+            p {
+              fill: $primary;
+            }
+          }
+        }
+        .category {
+          color: $primary;
+          text-align: center;
+          @include formatText(500, 2.5rem, normal);
+        }
+        .list {
+          color: $primary;
+          text-align: center;
+          @include formatText(300, 1.8rem, normal);
+          font-family: "DM Mono", sans-serif;
+          @include linearTextEllipsis(24rem);
+        }
+      }
+    }
+  }
+  .interest {
+    background-color: $primary;
+    .title {
+      color: $white;
+    }
+    .skill {
+      .category {
+        color: $white !important;
+      }
+      .list {
+        color: $white !important;
+      }
+      .icon {
+        // border: 1px dashed $grey !important;
+        mix-blend-mode: screen;
+
+        svg {
+          fill: url(#profileGradient) !important;
+          p {
+            fill: url(#profileGradient) !important;
+          }
+        }
+      }
+    }
+  }
+  /***********************************************Projects section***********************************************/
+  .projects {
+    @include size(109.1rem, auto);
+    min-height: 92.8rem;
+    @include flex(column);
+    padding: 3.4rem .6rem;
+    .heading {
+      color: $primary;
+      text-align: center;
+      @include formatText(500, 3.5rem, normal);
+      @include size(auto, 5.3rem);
+      background-color: transparent;
+    }
+    .search {
+      padding-inline: 4rem;
+      @include flex;
+      justify-content: flex-end;
+      @include size(100%, 3rem);
+      background-color: transparent;
+      svg {
+        @include size(3rem);
+      }
+    }
+    .projects-container {
+      @include size(100%, auto);
+      padding-block: 2rem;
+      @include flex(column);
+      gap: 4rem;
+      .projects-group {
+        @include size(100%, auto);
+        background-color: transparent;
+        min-height: 35rem;
+        @include flex(column);
+        overflow: hidden;
+        gap: 2rem;
+        padding-inline: 1rem;
+
+        .project-title {
+          color: #0a518b;
+          @include formatText(500, 2.5rem, normal);
+          align-self: flex-start;
+          text-transform: capitalize;
+        }
+        .project-cards {
+          overflow: hidden;
+          @include size(100%, 26rem);
+          // background-color: aqua;
+          transition: height 0.25s ease-in-out;
+          @include flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          padding: 0.5rem;
+          row-gap: 4rem;
+
+          //scrollbar
+
+          &::-webkit-scrollbar {
+            width: 0.7rem;
+          }
+
+          /* Track */
+          &::-webkit-scrollbar-track {
+            background: transparent;
+          }
+
+          /* Handle */
+          &::-webkit-scrollbar-thumb {
+            background: darken($grey, 20%);
+            background: $grey;
+            border-radius: 100px;
+          }
+          .project-card {
+            @include size(33rem, 24.4rem);
+            background-color: transparent;
+            // border-radius: 12px;
+
+            // border-radius: 12px 12px 0px 0px;
+            @include flex(column);
+            .img {
+              @include size(33rem, 15rem);
+
+              flex-shrink: 0;
+              background-color: transparent;
+              border-radius: 12px 12px 0px 0px;
+              overflow: hidden;
+              img {
+                aspect-ratio: auto;
+                @include size(inherit);
+              }
+            }
+            .text {
+              @include flex;
+              flex-wrap: wrap;
+              padding: 1.5rem 3.1rem;
+              justify-content: flex-start;
+              width: 330px;
+              height: 100px;
+              @include size(33rem, 10rem);
+
+              background-color: $primary;
+              column-gap: 2rem;
+              flex-shrink: 0;
+              border-radius: 0px 0px 12px 12px;
+              // background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+              box-shadow: 19px 15px 46px 0px rgba(0, 0, 0, 0.14);
+              -webkit-backdrop-filter: blur(2.75rem);
+              backdrop-filter: blur(2.75rem);
+              .card-heading {
+                color: $white;
+                @include formatText(500, 2rem, normal);
+                @include linearTextEllipsis(22rem);
+              }
+              .repo {
+                @include size(2.5rem);
+                svg {
+                  @include size(100%);
+                  fill: $white;
+                }
+              }
+              .date {
+                color: $white;
+                @include formatText(300, 1.5rem, normal);
+                font-family: "DM Mono", sans-serif;
+              }
+            }
+          }
+        }
+        .see-all {
+          color: #0a518b;
+          @include formatText(500, 2rem, normal);
+          font-family: "DM Mono", sans-serif;
+          align-self: flex-end;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
