@@ -1,8 +1,8 @@
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 export const metadata = {
-  title: "Ensome | Services",
-  description: "section displaying all the services we offer",
+  title: "Brytzone | Polls",
+  description: "section that allows students to provide feedback on their lectures",
 };
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "de" }, { locale: "fr" }];

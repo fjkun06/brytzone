@@ -10,6 +10,9 @@ import React from "react";
 import Heading from "@/stories/components/heading";
 import SearchIcon from "@/stories/components/SearchIcon";
 import { CircleLoader, PulseLoader } from "react-spinners";
+import DoubleArrowIcon from "@/stories/components/DoubleArrowIcon";
+import ChevronArrowUpIcon from "@/stories/components/ChevronArrowUpIcon";
+import ChevronArrowDownIcon from "@/stories/components/ChevronArrowDownIcon";
 export const metadata = {
   title: "Ensome | Services",
   description: "section displaying all the services we offer",
@@ -66,10 +69,10 @@ const Polls = () => {
       </section>
       <section className="polls-container">
         <div className="filters">
-          <div className="available"></div>
-          <div className="department"></div>
-          <div className="level"></div>
-          <div className="semeseter"></div>
+          <div className="available">Available Courses</div>
+          <PollFilter title="Department" />
+          <PollFilter title="Choose Level" />
+          <PollFilter title="Select Semester" />
         </div>
         <div className="cards-container">
           <div className="content"></div>
@@ -81,3 +84,15 @@ const Polls = () => {
 };
 
 export default Polls;
+interface PollFilterprops {
+  title: "Department" | "Choose Level" | "Select Semester";
+}
+export const PollFilter: React.FC<PollFilterprops> = ({ title }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const handleState = () => setIsOpen(!isOpen);
+  return (
+    <div className="filter" onClick={handleState}>
+      {title ?? "Title Here"} {isOpen ? <ChevronArrowUpIcon /> : <ChevronArrowDownIcon />}
+    </div>
+  );
+};

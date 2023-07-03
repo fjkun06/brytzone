@@ -78,7 +78,7 @@
       }
     }
   }
-  /***********************************************Header Section***********************************************/
+  /***********************************************Search Bar Section***********************************************/
   .search {
     @include size(100%, 30.5rem);
     // background-color: aquamarine;
@@ -101,8 +101,9 @@
       gap: 1.5rem;
       background-color: $white;
       padding-inline: 2rem;
-      filter: drop-shadow(0 0 0.75rem rgba($black,0.15));
-      input,input::placeholder {
+      filter: drop-shadow(0 0 0.75rem rgba($black, 0.15));
+      input,
+      input::placeholder {
         color: $black;
         @include formatText(400, 1.8rem, normal);
         height: 6.5rem;
@@ -130,6 +131,50 @@
           fill: $black;
           transition: all 0.25s ease-in-out;
         }
+      }
+    }
+  }
+  /***********************************************Header Section***********************************************/
+  .polls-container {
+    .filters {
+      width: 1092.5px;
+      height: 62px;
+      border-radius: 50px;
+      background: #eff0f2;
+      @include flex;
+      justify-content: space-between;
+      padding-inline: 6.3rem;
+      // gap: 6rem;
+      .filter,
+      .available {
+        @include formatText(500, 1.8rem, normal);
+        @include flex;
+      }
+      .available {
+        border-radius: 20px;
+        background: #fff;
+        color: $primary;
+        @include size(19.3rem, 4.1rem);
+      }
+      .filter {
+        @include size(auto, 2.7rem);
+        min-width: 15rem;
+        cursor: pointer;
+        gap: 1rem;
+        svg {
+          @include size(2rem);
+          cursor: pointer;
+          margin-top: 0.35rem;
+          g path {
+            transition: all 0.25s ease-in-out;
+          }
+        }
+      }
+    }
+    .cards-container {
+      .content {
+      }
+      .pagination {
       }
     }
   }
