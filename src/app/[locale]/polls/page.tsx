@@ -60,8 +60,20 @@ const Polls = () => {
 
         <p>Hurray!!!..........Polls on various courses are now available based on your current department, semester and level</p>
         <div className="search-bar">
-          {isLoading ? <PulseLoader loading={isLoading} color="grey" aria-label="Loading Spinner" data-testid="loader" className="wave" /> : <SearchIcon />}
+          {isLoading ? <PulseLoader size={10} speedMultiplier={0.5} loading={isLoading} color="grey" aria-label="Loading Spinner" data-testid="loader" className="wave" /> : <SearchIcon />}
           <input onChange={handleSearch} value={query} type="search" placeholder="Search a poll" />
+        </div>
+      </section>
+      <section className="polls-container">
+        <div className="filters">
+          <div className="available"></div>
+          <div className="department"></div>
+          <div className="level"></div>
+          <div className="semeseter"></div>
+        </div>
+        <div className="cards-container">
+          <div className="content"></div>
+          <div className="pagination"></div>
         </div>
       </section>
     </section>

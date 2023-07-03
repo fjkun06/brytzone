@@ -101,8 +101,9 @@
       gap: 1.5rem;
       background-color: $white;
       padding-inline: 2rem;
-      input {
-        color: #000;
+      filter: drop-shadow(0 0 0.75rem rgba($black,0.15));
+      input,input::placeholder {
+        color: $black;
         @include formatText(400, 1.8rem, normal);
         height: 6.5rem;
         width: calc(100% - 7.2rem);
@@ -111,7 +112,7 @@
         border-bottom-left-radius: 0px;
         border: none;
         outline: none;
-        caret-color: $grey;
+        caret-color: $black;
       }
       &:focus-within {
         svg {
@@ -126,7 +127,7 @@
       svg {
         @include size(2.7rem);
         path {
-          fill: $grey;
+          fill: $black;
           transition: all 0.25s ease-in-out;
         }
       }
