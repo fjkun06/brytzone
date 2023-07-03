@@ -64,7 +64,7 @@ const Polls = async () => {
   const router = useRouter();
   // console.log("path: ", path1.split("/")[1]);
   const [error, setError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState({ code: 0, message: "" });
+  const [errorMessage, setErrorMessage] = useState<{ code: number | string; message: string }>({ code: 0, message: "" });
   // console.log(path1.slice(3 - path1.length));
   // console.log(path.slice(3 - path.length) + "dashboard");
 
@@ -98,13 +98,22 @@ const Polls = async () => {
         }
       } catch (error: any) {
         console.log(error);
-        console.log(error.response.data.message);
-        console.log(error.response.status);
-        setError(true);
-        setErrorMessage({
-          code: error.response.status,
-          message: error.response.data.message,
-        });
+        // console.log(error.response.data.message);
+        // console.log(error.response.status);
+        if (error.response) {
+          setError(true);
+          setErrorMessage({
+            code: error.response.status,
+            message: error.response.data.message,
+          });
+        }
+        if (error.message) {
+          setError(true);
+          setErrorMessage({
+            code: "",
+            message:  `Oopss! ${error.message}. Please check your internet connection`,
+          });
+        }
       }
     };
 
