@@ -34,6 +34,7 @@ const SubmitModal: React.FC<SubmitModalProps> = ({ stepCallback, formCallback, l
   const handler = () => {
     console.log(loadData());
   };
+  handler()
   //hovers
   const [step, setStep] = useState(0);
   const increment = () => {

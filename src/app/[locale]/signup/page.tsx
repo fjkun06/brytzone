@@ -18,7 +18,7 @@ import { useForm, Controller } from "react-hook-form";
 import LevelComponent from "./level";
 import { genId } from "@/utils/config";
 import CustomSelectDropdown from "./CustomDropDown";
-import { updatedInterests, updatedSkills } from "./config";
+import { allDepartmentss, levels, updatedInterests, updatedSkills } from "./config";
 import SubmitModal from "./modal";
 
 export type FormValues = {
@@ -32,6 +32,8 @@ export type FormValues = {
   skills: string[];
   interests: string[];
   picture: File | undefined;
+  department:string
+
 };
 
 const SignUp = () => {
@@ -43,7 +45,7 @@ const SignUp = () => {
 
   /**********************************************Handling input fields**********************************************/
 
-  const { handleSubmit, control, setValue,getValues } = useForm<FormValues>({
+  const { handleSubmit, control, setValue, getValues } = useForm<FormValues>({
     defaultValues: {
       matricule: "",
       password: "",
@@ -55,12 +57,16 @@ const SignUp = () => {
       skills: [],
       interests: [],
       picture: undefined,
+      department:""
     },
   });
 
   //getting dropdown item values
-  const handleLevel = (value: number) => {
-    setValue("level", value);
+  const handleLevel = (value: number|string) => {
+    setValue("level", value as number);
+  };
+  const handleDepartment = (value: string|number) => {
+    setValue("department", value as string);
   };
   const handleInterests = (value: string[]) => {
     setValue("interests", value);
@@ -74,7 +80,6 @@ const SignUp = () => {
   const onSubmit = (data: FormValues) => {
     // Handle form submission
     console.log(data);
-    
   };
 
   const handleData = () => getValues();
@@ -108,10 +113,11 @@ const SignUp = () => {
                       name="matricule"
                       render={({ field: { onChange, onBlur, value, ref } }) => <NormalInput onBlur={onBlur} label="matricule" value={value} onChange={onChange} />}
                     />
-                    <LevelComponent setLevel={handleLevel} />
+                    <LevelComponent setLevel={handleLevel} data={levels} />
                   </SubContainer>
 
                   <SubContainer isVisible={step === 2} key={genId()}>
+                  <LevelComponent setLevel={handleDepartment} data={allDepartmentss} />
                     <Controller
                       control={control}
                       name="email"
@@ -136,10 +142,10 @@ const SignUp = () => {
                     <Filer setter={handlePicture} />
                   </SubContainer>
                   <SubContainer isVisible={step === 4} key={genId()}>
-                    <SubmitModal stepCallback={setStep} formCallback={handleSubmit(onSubmit)} loadData={handleData}/>
+                    <SubmitModal stepCallback={setStep} formCallback={handleSubmit(onSubmit)} loadData={handleData} />
                   </SubContainer>
                 </AnimatePresence>
-                <Navigator step={step} stepCallback={setStep} completeCallback={setCompleted}  />
+                <Navigator step={step} stepCallback={setStep} completeCallback={setCompleted} />
               </motion.div>
               <div className="actions">
                 {/* <Button

@@ -9,7 +9,6 @@ interface AreaOfInterest {
 }
 
 const allInterests: AreaOfInterest[] = [
-
   { id: 1, name: "Web Development", category: "Technology" },
   { id: 2, name: "Mobile App Development", category: "Technology" },
   { id: 3, name: "Data Science", category: "Technology" },
@@ -62,6 +61,15 @@ const allInterests: AreaOfInterest[] = [
   { id: 50, name: "Music Production", category: "Creative" },
 ];
 
+export const allDepartmentss = ["Computer","Mechanical","Electrical"].map((value) => ({
+  value: value.toLowerCase(),
+  label: `${value} Department`,
+}));
+
+export const levels = [200, 300, 400, 450, 500, 600, 650, 700, 750, 800].map((value) => ({
+  value: value,
+  label: `${value}`,
+}));
 export interface Skill {
   id: number;
   name: string;
@@ -143,8 +151,6 @@ export const updatedSkills = sortedSkills.map((interest) => {
 
 export type CustomDropdownItem = typeof updatedInterests;
 
-
-
 /*********************************User interface******************************** */
 interface Group {
   label: string;
@@ -170,5 +176,5 @@ export interface User extends DatabaseUserProps {
   skills: Group[];
   interests: Group[];
   picture: string;
-  uname:string
+  uname: string;
 }

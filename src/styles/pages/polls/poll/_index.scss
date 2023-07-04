@@ -138,6 +138,11 @@
         color: $primary;
         border: 2px solid $primary;
         background: $white;
+        transition: all 0.25s ease-in-out;
+        &:hover{
+          background: $primary;
+          color: $white;
+        }
       }
     }
   }
