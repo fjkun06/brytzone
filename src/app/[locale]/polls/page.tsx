@@ -68,11 +68,7 @@ const Polls = () => {
     filter2: "",
     filter3: "",
   });
-  console.log(
-    Object.values(filters)
-      .filter((el) => el.length > 0)
-      .join(" | ")
-  );
+
 
   // Update the state
   const updateFilters = (filter: string, value: string) => {

@@ -31,6 +31,10 @@
     }
   }
   .content {
+    @include flex(column);
+    @include size(100%, auto);
+    gap: 10rem;
+
     .introduction {
       @include flex(column);
       gap: 3rem;
@@ -46,8 +50,95 @@
         }
       }
     }
-    .cards{
-      
+    .cards {
+      @include flex(column);
+      @include size(100%, auto);
+      gap: 12rem;
+      .card {
+        @include flex;
+        @include size(108rem, 17rem);
+        border: 1px solid red;
+        gap: 4.3rem;
+        .index {
+          color: $black;
+          @include formatText(500, 10rem, normal);
+        }
+        article {
+          @include flex(column);
+          align-items: flex-start;
+          @include size(97.5rem, 17rem);
+          border-radius: 2rem;
+          padding: 2.3rem 9.5rem 2rem 4.3rem;
+          background: url("circles.svg"), #3c78df;
+          background-repeat: no-repeat;
+          justify-content: space-between;
+          background-position: right 20% bottom 55%;
+          box-shadow: 0px 0px 0px 0px rgba(0, 0, 255, 0.1), 0px 15px 33px 0px rgba(0, 0, 255, 0.1), 0px 60px 60px 0px rgba(0, 0, 255, 0.09), 0px 135px 81px 0px rgba(0, 0, 255, 0.05),
+            0px 241px 96px 0px rgba(0, 0, 255, 0.01);
+          h2 {
+            color: $white;
+            @include formatText(500, 3rem, normal);
+            font-family: "DM Mono", sans-serif;
+            text-transform: capitalize;
+          }
+          p {
+            @include formatText(400, 2rem, normal);
+            color: $white;
+            @include linearTextEllipsis(64rem);
+          }
+          .choice {
+            @include flex;
+            width: 100%;
+            justify-content: space-between;
+            .question {
+              @include formatText(200, 2rem, normal);
+              color: $white;
+            }
+            .options {
+              @include flex;
+              width: 22rem;
+              justify-content: space-between;
+              div {
+                @include flex;
+                width: 7rem;
+                @include formatText(500, 2rem, normal);
+                gap: 1rem;
+                color: $white;
+                cursor: pointer;
+                transition: all 0.25s ease-in-out;
+                svg path {
+                  transition: all 0.25s ease-in-out;
+                }
+              }
+              .active {
+                color: $tertiary;
+              }
+            }
+          }
+        }
+      }
+    }
+    .actions {
+      width: 108rem;
+      border: 1px solid red;
+      @include flex;
+      justify-content: flex-end;
+      gap: 3rem;
+      span {
+        @include formatText(500, 2rem, normal);
+        color: $white;
+        @include size(auto);
+        @include flex;
+        padding: 1rem 3rem;
+        background: linear-gradient(to right, #57c0f1, #5278fa);
+        border-radius: 0.5rem;
+        cursor: pointer;
+      }
+      .back {
+        color: $primary;
+        border: 2px solid $primary;
+        background: $white;
+      }
     }
   }
 }
