@@ -1,6 +1,6 @@
 @use "./variables";
 
-//reate ellipsis after set number of lines
+//create ellipsis after set number of lines
 @mixin ellipsis($lineNumber:3){
   width: 100% ;
   overflow: hidden;
