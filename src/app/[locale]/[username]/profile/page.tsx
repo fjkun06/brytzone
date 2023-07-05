@@ -192,7 +192,7 @@ const Polls = async () => {
         <section className="layer1">
           <div className="body">
             {/* <Image src={"/defaults/av1.jpg"} alt="user-picture" width={198} height={198} priority /> */}
-            <Image src={`http://localhost:8080/images/${user?.picture}`} alt="user-picture" width={198} height={198} priority />
+            <Image src={`http://localhost:8080/images/${user?.picture}`} alt="user-picture" width={205} height={205} priority />
             <div className="content">
               <span className="name">Frank Jordan</span>
               <hr />
