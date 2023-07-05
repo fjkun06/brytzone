@@ -2,7 +2,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { brytzone } from "../home/header";
 import GridImage from "./grid";
 import { Button } from "@/stories/components/Button";
@@ -85,6 +85,22 @@ const Polls = () => {
       handleFilterSubmit();
     }
   }, [filters]);
+
+  // /load courses
+  React.useEffect(() => {
+    const handleFilterSubmit = async () => {
+      try {
+        const res = await axios.get(`http://localhost:${backendPort}/api/courses`, {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        });
+        console.log(res); // Handle the response as needed
+      } catch (error: any) {
+        console.error("Error submitting form:", error);
+      }
+    };
+    handleFilterSubmit();
+  }, []);
 
   // Update the state
   const updateFilters = (filter: string, value: string) => {
@@ -258,6 +274,8 @@ interface Course {
 }
 
 export const PollCard = ({ fill }: { fill: string }) => {
+  const router = useRouter()
+
   return (
     <article className="poll-card">
       <span className="level">
@@ -342,7 +360,7 @@ export const PollCard = ({ fill }: { fill: string }) => {
           </svg>
           <span>60+ Participated</span>
         </span>
-        <span className="action">See Poll</span>
+        <span className="action" onClick={ () =>router.push('/polls/1')}>See Poll</span>
       </div>
     </article>
   );
