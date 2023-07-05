@@ -13,7 +13,8 @@ import { CircleLoader, PulseLoader } from "react-spinners";
 import DoubleArrowIcon from "@/stories/components/DoubleArrowIcon";
 import ChevronArrowUpIcon from "@/stories/components/ChevronArrowUpIcon";
 import ChevronArrowDownIcon from "@/stories/components/ChevronArrowDownIcon";
-import { genId } from "@/utils/config";
+import { backendPort, genId } from "@/utils/config";
+import axios from "axios";
 export const metadata = {
   title: "Ensome | Services",
   description: "section displaying all the services we offer",
@@ -22,15 +23,13 @@ export const metadata = {
 const Polls = () => {
   // const t = useTranslations("dash");
   const path1 = usePathname();
-  console.log("path: ", path1);
-  console.log(path1.slice(3 - path1.length));
   // console.log(path.slice(3 - path.length) + "dashboard");
   const [visible, setVisible] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
   const [query, setQuery] = React.useState("");
 
   const handleSearch: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setQuery(e.target.value);
     if (e.target.value.length > 0) {
       setIsLoading(true);
@@ -64,11 +63,28 @@ const Polls = () => {
   };
 
   const [filters, setFilters] = React.useState({
-    filter1: "",
-    filter2: "",
-    filter3: "",
+    department: "",
+    level: "",
+    semester: "",
   });
 
+  React.useEffect(() => {
+    console.dir(filters);
+    const handleFilterSubmit = async () => {
+      try {
+        const res = await axios.post(`http://localhost:${backendPort}/api/courses/filter`, JSON.stringify({ ...filters }), {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        });
+        console.log(res); // Handle the response as needed
+      } catch (error: any) {
+        console.error("Error submitting form:", error);
+      }
+    };
+    if (filters.level.length > 0 || filters.department.length > 0 || filters.semester.length > 0) {
+      handleFilterSubmit();
+    }
+  }, [filters]);
 
   // Update the state
   const updateFilters = (filter: string, value: string) => {
@@ -78,18 +94,40 @@ const Polls = () => {
       // filter2: "",
       // filter3: ""
     }));
+
+    //call backend
+    // handleFilterSubmit();
   };
   // Update the state
   const clearFilters = () => {
     setFilters((prevFilters) => ({
       ...prevFilters,
-      filter1: "",
-      filter2: "",
-      filter3: "",
+      department: "",
+      level: "",
+      semester: "",
     }));
   };
 
   const filterArray = Object.values(filters).filter((el) => el.length > 0);
+
+  //config data for options
+  const departments = ["Computer Department", "Electrical Department", "Mechanical Department"];
+  const levels = ["Level 200", "Level 300", "Level 400"];
+  const semesters = ["First Semester", "Second Semester"];
+
+  //collect filter for backend
+  const handleFilterSubmit = async () => {
+    // console.dir(filterArray);
+    try {
+      const res = await axios.post(`http://localhost:${backendPort}/api/courses/filter`, JSON.stringify({ data: filterArray }), {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      });
+      console.log(res); // Handle the response as needed
+    } catch (error: any) {
+      console.error("Error submitting form:", error);
+    }
+  };
 
   //scrolling to polls
   const headerRef = React.useRef<HTMLElement>(null);
@@ -131,9 +169,9 @@ const Polls = () => {
       <section className="polls-container" onMouseLeave={closeAll} ref={headerRef}>
         <div className="filters">
           <div className="available">Available Courses</div>
-          <PollFilter toggler={handleDepartment} isOpen={departmentOpen} title="Department" update={updateFilters} filter="filter1" />
-          <PollFilter toggler={handleLevel} isOpen={levelOpen} title="Choose Level" update={updateFilters} filter="filter2" />
-          <PollFilter toggler={handleSemester} isOpen={semesterOpen} title="Select Semester" update={updateFilters} filter="filter3" />
+          <PollFilter toggler={handleDepartment} isOpen={departmentOpen} data={departments} title="Department" update={updateFilters} filter="department" />
+          <PollFilter toggler={handleLevel} isOpen={levelOpen} data={levels} title="Choose Level" update={updateFilters} filter="level" />
+          <PollFilter toggler={handleSemester} isOpen={semesterOpen} data={semesters} title="Select Semester" update={updateFilters} filter="semester" />
         </div>
         <div className="criteria" onMouseEnter={closeAll}>
           <span>Filter(s): </span>
@@ -167,13 +205,19 @@ interface PollFilterprops {
   isOpen: boolean;
   toggler: () => void;
   update: (filter: string, value: string) => void;
-  filter: "filter1" | "filter2" | "filter3";
+  filter: "department" | "semester" | "level";
+  data: string[];
 }
-export const PollFilter: React.FC<PollFilterprops> = ({ title, isOpen, toggler, update, filter }) => {
+export const PollFilter: React.FC<PollFilterprops> = ({ title, isOpen, toggler, update, filter, data }) => {
   const test = (e: React.MouseEvent<HTMLLIElement>) => {
     const element = e.target as HTMLLIElement;
     console.log(element.textContent);
-    update(filter, element?.textContent as string);
+    if (element?.textContent?.includes("Department")) {
+      console.log(element.textContent.split(" ")[0].toLowerCase());
+      update(filter, element.textContent.split(" ")[0].toLowerCase());
+    } else {
+      update(filter, element?.textContent as string);
+    }
   };
 
   return (
@@ -182,9 +226,14 @@ export const PollFilter: React.FC<PollFilterprops> = ({ title, isOpen, toggler, 
       <AnimatePresence>
         {isOpen && (
           <motion.ul onMouseLeave={toggler} initial={{ opacity: 0 }} exit={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ ease: "easeInOut", duration: 0.25 }} className="filter-dropdown">
-            <li onClick={test}>Embedded Systems 1</li>
+            {data.map((d) => (
+              <li onClick={test} key={genId()}>
+                {d}
+              </li>
+            ))}
+            {/* <li onClick={test}>Embedded Systems 1</li>
             <li onClick={test}>Software Architecture</li>
-            <li onClick={test}>5 Questions Available</li>
+            <li onClick={test}>5 Questions Available</li> */}
           </motion.ul>
         )}
       </AnimatePresence>

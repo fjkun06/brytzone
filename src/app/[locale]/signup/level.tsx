@@ -4,12 +4,15 @@ import Select from "react-select";
 const LevelComponent = ({
   setLevel,
   data,
+  title
 }: {
   data: {
     value: string|number;
     label: string;
   }[];
   setLevel: (value: number|string) => void;
+  title: string;
+
 }) => {
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const handleOptionSelect = (selected: any) => {
@@ -22,7 +25,7 @@ const LevelComponent = ({
 
   return (
     <div className="signup_level">
-      <span>Level</span>
+      <span>{title}</span>
       <Select
         options={data}
         value={data.find((option) => option.value === selectedOption)}

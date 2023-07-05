@@ -113,11 +113,11 @@ const SignUp = () => {
                       name="matricule"
                       render={({ field: { onChange, onBlur, value, ref } }) => <NormalInput onBlur={onBlur} label="matricule" value={value} onChange={onChange} />}
                     />
-                    <LevelComponent setLevel={handleLevel} data={levels} />
+                    <LevelComponent title="Level" setLevel={handleLevel} data={levels} />
                   </SubContainer>
 
                   <SubContainer isVisible={step === 2} key={genId()}>
-                  <LevelComponent setLevel={handleDepartment} data={allDepartmentss} />
+                  <LevelComponent title="Department" setLevel={handleDepartment} data={allDepartmentss} />
                     <Controller
                       control={control}
                       name="email"
