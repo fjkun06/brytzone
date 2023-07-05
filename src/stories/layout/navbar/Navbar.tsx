@@ -203,7 +203,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
                 // </Button>
                 <Image className="profile" src={`http://localhost:8080/images/${auth?.user?.picture}`} onClick={() => router.push(`/${auth?.user?.username}/profile`)} alt="user-picture" width={50} height={50} priority />
               ) : (
-                <Button category="action" icon={<UserAddIcon />}>
+                <Button category="action" icon={<UserAddIcon />}  onClick={() => router.push(`/login`)}>
                   Log In
                 </Button>
               )}

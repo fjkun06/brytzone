@@ -32,6 +32,7 @@ import MobileCategoryIcon from "@/stories/components/MobileCategoryIcon";
 import DataScienceCategoryIcon from "@/stories/components/DataScienceCategoryIcon";
 import OthersCategoryIcon from "@/stories/components/OthersCategoryIcon";
 import SearchIcon from "@/stories/components/SearchIcon";
+import Logout from "./logout";
 export const metadata = {
   title: "Ensome | Services",
   description: "section displaying all the services we offer",
@@ -194,17 +195,18 @@ const Polls = async () => {
             {/* <Image src={"/defaults/av1.jpg"} alt="user-picture" width={198} height={198} priority /> */}
             <Image src={`http://localhost:8080/images/${user?.picture}`} alt="user-picture" width={205} height={205} priority />
             <div className="content">
-              <span className="name">Frank Jordan</span>
+              <span className="name">{user?.name}</span>
               <hr />
-              <span className="others">Level 300(CT21A036) : delac1630@gmail.com</span>
+              <span className="others">{`${user?.level}(${user?.matricule?.toLocaleUpperCase()}) : ${user?.email}`}</span>
             </div>
           </div>
         </section>
         <section className="layer2">
           <div className="body">
             <div className="actions">
-              <span>Edit Profile</span>
-              <span>Log Out</span>
+              {/* <span>Edit Profile</span>*/}
+              {/* <span>Log Out</span> */}
+              <Logout/>
             </div>
             <div className="content">
               <div className="left">
