@@ -11,7 +11,7 @@ const Counter = ({ countEnd, duration = 5, text }: { countEnd: number; duration?
     const animation = animate(count, countEnd, { duration: duration, delay: 3 });
 
     return animation.stop;
-  }, []);
+  });
   useMotionValueEvent(rounded, "change", (latest) => {
     setState(latest);
   });

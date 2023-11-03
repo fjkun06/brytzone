@@ -67,7 +67,7 @@ const SubLayout: React.FC<SubLayoutProps> = ({ children }) => {
     if (min980) {
       setIsOpen(true);
     }
-  });
+  },[min980]);
   React.useEffect(() => {
     const handleScroll = () => {
       if (!min980) setIsOpen(false);

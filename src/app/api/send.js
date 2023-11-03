@@ -1,7 +1,7 @@
 // pages/api/send-email.js
 import { createGmailClient, getAccessToken } from '../../path/to/gmail.js';
 
-export default async (req, res) => {
+const send = async (req, res) => {
   try {
     // Fetch Gmail accounts from the database
     const gmailAccounts = await fetchGmailAccountsFromDatabase();
@@ -21,3 +21,5 @@ export default async (req, res) => {
     res.status(500).json({ error: 'Failed to send email' });
   }
 };
+
+export default send;

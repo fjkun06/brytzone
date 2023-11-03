@@ -120,7 +120,7 @@ export const SignUpCreation: React.FC<Create> = ({ visible, increment, data }) =
     setTimeout(() => {
       if (visible) handleFileSend();
     }, 1000);
-  }, []);
+  });
 
   return (
     <SubContainer isVisible={visible}>

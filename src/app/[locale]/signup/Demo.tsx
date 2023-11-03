@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState, createRef, ChangeEvent } from "react";
 import Cropper, { ReactCropperElement } from "react-cropper";
 import "cropperjs/dist/cropper.css";
@@ -65,7 +66,7 @@ export const Demo: React.FC = () => {
 
   return (
     <div style={{ width: "100%" }}>
-      <input type="file" onChange={onChange} />
+      <input type="file" onChange={onChange} placeholder="" title="_" />
       {showCropper && (
         <>
           <Cropper

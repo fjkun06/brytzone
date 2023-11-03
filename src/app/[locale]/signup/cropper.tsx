@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect, useRef } from 'react';
 import Cropper from 'cropperjs';
 import 'cropperjs/dist/cropper.min.css';
@@ -20,7 +21,7 @@ export default function ImageCropper({ src, maxWidth, maxHeight, onCrop }: Props
   useEffect(() => {
     if (cropperRef.current) {
 
-        console.log("cropperRef.current", cropperRef.current)
+        // console.log("cropperRef.current", cropperRef.current)
       const cropper = new Cropper(cropperRef.current, {
         aspectRatio: maxWidth / maxHeight,
         viewMode: 1,

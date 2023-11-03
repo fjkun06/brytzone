@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { FileInput } from "@/stories/components/Input";
 import { backendPort, genId } from "@/utils/config";
 import formatFileSize from "@/utils/formatFlieSize";

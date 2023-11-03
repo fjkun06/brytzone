@@ -15,7 +15,7 @@ const Navigator: React.FC<NavigatorProps> = ({ step, stepCallback, completeCallb
     } else {
       completeCallback(false);
     }
-  }, [step]);
+  }, [step,completeCallback]);
 
   const increment = () => {
     if (step >= 1 && step <= 3) {
