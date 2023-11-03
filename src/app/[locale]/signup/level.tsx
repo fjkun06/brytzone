@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import Select from "react-select";
 
-const LevelComponent = ({ setLevel }: { setLevel: (value: number) => void }) => {
+const LevelComponent = ({
+  setLevel,
+  data,
+  title
+}: {
+  data: {
+    value: string|number;
+    label: string;
+  }[];
+  setLevel: (value: number|string) => void;
+  title: string;
+
+}) => {
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
-  const options = [200, 300, 400, 450, 500, 600, 650, 700, 750, 800].map((value) => ({
-    value: value,
-    label: `${value}`,
-  }));
   const handleOptionSelect = (selected: any) => {
     setSelectedOption(selected?.value || null);
     if (selected) {
@@ -17,10 +25,10 @@ const LevelComponent = ({ setLevel }: { setLevel: (value: number) => void }) => 
 
   return (
     <div className="signup_level">
-      <span >Level</span>
+      <span>{title}</span>
       <Select
-        options={options}
-        value={options.find((option) => option.value === selectedOption)}
+        options={data}
+        value={data.find((option) => option.value === selectedOption)}
         onChange={handleOptionSelect}
         placeholder="Select an option"
         className="react-select-container"

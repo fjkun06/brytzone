@@ -84,8 +84,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, handleClick, desktop, storeCook
 
   //check logged in user
   const auth = React.useContext(AuthContext).currentUser;
-console.dir( auth);
-
+  console.dir(auth);
 
   //handling navbar diaplay for specific routes
   const showNavbar = path.includes("login") || path.includes("signup") || path.includes("recovery");
@@ -198,12 +197,13 @@ console.dir( auth);
               {/* <LoginButton isLoggedIn={isLoggenIn} />
                */}
               {auth?.state ? (
-                <Button category="action" icon={<UserAddIcon />}>
-                  {
-                  auth?.user?.username ?? "Kurtis"}
-                </Button>
+                // <Button category="action" icon={<UserAddIcon />}>
+                //   {
+                //   auth?.user?.username ?? "Kurtis"}
+                // </Button>
+                <Image className="profile" src={`http://localhost:8080/images/${auth?.user?.picture}`} onClick={() => router.push(`/${auth?.user?.username}/profile`)} alt="user-picture" width={50} height={50} priority />
               ) : (
-                <Button category="action" icon={<UserAddIcon />}>
+                <Button category="action" icon={<UserAddIcon />}  onClick={() => router.push(`/login`)}>
                   Log In
                 </Button>
               )}

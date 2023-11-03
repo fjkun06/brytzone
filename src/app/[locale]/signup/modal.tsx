@@ -34,6 +34,7 @@ const SubmitModal: React.FC<SubmitModalProps> = ({ stepCallback, formCallback, l
   const handler = () => {
     console.log(loadData());
   };
+  handler()
   //hovers
   const [step, setStep] = useState(0);
   const increment = () => {
@@ -65,7 +66,7 @@ const SubmitModal: React.FC<SubmitModalProps> = ({ stepCallback, formCallback, l
 
 export default SubmitModal;
 
-const SubContainer = ({ isVisible, children }: { isVisible: boolean; children: any }) => {
+export const SubContainer = ({ isVisible, children }: { isVisible: boolean; children: any }) => {
   const comp = {
     animate: {
       opacity: 1,

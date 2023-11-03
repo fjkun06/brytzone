@@ -1,0 +1,241 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/variables" as *;
+@use "card" as *;
+.brytzone_polls {
+  @include flex(column);
+  @include size(100vw, auto);
+  justify-content: flex-start;
+  background-color: $white;
+  background-image: url("./../login/login_light.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  min-height: 200vh;
+  gap: 6rem;
+  padding-bottom: 6rem;
+  /***********************************************Header Section***********************************************/
+  header {
+    @include size(130rem, 70rem);
+    padding-block: 6.55rem;
+    padding-left: 8.5rem;
+    padding-right: 2rem;
+    @include flex(column);
+    gap: 4rem;
+    // border: 1px solid black;
+
+    @media only screen and (width > 1500px) {
+      width: 145rem;
+    }
+
+    h1 {
+      @include size(100%, 7.5rem);
+      color: #0a518b;
+      @include flex;
+      @include formatText(500, 5rem, normal);
+      text-transform: capitalize;
+    }
+    .header-content {
+      @include size(100%, 49rem);
+      @include flex;
+      justify-content: space-between;
+
+      .greetings {
+        @include size(62rem, 100%);
+        @include flex(column);
+        align-items: flex-start;
+        justify-content: space-evenly;
+        // gap: 6rem;
+        h2 {
+          color: #000;
+          @include formatText(500, 4.5rem, normal);
+          span {
+            color: #0a518b;
+          }
+        }
+
+        p {
+          color: #000;
+          @include formatText(400, 3.5rem, normal);
+          span {
+            color: #0a518b;
+          }
+        }
+        button {
+          color: $white;
+          @include formatText(500, 3.5rem, normal);
+          padding: 1.3rem 9.4rem;
+          margin-top: 5rem;
+        }
+      }
+      div {
+        @include size(53.8rem, 57.6rem);
+        svg {
+          g {
+            mask {
+              mask-type: alpha;
+            }
+          }
+        }
+      }
+    }
+  }
+  /***********************************************Search Bar Section***********************************************/
+  .search {
+    @include size(100%, 30.5rem);
+    // background-color: aquamarine;
+    @include flex(column);
+    justify-content: flex-start;
+    gap: 4rem;
+    p {
+      @include size(77.5rem, auto);
+      color: #000;
+      @include flex;
+      @include formatText(400, 2.8rem, normal);
+    }
+    &-bar {
+      @include size(100%, auto);
+      width: 752.5px;
+      height: 65px;
+      @include flex;
+      // border: 1px solid red;
+      border-radius: 3.5rem;
+      gap: 1.5rem;
+      background-color: $white;
+      padding-inline: 2rem;
+      filter: drop-shadow(0 0 0.75rem rgba($black, 0.15));
+      input,
+      input::placeholder {
+        color: $black;
+        @include formatText(400, 1.8rem, normal);
+        height: 6.5rem;
+        width: calc(100% - 7.2rem);
+        border-radius: 3.5rem;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border: none;
+        outline: none;
+        caret-color: $black;
+      }
+      &:focus-within {
+        svg {
+          path {
+            fill: $primary;
+          }
+        }
+        input {
+          caret-color: $primary;
+        }
+      }
+      svg {
+        @include size(2.7rem);
+        path {
+          fill: $black;
+          transition: all 0.25s ease-in-out;
+        }
+      }
+    }
+  }
+  /***********************************************Header Section***********************************************/
+  .polls-container {
+    @include flex(column);
+    gap: 3rem;
+    @include size(100%, auto);
+    margin-top: 6rem;
+
+    .filters {
+      width: 1092.5px;
+      height: 62px;
+      border-radius: 50px;
+      background: #eff0f2;
+      @include flex;
+      justify-content: space-between;
+      padding-inline: 6.3rem;
+      // gap: 6rem;
+      .filter,
+      .available {
+        @include formatText(500, 1.8rem, normal);
+        @include flex;
+      }
+      .available {
+        border-radius: 20px;
+        background: #fff;
+        color: $primary;
+        @include size(auto, 4.1rem);
+        min-width: 19.3rem;
+        padding-inline: 0.5rem;
+      }
+      .filter {
+        @include size(auto, 2.7rem);
+        min-width: 15rem;
+        cursor: pointer;
+        gap: 1rem;
+        position: relative;
+        svg {
+          @include size(2rem);
+          cursor: pointer;
+          margin-top: 0.35rem;
+          g path {
+            transition: all 0.25s ease-in-out;
+          }
+        }
+        //filter dropdown menu
+        &-dropdown {
+          position: absolute;
+          @include size(auto);
+                min-width: 20rem;
+          min-width: max-content;
+          min-height: 10rem;
+          top: 4.5rem;
+          left: 0.5rem;
+          @include flex(column);
+          background-color: transparent;
+          list-style-type: none;
+          border-bottom-left-radius: 0.5rem;
+          border-bottom-right-radius: 0.5rem;
+          overflow: hidden;
+          z-index: 9999;
+          li {
+            color: $black;
+            width: 100%;
+            min-width: max-content;
+            @include flex;
+            // background-color: #eff0f2;
+            background: lighten($grey, 35%);
+
+            padding: 1rem;
+            padding-right: 6rem;
+            transition: all 0.25s ease-in-out;
+            &:hover {
+              background: lighten($grey, 20%);
+            }
+          }
+        }
+      }
+    }
+    .criteria {
+      width: 100rem;
+      @include formatText(500, 1.8rem, normal);
+      font-family: "DM Mono", sans-serif;
+      text-transform: capitalize;
+      .clear {
+        text-transform: lowercase;
+        border-bottom: 1px double #000;
+        justify-self: flex-end;
+        margin-left: 6rem;
+        cursor: pointer;
+      }
+    }
+    .cards-container {
+      .content {
+        @include flex;
+        @include size(94rem, auto);
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 8rem;
+        @include poll-card;
+      }
+      .pagination {
+      }
+    }
+  }
+}
