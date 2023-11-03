@@ -57,7 +57,7 @@
       .card {
         @include flex;
         @include size(108rem, 17rem);
-        border: 1px solid red;
+        // border: 1px solid red;
         gap: 4.3rem;
         .index {
           color: $black;
@@ -120,7 +120,7 @@
     }
     .actions {
       width: 108rem;
-      border: 1px solid red;
+      // border: 1px solid red;
       @include flex;
       justify-content: flex-end;
       gap: 3rem;

@@ -8,6 +8,8 @@ import { brytzone } from "../../home/header";
 import Heading from "@/stories/components/heading";
 import CheckSquareIcon from "@/stories/components/CheckSquareIcon";
 import { useRouter } from "next/navigation";
+import { CircleLoader } from "react-spinners";
+import { SubContainer } from "../../signup/modal";
 export default function Page({ params }: { params: { username: string } }) {
   const router = useRouter();
   useEffect(() => {
@@ -45,6 +47,7 @@ export default function Page({ params }: { params: { username: string } }) {
     }));
   };
 
+  const [answered, setAnswered] = useState(false);
 
   return (
     <section className={`${brytzone}_poll`}>
@@ -69,13 +72,39 @@ export default function Page({ params }: { params: { username: string } }) {
           <PollSingleCardItem module="module5" value={answers["module5"]} update={updateAnswers} index={5} />
         </div>
         <div className="actions">
-          <span className="back" onClick={() => router.push('/polls')}>Back to Polls</span>
-          <span className="submit">Submit Poll</span>
+          <span className="back" onClick={() => router.push("/polls")}>
+            Back to Polls
+          </span>
+          <span className="submit" onClick={() => setAnswered(true)}>
+            Submit Poll
+          </span>
+          {answered && <AnswerSubmit />}
         </div>
       </section>
     </section>
   );
 }
+
+export const AnswerSubmit = () => {
+  const router = useRouter();
+
+  const [loading, setLoading] = useState(true);
+  React.useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+      router.push("/");
+    }, 4000);
+  }, []);
+
+  return (
+    <span>
+      Submiting answer(s)...
+      {/* <motion.p animate={{ scale: 2.5, y: -50 }}> */}
+      <CircleLoader loading={loading} cssOverride={{ color: "var(--test)" }} color="" aria-label="Loading Spinner" data-testid="loader" className="wave" />
+      {/* </motion.p> */}
+    </span>
+  );
+};
 
 interface AnswerProps {
   value: boolean;

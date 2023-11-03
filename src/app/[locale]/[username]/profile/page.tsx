@@ -2,9 +2,8 @@
 import { useEffect, useState, useContext } from "react";
 import { backendPort } from "@/utils/config";
 import axios from "axios";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
-import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname, useRouter, useSelectedLayoutSegment } from "next/navigation";
 import { User } from "../../signup/config";

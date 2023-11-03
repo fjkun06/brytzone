@@ -66,7 +66,7 @@ const SubmitModal: React.FC<SubmitModalProps> = ({ stepCallback, formCallback, l
 
 export default SubmitModal;
 
-const SubContainer = ({ isVisible, children }: { isVisible: boolean; children: any }) => {
+export const SubContainer = ({ isVisible, children }: { isVisible: boolean; children: any }) => {
   const comp = {
     animate: {
       opacity: 1,
