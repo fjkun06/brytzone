@@ -3,10 +3,6 @@ import { Schema, model, connect } from 'mongoose';
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-export const metadata = {
-  title: "Ensome | Blog",
-  description: "blog describing ensome projects and research",
-};
 
 const Blog = () => {
   // const t = useTranslations("dash");
