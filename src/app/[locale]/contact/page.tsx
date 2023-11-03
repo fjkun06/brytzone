@@ -5,10 +5,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-export const metadata = {
-  title: "Ensome | Contacts",
-  description: "contact page to ge to the ensome team",
-};
+
 const initValues = {
   name: "",
   email: "",
