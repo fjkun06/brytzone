@@ -3,10 +3,6 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-export const metadata = {
-  title: "Ensome | Services",
-  description: "section displaying all the services we offer",
-};
 
 const Polls = () => {
   // const t = useTranslations("dash");
