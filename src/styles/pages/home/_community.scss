@@ -1,0 +1,94 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/variables" as *;
+@mixin community {
+  &-community {
+    color: $black;
+    @include flex;
+    @include size(100vw, auto);
+    padding-inline: 3.3rem;
+    padding-bottom: 2rem;
+    @media only screen and (width > 800px) {
+      justify-content: space-evenly;
+    }
+    @media only screen and (width > 900px) {
+      padding-bottom: 6rem;
+    }
+    @media only screen and (width > 1500px) {
+      justify-content: center;
+      gap: 10rem;
+    }
+    div {
+      &:nth-child(1) {
+        display: none;
+
+        img {
+          @include size(inherit);
+          filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.5));
+        }
+        @media only screen and (width > 900px) {
+          @include size(36.6rem);
+          @include flex;
+        }
+        @media only screen and (width > 1200px) {
+          @include size(56.6rem);
+        }
+      }
+      &:nth-child(2) {
+        @include flex(column);
+        gap: 2.5rem;
+        padding-bottom: 4rem;
+        @media only screen and (width > 900px) {
+          width: 50%;
+        }
+        @media only screen and (width > 900px) {
+          width: 50rem;
+        }
+        @media only screen and (width > 1500px) {
+          h3 span {
+            text-align: left;
+          }
+        }
+
+        p {
+          @include formatText(400, 1.5rem, 2.2rem);
+          width: 343.26px;
+          text-align: center;
+
+          @media only screen and (width > 500px) {
+            width: 85%;
+          }
+          @media only screen and (width > 800px) {
+            width: 90%;
+            @include formatText(400, 1.8rem, 3rem);
+          }
+          @media only screen and (width > 1200px) {
+            font-size: 25px;
+            line-height: 38px;
+            @include formatText(400, 2.5rem, 3.8rem);
+          }
+          @media only screen and (width > 1500px) {
+            width: 100%;
+            text-align: left;
+          }
+        }
+        button {
+          @include size(auto, 4.5rem);
+          @include formatText(500, 2rem, 3rem);
+          @media only screen and (width > 800px) {
+            @include size(24rem, 5rem);
+            @include formatText(500, 2.25rem, 4rem);
+          }
+          @media only screen and (width > 1200px) {
+            @include size(28rem, 6rem);
+            @include formatText(500, 2.85rem, 4.5rem);
+            width: max-content;
+            margin-top: 3rem;
+          }
+          @media only screen and (width > 1500px) {
+            align-self: flex-start;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+@use "../utils/mixins" as *;
+@use "../utils/variables" as *;
+.brytzone_button {
+  border: 1px solid red;
+  border: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  font-size: 15px;
+  line-height: 28px;
+  padding: 0.6rem 2.3rem;
+  background: #0a518b;
+  color: white;
+  border-radius: 2px;
+  transition: border-radius 0.25s ease-in-out;
+  width: max-content;
+  cursor: pointer;
+  @include flex;
+  &:hover {
+    border-radius: 5px;
+    // transform: scale(1.05);
+  }
+  svg {
+    // display: none;
+  }
+
+  /**************************************Button types**************************************/
+  &--action {
+    gap: 1rem;
+    svg {
+      display: inherit;
+    }
+  }
+  &--search {
+    padding-inline: 1.3rem;
+  }
+  &--contact {
+    border-radius: 20px;
+    background: $tertiary;
+    color: $black;
+
+    &:disabled{
+      background-color: grey;
+    }
+  }
+  &--content {
+    padding-inline: 2.5rem;
+    gap: 1rem;
+    flex-direction: row-reverse;
+    svg {
+      display: inherit;
+    }
+  }
+
+  @media only screen and (width >= 800px) {
+    font-size: 19px;
+    padding: 0.75rem 2.3rem;
+    &--content {
+      gap: 1.5rem;
+    }
+    svg {
+      // display: none;
+      transform: scale(1.25);
+    }
+  }
+}

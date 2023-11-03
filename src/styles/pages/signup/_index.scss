@@ -1,0 +1,70 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/variables" as *;
+@use "form" as *;
+@use "submit" as *;
+.brytzone_signup {
+  @include flex(column);
+  @include size(100vw, 100vh);
+  justify-content: flex-start;
+  background-color: #000;
+  background-image: url("./../login/login_light.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  /***********************************************Login Body***********************************************/
+  .signup_body {
+    @include flex(column);
+    justify-content: flex-start;
+    justify-self: center;
+    margin-top: 5rem;
+    // border: 1px solid red;
+
+    @media only screen and (width > 1200px) {
+      gap: 3rem;
+      @include size(120rem, 85rem);
+    }
+
+    .body {
+      @include flex;
+      @include size(100%);
+      .left,
+      .right {
+        @include size(100%);
+        @include flex(column);
+      }
+      .left {
+        img {
+        }
+      }
+
+      .right {
+        //heading
+        .heading {
+          @include flex;
+          @include size(100%, 7rem);
+          width: 22rem;
+          background-image: url("sign.png");
+          background-position-x: 50%;
+          -webkit-mask-image: url(signup.svg);
+          mask-image: url(signup.svg);
+          -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+          -webkit-mask-clip: border-box;
+          mask-clip: border-box;
+        }
+        //counter
+        .counter {
+          opacity: 0;
+          -webkit-user-select: none;
+          user-select: none;
+        }
+
+        /***********************************************Signup Form***********************************************/
+        @include form;
+        /***********************************************Submit Modal***********************************************/
+        @include submitModal;
+      }
+    }
+  }
+}

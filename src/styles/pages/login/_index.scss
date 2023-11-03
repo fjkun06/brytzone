@@ -1,0 +1,96 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/variables" as *;
+.brytzone_login {
+  @include flex(column);
+  @include size(100vw, 100vh);
+  justify-content: flex-start;
+  background-color: #000;
+  background-image: url("login_light.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  /***********************************************Login Body***********************************************/
+  .login_body {
+    @include flex(column);
+    justify-content: flex-start;
+    justify-self: center;
+    margin-block: 5rem;
+
+    & > * {
+    }
+    @media only screen and (width > 1200px) {
+      gap: 3rem;
+      @include size(120rem, 65rem);
+    }
+    .heading {
+      @include flex;
+      width: 100%;
+      @include size(100%, 7rem);
+      svg {
+        @include flex;
+        transform: translateY(5rem) scale(0.9);
+      }
+    }
+    .body {
+      @include flex;
+      @include size(100%);
+      .left,
+      .right {
+        @include size(100%);
+        @include flex(column);
+      }
+      .left {
+        img {
+        }
+      }
+
+      .right {
+        form {
+          width: 100%;
+          @include size(100%);
+          padding-inline: 2rem;
+          @include flex(column);
+          justify-content: space-evenly;
+          height: 46rem;
+          span.limit_error {
+            text-align: left;
+            width: 100%;
+            color: red;
+            font-family: "Poppins";
+          }
+          // gap: 2rem;
+          /***********************************************Actions fields***********************************************/
+          .actions {
+            width: max-content;
+            @include flex(column);
+            transform: translate(-5rem, 3rem);
+            gap: 1.5rem;
+            .help {
+              gap: 0.5rem;
+              @include flex;
+
+              span {
+                color: #000;
+                text-align: center;
+                font-size: 18px;
+                font-family: "Poppins";
+              }
+            }
+            button {
+              width: 304.286px;
+              height: 58.256px;
+              border-radius: 5px;
+              background: $primary;
+              color: #fff;
+              text-align: center;
+              font-size: 30px;
+              font-family: "Poppins";
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+  }
+}

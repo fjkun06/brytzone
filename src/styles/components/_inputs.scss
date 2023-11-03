@@ -1,0 +1,121 @@
+@use "../utils/mixins" as *;
+@use "../utils/variables" as *;
+
+@mixin inputText {
+  height: 2.7rem;
+  width: 100%;
+  @include flex;
+  justify-content: flex-start;
+  // border: 1px solid rgb(0, 255, 60);
+  color: $black;
+  text-align: center;
+  font-size: 18px;
+  font-family: "Poppins";
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.brytzone_field_file {
+  height: 8.6rem;
+  // border: 1px solid red;
+  gap: 0.5rem;
+  width: 45rem;
+  @include flex(column);
+  align-items: flex-start;
+  .file_heading {
+    @include inputText;
+  }
+  div.input {
+    // border: 1px solid red;
+    border-radius: 5px;
+    background: transparent;
+    width: 100%;
+    height: 53px;
+    @include flex;
+    justify-content: space-between;
+
+    label {
+      @include size(3.5rem);
+      width: 3.5rem !important;
+      input {
+        display: none;
+      }
+      svg {
+        cursor: pointer;
+      }
+    }
+    span {
+      color: #292d32;
+      text-align: center;
+      font-size: 18px;
+      font-family: "Poppins";
+      width: 39.1rem;
+      border-radius: 5px;
+      background: #eff0f2;
+      height: 53px;
+      @include flex;
+      justify-content: flex-start;
+      padding-inline: 2.4rem;
+      text-transform: capitalize;
+    }
+  }
+}
+
+.brytzone_field_normal,
+.brytzone_field_password {
+  min-height: 8.6rem;
+  // border: 1px solid red;
+  gap: 0.5rem;
+  width: 100%;
+  @include flex(column);
+  align-items: flex-start;
+
+  span {
+    @include inputText;
+  }
+  span.error {
+    font-size: 1.5rem;
+    padding-left: 2.4rem;
+    color: red;
+  }
+
+  div.visibility {
+    width: 100%;
+    @include flex;
+    justify-content: flex-start;
+    gap: 3rem;
+
+    div {
+      cursor: pointer;
+    }
+  }
+  input,
+  div.visibility input {
+    @include flex;
+    height: 53px;
+    border-radius: 5px;
+    background: #eff0f2;
+    color: rgba(60, 50, 50, 0.8);
+    text-align: left;
+    font-size: 18px;
+    font-family: "Poppins";
+    outline: none;
+    border-color: transparent;
+    width: 100%;
+    padding-left: 2.4rem;
+    max-width: 45rem;
+    &::placeholder {
+      text-transform: capitalize;
+    }
+  }
+}
+
+/***********************************************Password input brytzone_fields***********************************************/
+.brytzone_field_password {
+  height: 12rem;
+  div.password {
+    width: 45rem;
+    @include flex;
+    justify-content: flex-end;
+  }
+}

@@ -1,0 +1,93 @@
+
+{
+  "Index": {
+    "title": "Hallo  Welt!"
+  },
+  "navbar": {
+    "en": "Englisch",
+    "fr": "Französisch",
+    "de": "Deutsch"
+  },
+  "footer": {
+    "use": "Nützliche Links",
+    "res": "Ressourcen",
+    "con": "Kontaktinformationen",
+    "cto": "Folgen Sie uns auf allen unseren Social-Media-Plattformen, um weitere Updates zu erhalten",
+    "cameroon": "Kamerun, Buea Molyko",
+    "brytzone": "2023, Brytzone Alle Rechte vorbehalten",
+    "terms": "Bedingungen",
+    "privacy": "Privatsphäre"
+  },
+  "routes": {
+    "one": "Home",
+    "two": "Praktika",
+    "three": "Projekte",
+    "four": "Umfragen",
+    "five": "Um",
+    "six": "Kontakt",
+    "seven": "Blog"
+  },
+  "header": {
+    "join": "Beitreten",
+    "today": "Heute Mitglied und bauen Sie eine",
+    "solid": "Solide",
+    "future": "Zukunft mit",
+    "did": "Wissen Sie, dass Sie ein wahres Schulerlebnis mit Brytzone erwerben können? Aber das ist noch nicht alles, aber ich habe mir das Beste für Sie ausgedacht...",
+    "get": "Loslegen",
+    "counter": "Zähler wird geladen...",
+    "search": "Suchen",
+    "projects": "Projekte",
+    "tutors": "Nachhilfelehrerin",
+    "users": "Benutzer",
+    "what": "Wonach suchst du?...."
+  },
+  "community": {
+    "heading": "Werden Sie Teil unserer Gemeinschaft",
+    "sign": "Melden Sie sich noch heute an und holen Sie das Beste aus unserer Website heraus – von Praktika, Umfragen, Zugang zu Projekten und vielem mehr.....",
+    "joinus": "Begleiten Sie uns"
+  },
+  "explore": {
+    "explore1": "Entdecken Sie Ihren Lernbereich und seien Sie wie ein Profi",
+    "we": "Wir bieten eine Vielzahl von Ressourcen, die es Ihnen ermöglichen, zu einer besseren Version Ihrer selbst heranzuwachsen. Beginnen Sie noch heute und sehen Sie, was wir Ihnen bieten.......",
+    "learn": "Erfahren Sie mehr"
+  },
+
+  "know": {
+    "our": "Unser Vorgehen",
+    "wemake": "Wir erleichtern Ihnen das Lernen, indem wir den Unterrichtsraum näher an Sie heranbringen",
+    "announcement": "Ankündigungen",
+    "wekeep": "Wir halten Sie mit den zuverlässigsten Informationen zum Campus auf dem Laufenden.",
+    "proj": "Projekte",
+    "getinvolved": "Beteiligen Sie sich an persönlichen und Teamprojekten, die Ihnen dabei helfen, Ihre Fähigkeiten auszubauen",
+    "communication": "Kommunikation",
+    "an": "Ein bevorstehender Chat-Bereich, der Ihnen die Kommunikation mit anderen Kursteilnehmern ermöglicht"
+  },
+   "home": {
+    "getto": "Lernen Sie uns kennen, indem Sie einen Startpunkt wählen"
+  },
+
+  "how": {
+    "howto": "So werden Sie Teil unserer Gemeinschaft",
+    "getstarted": "Beginnen Sie in wenigen Schritten",
+    "create": "Erstellen Sie ein Konto mit unserem Anmeldeformular"
+  },
+  "start": {
+    "gett": "Lernen Sie uns kennen, indem Sie einen Startpunkt wählen",
+     "weoffer": "Wir bieten eine breite Palette an Möglichkeiten wie Praktika, Umfragen, Chats, Projekte, die Sie wachsen lassen, und vieles mehr ...",
+      "cards":{
+      "one": {
+        "title": "Projekte",
+        "text": "Wir helfen Ihnen, Ihre Fähigkeiten zu erweitern, indem wir Sie bei der Erstellung persönlicher Projekte und Teamprojekte unterstützen"
+      },
+      "two": {
+         "title": "Umfragen",
+        "text": "Erstellen von Umfragen, die Lehrern helfen, ihre Kurse anzupassen"
+      },
+
+      "three":{
+         "title": "Praktika",
+        "text": "Wir verschaffen Ihnen Zugang zu allen verfügbaren Praktikumsprogrammen in Ihrer Nähe"
+      }
+    }
+  }
+}

@@ -1,0 +1,160 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/variables" as *;
+@mixin meet {
+  &-meet {
+    border: 1px solid transparent;
+    color: $black;
+    @include flex(column);
+
+    @include size(100vw, auto);
+    gap: 3rem;
+    justify-content: flex-start;
+    padding: 3rem 3.3rem;
+    // border: 1px solid red;
+    // border: 1px solid red;
+    height: 62rem;
+    @media only screen and (width > 1200px) {
+      height: 70rem;
+    }
+    /******************************Text******************************/
+    p {
+      text-align: center;
+      @include size(28.8rem, 9.2rem);
+      @include formatText(400, 1.5rem, 2.2rem);
+
+      @media only screen and (width > 500px) {
+        @include size(45.3rem, 9.2rem);
+        @include formatText(400, 1.6rem, 2.2rem);
+      }
+      @media only screen and (width > 800px) {
+        @include size(74rem, 5.4rem);
+        @include formatText(400, 1.8rem, 2.7rem);
+      }
+    }
+
+    /******************************Swiper Carousel******************************/
+    .swiper {
+      @include size(37rem, 100%);
+
+      @media only screen and (width > 800px) {
+        width: 70rem;
+        .swiper-pagination {
+          display: none;
+        }
+      }
+      @media only screen and (width > 1200px) {
+        @include size(100rem, 50rem);
+      }
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      // padding-inline: 3rem;
+      /* Center slide text vertically */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 15px;
+      // border: 1px solid red;
+
+      /******************************Swiper Cards******************************/
+      article {
+        @include flex(column);
+        gap: 0.5rem;
+        @include size(20.1rem, 27rem);
+        background: linear-gradient(111.5deg, rgba(255, 255, 255, 0.2) -17.53%, rgba(255, 255, 255, 0.052) 82.47%);
+        box-shadow: 14.6089px 11.5334px 35.369px rgba(0, 0, 0, 0.14);
+        -webkit-backdrop-filter: blur(28.1445px);
+        backdrop-filter: blur(21.1445px);
+
+        background: linear-gradient(111.5deg, rgba(255, 255, 255, 0.2) -17.53%, rgba(255, 255, 255, 0.052) 82.47%);
+        box-shadow: 19px 15px 46px rgba(0, 0, 0, 0.14);
+        backdrop-filter: blur(27.5px);
+        /* Note: backdrop-filter has minimal browser support */
+
+        border-radius: 3rem;
+        span {
+          // border: 1px solid red;
+          @include flex;
+          gap: 1rem;
+          color: $textDark;
+
+          &:nth-child(1) {
+            @include size(200px, 145px);
+
+            img {
+              @include size(200px, 135px);
+            }
+            -webkit-mask-image: url(mask.png);
+            mask-image: url(mask.png);
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-size: 21rem 18rem;
+            -webkit-mask-clip: border-box;
+            mask-size: 21rem 18rem;
+            mask-clip: border-box;
+            -webkit-mask-position-y: -3rem;
+            overflow: hidden;
+            @media only screen and (width > 1200px) {
+              -webkit-mask-size: 26rem 20rem;
+              mask-size: 27rem 23rem;
+              -webkit-mask-position-y: -4rem;
+              -webkit-mask-position-x: -2rem;
+
+              img {
+                @include size(auto);
+              }
+            }
+          }
+          &:nth-child(2) {
+            color: $primary;
+            @include size(100%, 2.5rem);
+            @include formatText(500, 1.6rem, 2.5rem);
+            @media only screen and (width > 1200px) {
+              @include formatText(500, 2.2rem, 3.3rem);
+              height: 3.3rem;
+            }
+          }
+          &:nth-child(3) {
+            @include size(100%, 1.6rem);
+            @include formatText(400, 1.3rem, 2rem);
+            @media only screen and (width > 1200px) {
+              @include formatText(400, 1.7rem, 2.6rem);
+              height: 2.6rem;
+            }
+          }
+          &:nth-child(4) {
+            width: 100%;
+            height: 2rem;
+            @media only screen and (width > 1200px) {
+              gap: 3rem;
+              padding-top: 2rem;
+              em {
+                svg {
+                  transform: scale(1.45);
+                }
+              }
+            }
+            em {
+              width: max-content;
+
+              svg {
+                cursor: pointer;
+                g path,
+                path {
+                  fill: $primary;
+                }
+              }
+            }
+          }
+        }
+        border-radius: 11.5334px;
+        @media only screen and (width > 1200px) {
+          @include size(26.2rem, 35.3rem);
+        }
+      }
+    }
+  }
+}

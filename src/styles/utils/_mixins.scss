@@ -1,0 +1,76 @@
+@use "./variables";
+
+//create ellipsis after set number of lines
+@mixin ellipsis($lineNumber:3){
+  width: 100% ;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $lineNumber;
+  -webkit-box-orient: vertical;
+}
+
+@mixin linearTextEllipsis($width){
+  width: $width;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+//sets display to grid
+@mixin grid {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  @content;
+}
+
+@mixin flex($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+  @content;
+}
+
+@mixin formatText($fw, $fs, $lh) {
+  font-family: "Poppins";
+
+  font-weight: $fw;
+  font-size: $fs;
+  line-height: $lh;
+  font-style: normal;
+}
+
+//sets width and height
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+/******************************Home mixins******************************/
+@mixin customgrid($r, $c, $rowsize, $columnsize: $rowsize) {
+  @include grid;
+  grid-template-rows: repeat($r, $rowsize);
+  grid-template-columns: repeat($c, $columnsize);
+}
+
+//positions elements in a 2d grid system
+@mixin position($row, $column: $row) {
+  grid-row: #{$row};
+  grid-column: #{$column};
+}
+
+//backdrop
+@mixin blurbackdrop($color: white, $opacity: 0.3, $effect: blur, $intensity: 10px) {
+  // -webkit-backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: $effect($intensity);
+  backdrop-filter: #{$effect }($intensity);
+  // backdrop-filter: blur(10px);
+  background-color: rgba($color, $opacity);
+}
+
+//positioning absolutely positioned elements
+@mixin positioning($dir_value, $top, $direction: left) {
+  top: $top;
+  #{$direction}: $dir_value;
+}
