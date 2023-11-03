@@ -14,10 +14,7 @@ import { backendPort, genId } from "@/utils/config";
 import axios from "axios";
 import PollFilter from "./PollFilter";
 import PollCard from "./PollCard";
-export const metadata = {
-  title: "Ensome | Services",
-  description: "section displaying all the services we offer",
-};
+
 
 const Polls = () => {
   // const t = useTranslations("dash");
