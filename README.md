@@ -28,12 +28,12 @@ Live Version [here.](https://brytzone-1.vercel.app/)
 -	HTML5, CSS (SCSS), TypeScript, React JS, Next.js, Figma, Express.js, NodeJS, Mongo DB, JSON, RESTful APIs, JSON Web Tokens (JWT), Scalable Vector Graphics (SVG), Storybook.
   
 #### Soft Skills
--	Strong UI/UX design skills.
--	Multilingual Implementation.
--	Adaptability to new technologies.
--	Effective deadline management.
--	Collaboration and cross-functional teamwork.
--	Version control and codebase management using Git and Github.
+-	Strong UI/UX design skills
+-	Multilingual Implementation
+-	Adaptability to new technologies
+-	Effective deadline management
+-	Collaboration and cross-functional teamwork
+-	Version control and codebase management using Git and Github
 
 ## How to run
 First, install the packages:
