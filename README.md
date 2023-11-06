@@ -6,6 +6,7 @@ to stay up-to-date with the latest information in their faculty/school, find val
 gain exposure through projects to potentially secure employment opportunities even before leaving the university.
 
 Live Version [here.](https://brytzone-1.vercel.app/)
+
 Technologies used: HTML5, CSS (SCSS), TypeScript, React JS, Next.js, Figma, Express.js, NodeJS, Mongo DB, JSON, RESTful APIs, JSON Web Tokens (JWT), Scalable Vector Graphics (SVG), Storybook.
 
 
