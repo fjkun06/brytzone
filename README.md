@@ -1,5 +1,4 @@
 # Brytzone Educational Platform
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Project Overview
 Spearheading the development of Brytzone, a comprehensive multilingual educational platform tailored for African University students. Brytzone empowers students
@@ -11,8 +10,8 @@ Live Version [here.](https://brytzone-1.vercel.app/)
 ## Achievements:
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-•	Real-time Performance Insights: Continuously enhancing data visualization tools to provide educators with real-time insights into student performance, improving teaching strategies and student outcomes.
-•	Evolution of Internship Portal: Ongoing development and optimization of a sophisticated internship portal to bridge the academic-industry gap and provide students with valuable career opportunities.
+-	**Real-time Performance Insights:** Continuously enhancing data visualization tools to provide educators with real-time insights into student performance, improving teaching strategies and student outcomes.
+-	**Evolution of Internship Portal:** Ongoing development and optimization of a sophisticated internship portal to bridge the academic-industry gap and provide students with valuable career opportunities.
 •	Information Repository Expansion: Continuously updating and expanding the information repository to ensure access to reliable educational content for students and faculty, enhancing the overall educational experience.
 •	Usability Enhancements: Leveraging strong UI/UX design skills to improve user-friendly interfaces, connecting skilled students with job opportunities, and enhancing overall platform usability.
 •	Multilingual Implementation: Successfully implementing a multilingual approach, ensuring accessibility to a diverse user base and enhancing the platform's global reach.
