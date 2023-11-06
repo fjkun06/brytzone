@@ -5,7 +5,7 @@ Spearheading the development of Brytzone, a comprehensive multilingual education
 to stay up-to-date with the latest information in their faculty/school, find valuable internships, actively participate in polls to enhance their academics, and
 gain exposure through projects to potentially secure employment opportunities even before leaving the university.
 
-Live Version [here.](https://brytzone-1.vercel.app/)\
+Live Version [here.](https://brytzone-1.vercel.app/)
 
 #### Technologies Used
 - HTML5, CSS (SCSS), TypeScript, React JS, Next.js, Figma, Express.js, NodeJS, Mongo DB, JSON, RESTful APIs, JSON Web Tokens (JWT), Scalable Vector Graphics (SVG), Storybook.
