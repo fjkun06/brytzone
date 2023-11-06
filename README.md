@@ -1,4 +1,4 @@
-# Brytzone Educational Platform
+# Brytzone Educational Platform (Ongoing)
 
 ## Project Overview
 Spearheading the development of Brytzone, a comprehensive multilingual educational platform tailored for African University students. Brytzone empowers students
@@ -6,6 +6,8 @@ to stay up-to-date with the latest information in their faculty/school, find val
 gain exposure through projects to potentially secure employment opportunities even before leaving the university.
 
 Live Version [here.](https://brytzone-1.vercel.app/)
+Technologies used: HTML5, CSS (SCSS), TypeScript, React JS, Next.js, Figma, Express.js, NodeJS, Mongo DB, JSON, RESTful APIs, JSON Web Tokens (JWT), Scalable Vector Graphics (SVG), Storybook.
+
 
 ## Achievements
 -	**Real-time Performance Insights:** Continuously enhancing data visualization tools to provide educators with real-time insights into student performance, improving teaching strategies and student outcomes.
