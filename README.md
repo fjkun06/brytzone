@@ -19,9 +19,12 @@ Technologies used: HTML5, CSS (SCSS), TypeScript, React JS, Next.js, Figma, Expr
 -	**Deadline Management:** Effectively managing tight deadlines, ensuring the timely delivery of the first project version.
 -	**Collaboration:** Actively collaborating with cross-functional teams to enhance platform features and improve the overall user experience.
 -	**Version Control:** Managing version control and codebase organization using Git and Github, ensuring a streamlined and collaborative development process.
+  
 ##Skills
+
 ####Hard Skills
 -	HTML5, CSS (SCSS), TypeScript, React JS, Next.js, Figma, Express.js, NodeJS, Mongo DB, JSON, RESTful APIs, JSON Web Tokens (JWT), Scalable Vector Graphics (SVG), Storybook.
+  
 ####Soft Skills
 -	Strong UI/UX design skills.
 -	Multilingual Implementation.
