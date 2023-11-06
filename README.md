@@ -7,7 +7,7 @@ gain exposure through projects to potentially secure employment opportunities ev
 
 Live Version [here.](https://brytzone-1.vercel.app/)
 
-#### Technologies Used
+## Technologies Used
 - HTML5, CSS (SCSS), TypeScript, React JS, Next.js, Figma, Express.js, NodeJS, Mongo DB, JSON, RESTful APIs, JSON Web Tokens (JWT), Scalable Vector Graphics (SVG), Storybook.
 
 
